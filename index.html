@@ -15,9 +15,44 @@ background:#f5f5f5;
 
 header{
 background:#004aad;
+padding:20px 40px;
+}
+
+.logo-container{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:20px;
+}
+
+.logo-container img{
+width:90px;
+height:90px;
+object-fit:contain;
+}
+
+.title{
+text-align:left;
+}
+
+.title h1{
+margin:0;
+font-size:42px;
+font-weight:bold;
+}
+
+.white{
 color:white;
-padding:20px;
-text-align:center;
+}
+
+.red{
+color:#ff3b3b;
+}
+
+.title p{
+margin-top:8px;
+color:white;
+font-size:18px;
 }
 
 nav{
@@ -81,9 +116,22 @@ margin-top:40px;
 
 <header>
 
-<h1>SSC English Mastery Portal</h1>
+<div class="logo-container">
 
-<p>Mock Tests • Study Notes • Vocabulary</p>
+<img src="logo.png" alt="Logo">
+
+<div class="title">
+
+<h1>
+<span class="white">Sampuran</span>
+<span class="red">English</span>
+</h1>
+
+<p>Mock Tests • Grammar Notes • Vocabulary • Reading Comprehension</p>
+
+</div>
+
+</div>
 
 </header>
 
@@ -111,7 +159,7 @@ margin-top:40px;
 
 Welcome to SSC English Mastery Portal.
 
-Here you can practice mock tests and download syllabus notes.
+Here you can practice mock tests and download grammar notes.
 
 </p>
 
