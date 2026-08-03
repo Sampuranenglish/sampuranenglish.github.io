@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampuran English — 50 Most Important Parajumbles for SSC</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  :root{
+    --ink:#1c2b3a;
+    --paper:#f6f3ea;
+    --rule:#c9bfa4;
+    --navy:#163a5f;
+    --brick:#a8321f;
+    --brick-deep:#7e2417;
+    --gold:#b8862c;
+    --correct:#1f7a4d;
+    --correct-bg:#e5f3ea;
+    --wrong:#a8321f;
+    --wrong-bg:#fbe9e5;
+    --unattempted:#7a6f57;
+    --card:#fffdf8;
+    --shadow:0 4px 10px rgba(0,0,0,.08);
+    --radius:10px;
+    --trans:all .2s ease;
+
+    --d-bg:#141b24;
+    --d-card:#1e2733;
+    --d-ink:#e8e3d3;
+    --d-rule:#33404c;
+    --d-paper:#10161d;
+  }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0)),
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 34px);
+    color: var(--ink);
+    font-family: "Georgia", "Iowan Old Style", "Palatino Linotype", serif;
+    line-height: 1.5;
+    transition: var(--trans);
+  }
+  body.dark-mode{
+    background: var(--d-bg);
+    background-image:none;
+    color: var(--d-ink);
+  }
+
+  img{ max-width:100%; height:auto; }
+
+  /* ---------- Welcome screen ---------- */
+  .welcome-screen{
+    position:fixed; inset:0;
+    background: var(--paper);
+    z-index:1000;
+    display:flex; flex-direction:column; align-items:center;
+    padding: 24px 20px 40px;
+    text-align:center;
+    transition: var(--trans);
+    overflow-y:auto;
+  }
+  body.dark-mode .welcome-screen{ background:var(--d-bg); }
+  .welcome-screen.hidden{ display:none; }
+
+  .welcome-kicker{
+    font-family:"Trebuchet MS", sans-serif;
+    letter-spacing:1.5px;
+    font-size: clamp(24px, 7vw, 38px);
+    text-transform:uppercase;
+    color: var(--brick);
+    font-weight:800;
+    margin-bottom:10px;
+    line-height:1.15;
+  }
+  .welcome-title{
+    font-size:15px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color: var(--navy);
+    margin-bottom:6px;
+  }
+  body.dark-mode .welcome-title{ color:#9fc1e6; }
+  .welcome-sub{
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13.5px;
+    color: var(--unattempted);
+    margin-bottom:26px;
+  }
+
+  .welcome-card{
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--brick);
+    box-shadow: var(--shadow);
+    width:100%; max-width:420px;
+    padding: 22px 24px;
+    margin-bottom:26px;
+    text-align:left;
+  }
+  body.dark-mode .welcome-card{ background:var(--d-card); border-color:var(--d-rule); }
+  .welcome-card .head{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color: var(--navy);
+    border-bottom:1px solid var(--rule);
+    padding-bottom:10px;
+    margin-bottom:12px;
+  }
+  body.dark-mode .welcome-card .head{ color:#9fc1e6; border-color:var(--d-rule); }
+  .w-row{
+    display:flex; justify-content:space-between;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:14px;
+    padding:7px 0;
+  }
+  .w-row b{ color:var(--brick); }
+  body.dark-mode .w-row b{ color:#e08a72; }
+
+  .welcome-button{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    background: var(--brick);
+    color:#fff;
+    border:none;
+    padding:14px 40px;
+    cursor:pointer;
+    box-shadow: 0 3px 0 var(--brick-deep);
+    transition: transform .1s;
+    margin-bottom:16px;
+  }
+  .welcome-button:active{ transform:translateY(3px); box-shadow:none; }
+
+  /* ---------- Daily content: Rule / Word of the Day ---------- */
+  .daily-content{
+    width:100%; max-width:420px;
+    text-align:left;
+    margin-bottom:26px;
+  }
+  .cat-row{
+    display:flex; gap:10px; justify-content:center;
+    margin-bottom:20px; flex-wrap:wrap;
+  }
+  .cat-pill{
+    flex:1; min-width:96px;
+    background: var(--card);
+    border:2px solid var(--navy);
+    color: var(--navy);
+    border-radius:50px;
+    text-align:center;
+    padding:14px 6px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:12.5px;
+    line-height:1.3;
+  }
+  body.dark-mode .cat-pill{ background:var(--d-card); border-color:#9fc1e6; color:#9fc1e6; }
+  .cat-pill:nth-child(2){ border-color: var(--correct); color: var(--correct); }
+  body.dark-mode .cat-pill:nth-child(2){ border-color:#5fd28d; color:#5fd28d; }
+  .cat-pill:nth-child(3){ border-color: var(--brick); color: var(--brick); }
+  body.dark-mode .cat-pill:nth-child(3){ border-color:#e08a72; color:#e08a72; }
+
+  .dc-banner{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    background: var(--brick);
+    color:#FFD86B;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:800; font-size:14px; letter-spacing:1px; text-transform:uppercase;
+    padding:9px 12px;
+    margin:18px 0 10px;
+  }
+  .dc-banner i{ font-size:12px; color:#fff; }
+
+  .rule-box{
+    background: var(--navy);
+    color:#FFD86B;
+    padding:14px 16px;
+    font-size:13.5px;
+    font-weight:700;
+    line-height:1.55;
+    margin-bottom:8px;
+    border-left:3px solid var(--gold);
+  }
+  body.dark-mode .rule-box{ border-left-color:#ffd86b; }
+  .rule-box .eg{ margin-top:10px; font-size:12.5px; font-weight:400; color:#f2ede0; display:block; }
+  .rule-box .eg .wrong{ color:#ffb0a3; }
+  .rule-box .eg .right{ color:#a7f0b0; }
+
+  .word-box{
+    background: var(--card);
+    border:1px solid var(--rule);
+    padding:16px 18px;
+    text-align:center;
+  }
+  body.dark-mode .word-box{ background:var(--d-card); border-color:var(--d-rule); }
+  .word-title{
+    font-size:22px; font-weight:700;
+    color: var(--navy);
+    text-decoration:underline;
+    margin-bottom:8px;
+  }
+  body.dark-mode .word-title{ color:#9fc1e6; }
+  .word-meta{
+    text-align:left; font-size:13px; margin-top:8px; line-height:1.5;
+  }
+  .word-meta u{ font-weight:700; color:var(--navy); }
+  body.dark-mode .word-meta u{ color:#9fc1e6; }
+  .word-trick{
+    text-align:left; font-size:12.5px; font-style:italic; font-weight:700;
+    color: var(--brick); margin-top:10px;
+    background:#fde2e2; padding:8px 10px; border-radius:4px;
+    border-left:3px solid var(--brick);
+  }
+  body.dark-mode .word-trick{ color:#ffb0a3; background:#3a2320; border-left-color:#e08a72; }
+  .syn-anto{ text-align:left; font-size:13px; margin-top:8px; }
+  .syn-anto b{ text-decoration:underline; color:var(--navy); }
+  body.dark-mode .syn-anto b{ color:#9fc1e6; }
+  .syn-anto .hl{ color: var(--brick); font-weight:700; }
+  body.dark-mode .syn-anto .hl{ color:#e08a72; }
+
+  .join-channel{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13px; font-weight:600;
+    color: var(--navy);
+    text-decoration:none;
+    padding:9px 16px;
+    border:1px solid var(--navy);
+    border-radius: 20px;
+    transition: var(--trans);
+  }
+  .join-channel:hover{ background:var(--navy); color:#fff; }
+  body.dark-mode .join-channel{ color:#9fc1e6; border-color:#9fc1e6; }
+
+  /* ---------- Header ---------- */
+  .hdr{
+    background: var(--navy);
+    color:#f2ede0;
+    padding:10px 14px;
+    display:grid;
+    grid-template-columns: auto 1fr auto;
+    align-items:center;
+    gap:10px;
+    position:sticky; top:0; z-index:100;
+    border-bottom:4px solid var(--brick);
+  }
+  .hdr-l{ font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:14px; }
+  .hdr-l small{ display:block; font-weight:400; font-size:10.5px; color:#cfd8e3; letter-spacing:0.5px; }
+  .hdr-c{ text-align:center; font-family:"Trebuchet MS", sans-serif; font-size:13px; font-weight:600; }
+  .hdr-r{ display:flex; align-items:center; gap:8px; justify-content:flex-end; flex-wrap:wrap; }
+  .timer{
+    background:#FEF3C7; color:#78350F;
+    padding:6px 12px; border-radius:16px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13px; font-weight:700;
+  }
+  .timer.low{ background:#fde2e2; color:#7e2417; }
+  .icon-btn{
+    border:1px solid rgba(255,255,255,0.4);
+    background:transparent; color:#fff;
+    width:34px; height:34px; border-radius:8px;
+    cursor:pointer; font-size:14px;
+    display:flex; align-items:center; justify-content:center;
+    transition: var(--trans);
+  }
+  .icon-btn:hover{ background:rgba(255,255,255,0.15); }
+  .btn-submit-top{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; font-size:12.5px;
+    background: var(--brick); color:#fff;
+    border:none; padding:9px 14px; border-radius:8px;
+    cursor:pointer;
+  }
+  .btn-submit-top:disabled{ background:#8a8377; cursor:not-allowed; }
+
+  .subject-tag{
+    background:#f1ece0;
+    border-bottom:1px solid var(--rule);
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color: var(--navy);
+    font-weight:700;
+    padding:9px 16px;
+  }
+  body.dark-mode .subject-tag{ background:#1a2330; border-color:var(--d-rule); color:#9fc1e6; }
+
+  /* ---------- Question area ---------- */
+  .cont{ max-width:720px; margin:0 auto; padding:18px 16px 110px; }
+
+  .qcard{
+    background: var(--card);
+    border:1px solid var(--rule);
+    border-left:4px solid var(--navy);
+    padding:18px 20px 20px;
+    box-shadow: var(--shadow);
+  }
+  body.dark-mode .qcard{ background:var(--d-card); border-color:var(--d-rule); border-left-color:#9fc1e6; }
+
+  .qnum{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; color: var(--brick);
+    font-size:13px; margin-bottom:8px; letter-spacing:0.5px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .status-tag{
+    display:inline-block;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:10.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+    padding:3px 9px; border-radius:2px; color:#fff;
+  }
+  .status-tag.correct{ background:var(--correct); }
+  .status-tag.wrong{ background:var(--wrong); }
+  .status-tag.skipped{ background:var(--unattempted); }
+
+  .passage{
+    font-size:15px;
+    background:#f1ece0;
+    border-left:3px solid var(--gold);
+    padding:10px 14px;
+    margin-bottom:14px;
+    font-style:italic;
+    color:#40372a;
+  }
+  body.dark-mode .passage{ background:#1a2330; color:#c9c2ab; }
+
+  .qtext{ font-size:17px; margin-bottom:16px; color:var(--ink); }
+  body.dark-mode .qtext{ color:var(--d-ink); }
+
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:12px 14px;
+    border:1px solid var(--rule);
+    background:#fff;
+    cursor:pointer;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:14.5px;
+    transition: border-color .15s, background .15s;
+  }
+  body.dark-mode .opt{ background:#232d3a; border-color:var(--d-rule); color:var(--d-ink); }
+  .opt:hover{ border-color:var(--navy); background:#f3f6fa; }
+  body.dark-mode .opt:hover{ background:#2b3646; }
+  .opt.selected{ border-color:var(--navy); background:#e9eff6; font-weight:700; }
+  body.dark-mode .opt.selected{ background:#28405e; }
+  .opt-letter{ font-weight:700; color:var(--brick); flex-shrink:0; }
+  .opt.correct-answer{ background:var(--correct-bg); border-color:var(--correct); }
+  body.dark-mode .opt.correct-answer{ background:#164a34; border-color:var(--correct); }
+  .opt.wrong-answer{ background:var(--wrong-bg); border-color:var(--wrong); }
+  body.dark-mode .opt.wrong-answer{ background:#5c2018; border-color:var(--wrong); }
+  .qcard.locked .opt{ cursor:default; pointer-events:none; }
+
+  .explanation{
+    margin-top:16px; padding:12px 14px;
+    background:#fbf7ec;
+    border:1px dashed var(--gold);
+    font-size:14px;
+    display:none;
+  }
+  body.dark-mode .explanation{ background:#241f14; }
+  .explanation b{ color:var(--navy); }
+  body.dark-mode .explanation b{ color:#9fc1e6; }
+  .qcard.locked .explanation{ display:block; }
+
+  /* ---------- Bottom nav ---------- */
+  .navbar{
+    position:fixed; left:0; right:0; bottom:0;
+    background: var(--card);
+    border-top:1px solid var(--rule);
+    padding:10px 14px;
+    display:flex; justify-content:space-between; align-items:center;
+    box-shadow:0 -2px 10px rgba(0,0,0,.06);
+    z-index:100;
+  }
+  body.dark-mode .navbar{ background:var(--d-card); border-color:var(--d-rule); }
+  .nav-btn{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; font-size:12.5px;
+    padding:10px 14px; border-radius:8px; border:none; cursor:pointer;
+    display:flex; align-items:center; gap:6px;
+    min-width:64px; justify-content:center;
+  }
+  .nav-btn:disabled{ opacity:.45; cursor:not-allowed; }
+  .nav-btn.prev{ background:transparent; border:1px solid var(--rule); color:var(--ink); }
+  body.dark-mode .nav-btn.prev{ border-color:var(--d-rule); color:var(--d-ink); }
+  .nav-btn.review{ background:#f6dfa0; color:#5a4008; }
+  .nav-btn.review.active{ background:var(--gold); color:#fff; }
+  .nav-btn.next{ background:var(--navy); color:#fff; }
+  .nav-mid{ text-align:center; font-family:"Trebuchet MS", sans-serif; font-size:11.5px; color:var(--unattempted); }
+  body.dark-mode .nav-mid{ color:#a49a80; }
+
+  /* ---------- Grid panel ---------- */
+  .panel{
+    position:fixed; inset:0;
+    background: var(--paper);
+    z-index:200;
+    transform: translateY(100%);
+    transition: transform .3s ease;
+    overflow-y:auto;
+    display:none;
+  }
+  body.dark-mode .panel{ background:var(--d-bg); }
+  .panel.open{ display:block; transform:translateY(0); }
+  .panel-hdr{
+    background: var(--navy); color:#fff;
+    padding:16px; display:flex; justify-content:space-between; align-items:center;
+    position:sticky; top:0;
+  }
+  .panel-close{ background:none; border:none; color:#fff; font-size:20px; cursor:pointer; }
+  .panel-body{ padding:18px; }
+  .legend{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:18px; font-family:"Trebuchet MS", sans-serif; font-size:12px; }
+  .legend span{ display:flex; align-items:center; gap:6px; }
+  .legend i{ width:14px; height:14px; border-radius:3px; display:inline-block; }
+  .grid-nav{ display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; }
+  @media (min-width:480px){ .grid-nav{ grid-template-columns:repeat(6, 1fr); } }
+  .g-btn{
+    aspect-ratio:1; border-radius:8px; border:2px solid var(--rule);
+    background:#fff; font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:14px;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  body.dark-mode .g-btn{ background:var(--d-card); border-color:var(--d-rule); color:var(--d-ink); }
+  .g-btn.answered{ background:var(--correct); color:#fff; border-color:var(--correct); }
+  .g-btn.review{ background:var(--gold); color:#fff; border-color:var(--gold); }
+  .g-btn.current{ outline:3px solid var(--brick); outline-offset:1px; }
+
+  /* ---------- Modal ---------- */
+  .modal{
+    position:fixed; inset:0; background:rgba(0,0,0,.55);
+    display:none; align-items:center; justify-content:center; z-index:300; padding:16px;
+  }
+  .modal.show{ display:flex; }
+  .modal-box{
+    background: var(--card);
+    max-width:400px; width:100%;
+    border:1px solid var(--rule);
+    border-top:5px solid var(--brick);
+    box-shadow: var(--shadow);
+  }
+  body.dark-mode .modal-box{ background:var(--d-card); border-color:var(--d-rule); }
+  .modal-head{ text-align:center; padding:22px 20px 14px; }
+  .modal-head .kicker{ font-family:"Trebuchet MS", sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--unattempted); }
+  .modal-head .score{ font-size:38px; font-weight:700; color:var(--navy); margin-top:6px; }
+  body.dark-mode .modal-head .score{ color:#9fc1e6; }
+  .modal-head .score span{ font-size:18px; color:var(--unattempted); }
+  .stat-grid{ display:grid; grid-template-columns:repeat(4,1fr); text-align:center; font-family:"Trebuchet MS", sans-serif; border-top:1px solid var(--rule); }
+  body.dark-mode .stat-grid{ border-color:var(--d-rule); }
+  .stat-grid div{ padding:12px 4px; border-right:1px solid var(--rule); }
+  body.dark-mode .stat-grid div{ border-color:var(--d-rule); }
+  .stat-grid div:last-child{ border-right:none; }
+  .stat-grid .num{ font-size:19px; font-weight:700; }
+  .stat-grid .lbl{ font-size:10px; text-transform:uppercase; color:var(--unattempted); margin-top:2px; }
+  .modal-actions{ display:flex; gap:8px; padding:16px 20px; }
+  .modal-actions button{
+    flex:1; padding:11px; border-radius:6px; border:none; cursor:pointer;
+    font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:13px;
+  }
+  .m-close{ background:transparent; border:1px solid var(--rule) !important; color:var(--ink); }
+  body.dark-mode .m-close{ border-color:var(--d-rule) !important; color:var(--d-ink); }
+  .m-review{ background:var(--navy); color:#fff; }
+  .m-print{ background:var(--brick); color:#fff; margin:0 20px 18px; padding:11px; border:none; border-radius:6px; font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:13px; cursor:pointer; width:calc(100% - 40px); display:none; }
+  .m-print.show{ display:block; }
+
+  footer{
+    text-align:center; padding:16px; background:var(--brick); color:#fff;
+    font-family:"Trebuchet MS", sans-serif; font-size:12.5px;
+  }
+  footer a{ color:#ffe9c7; }
+</style>
+</head>
+<body>
+
+<!-- ============ WELCOME SCREEN ============ -->
+<div class="welcome-screen" id="welcomeScreen">
+  <div class="welcome-kicker">Sampuran English</div>
+  <a class="join-channel" href="https://t.me/Sampuran_English" target="_blank">
+    <i class="fa-brands fa-telegram"></i> Official Telegram Channel
+  </a>
+  <div class="welcome-sub" style="color:#000;font-weight:700;margin-top:14px">50 Most Important Parajumbles for SSC</div>
+
+  <div class="welcome-card">
+    <div class="w-row"><span>Total Questions</span><b>50</b></div>
+    <div class="w-row"><span>Total Marks</span><b>100</b></div>
+    <div class="w-row"><span>Duration</span><b>No Limit</b></div>
+    <div class="w-row"><span>Marking</span><b>+2.0 / −0.5</b></div>
+  </div>
+
+  <button class="welcome-button" id="startTestBtn">Start Test</button>
+
+  <div class="daily-content">
+    <div class="cat-row">
+      <div class="cat-pill">Grammar<br>Practice</div>
+      <div class="cat-pill">Vocab<br>Practice</div>
+      <div class="cat-pill">Reading<br>Practice</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MAIN TEST INTERFACE ============ -->
+<div id="mainTestInterface" style="display:none">
+
+  <div class="hdr">
+    <div class="hdr-l">Sampuran English<small>Daily Practice</small></div>
+    <div class="hdr-c" id="qInfo">Q 1 / 20</div>
+    <div class="hdr-r">
+      <div class="timer" id="timer">00:00</div>
+      <button class="icon-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="icon-btn" id="menuBtn" title="Question palette"><i class="fas fa-th"></i></button>
+      <button class="btn-submit-top" id="subBtn">Submit</button>
+    </div>
+  </div>
+  <div class="subject-tag" id="subjectTag"></div>
+
+  <div class="cont">
+    <div class="qcard" id="qcard">
+      <div class="qnum">Question <span id="qNumTxt">1</span> <span class="status-tag" id="statusTag" style="display:none"></span></div>
+      <div class="passage" id="passageBox" style="display:none"></div>
+      <div class="qtext" id="qTxt"></div>
+      <div class="options" id="opts"></div>
+      <div class="explanation" id="explanation"></div>
+    </div>
+  </div>
+
+  <div class="navbar">
+    <button class="nav-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i> Prev</button>
+    <div class="nav-mid">
+      <div id="progTxt">1 of 20</div>
+      <div>Answered: <span id="ansCnt">0</span></div>
+    </div>
+    <button class="nav-btn review" id="reviewBtn"><i class="fas fa-flag"></i></button>
+    <button class="nav-btn next" id="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
+  </div>
+
+  <!-- Question palette panel -->
+  <div class="panel" id="panel">
+    <div class="panel-hdr">
+      <span style="font-family:'Trebuchet MS',sans-serif;font-weight:700">Question Palette</span>
+      <button class="panel-close" id="panelClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="panel-body">
+      <div class="legend">
+        <span><i style="background:var(--correct)"></i> Answered</span>
+        <span><i style="background:var(--gold)"></i> Marked for Review</span>
+        <span><i style="background:#fff;border:2px solid var(--rule)"></i> Not Answered</span>
+      </div>
+      <div class="grid-nav" id="gridNav"></div>
+    </div>
+  </div>
+
+  <!-- Result modal -->
+  <div class="modal" id="modalOver">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="kicker">Your Result</div>
+        <div class="score" id="scoreDisp">0.0<span> / 40</span></div>
+      </div>
+      <div class="stat-grid">
+        <div><div class="num" id="corrStat" style="color:var(--correct)">0</div><div class="lbl">Correct</div></div>
+        <div><div class="num" id="incStat" style="color:var(--wrong)">0</div><div class="lbl">Incorrect</div></div>
+        <div><div class="num" id="unaStat">0</div><div class="lbl">Unattempted</div></div>
+        <div><div class="num" id="timeStat">0</div><div class="lbl">Minutes</div></div>
+      </div>
+      <button class="m-print" id="printBtn"><i class="fas fa-print"></i> Print Full Review</button>
+      <div class="modal-actions">
+        <button class="m-close" id="closeModal">Close</button>
+        <button class="m-review" id="revBtn">Review</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Daily Practice: <a href="https://t.me/Sampuran_English" target="_blank">t.me/Sampuran_English</a>
+    &nbsp;&middot;&nbsp; Doubts: <a href="https://t.me/sampuranenglish" target="_blank">t.me/sampuranenglish</a>
+  </footer>
+</div>
+
+<script>
+const questions = [
+  {
+    id:1, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. The French Revolution was a period of far-reaching social and political upheaval in France<br>Q. And established a republic, catalyzed violent periods of political turmoil, and finally culminated in a dictatorship under Napoleon<br>R. Who brought many of its principles to areas he conquered in Western Europe and beyond<br>S. The Revolution overthrew the monarchy',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"SRPQ", b:"RPQS", c:"PSQR", d:"SPQR"},
+    answer:"c",
+    exp:'The correct order is PSQR: P opens the topic with the French Revolution → S follows on by stating that the Revolution overthrew the monarchy → Q continues S\u2019s sentence, describing the republic and the eventual dictatorship under Napoleon → R closes by using "who" to refer back to Napoleon.'
+  },
+  {
+    id:2, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. The principal author of the Declaration of Independence, Jefferson was a proponent of democracy<br>Q. Thomas Jefferson was an American statesman, diplomat, lawyer, architect, philosopher, and Founding Father<br>R. He previously served as the second vice president of the United States from 1797 to 1801<br>S. Who served as the third president of the United States from 1801 to 1809',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PSRQ", b:"QSRP", c:"PSQR", d:"RSPQ"},
+    answer:"b",
+    exp:'The correct order is QSRP: Q introduces the subject, Thomas Jefferson → S continues with "who served as the third president" → R adds his earlier role as vice president → P closes with his authorship of the Declaration of Independence.'
+  },
+  {
+    id:3, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. The Massachusetts Bay Colony was an English settlement on the east coast of America<br>Q. Including portions of Massachusetts, Maine, New Hampshire, and Connecticut<br>R. The territory nominally administered by the colony covered much of central New England<br>S. The colony was economically successful, engaging in trade with England and the West Indies',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"RQPS", b:"SPQR", c:"SPRQ", d:"PSRQ"},
+    answer:"d",
+    exp:'The correct order is PSRQ: P introduces the Massachusetts Bay Colony → S adds that it was economically successful → R describes the territory it administered → Q lists the specific regions that territory included.'
+  },
+  {
+    id:4, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Giving a decisive victory to the Americans over the British in the American Revolutionary War<br>Q. British General John Burgoyne led a large invasion army southward from Canada in the Champlain Valley<br>R. The Battles of Saratoga marked the climax of the Saratoga campaign<br>S. Hoping to meet a similar British force, marching northward from New York City',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"RPQS", b:"SQPR", c:"SPRQ", d:"PQSR"},
+    answer:"a",
+    exp:'The correct order is RPQS: R opens by naming the Battles of Saratoga → P explains their outcome (a decisive American victory) → Q describes Burgoyne\u2019s invasion → S completes Q\u2019s sentence about the force he hoped to meet from New York City.'
+  },
+  {
+    id:5, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. That left him almost bankrupt<br>Q. But did not seek re-election after a financial scandal<br>R. Before becoming an author, Archer was a Member of Parliament<br>S. Jeffrey Archer is an English novelist, former politician, convicted perjurer, and peer of the realm',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"RPQS", b:"RPSQ", c:"SRQP", d:"QPSR"},
+    answer:"c",
+    exp:'The correct order is SRQP: S introduces Jeffrey Archer → R adds that he was a Member of Parliament before becoming an author → Q explains that he did not seek re-election after a scandal → P concludes with the financial consequence of that scandal.'
+  },
+  {
+    id:6, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. By the Sons of Liberty in Boston, Massachusetts<br>Q. The target was the Tea Act of May 10, 1773<br>R. The Boston Tea Party was a political and mercantile protest<br>S. Which allowed the British East India company to sell tea from China in American colonies without paying taxes',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"SQRP", b:"RPQS", c:"PSRQ", d:"QRSP"},
+    answer:"b",
+    exp:'The correct order is RPQS: R introduces the Boston Tea Party as a protest → P states who carried it out (the Sons of Liberty) → Q identifies its target, the Tea Act → S explains what that Act allowed.'
+  },
+  {
+    id:7, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. The company ended up seizing control of large parts of the Indian subcontinent, colonised parts of Southeast Asia<br>Q. The East India Company was an English and later British joint-stock company<br>R. And colonised Hong Kong after the First Opium War<br>S. It was formed to trade in the Indian Ocean region, initially with the Moghuls of India and the East Indies and later with Qing China',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PSRQ", b:"QSPR", c:"RSQP", d:"SPRQ"},
+    answer:"b",
+    exp:'The correct order is QSPR: Q introduces the East India Company → S explains its original purpose (trade) → P describes how it later seized territory and colonised Southeast Asia → R completes P\u2019s sentence about colonising Hong Kong.'
+  },
+  {
+    id:8, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. But since the 14th century have only been used in place of private acts<br>Q. Historically, they have been used to promulgate public laws for example Magna Carta<br>R. A royal charter is a formal grant issued by a monarch under royal prerogative as letters patent<br>S. To grant a right or power to an individual or a body corporate',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PRQS", b:"QSPR", c:"RQPS", d:"SPRQ"},
+    answer:"c",
+    exp:'The correct order is RQPS: R introduces what a royal charter is → Q explains its historical use for public laws → P adds the contrast that since the 14th century it has been used for private acts → S completes P\u2019s sentence, describing the right or power a charter grants.'
+  },
+  {
+    id:9, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. His marriage to Elizabeth of Aragon was arranged in 1281 when she was 10 years old<br>Q. Denis succeeded his father in 1279<br>R. The eldest son of Afonso III of Portugal by his second wife, Beatrice of Castile<br>S. Denis, called the Farmer King and the Poet King, was King of Portugal',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PSRQ", b:"QPRS", c:"RSPQ", d:"SRQP"},
+    answer:"d",
+    exp:'The correct order is SRQP: S introduces King Denis of Portugal → R adds his parentage as the eldest son of Afonso III → Q states that he succeeded his father in 1279 → P concludes with the arrangement of his marriage in 1281.'
+  },
+  {
+    id:10, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. And concluding in 1923 after the Bolshevik establishment of the Soviet Union<br>Q. Along with five other Soviet republics, Ukraine, Belarus, Armenia, Azerbaijan and Georgia, resulting in the end of the Civil War<br>R. Commencing with the abolition of the monarchy in 1917<br>S. The Russian Revolution was a period of political and social revolution across the territory of the Russian Empire',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"QPRS", b:"SRPQ", c:"PSRQ", d:"RQSP"},
+    answer:"b",
+    exp:'The correct order is SRPQ: S introduces the Russian Revolution → R states that it commenced with the abolition of the monarchy in 1917 → P adds that it concluded in 1923 with the Bolshevik establishment of the Soviet Union → Q names the other republics involved.'
+  },
+  {
+    id:11, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Embodied the main component of the Soviet Armed Forces; taking the official name of "Soviet Army", until its dissolution in December 1991<br>Q. Red Army was the army and the air force of the Russian Soviet Federative Socialist Republic<br>R. Beginning in February 1946, the Red Army, along with the Soviet Navy<br>S. The army was established immediately after the 1917 October Revolution',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"QSRP", b:"SPRQ", c:"PSQR", d:"RQPS"},
+    answer:"a",
+    exp:'The correct order is QSRP: Q introduces the Red Army → S adds when it was established (after the October Revolution) → R moves forward to 1946, mentioning the Red Army alongside the Navy → P completes R\u2019s sentence describing its later role until dissolution in 1991.'
+  },
+  {
+    id:12, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. He served as head of government of Soviet Russia from 1917 to 1924 and of the Soviet Union from 1922 to 1924<br>Q. Under his administration, Russia and then the wider Soviet Union became a one-party communist state governed by the Russian Communist Party<br>R. Vladimir Ilyich Ulyanov better known by his alias Lenin, was a Russian revolutionary, politician, and political theorist<br>S. Ideologically a communist, he developed a variant of Marxism known as Leninism',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"QPRS", b:"PSRQ", c:"RSPQ", d:"SPQR"},
+    answer:"c",
+    exp:'The correct order is RSPQ: R introduces Vladimir Lenin → S adds his ideology (developing Leninism) → P describes his role as head of government → Q concludes with the resulting one-party communist state under his administration.'
+  },
+  {
+    id:13, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. In which the working class attempts to overthrow the bourgeoisie<br>Q. A proletarian revolution is a social revolution<br>R. Proletarian revolutions are generally advocated<br>S. By socialists, communists and most anarchists',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PQSR", b:"SQRP", c:"SPRQ", d:"QPRS"},
+    answer:"d",
+    exp:'The correct order is QPRS: Q defines a proletarian revolution → P explains what happens in such a revolution → R states who generally advocates for it → S completes R\u2019s sentence by naming socialists, communists, and anarchists.'
+  },
+  {
+    id:14, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. That was instrumental in the larger Russian Revolution of 1917–1923<br>Q. It took place through an armed insurrection in Petrograd on 25 October<br>R. The October Revolution was a revolution in Russia led by the Bolshevik Party of Vladimir Lenin<br>S. The slogan of the October revolution was All Power to the Soviets',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PSRQ", b:"PSQR", c:"RSQP", d:"QPRS"},
+    answer:"c",
+    exp:'The correct order is RSQP: R introduces the October Revolution → S adds its famous slogan → Q describes how it took place (an armed insurrection) → P closes by placing it within the larger Russian Revolution.'
+  },
+  {
+    id:15, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Became an iconic symbol of the Russian Revolution<br>Q. The storming of the palace in 1917, as depicted in Soviet propaganda art and Sergei Eisenstein\'s 1927 film October<br>R. Today, the palace and its precincts form the Hermitage Museum<br>S. The Winter Palace was the official residence of the Russian Emperors from 1732 to 1917',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"QSRP", b:"PSRQ", c:"RPQS", d:"SRQP"},
+    answer:"d",
+    exp:'The correct order is SRQP: S introduces the Winter Palace as the imperial residence → R adds its present-day role as the Hermitage Museum → Q shifts to the 1917 storming of the palace as depicted in art and film → P concludes that this event became an iconic symbol.'
+  },
+  {
+    id:16, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Were fired upon by soldiers of the Imperial Guard<br>Q. Bloody Sunday or Red Sunday is the name given to the events of Sunday, 22 January, 1905 in St Petersburg, Russia<br>R. When unarmed demonstrators, led by Father Georgy Gapon<br>S. As they marched towards the Winter Palace to present a petition to Tsar Nicholas II of Russia',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"SPQR", b:"RPSQ", c:"QRPS", d:"PSQR"},
+    answer:"c",
+    exp:'The correct order is QRPS: Q introduces Bloody Sunday → R identifies the unarmed demonstrators led by Father Gapon → P states that they were fired upon → S completes P\u2019s sentence, explaining they were marching to present a petition.'
+  },
+  {
+    id:17, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Some of which was directed at the government<br>Q. The Russian Revolution of 1905 was a wave of mass political and social unrest<br>R. It included worker strikes, peasant unrest, and military mutinies<br>S. That spread through vast areas of the Russian Empire',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"SPRQ", b:"QSPR", c:"RPSQ", d:"PSQR"},
+    answer:"b",
+    exp:'The correct order is QSPR: Q introduces the Russian Revolution of 1905 → S adds that this unrest spread through vast areas → P notes that some of it was directed at the government → R closes with the specific forms the unrest took.'
+  },
+  {
+    id:18, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Alexander II was the emperor of Russia<br>Q. For which he is known as Alexander the Liberator<br>R. He was also the king of Poland and the grand duke of Finland<br>S. Alexander\'s most significant reform as emperor was emancipation of Russia\'s serfs in 1861',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PRSQ", b:"RQPS", c:"SPQR", d:"QPRS"},
+    answer:"a",
+    exp:'The correct order is PRSQ: P introduces Alexander II as emperor of Russia → R adds his other titles → S names his most significant reform (emancipating the serfs) → Q closes with the title this reform earned him.'
+  },
+  {
+    id:19, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. And the last French monarch from 1852 to 1870<br>Q. He founded the Second French Empire and was its only emperor<br>R. Napoleon III the nephew of Napoleon I, was the first President of France<br>S. Until the defeat of the French army and his capture by Prussia and its allies in the Franco-Prussian War in 1870',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"SPRQ", b:"QPSR", c:"RPQS", d:"PSQR"},
+    answer:"c",
+    exp:'The correct order is RPQS: R introduces Napoleon III as the first President of France → P adds that he was also the last French monarch → Q describes his founding of the Second French Empire → S concludes with his defeat and capture in 1870.'
+  },
+  {
+    id:20, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. In which they agreed to carve up Italy between them<br>Q. The Franco-Austrian War was fought by the French Empire and the Kingdom of Sardinia<br>R. The background to the war was the Plombières Agreement between France and Sardinia<br>S. Against the Austrian Empire in 1859 and played a crucial part in the process of Italian unification',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"SPRQ", b:"QSRP", c:"RSQP", d:"PSQR"},
+    answer:"b",
+    exp:'The correct order is QSRP: Q introduces the Franco-Austrian War and who fought it → S adds who they fought against and the war\u2019s significance → R shifts to its background, the Plombières Agreement → P closes with what that agreement contained.'
+  },
+  {
+    id:21, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. The story opens with Santiago having gone 84 days<br>Q. The Old Man and the Sea tells the story of a battle<br>R. Without catching a fish, and now being seen as "salao", the worst form of unluckiness<br>S. Between an aging, experienced fisherman, Santiago, and a large marlin',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PSRQ", b:"QSPR", c:"SPQR", d:"RPQS"},
+    answer:"b",
+    exp:'The correct order is QSPR: Q introduces the novel and its central battle → S identifies who the battle is between → P describes how the story opens → R completes P\u2019s sentence about Santiago\u2019s unlucky streak.'
+  },
+  {
+    id:22, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. The organization is based in a northwest suburb of Geneva<br>Q. That operates the largest particle physics laboratory in the world<br>R. On the Franco–Swiss border and has 23 member states<br>S. It is a European research organization',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"QPRS", b:"SQPR", c:"RPSQ", d:"RPQS"},
+    answer:"b",
+    exp:'The correct order is SQPR: S introduces the organization → Q describes what it operates → P states where it is based → R completes P\u2019s sentence with its exact location and member states.'
+  },
+  {
+    id:23, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Initiated by Tim Berners-Lee in 1989 and Robert Cailliau in 1990<br>Q. Berners-Lee and Cailliau were jointly honoured by the Association for Computing Machinery<br>R. The World Wide Web began as a CERN project named ENQUIRE<br>S. For their contributions to the development of the World Wide Web',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PSRQ", b:"SQPR", c:"SRQP", d:"RPQS"},
+    answer:"d",
+    exp:'The correct order is RPQS: R introduces how the World Wide Web began → P adds who initiated it and when → Q shifts to the honour later given to Berners-Lee and Cailliau → S closes with what that honour was for.'
+  },
+  {
+    id:24, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. The majority of its length is on the French side of the border<br>Q. It uses the 27 km circumference circular tunnel<br>R. In the region between the Geneva International Airport and the nearby Jura mountains<br>S. The LHC tunnel is located 100 metres underground',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"SRPQ", b:"RSPQ", c:"PSQR", d:"QPRS"},
+    answer:"a",
+    exp:'The correct order is SRPQ: S introduces the LHC tunnel and its depth → R specifies the region where it lies → P adds that most of its length is on the French side → Q closes with the tunnel\u2019s circumference.'
+  },
+  {
+    id:25, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Science is a systematic enterprise that builds and organizes knowledge<br>Q. Technology is the collection of techniques, methods or processes used in the production of goods or services<br>R. Science and technology is a topic that encompasses science, technology, and the interactions between the two<br>S. In the form of explanations and predictions about nature and the universe',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PQRS", b:"QSRP", c:"RPSQ", d:"SQRP"},
+    answer:"c",
+    exp:'The correct order is RPSQ: R introduces the broad topic of science and technology → P defines science → S completes P\u2019s sentence, describing the form that knowledge takes → Q then defines technology.'
+  },
+  {
+    id:26, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. This transition included going from hand production methods to machines<br>Q. New chemical manufacturing and iron production processes<br>R. The development of machine tools and the rise of the mechanized factory system<br>S. The Industrial Revolution was the transition to new manufacturing processes in Europe and the United States',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"SPQR", b:"RPQS", c:"PSQR", d:"PSRQ"},
+    answer:"a",
+    exp:'The correct order is SPQR: S introduces the Industrial Revolution → P describes the transition it involved → Q and R list the specific developments that made up this transition, in that order.'
+  },
+  {
+    id:27, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Research and development refers to innovative activities undertaken by corporations or governments<br>Q. In developing new services or products, or improving existing services or products<br>R. Research and development constitutes the first stage of development<br>S. Of a potential new service or the production process',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PQRS", b:"SPRQ", c:"QSRP", d:"SPQR"},
+    answer:"a",
+    exp:'The correct order is PQRS: P introduces research and development → Q explains its purpose → R adds that it forms the first stage of development → S completes R\u2019s sentence with what that development pertains to.'
+  },
+  {
+    id:28, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Almost every aspect of daily life was influenced by it in some way<br>Q. Some economists say that the major effect of it was that the standard of living for the general population in the western world began to increase<br>R. The Industrial Revolution marks a major turning point in history<br>S. Although others have said that it did not begin to meaningfully improve until the late 19th and 20th centuries',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"SPRQ", b:"RPQS", c:"SQPR", d:"PSRQ"},
+    answer:"b",
+    exp:'The correct order is RPQS: R introduces the Industrial Revolution as a turning point → P notes its influence on daily life → Q presents one economic view of its effect → S adds the contrasting view, both sentences using "it" to refer back to R.'
+  },
+  {
+    id:29, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. There were many different electrical telegraph systems invented<br>Q. But the ones that became widespread fit into two broad categories<br>R. Used from the 1840s until better systems became widespread<br>S. An electrical telegraph was a point-to-point text messaging system',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"QPSR", b:"RQSP", c:"QRPS", d:"SRPQ"},
+    answer:"d",
+    exp:'The correct order is SRPQ: S introduces the electrical telegraph → R adds the period it was used in → P notes that many different systems were invented → Q closes with how the widespread ones were categorised.'
+  },
+  {
+    id:30, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Morse code is named for Samuel Morse, an inventor of the telegraph<br>Q. Called \'dots\' and \'dashes\' or \'dits\' and \'dahs\'<br>R. As standardized sequences of two different signal durations<br>S. Morse code is a method used in telecommunication to encode text characters',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PQRS", b:"QSPR", c:"SRQP", d:"RQPS"},
+    answer:"c",
+    exp:'The correct order is SRQP: S introduces Morse code and its purpose → R explains how characters are encoded (as standardized signal sequences) → Q completes R\u2019s sentence with the names of these signals → P closes with the origin of the code\u2019s name.'
+  },
+  {
+    id:31, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Which is independent of the specific characteristics of the medium<br>Q. In information theory an entropy encoding is a lossless data compression scheme<br>R. To each unique symbol that occurs in the input<br>S. One of the main types of entropy coding creates and assigns a unique prefix-free code',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"RSPQ", b:"QPSR", c:"PSQR", d:"RQPS"},
+    answer:"b",
+    exp:'The correct order is QPSR: Q introduces entropy encoding → P adds that it is independent of the medium\u2019s characteristics → S shifts to one of its main types → R completes S\u2019s sentence, describing what that type assigns codes to.'
+  },
+  {
+    id:32, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. The first submarine communications cables laid beginning in the 1850s carried telegraphy traffic<br>Q. Establishing the first instant telecommunications links between continents<br>R. A submarine communications cable is a cable laid on the sea bed<br>S. Between land-based stations to carry telecommunication signals across stretches of ocean and sea',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"QRSP", b:"SPRQ", c:"RSPQ", d:"SRQP"},
+    answer:"c",
+    exp:'The correct order is RSPQ: R introduces the submarine communications cable → S completes R\u2019s sentence, describing what it connects and carries → P adds historical detail about the first such cables → Q closes with the achievement those cables enabled.'
+  },
+  {
+    id:33, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. It typically has a depth of 2,600 meters and rises about two kilometers above the deepest portion of an ocean basin<br>Q. The first discovered mid-ocean ridge was the Mid-Atlantic Ridge<br>R. Which is a spreading center that bisects the North and South Atlantic basins; hence the origin of the name \'mid-ocean ridge\'<br>S. A mid-ocean ridge is a seafloor mountain system formed by plate tectonics',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PRQS", b:"QSRP", c:"RQPS", d:"SPQR"},
+    answer:"d",
+    exp:'The correct order is SPQR: S introduces what a mid-ocean ridge is → P adds its typical depth and height → Q names the first one discovered → R completes Q\u2019s sentence, explaining why it is called a "mid-ocean ridge".'
+  },
+  {
+    id:34, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. From which all igneous rocks are formed<br>Q. Magma is found beneath the surface of the Earth<br>R. Magma is the molten or semi-molten natural material<br>S. And evidence of magmatism has also been discovered on other terrestrial planets and some natural satellites',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"SPRQ", b:"SPQR", c:"PSQR", d:"RPQS"},
+    answer:"d",
+    exp:'The correct order is RPQS: R introduces what magma is → P completes R\u2019s sentence with what it forms → Q adds where magma is found → S closes with evidence of magmatism beyond Earth.'
+  },
+  {
+    id:35, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. The coil can be arranged to produce a uniform magnetic field in a volume of space<br>Q. Through a coil wound into a tightly packed helix<br>R. A solenoid is a type of electromagnet, the purpose of which is to generate a controlled magnetic field<br>S. When an electric current is passed through it',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PQRS", b:"SQPR", c:"RQPS", d:"QPRS"},
+    answer:"c",
+    exp:'The correct order is RQPS: R introduces the solenoid and its purpose → Q describes the coil that generates the field → P adds that this coil can produce a uniform field → S closes with when this occurs (current passing through).'
+  },
+  {
+    id:36, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Dating from the 1830s invented by English inventor William Fothergill Cooke and English scientist Charles Wheatstone<br>Q. The Cooke and Wheatstone telegraph was an early electrical telegraph system<br>R. It was a form of needle telegraph<br>S. And the first telegraph system to be put into commercial service',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"QPRS", b:"RQPS", c:"RPSQ", d:"SQRP"},
+    answer:"a",
+    exp:'The correct order is QPRS: Q introduces the Cooke and Wheatstone telegraph → P adds when and by whom it was invented → R describes its form (a needle telegraph) → S closes with its historic status as the first commercial telegraph.'
+  },
+  {
+    id:37, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Which is an algorithm developed by David A. Huffman while he was a Sc.D. student at MIT<br>Q. The process of finding or using such a code proceeds by means of Huffman coding<br>R. That is commonly used for lossless data compression<br>S. In computer science and information theory, a Huffman code is a particular type of optimal prefix code',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"QSPR", b:"SRQP", c:"RPQS", d:"PSQR"},
+    answer:"b",
+    exp:'The correct order is SRQP: S introduces the Huffman code → R adds its common use (lossless compression) → Q shifts to the process of finding such a code → P closes by naming the algorithm and its developer.'
+  },
+  {
+    id:38, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. The plates are around 100 km (62 mi) thick and consist of two principal types of material<br>Q. Tectonic plates are pieces of Earth\'s crust and uppermost mantle, together referred to as the lithosphere<br>R. While continental crust consists principally of lower-density felsic granitic rocks<br>S. The composition of the two types of crust differs markedly, with mafic basaltic rocks dominating oceanic crust',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PSRQ", b:"SRQP", c:"RPSQ", d:"QPSR"},
+    answer:"d",
+    exp:'The correct order is QPSR: Q introduces tectonic plates → P adds their thickness and composition → S notes that the composition of the two crust types differs → R completes S\u2019s sentence, describing continental crust specifically.'
+  },
+  {
+    id:39, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Basalt lava has a low viscosity, due to its low silica content, resulting in rapid lava flows<br>Q. Basalt is a mafic extrusive igneous rock formed from the rapid cooling of magnesium-rich and iron-rich lava<br>R. That can spread over great areas before cooling and solidification<br>S. Exposed at or very near the surface of a terrestrial planet or a moon',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PQRS", b:"RPSQ", c:"QSPR", d:"RSQP"},
+    answer:"c",
+    exp:'The correct order is QSPR: Q introduces basalt and how it forms → S adds where it is exposed → P describes a property of the resulting lava (low viscosity) → R completes P\u2019s sentence about how far the lava can spread.'
+  },
+  {
+    id:40, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. That is widely used in industrial control systems and a variety of other applications<br>Q. An everyday example is the cruise control on a car<br>R. Where ascending a hill would lower speed if only constant engine power were applied<br>S. A proportional–integral–derivative controller is a control loop mechanism employing feedback',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"RSQP", b:"SPQR", c:"PRQS", d:"PRSQ"},
+    answer:"b",
+    exp:'The correct order is SPQR: S introduces the PID controller → P adds where it is widely used → Q gives an everyday example (cruise control) → R completes Q\u2019s sentence, explaining the scenario this example addresses.'
+  },
+  {
+    id:41, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Of transforming India and making the country self-reliant and technologically advanced<br>Q. The Union cabinet on Wednesday approved the creation of Indian National Space promotion and Authorization Centre<br>R. To provide level playing field for private companies to use space infrastructure<br>S. The decision taken is in line with the long-term vision',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"SRQP", b:"PSRQ", c:"QRSP", d:"RQPS"},
+    answer:"c",
+    exp:'The correct order is QRSP: Q states the cabinet\u2019s decision → R explains its purpose (a level playing field for private companies) → S notes that this decision fits a long-term vision → P closes with what that vision entails.'
+  },
+  {
+    id:42, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. For a test to be used in the U.K.\'s National Health Service<br>Q. And generating the robust evidence required<br>R. The 1.3-million pound ($1.6-million) research program seeks to bring together experts<br>S. Who are highly experienced in evaluating diagnostic tests',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PQSR", b:"RSQP", c:"QSRP", d:"PSQR"},
+    answer:"b",
+    exp:'The correct order is RSQP: R introduces the research programme and its aim → S completes R\u2019s sentence, describing the experts it seeks → Q adds what those experts will generate → P closes with the ultimate purpose of that evidence.'
+  },
+  {
+    id:43, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. The US decision to freeze work visas, including the H-1B visa for highly skilled workers<br>Q. Will add to the troubles of Indian software services companies<br>R. That are already struggling<br>S. To cope with travel curbs amid the pandemic',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PQRS", b:"SRQP", c:"QSRP", d:"RQPS"},
+    answer:"a",
+    exp:'The correct order is PQRS: P introduces the US visa freeze → Q states its effect on Indian software companies → R adds that these companies are already struggling → S closes with what they are struggling with.'
+  },
+  {
+    id:44, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Which will also undergo a series of permanent overhauls<br>Q. President Donald Trump issued an executive order on Monday<br>R. To extend the suspension of green cards till the end of the year<br>S. And expand it to cover non-immigrant work visas such as H-1B',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"SQRP", b:"PQRS", c:"SRQP", d:"QRSP"},
+    answer:"d",
+    exp:'The correct order is QRSP: Q introduces the executive order → R states its first aim (extending the green card suspension) → S adds its second aim (expanding it to cover H-1B visas) → P closes with the further overhauls these visas will undergo.'
+  },
+  {
+    id:45, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. With 30 minutes charging time, and 30 hours backup<br>Q. When he designed a power inverter<br>R. His name is Waseem Ahmad Nadaf and his skills came to limelight in 2012<br>S. A young inventor in Srinagar made a low-cost ventilator out of scrap items to fight against COVID-19',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"SRQP", b:"PRSQ", c:"QSRP", d:"RPSQ"},
+    answer:"a",
+    exp:'The correct order is SRQP: S introduces the young inventor and his ventilator → R names him and notes when he first gained recognition → Q describes the invention that brought him limelight → P closes with the specifications of that invention.'
+  },
+  {
+    id:46, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. To immediately stop fighting, de-escalate tensions and return to meaningful negotiations without delay<br>Q. Amid the ongoing clashes between Azerbaijan and Armenia<br>R. The UN Secretary-General Antonio Guterres said that he is concerned with the fresh "resumption of hostilities" between the two countries<br>S. The Secretary-General strongly calls on the sides',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PSRQ", b:"SRQP", c:"QRSP", d:"RPSQ"},
+    answer:"c",
+    exp:'The correct order is QRSP: Q sets the context (clashes between Azerbaijan and Armenia) → R introduces the UN Secretary-General\u2019s concern → S adds his call to the two sides → P closes with what he is calling on them to do.'
+  },
+  {
+    id:47, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. As they would be able to sell their produce to whomever and wherever they want<br>Q. The government claims that the bills will ensure a higher profit for the farmers<br>R. Against the farm bills notified by the government after President Ram Nath Kovind\'s assent<br>S. Famer organisations across India are up in arms',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"SRQP", b:"PQRS", c:"RPQS", d:"QRSP"},
+    answer:"a",
+    exp:'The correct order is SRQP: S introduces farmer organisations protesting → R states what they are protesting against (the farm bills) → Q adds the government\u2019s claim about the bills → P closes with the reasoning behind that claim.'
+  },
+  {
+    id:48, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. The matter will be heard again on Wednesday<br>Q. The Union Public Service Commission (UPSC) informed the Supreme Court<br>R. As all logistical arrangements have already been made<br>S. That it is impossible to defer the Civil Services Preliminary Exam of 2020',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PSRQ", b:"QSRP", c:"RPSQ", d:"SQPR"},
+    answer:"b",
+    exp:'The correct order is QSRP: Q introduces UPSC informing the Supreme Court → S completes Q\u2019s sentence with what it informed the Court of → R gives the reason (logistical arrangements already made) → P closes with when the matter will be heard next.'
+  },
+  {
+    id:49, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. But the reports did not specify the charges in the indictment<br>Q. The 2018 murder case of Saudi journalist Jamal Khashoggi in Istanbul<br>R. Turkish prosecutors have prepared a second indictment<br>S. Against six Saudi officials in connection with',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PQSR", b:"QPSR", c:"RSQP", d:"SPQR"},
+    answer:"c",
+    exp:'The correct order is RSQP: R introduces the second indictment prepared by Turkish prosecutors → S completes R\u2019s sentence, stating who it is against → Q identifies the case this relates to → P closes with what the reports left unspecified.'
+  },
+  {
+    id:50, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:'P. Congress leader Rahul Gandhi to join the farmers\' protest<br>Q. Chief minister Captain Amarinder Singh announced that Punjab will challenge<br>R. The Centre\'s \'anti-farm laws\' in the Supreme Court<br>S. Capt Amarinder Singh also said that he will request',
+    text:'Arrange P, Q, R, S in the correct logical sequence.',
+    options:{a:"PSRQ", b:"QRSP", c:"SRQP", d:"RPSQ"},
+    answer:"b",
+    exp:'The correct order is QRSP: Q introduces the CM\u2019s announcement that Punjab will challenge the laws → R completes Q\u2019s sentence, naming where (the Supreme Court) → S adds his further statement about a request → P closes with who he will request and for what.'
+  }
+];
+
+class TestApp {
+  constructor(){
+    this.qs = questions;
+    this.cur = 0;
+    this.ans = new Array(this.qs.length).fill(null);
+    this.reviewed = new Array(this.qs.length).fill(false);
+    this.sub = false;
+    this.dark = false;
+    this.elapsed = 0;
+    this.timer = null;
+    this.startT = null;
+
+    this.els = {
+      qInfo: document.getElementById('qInfo'),
+      subjectTag: document.getElementById('subjectTag'),
+      qNumTxt: document.getElementById('qNumTxt'),
+      statusTag: document.getElementById('statusTag'),
+      passageBox: document.getElementById('passageBox'),
+      qTxt: document.getElementById('qTxt'),
+      opts: document.getElementById('opts'),
+      explanation: document.getElementById('explanation'),
+      qcard: document.getElementById('qcard'),
+      progTxt: document.getElementById('progTxt'),
+      ansCnt: document.getElementById('ansCnt'),
+      timer: document.getElementById('timer'),
+      gridNav: document.getElementById('gridNav'),
+      panel: document.getElementById('panel'),
+      modalOver: document.getElementById('modalOver'),
+      scoreDisp: document.getElementById('scoreDisp'),
+      corrStat: document.getElementById('corrStat'),
+      incStat: document.getElementById('incStat'),
+      unaStat: document.getElementById('unaStat'),
+      timeStat: document.getElementById('timeStat'),
+      printBtn: document.getElementById('printBtn')
+    };
+
+    this.bindStaticEvents();
+  }
+
+  bindStaticEvents(){
+    document.getElementById('startTestBtn').addEventListener('click', () => this.startTest());
+    document.getElementById('prevBtn').addEventListener('click', () => this.go(-1));
+    document.getElementById('nextBtn').addEventListener('click', () => this.go(1));
+    document.getElementById('reviewBtn').addEventListener('click', () => this.toggleReview());
+    document.getElementById('subBtn').addEventListener('click', () => this.confirmSubmit());
+    document.getElementById('menuBtn').addEventListener('click', () => this.openPanel());
+    document.getElementById('panelClose').addEventListener('click', () => this.closePanel());
+    document.getElementById('themeToggle').addEventListener('click', () => this.toggleDark());
+    document.getElementById('closeModal').addEventListener('click', () => this.closeModal());
+    document.getElementById('revBtn').addEventListener('click', () => { this.closeModal(); this.loadQ(0); });
+    document.getElementById('printBtn').addEventListener('click', () => this.printReview());
+
+    window.addEventListener('beforeunload', (e) => {
+      if(!this.sub){
+        e.preventDefault();
+        e.returnValue = 'Are you sure you want to leave? Your test progress will be lost.';
+        return e.returnValue;
+      }
+    });
+  }
+
+  startTest(){
+    document.getElementById('welcomeScreen').classList.add('hidden');
+    document.getElementById('mainTestInterface').style.display = '';
+    this.startT = Date.now();
+    this.buildGrid();
+    this.loadQ(0);
+    this.startTimer();
+  }
+
+  startTimer(){
+    this.timer = setInterval(() => {
+      this.elapsed++;
+      this.renderTimer();
+    }, 1000);
+  }
+
+  renderTimer(){
+    const m = Math.floor(this.elapsed / 60);
+    const s = this.elapsed % 60;
+    this.els.timer.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  }
+
+  buildGrid(){
+    this.els.gridNav.innerHTML = '';
+    this.qs.forEach((q, i) => {
+      const b = document.createElement('button');
+      b.className = 'g-btn';
+      b.id = 'g-' + i;
+      b.textContent = i + 1;
+      b.addEventListener('click', () => { this.closePanel(); this.loadQ(i); });
+      this.els.gridNav.appendChild(b);
+    });
+  }
+
+  updateGrid(){
+    this.qs.forEach((q, i) => {
+      const b = document.getElementById('g-' + i);
+      b.className = 'g-btn';
+      if(this.ans[i] !== null) b.classList.add('answered');
+      if(this.reviewed[i]) b.classList.add('review');
+      if(i === this.cur) b.classList.add('current');
+    });
+  }
+
+  openPanel(){ this.els.panel.classList.add('open'); }
+  closePanel(){ this.els.panel.classList.remove('open'); }
+
+  toggleDark(){
+    this.dark = !this.dark;
+    document.body.classList.toggle('dark-mode', this.dark);
+    document.getElementById('themeToggle').innerHTML = this.dark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  }
+
+  loadQ(idx){
+    this.cur = idx;
+    const q = this.qs[idx];
+
+    this.els.qInfo.textContent = `Q ${idx+1} / ${this.qs.length}`;
+    this.els.progTxt.textContent = `${idx+1} of ${this.qs.length}`;
+    this.els.subjectTag.textContent = q.section;
+    this.els.qNumTxt.textContent = idx + 1;
+
+    if(q.passage){
+      this.els.passageBox.style.display = '';
+      this.els.passageBox.innerHTML = q.passage;
+    } else {
+      this.els.passageBox.style.display = 'none';
+      this.els.passageBox.innerHTML = '';
+    }
+
+    this.els.qTxt.innerHTML = q.text;
+
+    this.els.opts.innerHTML = '';
+    Object.entries(q.options).forEach(([key, val]) => {
+      const label = document.createElement('label');
+      label.className = 'opt';
+      label.id = `opt-${idx}-${key}`;
+      label.dataset.key = key;
+      if(this.ans[idx] === key) label.classList.add('selected');
+      label.innerHTML = `<span class="opt-letter">(${key})</span> <span>${val}</span>`;
+      label.addEventListener('click', () => this.selectOpt(idx, key));
+      this.els.opts.appendChild(label);
+    });
+
+    this.els.qcard.classList.toggle('locked', this.sub);
+
+    const tag = this.els.statusTag;
+    if(this.sub){
+      const chosen = this.ans[idx];
+      if(chosen === null){
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Unattempted';
+        tag.className = 'status-tag skipped';
+      } else if(chosen === q.answer){
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Correct';
+        tag.className = 'status-tag correct';
+      } else {
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Incorrect';
+        tag.className = 'status-tag wrong';
+      }
+      if(chosen && chosen !== q.answer){
+        const wrongEl = document.getElementById(`opt-${idx}-${chosen}`);
+        if(wrongEl) wrongEl.classList.add('wrong-answer');
+      }
+      const correctEl = document.getElementById(`opt-${idx}-${q.answer}`);
+      if(correctEl) correctEl.classList.add('correct-answer');
+
+      this.els.explanation.innerHTML = `<b>Correct answer: (${q.answer}) ${q.options[q.answer]}.</b><br>${q.exp}`;
+    } else {
+      tag.style.display = 'none';
+      this.els.explanation.innerHTML = '';
+    }
+
+    document.getElementById('prevBtn').disabled = idx === 0;
+    document.getElementById('nextBtn').disabled = idx === this.qs.length - 1;
+
+    const revBtn = document.getElementById('reviewBtn');
+    revBtn.classList.toggle('active', this.reviewed[idx]);
+
+    this.updateGrid();
+    this.updateAnsCount();
+  }
+
+  selectOpt(idx, key){
+    if(this.sub) return;
+    this.ans[idx] = key;
+    document.querySelectorAll(`#opts .opt`).forEach(o => o.classList.remove('selected'));
+    document.getElementById(`opt-${idx}-${key}`).classList.add('selected');
+    this.updateGrid();
+    this.updateAnsCount();
+  }
+
+  toggleReview(){
+    this.reviewed[this.cur] = !this.reviewed[this.cur];
+    document.getElementById('reviewBtn').classList.toggle('active', this.reviewed[this.cur]);
+    this.updateGrid();
+  }
+
+  updateAnsCount(){
+    const answered = this.ans.filter(a => a !== null).length;
+    this.els.ansCnt.textContent = answered;
+  }
+
+  go(dir){
+    const next = this.cur + dir;
+    if(next >= 0 && next < this.qs.length) this.loadQ(next);
+  }
+
+  confirmSubmit(){
+    if(this.sub) return;
+    const btn = document.getElementById('subBtn');
+    if(!this.confirmPending){
+      const unanswered = this.ans.filter(a => a === null).length;
+      this.confirmPending = true;
+      this._origSubText = btn.textContent;
+      btn.textContent = unanswered > 0 ? `${unanswered} left! Tap again` : 'Tap again to confirm';
+      this._confirmTimeout = setTimeout(() => {
+        this.confirmPending = false;
+        btn.textContent = this._origSubText;
+      }, 3000);
+      return;
+    }
+    clearTimeout(this._confirmTimeout);
+    this.confirmPending = false;
+    this.submitTest();
+  }
+
+  submitTest(){
+    if(this.sub) return;
+    this.sub = true;
+    clearInterval(this.timer);
+    document.getElementById('subBtn').disabled = true;
+    document.getElementById('subBtn').textContent = 'Submitted';
+
+    const results = this.calcResults();
+    this.showModal(results);
+    this.loadQ(this.cur);
+  }
+
+  calcResults(){
+    let correct = 0, incorrect = 0, unattempted = 0, score = 0;
+    this.qs.forEach((q, i) => {
+      const chosen = this.ans[i];
+      if(chosen === null){
+        unattempted++;
+      } else if(chosen === q.answer){
+        correct++; score += 2;
+      } else {
+        incorrect++; score -= 0.5;
+      }
+    });
+    const timeTaken = Math.max(1, Math.round((Date.now() - this.startT) / 60000));
+    return { score: Math.max(0, score), correct, incorrect, unattempted, timeTaken };
+  }
+
+  showModal(r){
+    this.els.scoreDisp.innerHTML = `${r.score.toFixed(1)}<span> / 40</span>`;
+    this.els.corrStat.textContent = r.correct;
+    this.els.incStat.textContent = r.incorrect;
+    this.els.unaStat.textContent = r.unattempted;
+    this.els.timeStat.textContent = r.timeTaken;
+    this.els.printBtn.classList.add('show');
+    this.els.modalOver.classList.add('show');
+  }
+
+  closeModal(){ this.els.modalOver.classList.remove('show'); }
+
+  printReview(){
+    const w = window.open('', '_blank');
+    const rows = this.qs.map((q, i) => {
+      const chosen = this.ans[i];
+      const isCorrect = chosen === q.answer;
+      return `
+        <div style="page-break-inside:avoid;margin-bottom:26px;border-bottom:1px solid #eee;padding-bottom:16px">
+          <h3 style="color:#163a5f;margin-bottom:4px">Question ${i+1} <span style="font-size:12px;color:#7a6f57">(${q.section})</span></h3>
+          ${q.passage ? `<div style="font-style:italic;background:#f1ece0;padding:8px 12px;margin-bottom:8px">${q.passage}</div>` : ''}
+          <div style="margin-bottom:10px">${q.text}</div>
+          ${Object.entries(q.options).map(([key,val]) => `
+            <div style="margin:4px 0;padding:6px 10px;border-left:3px solid ${
+              key === q.answer ? '#1f7a4d' : (key === chosen ? '#a8321f' : '#c9bfa4')
+            }">(${key}) ${val}</div>
+          `).join('')}
+          <div style="margin-top:10px;font-size:13px;color:#555">
+            <b>Your answer:</b> ${chosen ? `(${chosen}) ${q.options[chosen]}` : 'Not attempted'}
+            ${chosen ? ` — <span style="color:${isCorrect ? '#1f7a4d' : '#a8321f'}">${isCorrect ? 'Correct' : 'Incorrect'}</span>` : ''}
+          </div>
+          <div style="margin-top:10px;background:#f0fdf4;padding:10px;border-radius:6px">
+            <b style="color:#1f7a4d">Explanation</b><br>${q.exp}
+          </div>
+        </div>`;
+    }).join('');
+
+    w.document.write(`
+      <!DOCTYPE html><html><head><title>Sampuran English — Full Review</title>
+      <style>body{font-family:Georgia,serif;padding:20px;color:#1c2b3a}
+      h2{border-bottom:2px solid #a8321f;padding-bottom:10px}</style></head>
+      <body>
+        <h2>Sampuran English — 50 Most Important Parajumbles for SSC — Full Review</h2>
+        <p><b>Score:</b> ${this.els.scoreDisp.textContent.replace(/<[^>]+>/g,' ')} &nbsp;|&nbsp;
+        <b>Correct:</b> ${this.els.corrStat.textContent} &nbsp;|&nbsp;
+        <b>Incorrect:</b> ${this.els.incStat.textContent} &nbsp;|&nbsp;
+        <b>Unattempted:</b> ${this.els.unaStat.textContent} &nbsp;|&nbsp;
+        <b>Time:</b> ${this.els.timeStat.textContent} min</p>
+        ${rows}
+        <script>setTimeout(()=>window.print(),400);<\/script>
+      </body></html>
+    `);
+    w.document.close();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => new TestApp());
+</script>
+
+</body>
+</html>
