@@ -1,146 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SSC English Mastery Portal</title>
+<title>Sampuran English | SSC English Mastery Portal</title>
+
 <link rel="stylesheet" href="style.css">
+
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+.hero{
+    text-align:center;
+    padding:50px 20px;
+    background:white;
 }
 
-body{
-font-family:Arial,Helvetica,sans-serif;
-background:#f5f5f5;
+.hero img{
+    width:120px;
+    margin-bottom:20px;
 }
 
-/*==========================
-HEADER
-==========================*/
-
-header{
-background:#003c8f;
-color:white;
-padding:18px 40px 10px;
+.hero h1{
+    color:#0d4ea6;
+    font-size:42px;
+    margin-bottom:10px;
 }
 
-.top-header{
-display:flex;
-align-items:center;
+.hero h2{
+    color:#444;
+    font-size:24px;
+    font-weight:normal;
+    margin-bottom:20px;
 }
 
-.brand{
-display:flex;
-align-items:center;
-gap:15px;
+.hero p{
+    font-size:18px;
+    color:#666;
 }
 
-.brand img{
-width:75px;
-height:75px;
-object-fit:contain;
+.menu{
+    background:#0d4ea6;
 }
 
-.brand-name{
-font-size:34px;
-font-weight:bold;
+.menu ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
 }
 
-.brand-name .white{
-color:white;
+.menu li{
+    margin:0;
 }
 
-.brand-name .red{
-color:#ff4040;
+.menu a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:16px 22px;
+    font-weight:bold;
 }
 
-.portal-title{
-text-align:center;
-font-size:34px;
-font-weight:bold;
-margin-top:12px;
-letter-spacing:.5px;
+.menu a:hover{
+    background:#083b7d;
 }
 
-/*==========================
-NAVIGATION
-==========================*/
-
-nav{
-margin-top:18px;
-text-align:center;
+.section-title{
+    text-align:center;
+    color:#0d4ea6;
+    margin-bottom:30px;
 }
 
-nav a{
-color:white;
-text-decoration:none;
-margin:0 18px;
-font-size:18px;
-font-weight:bold;
-transition:.3s;
-}
-
-nav a:hover{
-color:#ffd54f;
-}
-
-/*==========================
-MAIN CONTENT
-==========================*/
-
-.container{
-max-width:1100px;
-margin:35px auto;
-padding:0 20px;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
 }
 
 .card{
-background:white;
-padding:25px;
-border-radius:10px;
-margin-bottom:25px;
-box-shadow:0 5px 15px rgba(0,0,0,.12);
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
+    text-align:center;
 }
 
-.card h2{
-margin-bottom:15px;
-color:#003c8f;
+.card h3{
+    color:#0d4ea6;
+    margin-bottom:15px;
 }
 
 .card p{
-font-size:18px;
-line-height:1.7;
+    margin-bottom:20px;
 }
 
-button{
-background:#003c8f;
-color:white;
-padding:12px 28px;
-font-size:17px;
-border:none;
-border-radius:6px;
-cursor:pointer;
+.card a{
+    display:inline-block;
+    background:#0d4ea6;
+    color:white;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:6px;
 }
-
-button:hover{
-background:#002c67;
-}
-
-/*==========================
-FOOTER
-==========================*/
 
 footer{
-margin-top:50px;
-background:#222;
-color:white;
-text-align:center;
-padding:20px;
+    margin-top:60px;
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+@media(max-width:768px){
+
+.hero{
+padding:35px 15px;
+}
+
+.hero img{
+width:80px;
+}
+
+.hero h1{
+font-size:30px;
+}
+
+.hero h2{
+font-size:18px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.menu a{
+padding:12px;
+font-size:15px;
+}
+
+.card{
+padding:18px;
+}
+
+.card a{
+display:block;
+}
+
 }
 
 </style>
@@ -149,78 +156,113 @@ padding:20px;
 
 <body>
 
-<header>
-
-<div class="top-header">
-
-<div class="brand">
+<div class="hero">
 
 <img src="logo.png" alt="Logo">
 
-<div class="brand-name">
+<h1>Sampuran English</h1>
 
-<span class="white">Sampuran</span>
-<span class="red">English</span>
+<h2>SSC English Mastery Portal</h2>
 
-</div>
-
-</div>
+<p>Practice • Learn • Succeed</p>
 
 </div>
 
-<div class="portal-title">
+<nav class="menu">
 
-SSC English Mastery Portal
+<ul>
 
-</div>
+<li><a href="index.html">🏠 Home</a></li>
 
-<nav>
+<li><a href="mock-tests.html">📝 Mock Tests</a></li>
 
-<a href="index.html">Home</a>
+<li><a href="grammar.html">📘 Grammar</a></li>
 
-<a href="mock-tests.html">Mock Tests</a>
+<li><a href="vocab.html">📖 Vocab</a></li>
 
-<a href="grammar.html">Grammar</a>
+<li><a href="editorial.html">📰 Editorial</a></li>
 
-<a href="vocab.html">Vocab</a>
+<li><a href="reading.html">📄 Reading</a></li>
 
-<a href="editorial.html">Editorial</a>
+<li><a href="payment.html">💳 Payment</a></li>
 
-<a href="reading.html">Reading Section</a>
+<li><a href="about.html">👤 About</a></li>
 
-<a href="about.html">About</a>
+<li><a href="contact.html">☎ Contact</a></li>
 
-<a href="contact.html">Contact</a>
+</ul>
 
 </nav>
 
-</header>
-
 <div class="container">
+
+<h2 class="section-title">
+
+Welcome to Sampuran English
+
+</h2>
+
+<div class="grid">
 
 <div class="card">
 
-<h2>Welcome</h2>
+<h3>📝 Daily Mock Tests</h3>
 
-<p>
+<p>Practice daily SSC English mock tests.</p>
 
-Welcome to the SSC English Mastery Portal.
-
-Practice mock tests, strengthen your grammar, improve vocabulary, read editorials, and master reading comprehension—all in one place.
-
-</p>
+<a href="mock-tests.html">Open</a>
 
 </div>
 
 <div class="card">
 
-<h2>Start Practising</h2>
+<h3>📘 Grammar</h3>
 
-<a href="mock-tests.html">
+<p>Topic-wise grammar practice.</p>
 
-<button>Open Mock Tests</button>
+<a href="grammar.html">Open</a>
 
-</a>
+</div>
+
+<div class="card">
+
+<h3>📖 Vocabulary</h3>
+
+<p>Vocabulary PDFs and Mock Tests.</p>
+
+<a href="vocab.html">Open</a>
+
+</div>
+
+<div class="card">
+
+<h3>📰 Editorial</h3>
+
+<p>Daily editorial practice sets.</p>
+
+<a href="editorial.html">Open</a>
+
+</div>
+
+<div class="card">
+
+<h3>📄 Reading</h3>
+
+<p>Reading comprehension practice.</p>
+
+<a href="reading.html">Open</a>
+
+</div>
+
+<div class="card">
+
+<h3>💳 Payment</h3>
+
+<p>Support Sampuran English.</p>
+
+<a href="payment.html">Open</a>
+
+</div>
 
 </div>
 
@@ -228,10 +270,9 @@ Practice mock tests, strengthen your grammar, improve vocabulary, read editorial
 
 <footer>
 
-© 2026 Sampuran English | SSC English Mastery Portal
+© 2026 Sampuran English • All Rights Reserved
 
 </footer>
 
 </body>
-
 </html>
