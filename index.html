@@ -11,39 +11,89 @@
 
 <style>
 
-.hero{
-    text-align:center;
-    padding:20px 20px;
-    background:white;
+.topbar{
+    background:#0d4ea6;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 16px;
+    position:sticky;
+    top:0;
+    z-index:1001;
 }
 
-.hero img{
-    width:70px;
-    margin-bottom:8px;
+.topbar-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
-.hero h1{
-    color:#0d4ea6;
-    font-size:28px;
-    margin-bottom:4px;
+.menu-toggle{
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:4px;
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
 }
 
-.hero h2{
-    color:#444;
-    font-size:16px;
+.menu-toggle span{
+    display:block;
+    width:22px;
+    height:3px;
+    background:#fff;
+    border-radius:2px;
+}
+
+.topbar-logo{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    object-fit:cover;
+    flex-shrink:0;
+}
+
+.topbar-brand{
+    color:#fff;
+    font-size:24px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.topbar-brand .brand-red{
+    color:#ff4d4d;
+}
+
+.topbar-tagline{
+    color:#cfe0ff;
+    font-size:13px;
+    margin-left:10px;
     font-weight:normal;
-    margin-bottom:10px;
+    white-space:nowrap;
 }
 
-.hero p{
-    font-size:18px;
-    color:#666;
+.topbar-right{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.icon-btn{
+    background:none;
+    border:none;
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+    line-height:1;
 }
 
 .menu{
     background:#0d4ea6;
+    border-top:1px solid rgba(255,255,255,.15);
     position:sticky;
-    top:0;
+    top:60px;
     z-index:1000;
 }
 
@@ -62,20 +112,6 @@
     margin:0;
 }
 
-.menu-bar{
-    display:none;
-    justify-content:space-between;
-    align-items:center;
-    padding:10px 16px;
-}
-
-.menu-toggle{
-    background:none;
-    border:none;
-    color:#fff;
-    font-size:26px;
-    cursor:pointer;
-}
 .menu a{
     display:flex;
     align-items:center;
@@ -141,27 +177,25 @@ footer{
 
 @media (max-width:768px){
 
-.hero{
-    padding:12px 12px;
-}
-
-.hero img{
-    width:45px;
-    margin-bottom:4px;
-}
-
-.hero h1{
-    font-size:20px;
-    margin-bottom:2px;
-}
-
-.hero h2{
-    font-size:13px;
-    margin-bottom:4px;
-}
-
-.menu-bar{
+.menu-toggle{
     display:flex;
+}
+
+.topbar-logo{
+    width:32px;
+    height:32px;
+}
+
+.topbar-brand{
+    font-size:18px;
+}
+
+.topbar-tagline{
+    display:none;
+}
+
+.menu{
+    top:56px;
 }
 
 .menu ul{
@@ -210,22 +244,22 @@ footer{
 
 <body>
 
-<div class="hero">
-
-<img src="logo.png" alt="Logo">
-
-<h1>Sampuran English</h1>
-
-<h2>SSC English Mastery Portal</h2>
-
-
-</div>
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <img src="logo.png" alt="Logo" class="topbar-logo">
+    <span class="topbar-brand">Sampuran <span class="brand-red">English</span></span>
+    <span class="topbar-tagline">Complete English</span>
+  </div>
+  <div class="topbar-right">
+    <button class="icon-btn" aria-label="Search">🔍</button>
+    <button class="icon-btn" aria-label="Notifications">🔔</button>
+  </div>
+</header>
 
 <nav class="menu">
-  <div class="menu-bar">
-    <span class="menu-brand">Menu</span>
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
-  </div>
   <ul id="menuList">
     <li><a href="index.html">🏠 Home</a></li>
     <li><a href="mock-tests.html">📝 Mock Tests</a></li>
