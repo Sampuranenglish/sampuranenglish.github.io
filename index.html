@@ -11,144 +11,6 @@
 
 <style>
 
-.topbar{
-    background:#ffffff;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:10px 16px;
-    position:sticky;
-    top:0;
-    z-index:1001;
-    box-shadow:0 1px 4px rgba(0,0,0,.08);
-}
-
-.topbar-left{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.menu-toggle{
-    background:none;
-    border:none;
-    cursor:pointer;
-    padding:4px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    gap:5px;
-}
-
-.menu-toggle span{
-    display:block;
-    width:22px;
-    height:3px;
-    background:#000;
-    border-radius:2px;
-}
-
-.topbar-logo{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    object-fit:cover;
-    flex-shrink:0;
-}
-
-.topbar-brand{
-    color:#000;
-    font-size:24px;
-    font-weight:bold;
-    white-space:nowrap;
-}
-
-.topbar-brand .brand-red{
-    color:#ff4d4d;
-}
-
-.topbar-right{
-    display:flex;
-    align-items:center;
-    gap:18px;
-}
-
-.icon-btn{
-    background:none;
-    border:none;
-    color:#000;
-    cursor:pointer;
-    line-height:1;
-    padding:4px;
-    position:relative;
-    display:flex;
-    align-items:center;
-}
-
-.icon-btn svg{
-    width:22px;
-    height:22px;
-}
-
-.icon-badge{
-    position:absolute;
-    top:0;
-    right:0;
-    width:9px;
-    height:9px;
-    background:#ff3b30;
-    border-radius:50%;
-    border:1.5px solid #ffffff;
-}
-
-.menu{
-    background:#0d4ea6;
-    border-top:1px solid rgba(255,255,255,.15);
-    position:sticky;
-    top:60px;
-    z-index:1000;
-}
-
-.menu ul{
-    list-style:none;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:8px;
-    padding:10px;
-    margin:0;
-}
-
-.menu li{
-    margin:0;
-}
-
-.menu a{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
-    min-width:120px;
-    color:#fff;
-    text-decoration:none;
-    padding:12px 18px;
-    font-weight:bold;
-    border-radius:8px;
-    transition:.3s;
-}
-
-.menu a svg{
-    width:16px;
-    height:16px;
-    fill:currentColor;
-    flex-shrink:0;
-}
-
-.menu a:hover{
-    background:#083b7d;
-}
-
 .section-title{
     text-align:center;
     color:#0d4ea6;
@@ -197,52 +59,6 @@ footer{
 
 @media (max-width:768px){
 
-.topbar{
-    background:#0d4ea6;
-    box-shadow:none;
-}
-
-.menu-toggle span{
-    background:#fff;
-}
-
-.topbar-logo{
-    width:32px;
-    height:32px;
-}
-
-.topbar-brand{
-    font-size:18px;
-    color:#fff;
-}
-
-.icon-btn{
-    color:#fff;
-}
-
-.menu{
-    top:56px;
-}
-
-.menu ul{
-    display:none;
-    flex-direction:column;
-    gap:6px;
-    padding:10px;
-}
-
-.menu ul.open{
-    display:flex;
-}
-
-.menu a{
-    min-width:auto;
-    width:100%;
-    font-size:16px;
-    padding:12px;
-    justify-content:flex-start;
-}
-
 .grid{
     grid-template-columns:1fr;
 }
@@ -270,47 +86,7 @@ footer{
 
 <body>
 
-<header class="topbar">
-  <div class="topbar-left">
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-    <img src="logo.png" alt="Logo" class="topbar-logo">
-    <span class="topbar-brand">Sampuran <span class="brand-red">English</span></span>
-  </div>
-  <div class="topbar-right">
-    <button class="icon-btn" aria-label="Search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="7"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-    </button>
-    <button class="icon-btn" aria-label="Notifications">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
-        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-      </svg>
-      <span class="icon-badge"></span>
-    </button>
-  </div>
-</header>
-
-<nav class="menu">
-  <ul id="menuList">
-    <li><a href="index.html">🏠 Home</a></li>
-    <li><a href="mock-tests.html">📝 Mock Tests</a></li>
-    <li><a href="grammar.html">📘 Grammar</a></li>
-    <li><a href="vocab.html">📖 Vocab</a></li>
-    <li><a href="editorial.html">📰 Editorial</a></li>
-    <li><a href="reading.html">📄 Reading</a></li>
-    <li><a href="payment.html">💳 Payment</a></li>
-    <li><a href="about.html">
-      <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 8 1.34 8 4v2H4v-2c0-2.66 5.3-4 8-4zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
-      About
-    </a></li>
-    <li><a href="contact.html">☎ Contact</a></li>
-  </ul>
-</nav>
+<div id="site-header"></div>
 
 <div class="container">
 
@@ -322,9 +98,9 @@ footer{
 
 <div class="card">
 
-<h3>📝 Mock Tests</h3>
+<h3>📝 Daily Mock Tests</h3>
 
-<p>Make Your English Stronger</p>
+<p>Practice daily SSC English mock tests.</p>
 
 <a href="mock-tests.html">Open</a>
 
@@ -334,7 +110,7 @@ footer{
 
 <h3>📘 Grammar</h3>
 
-<p>Topic-wise, Mix & Mocks</p>
+<p>Topic-wise grammar practice.</p>
 
 <a href="grammar.html">Open</a>
 
@@ -344,7 +120,7 @@ footer{
 
 <h3>📖 Vocabulary</h3>
 
-<p>Vocab PDFs & Mock Tests</p>
+<p>Vocabulary PDFs and Mock Tests.</p>
 
 <a href="vocab.html">Open</a>
 
@@ -354,7 +130,7 @@ footer{
 
 <h3>📰 Editorial</h3>
 
-<p>Daily Editorial Practice Sets</p>
+<p>Daily editorial practice sets.</p>
 
 <a href="editorial.html">Open</a>
 
@@ -362,14 +138,13 @@ footer{
 
 <div class="card">
 
-<h3>📄 Reading Section</h3>
+<h3>📄 Reading</h3>
 
-<p>Cloze Test, Jumbles, RC</p>
+<p>Reading comprehension practice.</p>
 
 <a href="reading.html">Open</a>
 
 </div>
-
 
 </div>
 
@@ -382,9 +157,14 @@ footer{
 </footer>
 
 <script>
-document.getElementById('menuToggle').addEventListener('click', function(){
-  document.getElementById('menuList').classList.toggle('open');
-});
+fetch('header.html')
+  .then(function(response){ return response.text(); })
+  .then(function(html){
+    document.getElementById('site-header').innerHTML = html;
+    document.getElementById('menuToggle').addEventListener('click', function(){
+      document.getElementById('menuList').classList.toggle('open');
+    });
+  });
 </script>
 
 </body>
