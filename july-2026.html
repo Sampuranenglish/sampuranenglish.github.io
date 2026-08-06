@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>July 2026 Mock Tests</title>
@@ -109,6 +112,7 @@ fetch('header.html')
   .then(function(response){ return response.text(); })
   .then(function(html){
     document.getElementById('site-header').innerHTML = html;
+    window.scrollTo(0, 0);
     document.getElementById('menuToggle').addEventListener('click', function(){
       document.getElementById('menuList').classList.toggle('open');
     });
