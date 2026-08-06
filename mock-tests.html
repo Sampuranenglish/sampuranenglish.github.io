@@ -10,13 +10,13 @@ margin:0;
 font-family:Arial,Helvetica,sans-serif;
 background:#f2f2f2;
 }
-header{
+.page-header{
 background:#004aad;
 color:white;
 padding:20px;
 text-align:center;
 }
-h1{
+.page-header h1{
 margin:0;
 font-size:38px;
 }
@@ -68,9 +68,12 @@ padding:20px;
 </style>
 </head>
 <body>
-<header>
+
+<div id="site-header"></div>
+
+<div class="page-header">
 <h1>Daily Mock Tests</h1>
-</header>
+</div>
 <div class="container">
 <div class="year">
 <a href="2026.html">📅 2026</a>
@@ -82,5 +85,17 @@ padding:20px;
 <footer>
 © Sampuran English
 </footer>
+
+<script>
+fetch('header.html')
+  .then(function(response){ return response.text(); })
+  .then(function(html){
+    document.getElementById('site-header').innerHTML = html;
+    document.getElementById('menuToggle').addEventListener('click', function(){
+      document.getElementById('menuList').classList.toggle('open');
+    });
+  });
+</script>
+
 </body>
 </html>
