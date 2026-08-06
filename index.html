@@ -12,7 +12,7 @@
 <style>
 
 .topbar{
-    background:#0d4ea6;
+    background:#ffffff;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -20,6 +20,7 @@
     position:sticky;
     top:0;
     z-index:1001;
+    box-shadow:0 1px 4px rgba(0,0,0,.08);
 }
 
 .topbar-left{
@@ -33,7 +34,7 @@
     border:none;
     cursor:pointer;
     padding:4px;
-    display:none;
+    display:flex;
     flex-direction:column;
     justify-content:center;
     gap:5px;
@@ -43,7 +44,7 @@
     display:block;
     width:22px;
     height:3px;
-    background:#fff;
+    background:#000;
     border-radius:2px;
 }
 
@@ -56,7 +57,7 @@
 }
 
 .topbar-brand{
-    color:#fff;
+    color:#000;
     font-size:24px;
     font-weight:bold;
     white-space:nowrap;
@@ -66,27 +67,38 @@
     color:#ff4d4d;
 }
 
-.topbar-tagline{
-    color:#cfe0ff;
-    font-size:13px;
-    margin-left:10px;
-    font-weight:normal;
-    white-space:nowrap;
-}
-
 .topbar-right{
     display:flex;
     align-items:center;
-    gap:16px;
+    gap:18px;
 }
 
 .icon-btn{
     background:none;
     border:none;
-    color:#fff;
-    font-size:20px;
+    color:#000;
     cursor:pointer;
     line-height:1;
+    padding:4px;
+    position:relative;
+    display:flex;
+    align-items:center;
+}
+
+.icon-btn svg{
+    width:22px;
+    height:22px;
+}
+
+.icon-badge{
+    position:absolute;
+    top:0;
+    right:0;
+    width:9px;
+    height:9px;
+    background:#ff3b30;
+    border-radius:50%;
+    border:1.5px solid #ffffff;
 }
 
 .menu{
@@ -116,6 +128,7 @@
     display:flex;
     align-items:center;
     justify-content:center;
+    gap:6px;
     min-width:120px;
     color:#fff;
     text-decoration:none;
@@ -123,6 +136,13 @@
     font-weight:bold;
     border-radius:8px;
     transition:.3s;
+}
+
+.menu a svg{
+    width:16px;
+    height:16px;
+    fill:currentColor;
+    flex-shrink:0;
 }
 
 .menu a:hover{
@@ -177,8 +197,13 @@ footer{
 
 @media (max-width:768px){
 
-.menu-toggle{
-    display:flex;
+.topbar{
+    background:#0d4ea6;
+    box-shadow:none;
+}
+
+.menu-toggle span{
+    background:#fff;
 }
 
 .topbar-logo{
@@ -188,10 +213,11 @@ footer{
 
 .topbar-brand{
     font-size:18px;
+    color:#fff;
 }
 
-.topbar-tagline{
-    display:none;
+.icon-btn{
+    color:#fff;
 }
 
 .menu{
@@ -251,11 +277,21 @@ footer{
     </button>
     <img src="logo.png" alt="Logo" class="topbar-logo">
     <span class="topbar-brand">Sampuran <span class="brand-red">English</span></span>
-    <span class="topbar-tagline">Complete English</span>
   </div>
   <div class="topbar-right">
-    <button class="icon-btn" aria-label="Search">🔍</button>
-    <button class="icon-btn" aria-label="Notifications">🔔</button>
+    <button class="icon-btn" aria-label="Search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="7"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </button>
+    <button class="icon-btn" aria-label="Notifications">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+      </svg>
+      <span class="icon-badge"></span>
+    </button>
   </div>
 </header>
 
@@ -268,7 +304,10 @@ footer{
     <li><a href="editorial.html">📰 Editorial</a></li>
     <li><a href="reading.html">📄 Reading</a></li>
     <li><a href="payment.html">💳 Payment</a></li>
-    <li><a href="about.html">👤 About</a></li>
+    <li><a href="about.html">
+      <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 8 1.34 8 4v2H4v-2c0-2.66 5.3-4 8-4zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+      About
+    </a></li>
     <li><a href="contact.html">☎ Contact</a></li>
   </ul>
 </nav>
