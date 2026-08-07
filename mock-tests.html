@@ -14,7 +14,6 @@ font-family:Arial,Helvetica,sans-serif;
 background:#f2f2f2;
 }
 .page-header{
-
 background:#1f2937;
 color:white;
 padding:20px;
@@ -28,28 +27,43 @@ font-size:38px;
 width:90%;
 max-width:1000px;
 margin:40px auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
 }
-.year{
+.card{
 background:white;
-padding:20px;
-margin-bottom:20px;
+padding:25px;
+text-align:center;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,.1);
 transition:.3s;
 }
-.year:hover{
+.card:hover{
 transform:translateY(-3px);
 }
-.year a{
-text-decoration:none;
-font-size:24px;
-font-weight:bold;
+.card h2{
 color:#004aad;
-display:block;
+font-size:22px;
+margin-top:0;
+}
+.button{
+display:inline-block;
+margin-top:15px;
+padding:12px 25px;
+background:#004aad;
+color:white;
+text-decoration:none;
+border-radius:6px;
+font-size:18px;
+}
+.button:hover{
+background:#00317c;
 }
 .back{
 margin-top:40px;
 text-align:center;
+grid-column:1/-1;
 }
 .back a{
 text-decoration:none;
@@ -72,16 +86,17 @@ padding:20px;
 </style>
 </head>
 <body>
-
 <div id="site-header"></div>
-
 <div class="page-header">
 <h1>Mock Tests</h1>
 </div>
 <div class="container">
-<div class="year">
-<a href="2026.html">📅 2026</a>
+
+<div class="card">
+<h2>📅 2026</h2>
+<a class="button" href="2026.html">Open</a>
 </div>
+
 <div class="back">
 <a href="index.html">← Back to Home</a>
 </div>
@@ -89,7 +104,6 @@ padding:20px;
 <footer>
 © Sampuran English
 </footer>
-
 <script>
 fetch('header.html')
   .then(function(response){ return response.text(); })
@@ -101,6 +115,5 @@ fetch('header.html')
     });
   });
 </script>
-
 </body>
 </html>
