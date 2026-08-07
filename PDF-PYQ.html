@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PAGE TITLE HERE</title>
+<title>PDFs - Previous Year Questions</title>
 <style>
 body{
 margin:0;
@@ -24,17 +24,21 @@ font-size:38px;
 width:90%;
 max-width:1000px;
 margin:40px auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
 }
-.mock{
+.card{
 background:white;
-padding:20px;
-margin-bottom:20px;
+padding:25px;
+text-align:center;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,.1);
 }
-.mock h2{
-margin-top:0;
+.card h2{
 color:#004aad;
+font-size:22px;
+margin-top:0;
 }
 .button{
 display:inline-block;
@@ -52,6 +56,7 @@ background:#00317c;
 .back{
 margin-top:40px;
 text-align:center;
+grid-column:1/-1;
 }
 .back a{
 text-decoration:none;
@@ -60,9 +65,6 @@ color:white;
 padding:12px 25px;
 border-radius:6px;
 font-size:18px;
-}
-.back a:hover{
-background:#000;
 }
 footer{
 margin-top:50px;
@@ -75,22 +77,17 @@ padding:20px;
 </head>
 <body>
 <header>
-<h1>TOPIC NAME HERE</h1>
+<h1>PDFs</h1>
 </header>
 <div class="container">
-<div class="mock">
-<h2>SHORT DESCRIPTION HERE</h2>
-<p>
-One line describing this PDF.
-</p>
-<a class="button" href="YOUR-PDF-FILENAME.pdf">
-Download PDF
-</a>
+
+<div class="card">
+<h2>Tense</h2>
+<a class="button" href="tense-pdf-pyq.html">Open</a>
 </div>
+
 <div class="back">
-<a href="PDF-PYQ.html">
-← Back to PDF
-</a>
+<a href="previous-year-questions.html">← Back to Previous Year Questions</a>
 </div>
 </div>
 <footer>
