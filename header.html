@@ -61,6 +61,44 @@
     gap:18px;
 }
 
+.auth-buttons{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-right:8px;
+    padding-right:16px;
+    border-right:1px solid #e0e0e0;
+}
+
+.btn-login,
+.btn-signup{
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    padding:8px 16px;
+    border-radius:6px;
+    white-space:nowrap;
+    transition:.2s;
+}
+
+.btn-login{
+    color:#0d4ea6;
+    background:transparent;
+}
+
+.btn-login:hover{
+    background:#f0f4fa;
+}
+
+.btn-signup{
+    color:#fff;
+    background:#0d4ea6;
+}
+
+.btn-signup:hover{
+    background:#083b7d;
+}
+
 .icon-btn{
     background:none;
     border:none;
@@ -163,6 +201,19 @@
     color:#fff;
 }
 
+.auth-buttons{
+    border-right:none;
+    padding-right:0;
+    margin-right:0;
+    gap:6px;
+}
+
+.btn-login,
+.btn-signup{
+    font-size:12px;
+    padding:6px 10px;
+}
+
 .menu{
     top:56px;
 }
@@ -197,6 +248,10 @@
     <span class="topbar-brand">Sampuran <span class="brand-red">English</span></span>
   </div>
   <div class="topbar-right">
+    <div class="auth-buttons">
+      <a href="login.html" class="btn-login">Log in</a>
+      <a href="signup.html" class="btn-signup">Sign up</a>
+    </div>
     <button class="icon-btn" aria-label="Search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="11" cy="11" r="7"></circle>
