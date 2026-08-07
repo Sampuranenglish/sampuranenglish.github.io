@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>
-if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Previous Year Questions - Sampuran English</title>
+<title>Previous Year Questions</title>
 <style>
 body{
 margin:0;
 font-family:Arial,Helvetica,sans-serif;
 background:#f2f2f2;
 }
-.page-header{
-background:#ffffff;
-color:#111;
+header{
+background:#004aad;
+color:white;
 padding:20px;
 text-align:center;
-border-bottom:2px solid #e0e0e0;
 }
-.page-header h1{
+h1{
 margin:0;
 font-size:38px;
 }
@@ -28,19 +24,39 @@ font-size:38px;
 width:90%;
 max-width:1000px;
 margin:40px auto;
-text-align:center;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
 }
-.notice{
+.card{
 background:white;
-padding:30px;
+padding:25px;
+text-align:center;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+.card h2{
+color:#004aad;
+font-size:22px;
+margin-top:0;
+}
+.button{
+display:inline-block;
+margin-top:15px;
+padding:12px 25px;
+background:#004aad;
+color:white;
+text-decoration:none;
+border-radius:6px;
 font-size:18px;
-color:#444;
+}
+.button:hover{
+background:#00317c;
 }
 .back{
 margin-top:40px;
 text-align:center;
+grid-column:1/-1;
 }
 .back a{
 text-decoration:none;
@@ -49,9 +65,6 @@ color:white;
 padding:12px 25px;
 border-radius:6px;
 font-size:18px;
-}
-.back a:hover{
-background:#000;
 }
 footer{
 margin-top:50px;
@@ -63,16 +76,21 @@ padding:20px;
 </style>
 </head>
 <body>
-
-<div id="site-header"></div>
-
-<div class="page-header">
+<header>
 <h1>Previous Year Questions</h1>
-</div>
+</header>
 <div class="container">
-<div class="notice">
-Content coming soon.
+
+<div class="card">
+<h2>Tense</h2>
+<a class="button" href="tense.html">Open</a>
 </div>
+
+<div class="card">
+<h2>Subject-Verb Agreement</h2>
+<a class="button" href="Subject-Verb_Agreement_Mock_Test 1.html">Open</a>
+</div>
+
 <div class="back">
 <a href="index.html">← Back to Home</a>
 </div>
@@ -80,18 +98,5 @@ Content coming soon.
 <footer>
 © Sampuran English
 </footer>
-
-<script>
-fetch('header.html')
-  .then(function(response){ return response.text(); })
-  .then(function(html){
-    document.getElementById('site-header').innerHTML = html;
-    window.scrollTo(0, 0);
-    document.getElementById('menuToggle').addEventListener('click', function(){
-      document.getElementById('menuList').classList.toggle('open');
-    });
-  });
-</script>
-
 </body>
 </html>
