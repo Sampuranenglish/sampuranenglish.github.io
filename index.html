@@ -33,6 +33,8 @@ body{
 }
 .highlight-grid{
     margin-bottom:30px;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
 }
 .card{
     background:white;
@@ -62,6 +64,10 @@ body{
     font-size:15px;
     margin-bottom:8px;
 }
+.rule-statement{
+    color:#0d4ea6;
+    font-weight:600;
+}
 .rule-wrong{
     color:#b00020;
 }
@@ -69,10 +75,11 @@ body{
     color:#0a7a2f;
 }
 .word-title{
-    font-size:20px;
+    font-size:15px;
     font-weight:bold;
     color:#0d4ea6;
     margin-bottom:10px;
+    text-align:left;
 }
 .word-line{
     text-align:left;
@@ -123,6 +130,7 @@ footer{
 <div class="grid highlight-grid">
 <div class="card">
 <h3>📜 Rule of the Day</h3>
+<p class="rule-line rule-statement" id="rotd-rule">Loading...</p>
 <p class="rule-line rule-wrong" id="rotd-wrong">Loading...</p>
 <p class="rule-line rule-right" id="rotd-right">Loading...</p>
 </div>
@@ -131,11 +139,6 @@ footer{
 <p class="word-title" id="wotd-word">Loading...</p>
 <p class="word-line"><span class="label-syn">Synonyms:</span> <span id="wotd-syn"></span></p>
 <p class="word-line"><span class="label-ant">Antonyms:</span> <span id="wotd-ant"></span></p>
-</div>
-<div class="card">
-<h3>🗂️ PYQ of the Day</h3>
-<p id="pyq-text">Loading...</p>
-<a id="pyq-link" href="previous-year-questions.html">Open</a>
 </div>
 </div>
 
@@ -191,11 +194,11 @@ var diff = new Date() - startOfYear;
 var dayOfYear = Math.floor(diff / 86400000);
 
 var rules = [
-  {wrong:"❌ He don't like tea.", right:"✅ He doesn't like tea."},
-  {wrong:"❌ She is knowing the answer.", right:"✅ She knows the answer."},
-  {wrong:"❌ I have seen him yesterday.", right:"✅ I saw him yesterday."},
-  {wrong:"❌ The team are playing well since morning.", right:"✅ The team has been playing well since morning."},
-  {wrong:"❌ Each of the students have submitted their assignment.", right:"✅ Each of the students has submitted his/her assignment."}
+  {rule:"Use \"doesn't\" (not \"don't\") with he/she/it in the Present Simple tense.", wrong:"❌ He don't like tea.", right:"✅ He doesn't like tea."},
+  {rule:"Stative verbs like \"know\" are not used in continuous (-ing) forms.", wrong:"❌ She is knowing the answer.", right:"✅ She knows the answer."},
+  {rule:"Don't use Present Perfect with a definite past time word like \"yesterday\" — use Simple Past instead.", wrong:"❌ I have seen him yesterday.", right:"✅ I saw him yesterday."},
+  {rule:"Use Present Perfect Continuous (has/have been + V-ing) with \"since/for\" for actions continuing from the past to now.", wrong:"❌ The team are playing well since morning.", right:"✅ The team has been playing well since morning."},
+  {rule:"\"Each of\" takes a singular verb — use \"has\", not \"have\".", wrong:"❌ Each of the students have submitted their assignment.", right:"✅ Each of the students has submitted his/her assignment."}
 ];
 
 var words = [
@@ -206,12 +209,8 @@ var words = [
   {word:"Eloquent", meaning:"Fluent and persuasive in speaking or writing.", synonyms:"articulate, fluent, expressive", antonyms:"inarticulate, incoherent, halting"}
 ];
 
-var pyqTopics = [
-  {name:"Tense", link:"tense.html"},
-  {name:"Subject-Verb Agreement", link:"Subject-Verb-Agreement-PYP.html"}
-];
-
 var todaysRule = rules[dayOfYear % rules.length];
+document.getElementById('rotd-rule').textContent = "Rule: " + todaysRule.rule;
 document.getElementById('rotd-wrong').textContent = todaysRule.wrong;
 document.getElementById('rotd-right').textContent = todaysRule.right;
 
@@ -219,10 +218,6 @@ var todaysWord = words[dayOfYear % words.length];
 document.getElementById('wotd-word').textContent = todaysWord.word + " — " + todaysWord.meaning;
 document.getElementById('wotd-syn').textContent = todaysWord.synonyms;
 document.getElementById('wotd-ant').textContent = todaysWord.antonyms;
-
-var todaysTopic = pyqTopics[dayOfYear % pyqTopics.length];
-document.getElementById('pyq-text').textContent = "Today's focus: " + todaysTopic.name;
-document.getElementById('pyq-link').href = todaysTopic.link;
 </script>
 </body>
 </html>
