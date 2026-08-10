@@ -46,7 +46,7 @@ body{
     margin-bottom:15px;
 }
 .card p{
-    margin-bottom:20px;
+    margin-bottom:10px;
 }
 .card a{
     display:inline-block;
@@ -55,6 +55,37 @@ body{
     text-decoration:none;
     padding:12px 22px;
     border-radius:6px;
+    margin-top:10px;
+}
+.rule-line{
+    text-align:left;
+    font-size:15px;
+    margin-bottom:8px;
+}
+.rule-wrong{
+    color:#b00020;
+}
+.rule-right{
+    color:#0a7a2f;
+}
+.word-title{
+    font-size:20px;
+    font-weight:bold;
+    color:#0d4ea6;
+    margin-bottom:10px;
+}
+.word-line{
+    text-align:left;
+    font-size:15px;
+    margin-bottom:6px;
+}
+.label-syn{
+    color:#d10000;
+    font-weight:bold;
+}
+.label-ant{
+    color:#0d4ea6;
+    font-weight:bold;
 }
 footer{
     margin-top:30px;
@@ -92,11 +123,14 @@ footer{
 <div class="grid highlight-grid">
 <div class="card">
 <h3>📜 Rule of the Day</h3>
-<p id="rotd-text">Loading...</p>
+<p class="rule-line rule-wrong" id="rotd-wrong">Loading...</p>
+<p class="rule-line rule-right" id="rotd-right">Loading...</p>
 </div>
 <div class="card">
 <h3>🔤 Word of the Day</h3>
-<p id="wotd-text">Loading...</p>
+<p class="word-title" id="wotd-word">Loading...</p>
+<p class="word-line"><span class="label-syn">Synonyms:</span> <span id="wotd-syn"></span></p>
+<p class="word-line"><span class="label-ant">Antonyms:</span> <span id="wotd-ant"></span></p>
 </div>
 <div class="card">
 <h3>🗂️ PYQ of the Day</h3>
@@ -157,19 +191,19 @@ var diff = new Date() - startOfYear;
 var dayOfYear = Math.floor(diff / 86400000);
 
 var rules = [
-  "Use 'a' before consonant sounds and 'an' before vowel sounds.",
-  "A singular subject takes a singular verb; a plural subject takes a plural verb.",
-  "Use 'since' with a point in time, and 'for' with a duration of time.",
-  "Collective nouns (team, family, group) usually take a singular verb.",
-  "Use the present perfect for actions that started in the past and continue now."
+  {wrong:"❌ He don't like tea.", right:"✅ He doesn't like tea."},
+  {wrong:"❌ She is knowing the answer.", right:"✅ She knows the answer."},
+  {wrong:"❌ I have seen him yesterday.", right:"✅ I saw him yesterday."},
+  {wrong:"❌ The team are playing well since morning.", right:"✅ The team has been playing well since morning."},
+  {wrong:"❌ Each of the students have submitted their assignment.", right:"✅ Each of the students has submitted his/her assignment."}
 ];
 
 var words = [
-  {word:"Ubiquitous", meaning:"Present, appearing, or found everywhere."},
-  {word:"Meticulous", meaning:"Showing great attention to detail; very careful and precise."},
-  {word:"Ambiguous", meaning:"Open to more than one interpretation; not clear."},
-  {word:"Candid", meaning:"Truthful and straightforward; frank."},
-  {word:"Eloquent", meaning:"Fluent and persuasive in speaking or writing."}
+  {word:"Ubiquitous", meaning:"Present, appearing, or found everywhere.", synonyms:"widespread, common, universal", antonyms:"rare, scarce, uncommon"},
+  {word:"Meticulous", meaning:"Showing great attention to detail.", synonyms:"careful, precise, thorough", antonyms:"careless, sloppy, negligent"},
+  {word:"Ambiguous", meaning:"Open to more than one interpretation.", synonyms:"unclear, vague, uncertain", antonyms:"clear, definite, precise"},
+  {word:"Candid", meaning:"Truthful and straightforward; frank.", synonyms:"honest, frank, sincere", antonyms:"deceptive, evasive, dishonest"},
+  {word:"Eloquent", meaning:"Fluent and persuasive in speaking or writing.", synonyms:"articulate, fluent, expressive", antonyms:"inarticulate, incoherent, halting"}
 ];
 
 var pyqTopics = [
@@ -177,10 +211,14 @@ var pyqTopics = [
   {name:"Subject-Verb Agreement", link:"Subject-Verb-Agreement-PYP.html"}
 ];
 
-document.getElementById('rotd-text').textContent = rules[dayOfYear % rules.length];
+var todaysRule = rules[dayOfYear % rules.length];
+document.getElementById('rotd-wrong').textContent = todaysRule.wrong;
+document.getElementById('rotd-right').textContent = todaysRule.right;
 
 var todaysWord = words[dayOfYear % words.length];
-document.getElementById('wotd-text').textContent = todaysWord.word + " — " + todaysWord.meaning;
+document.getElementById('wotd-word').textContent = todaysWord.word + " — " + todaysWord.meaning;
+document.getElementById('wotd-syn').textContent = todaysWord.synonyms;
+document.getElementById('wotd-ant').textContent = todaysWord.antonyms;
 
 var todaysTopic = pyqTopics[dayOfYear % pyqTopics.length];
 document.getElementById('pyq-text').textContent = "Today's focus: " + todaysTopic.name;
