@@ -137,6 +137,7 @@ footer{
 <div class="card">
 <h3>🔤 Word of the Day</h3>
 <p class="word-title" id="wotd-word">Loading...</p>
+<p class="word-line" id="wotd-example">Loading...</p>
 <p class="word-line"><span class="label-syn">Synonyms:</span> <span id="wotd-syn"></span></p>
 <p class="word-line"><span class="label-ant">Antonyms:</span> <span id="wotd-ant"></span></p>
 </div>
@@ -202,11 +203,11 @@ var rules = [
 ];
 
 var words = [
-  {word:"Ubiquitous", meaning:"Present, appearing, or found everywhere.", synonyms:"widespread, common, universal", antonyms:"rare, scarce, uncommon"},
-  {word:"Meticulous", meaning:"Showing great attention to detail.", synonyms:"careful, precise, thorough", antonyms:"careless, sloppy, negligent"},
-  {word:"Ambiguous", meaning:"Open to more than one interpretation.", synonyms:"unclear, vague, uncertain", antonyms:"clear, definite, precise"},
-  {word:"Candid", meaning:"Truthful and straightforward; frank.", synonyms:"honest, frank, sincere", antonyms:"deceptive, evasive, dishonest"},
-  {word:"Eloquent", meaning:"Fluent and persuasive in speaking or writing.", synonyms:"articulate, fluent, expressive", antonyms:"inarticulate, incoherent, halting"}
+  {word:"Ubiquitous", meaning:"Present, appearing, or found everywhere.", example:"Smartphones have become ubiquitous in modern life.", synonyms:"widespread, common, universal", antonyms:"rare, scarce, uncommon"},
+  {word:"Meticulous", meaning:"Showing great attention to detail.", example:"She was meticulous in checking every detail of the report.", synonyms:"careful, precise, thorough", antonyms:"careless, sloppy, negligent"},
+  {word:"Ambiguous", meaning:"Open to more than one interpretation.", example:"His answer was so ambiguous that no one understood his real opinion.", synonyms:"unclear, vague, uncertain", antonyms:"clear, definite, precise"},
+  {word:"Candid", meaning:"Truthful and straightforward; frank.", example:"He gave a candid opinion about the company's performance.", synonyms:"honest, frank, sincere", antonyms:"deceptive, evasive, dishonest"},
+  {word:"Eloquent", meaning:"Fluent and persuasive in speaking or writing.", example:"The speaker gave an eloquent speech that moved the audience.", synonyms:"articulate, fluent, expressive", antonyms:"inarticulate, incoherent, halting"}
 ];
 
 var todaysRule = rules[dayOfYear % rules.length];
@@ -216,6 +217,7 @@ document.getElementById('rotd-right').textContent = todaysRule.right;
 
 var todaysWord = words[dayOfYear % words.length];
 document.getElementById('wotd-word').textContent = todaysWord.word + " — " + todaysWord.meaning;
+document.getElementById('wotd-example').textContent = "Example: " + todaysWord.example;
 document.getElementById('wotd-syn').textContent = todaysWord.synonyms;
 document.getElementById('wotd-ant').textContent = todaysWord.antonyms;
 </script>
