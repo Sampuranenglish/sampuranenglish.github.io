@@ -4,28 +4,36 @@
 <script>
 if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
 </script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Sampuran English</title>
-
 <link rel="stylesheet" href="style.css">
-
 <style>
-
+html,body{
+    height:100%;
+    margin:0;
+}
+body{
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+}
 .section-title{
     text-align:center;
     color:#0d4ea6;
-    margin-bottom:30px;
+    margin-bottom:20px;
 }
-
+.container{
+    flex:1;
+}
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:20px;
 }
-
+.highlight-grid{
+    margin-bottom:30px;
+}
 .card{
     background:white;
     padding:25px;
@@ -33,16 +41,13 @@ if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     box-shadow:0 2px 8px rgba(0,0,0,.12);
     text-align:center;
 }
-
 .card h3{
     color:#0d4ea6;
     margin-bottom:15px;
 }
-
 .card p{
     margin-bottom:20px;
 }
-
 .card a{
     display:inline-block;
     background:#0d4ea6;
@@ -51,124 +56,91 @@ if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     padding:12px 22px;
     border-radius:6px;
 }
-
 footer{
-    margin-top:60px;
+    margin-top:30px;
     background:#222;
     color:white;
     text-align:center;
-    padding:25px;
+    padding:10px;
+    font-size:13px;
 }
-
 @media (max-width:768px){
-
 .grid{
     grid-template-columns:1fr;
 }
-
 .card{
     padding:22px;
 }
-
 .card a{
     display:block;
     width:100%;
     text-align:center;
 }
-
 footer{
-    font-size:15px;
-    padding:20px;
+    font-size:12px;
+    padding:10px;
 }
-
 }
-
 </style>
-
 </head>
-
 <body>
-
 <div id="site-header"></div>
-
 <div class="container">
-
 <h2 class="section-title">
-
 </h2>
 
+<div class="grid highlight-grid">
+<div class="card">
+<h3>📜 Rule of the Day</h3>
+<p id="rotd-text">Loading...</p>
+</div>
+<div class="card">
+<h3>🔤 Word of the Day</h3>
+<p id="wotd-text">Loading...</p>
+</div>
+<div class="card">
+<h3>🗂️ PYQ of the Day</h3>
+<p id="pyq-text">Loading...</p>
+<a id="pyq-link" href="previous-year-questions.html">Open</a>
+</div>
+</div>
+
 <div class="grid">
-
 <div class="card">
-
 <h3>📝 Mock Tests</h3>
-
 <p>Exam Based Practice</p>
-
 <a href="mock-tests.html">Open</a>
-
 </div>
-
 <div class="card">
-
 <h3>📘 Grammar</h3>
-
 <p>Notes & Mock Tests</p>
-
 <a href="grammar.html">Open</a>
-
 </div>
-
 <div class="card">
-
 <h3>📖 Vocabulary</h3>
-
 <p>Vocab PDFs & Mock Tests</p>
-
 <a href="vocab.html">Open</a>
-
 </div>
-
 <div class="card">
-
 <h3>📰 Editorial</h3>
-
 <p>Test, Vocab & Analysis</p>
-
 <a href="editorial.html">Open</a>
-
 </div>
-
 <div class="card">
-
 <h3>📄 Reading Section</h3>
-
 <p>Cloze Test, Jumbles, RC</p>
-
 <a href="reading.html">Open</a>
-
 </div>
-
 <div class="card">
-
 <h3>🗂️ Previous Year Questions</h3>
-
 <p>Topic-wise Practice</p>
-
 <a href="previous-year-questions.html">Open</a>
-
 </div>
-
 </div>
-
 </div>
-
 <footer>
-
-© 2026 Sampuran English • All Rights Reserved
-
+© Sampuran English
 </footer>
-
 <script>
 fetch('header.html')
   .then(function(response){ return response.text(); })
@@ -179,7 +151,40 @@ fetch('header.html')
       document.getElementById('menuList').classList.toggle('open');
     });
   });
-</script>
 
+var startOfYear = new Date(new Date().getFullYear(), 0, 0);
+var diff = new Date() - startOfYear;
+var dayOfYear = Math.floor(diff / 86400000);
+
+var rules = [
+  "Use 'a' before consonant sounds and 'an' before vowel sounds.",
+  "A singular subject takes a singular verb; a plural subject takes a plural verb.",
+  "Use 'since' with a point in time, and 'for' with a duration of time.",
+  "Collective nouns (team, family, group) usually take a singular verb.",
+  "Use the present perfect for actions that started in the past and continue now."
+];
+
+var words = [
+  {word:"Ubiquitous", meaning:"Present, appearing, or found everywhere."},
+  {word:"Meticulous", meaning:"Showing great attention to detail; very careful and precise."},
+  {word:"Ambiguous", meaning:"Open to more than one interpretation; not clear."},
+  {word:"Candid", meaning:"Truthful and straightforward; frank."},
+  {word:"Eloquent", meaning:"Fluent and persuasive in speaking or writing."}
+];
+
+var pyqTopics = [
+  {name:"Tense", link:"tense.html"},
+  {name:"Subject-Verb Agreement", link:"Subject-Verb-Agreement-PYP.html"}
+];
+
+document.getElementById('rotd-text').textContent = rules[dayOfYear % rules.length];
+
+var todaysWord = words[dayOfYear % words.length];
+document.getElementById('wotd-text').textContent = todaysWord.word + " — " + todaysWord.meaning;
+
+var todaysTopic = pyqTopics[dayOfYear % pyqTopics.length];
+document.getElementById('pyq-text').textContent = "Today's focus: " + todaysTopic.name;
+document.getElementById('pyq-link').href = todaysTopic.link;
+</script>
 </body>
 </html>
