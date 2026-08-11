@@ -25,6 +25,10 @@ body{
 }
 .container{
     flex:1;
+    padding-top:0;
+}
+.container > *:first-child{
+    margin-top:0;
 }
 .grid{
     display:grid;
@@ -159,9 +163,6 @@ footer{
 <body>
 <div id="site-header"></div>
 <div class="container">
-<h2 class="section-title">
-</h2>
-
 <div class="highlight-tabs" id="highlightTabs">
 <button class="tab-btn" id="tabRuleBtn">📜 Rule of the Day</button>
 <button class="tab-btn" id="tabWordBtn">🔤 Word of the Day</button>
@@ -235,36 +236,36 @@ var diff = new Date() - startOfYear;
 var dayOfYear = Math.floor(diff / 86400000);
 
 var rules = [
-  {rule:"Singular subject takes a singular verb.", wrong:"❌ The list of items are on the table.", right:"✅ The list of items is on the table."},
-  {rule:"\"Each of\", \"neither of\" take a singular verb.", wrong:"❌ Neither of the boys have come.", right:"✅ Neither of the boys has come."},
-  {rule:"Two subjects joined by \"and\" take a plural verb.", wrong:"❌ Ram and Shyam is playing.", right:"✅ Ram and Shyam are playing."},
-  {rule:"With \"or/nor\", the verb agrees with the nearer subject.", wrong:"❌ Either he or they is wrong.", right:"✅ Either he or they are wrong."},
-  {rule:"Collective nouns take a singular verb as one unit.", wrong:"❌ The team are winning the match.", right:"✅ The team is winning the match."},
-  {rule:"\"Everyone\", \"nobody\" take a singular verb.", wrong:"❌ Everyone are ready for the test.", right:"✅ Everyone is ready for the test."},
-  {rule:"Use Simple Past with \"yesterday\", \"ago\".", wrong:"❌ I have met him yesterday.", right:"✅ I met him yesterday."},
-  {rule:"Use Present Perfect with \"since\" and \"for\".", wrong:"❌ I am living here since 2010.", right:"✅ I have been living here since 2010."},
-  {rule:"Use Simple Present for habits and general facts.", wrong:"❌ The sun rose in the east.", right:"✅ The sun rises in the east."},
-  {rule:"Use Past Perfect for the earlier of two past acts.", wrong:"❌ When I reached, the train left.", right:"✅ When I reached, the train had left."},
-  {rule:"Stative verbs aren't used in continuous form.", wrong:"❌ I am knowing him well.", right:"✅ I know him well."},
-  {rule:"Use present tense after \"when/if\" for future.", wrong:"❌ I will call when I will reach home.", right:"✅ I will call when I reach home."},
-  {rule:"Zero Conditional: Present + Present.", wrong:"❌ If you heat ice, it will melt.", right:"✅ If you heat ice, it melts."},
-  {rule:"First Conditional: Present + will.", wrong:"❌ If it will rain, we will stay home.", right:"✅ If it rains, we will stay home."},
-  {rule:"Second Conditional: Past + would.", wrong:"❌ If I was you, I will help him.", right:"✅ If I were you, I would help him."},
-  {rule:"Third Conditional: Past Perfect + would have.", wrong:"❌ If he had studied, he will pass.", right:"✅ If he had studied, he would have passed."},
-  {rule:"Use \"were\" (not \"was\") in unreal conditionals.", wrong:"❌ If I was rich, I would travel.", right:"✅ If I were rich, I would travel."},
-  {rule:"Don't use \"will/would\" in the if-clause.", wrong:"❌ If you would come, I would be happy.", right:"✅ If you came, I would be happy."},
-  {rule:"Don't use \"more\" with a comparative -er form.", wrong:"❌ He is more taller than me.", right:"✅ He is taller than me."},
-  {rule:"Avoid double comparatives or superlatives.", wrong:"❌ This is the most best answer.", right:"✅ This is the best answer."},
-  {rule:"Use \"the\" before a superlative adjective.", wrong:"❌ He is tallest boy in the class.", right:"✅ He is the tallest boy in the class."},
-  {rule:"\"Elder/eldest\" is for family; use \"older\" elsewhere.", wrong:"❌ He is elder than his friend.", right:"✅ He is older than his friend."},
-  {rule:"Use \"fewer\" for countable, \"less\" for uncountable.", wrong:"❌ He has less friends than me.", right:"✅ He has fewer friends than me."},
-  {rule:"\"Many\" pairs with countable, \"much\" with uncountable.", wrong:"❌ She has much books.", right:"✅ She has many books."},
-  {rule:"A pronoun must agree in number with its noun.", wrong:"❌ Every student must submit their ID.", right:"✅ Every student must submit his/her ID."},
-  {rule:"Use subject pronouns (I, he) as the subject.", wrong:"❌ Me and him went to the market.", right:"✅ He and I went to the market."},
-  {rule:"Use object pronouns (me, him) after prepositions.", wrong:"❌ Between you and I, this is wrong.", right:"✅ Between you and me, this is wrong."},
-  {rule:"Reflexive pronouns must match the subject's person.", wrong:"❌ He hurt hisself while playing.", right:"✅ He hurt himself while playing."},
-  {rule:"Possessive pronouns never take an apostrophe.", wrong:"❌ This book is your's.", right:"✅ This book is yours."},
-  {rule:"Use \"who\" for subject, \"whom\" for object.", wrong:"❌ He is the man who I met yesterday.", right:"✅ He is the man whom I met yesterday."}
+  {rule:"A singular subject always takes a singular verb, and a plural subject takes a plural verb.", wrong:"❌ The list of items are on the table.", right:"✅ The list of items is on the table."},
+  {rule:"\"Each of\", \"either of\", \"neither of\" are always followed by a singular verb.", wrong:"❌ Neither of the boys have come.", right:"✅ Neither of the boys has come."},
+  {rule:"When two singular subjects are joined by \"and\", the verb used must be plural.", wrong:"❌ Ram and Shyam is playing.", right:"✅ Ram and Shyam are playing."},
+  {rule:"When subjects are joined by \"or\"/\"nor\", the verb agrees with the nearer subject.", wrong:"❌ Either he or they is wrong.", right:"✅ Either he or they are wrong."},
+  {rule:"Collective nouns like team, family, jury take a singular verb as one unit.", wrong:"❌ The team are winning the match.", right:"✅ The team is winning the match."},
+  {rule:"Indefinite pronouns like everyone, somebody, nobody take a singular verb.", wrong:"❌ Everyone are ready for the test.", right:"✅ Everyone is ready for the test."},
+  {rule:"Use Simple Past, not Present Perfect, with words like \"yesterday\" or \"ago\".", wrong:"❌ I have met him yesterday.", right:"✅ I met him yesterday."},
+  {rule:"Use Present Perfect with \"since\" a point in time and \"for\" a duration.", wrong:"❌ I am living here since 2010.", right:"✅ I have been living here since 2010."},
+  {rule:"Use Simple Present tense for habitual actions, routines, and general facts.", wrong:"❌ The sun rose in the east.", right:"✅ The sun rises in the east."},
+  {rule:"Use Past Perfect (had + V3) for the action that happened first of two.", wrong:"❌ When I reached, the train left.", right:"✅ When I reached, the train had left."},
+  {rule:"Stative verbs such as know, believe, love are not used in continuous form.", wrong:"❌ I am knowing him well.", right:"✅ I know him well."},
+  {rule:"In a future time clause with \"when/if\", use present tense, not \"will\".", wrong:"❌ I will call when I will reach home.", right:"✅ I will call when I reach home."},
+  {rule:"Zero Conditional (general truths): Simple Present in both if-clause and main clause.", wrong:"❌ If you heat ice, it will melt.", right:"✅ If you heat ice, it melts."},
+  {rule:"First Conditional (real future): Simple Present in if-clause, \"will\" in main clause.", wrong:"❌ If it will rain, we will stay home.", right:"✅ If it rains, we will stay home."},
+  {rule:"Second Conditional (unreal present): Past Simple in if-clause, \"would\" in main clause.", wrong:"❌ If I was you, I will help him.", right:"✅ If I were you, I would help him."},
+  {rule:"Third Conditional (unreal past): Past Perfect in if-clause, \"would have\" in main clause.", wrong:"❌ If he had studied, he will pass.", right:"✅ If he had studied, he would have passed."},
+  {rule:"Use \"were\", not \"was\", for every subject after \"if\" in unreal conditionals.", wrong:"❌ If I was rich, I would travel.", right:"✅ If I were rich, I would travel."},
+  {rule:"Never use \"will\" or \"would\" inside the if-clause of a conditional sentence.", wrong:"❌ If you would come, I would be happy.", right:"✅ If you came, I would be happy."},
+  {rule:"Don't add \"more\" before an adjective that already ends in -er.", wrong:"❌ He is more taller than me.", right:"✅ He is taller than me."},
+  {rule:"Avoid double comparatives or superlatives like \"more better\" or \"most best\".", wrong:"❌ This is the most best answer.", right:"✅ This is the best answer."},
+  {rule:"A superlative adjective is always preceded by the article \"the\".", wrong:"❌ He is tallest boy in the class.", right:"✅ He is the tallest boy in the class."},
+  {rule:"\"Elder/eldest\" is used only for family members; use \"older/oldest\" elsewhere.", wrong:"❌ He is elder than his friend.", right:"✅ He is older than his friend."},
+  {rule:"Use \"fewer\" with countable nouns and \"less\" with uncountable nouns.", wrong:"❌ He has less friends than me.", right:"✅ He has fewer friends than me."},
+  {rule:"Use \"many\" with countable nouns and \"much\" with uncountable nouns.", wrong:"❌ She has much books.", right:"✅ She has many books."},
+  {rule:"A pronoun must always agree in number and gender with the noun it refers to.", wrong:"❌ Every student must submit their ID.", right:"✅ Every student must submit his/her ID."},
+  {rule:"Use subject pronouns like I and he as the subject, never as the object.", wrong:"❌ Me and him went to the market.", right:"✅ He and I went to the market."},
+  {rule:"Use object pronouns like me and him after a preposition, not subject pronouns.", wrong:"❌ Between you and I, this is wrong.", right:"✅ Between you and me, this is wrong."},
+  {rule:"A reflexive pronoun like himself/myself must match the subject's own person.", wrong:"❌ He hurt hisself while playing.", right:"✅ He hurt himself while playing."},
+  {rule:"Possessive pronouns like yours, hers, theirs never take an apostrophe.", wrong:"❌ This book is your's.", right:"✅ This book is yours."},
+  {rule:"Use \"who\" for the subject of a clause and \"whom\" for its object.", wrong:"❌ He is the man who I met yesterday.", right:"✅ He is the man whom I met yesterday."}
 ];
 
 var words = [
