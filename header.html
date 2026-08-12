@@ -127,6 +127,71 @@
     border:1.5px solid #ffffff;
 }
 
+.search-panel{
+    display:none;
+    position:absolute;
+    top:100%;
+    right:16px;
+    margin-top:8px;
+    background:#fff;
+    border:1px solid #dbe6f5;
+    border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,.15);
+    padding:12px;
+    width:280px;
+    max-width:calc(100vw - 32px);
+    z-index:1002;
+}
+
+.search-panel.open{
+    display:block;
+}
+
+.search-panel input{
+    width:100%;
+    padding:10px 12px;
+    border:1px solid #cddcf0;
+    border-radius:6px;
+    font-size:14px;
+    outline:none;
+    font-family:inherit;
+}
+
+.search-panel input:focus{
+    border-color:#0d4ea6;
+}
+
+.search-panel ul{
+    list-style:none;
+    margin-top:8px;
+    max-height:260px;
+    overflow-y:auto;
+}
+
+.search-panel li{
+    margin:0;
+}
+
+.search-panel li a{
+    display:block;
+    padding:10px 8px;
+    color:#0d4ea6;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    border-radius:6px;
+}
+
+.search-panel li a:hover{
+    background:#f0f4fa;
+}
+
+.search-panel li.no-result{
+    padding:10px 8px;
+    color:#888;
+    font-size:14px;
+}
+
 .menu{
     background:#0d4ea6;
     border-top:1px solid rgba(255,255,255,.15);
@@ -236,6 +301,12 @@
     justify-content:flex-start;
 }
 
+.search-panel{
+    right:8px;
+    left:8px;
+    width:auto;
+}
+
 }
 </style>
 
@@ -252,7 +323,7 @@
       <a href="login.html" class="btn-login">Log in</a>
       <a href="signup.html" class="btn-signup">Sign up</a>
     </div>
-    <button class="icon-btn" aria-label="Search">
+    <button class="icon-btn" id="searchBtn" aria-label="Search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="11" cy="11" r="7"></circle>
         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -265,6 +336,10 @@
       </svg>
       <span class="icon-badge"></span>
     </button>
+    <div class="search-panel" id="searchPanel">
+      <input type="text" id="searchInput" placeholder="Search pages..." autocomplete="off">
+      <ul id="searchResults"></ul>
+    </div>
   </div>
 </header>
 
@@ -281,6 +356,6 @@
       <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 8 1.34 8 4v2H4v-2c0-2.66 5.3-4 8-4zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
       About
     </a></li>
-    <li><a href="contact.html">☎ Contact</a></li>
+    <li><a href="mailto:sampuranenglish@gmail.com">☎ Contact</a></li>
   </ul>
 </nav>
