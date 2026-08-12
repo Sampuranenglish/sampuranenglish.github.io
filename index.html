@@ -36,9 +36,7 @@ body{
     gap:20px;
 }
 .highlight-grid{
-    margin-bottom:30px;
-    grid-template-columns:repeat(2,1fr);
-    gap:25px;
+    margin-bottom:20px;
 }
 .card{
     background:white;
@@ -99,9 +97,32 @@ body{
     font-weight:bold;
 }
 .highlight-tabs{
-    display:none;
+    display:flex;
+    gap:10px;
+    margin-bottom:15px;
+    flex-wrap:wrap;
+}
+.tab-btn{
+    flex:1;
+    min-width:110px;
+    background:white;
+    border:2px solid #0d4ea6;
+    color:#0d4ea6;
+    border-radius:20px;
+    padding:12px 10px;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+    text-align:center;
+}
+.tab-btn.active{
+    background:#0d4ea6;
+    color:white;
 }
 .panel{
+    display:none;
+}
+.panel.active{
     display:block;
 }
 footer{
@@ -124,34 +145,9 @@ footer{
     width:100%;
     text-align:center;
 }
-.highlight-tabs{
-    display:flex;
-    gap:10px;
-    margin-bottom:15px;
-}
 .tab-btn{
-    flex:1;
-    background:white;
-    border:2px solid #0d4ea6;
-    color:#0d4ea6;
-    border-radius:20px;
+    font-size:12.5px;
     padding:10px 6px;
-    font-size:13px;
-    font-weight:700;
-    cursor:pointer;
-}
-.tab-btn.active{
-    background:#0d4ea6;
-    color:white;
-}
-.highlight-grid{
-    margin-bottom:15px;
-}
-.panel{
-    display:none;
-}
-.panel.active{
-    display:block;
 }
 footer{
     font-size:12px;
@@ -166,9 +162,10 @@ footer{
 <div class="highlight-tabs" id="highlightTabs">
 <button class="tab-btn" id="tabRuleBtn">📜 Rule of the Day</button>
 <button class="tab-btn" id="tabWordBtn">🔤 Word of the Day</button>
+<button class="tab-btn" id="tabIdiomBtn">🗣️ Idiom of the Day</button>
 </div>
 
-<div class="grid highlight-grid">
+<div class="highlight-grid">
 <div class="card panel" id="rulePanel">
 <h3>📜 Rule of the Day</h3>
 <p class="rule-line rule-statement" id="rotd-rule">Loading...</p>
@@ -181,6 +178,11 @@ footer{
 <p class="word-line" id="wotd-example">Loading...</p>
 <p class="word-line"><span class="label-syn">Synonyms:</span> <span id="wotd-syn"></span></p>
 <p class="word-line"><span class="label-ant">Antonyms:</span> <span id="wotd-ant"></span></p>
+</div>
+<div class="card panel" id="idiomPanel">
+<h3>🗣️ Idiom of the Day</h3>
+<p class="word-title" id="iotd-idiom">Loading...</p>
+<p class="word-line" id="iotd-example">Loading...</p>
 </div>
 </div>
 
@@ -371,6 +373,109 @@ var words = [
   {word:"Bane", meaning:"a cause of great distress or annoyance", example:"Traffic is the bane of city life.", synonyms:"Curse, scourge, affliction, torment, plague", antonyms:"blessing, boon, benefit, joy"}
 ];
 
+var idioms = [
+  {idiom:"Play somebody at their own game", meaning:"to try to get an advantage over someone by using the same methods as they use", example:"If women want to succeed in business, they have to play men at their own game."},
+  {idiom:"White knight", meaning:"a person or company that puts money into a business in order to save it from being controlled by another company; a person or thing that comes to someone's aid", example:"Hartwell had handed his birthright on a silver salver to the rescuing white knight."},
+  {idiom:"On pins and needles", meaning:"worried or excited about something that is going to happen", example:"Don’t keep Margaret on pins and needles – give her a call."},
+  {idiom:"Show white feather", meaning:"to act in a cowardly manner", example:"Brave people never show white feather in the face of difficulties."},
+  {idiom:"A chip on your shoulder", meaning:"an angry attitude from someone who feels unfairly treated", example:"She’s not going to make any friends if she walks around with a chip on her shoulder like that."},
+  {idiom:"A snowball effect", meaning:"a situation in which something increases in size or importance at a faster and faster rate", example:"The more successful you become, the more publicity you get and that publicity generates sales. It's a kind of snowball effect."},
+  {idiom:"Be devoured by something", meaning:"to feel an emotion, especially a bad emotion, very strongly so that it strongly influences your behaviour", example:"He was devoured by jealousy/hatred."},
+  {idiom:"To cut a sorry figure", meaning:"To be ashamed", example:"She cut a sorry figure in her maiden speech"},
+  {idiom:"Leave somebody in the lurch", meaning:"to leave someone at a time when you should stay and help them", example:"But I won't leave you in the lurch even if that time comes."},
+  {idiom:"A leap of faith", meaning:"an act of believing something that is not easily believed", example:"It took a big leap of faith to decide to quit my job and try something new."},
+  {idiom:"Play second fiddle", meaning:"to be less important or in a weaker position than someone else", example:"I'm not prepared to play second fiddle to Christina any more - I'm looking for another job!"},
+  {idiom:"Chapter and verse", meaning:"to give exact information about something, especially something in a book; an exact reference or authority", example:"I can't quote you chapter and verse but I think it's a line from \"Macbeth\"."},
+  {idiom:"Be on the cards", meaning:"to be likely to happen", example:"\"So you think they'll get married next year?\" \"I think it's on the cards.\""},
+  {idiom:"Take one to task", meaning:"to strongly criticize somebody for something they have done", example:"He was taken to task for not reporting the problem earlier."},
+  {idiom:"Pay lip service", meaning:"pretend to regard or agree (to say that you agree with something but do nothing to support it); Insincere agreement", example:"Most of the political parties pay lip service to the plight of the poor."},
+  {idiom:"To lead to the altar", meaning:"to ultimately lead to marriage", example:"They started a romance that eventually led (them) to the altar."},
+  {idiom:"Take/sign the pledge", meaning:"to make a formal promise to stop drinking alcohol", example:"What's this then, you're only drinking orange juice - have you signed the pledge or something?"},
+  {idiom:"Like the clappers", meaning:"Meaning: extremely fast; very fast or very hard", example:"You'll have to run like the clappers if you want to catch your train."},
+  {idiom:"Gobs of something", meaning:"a large amount of something", example:"He's got gobs of money."},
+  {idiom:"Go nuts", meaning:"to become extremely angry; to become mentally ill", example:"My sister will go nuts when she finds out I crashed her car."},
+  {idiom:"A cash cow", meaning:"a product or service that makes a lot of money over a long period of time for the company, often money that is used to support the company's other activities", example:"The studios discovered that movie rentals were an even bigger cash cow than movie tickets."},
+  {idiom:"A good old something", meaning:"used to talk about something you enjoy", example:"We had a good old time at the reunion."},
+  {idiom:"Stick in somebody's throat", meaning:"to make you angry; to be unable to say the words you want to say, usually because of a strong emotion", example:"It really sticks in my throat that I did all the work, and she's getting all the credit."},
+  {idiom:"Put heads together", meaning:"consult something seriously", example:"Our leaders should put their heads together to solve national problems."},
+  {idiom:"Ruffle somebody's feathers", meaning:"to upset or annoy someone", example:"She knows how to ruffle his feathers."},
+  {idiom:"Above board", meaning:"honest and legal; if a plan/person/business or agreement is above board, it is honest and not trying to deceive anyone", example:"The deal was completely open and above board."},
+  {idiom:"To be wise after the event", meaning:"used to mean that it is easy to understand what you could have done to prevent something bad from happening after it has happened; understand and assess a situation only after its implications have become obvious", example:"In retrospect, we should have insisted on checking his calculations, but it's easy to be wise after the event."},
+  {idiom:"In the brain/looks department", meaning:"humorous; in intelligence or beauty", example:"He somehow lacks in the brain department."},
+  {idiom:"By right of", meaning:"because of", example:"She spoke first, by right of her position as director. (Note: By right = suitable; appropriate; legally or morally correct)"},
+  {idiom:"Be/get lost in the shuffle", meaning:"If something or someone gets lost in the shuffle, that thing or person does not get the attention they deserve; be overlooked or missed in a confused or crowded situation", example:"Refugee children in the big camps just get lost in the shuffle and are sometimes left without food."},
+  {idiom:"In Cold Blood", meaning:"without feeling or mercy; ruthlessly; in a cruel and deliberate way", example:"Evans had been murdered in cold blood."},
+  {idiom:"Wet behind the ears", meaning:"very young and without much experience of life", example:"He is wet behind the ears in share market business."},
+  {idiom:"Be scattered to the four winds", meaning:"If a group of things or people are scattered to the four winds, they go or are sent to different places that are far away from each other", example:"It was the finest collection of paintings in Denmark, but during the last war it was broken up and scattered to the four winds."},
+  {idiom:"Be gasping for something", meaning:"to want or need something very much", example:"I'm absolutely gasping for a cigarette."},
+  {idiom:"A man of straw", meaning:"someone who has a weak character; a person regarded as having no substance or integrity", example:"He was accused by his opponents of being a man of straw and lacking in decisiveness."},
+  {idiom:"At a stretch (at one stretch)", meaning:"continuously; at one time, during one period", example:"Sometimes I work for ten hours at a stretch."},
+  {idiom:"Be above somebody's pay grade", meaning:"to be something that a person does not have enough knowledge or authority to do", example:"She declined to comment on the controversial tape, saying \"That's above my pay grade."},
+  {idiom:"Wash one’s dirty linen", meaning:"to discuss very private, personal matters, especially that which may be sensitive or embarrassing, in public or with other people", example:"It always makes me uncomfortable when John starts going into all his personal problems whenever our friends get together. I just wish he wouldn't wash his dirty linen in public like that."},
+  {idiom:"A shadow of your former self", meaning:"Meaning: someone or something that is not as strong, powerful, or useful as it once was", example:"Since her accident, she’s become a shadow of her former self."},
+  {idiom:"Be in the doldrums", meaning:"a). unsuccessful or showing no activity or development b). sad and with no energy or enthusiasm", example:"Her career was in the doldrums during those years."},
+  {idiom:"(Have) a bee in one’s bonnet", meaning:"to be fussy; to keep talking about something again and again because you think it is very important", example:"She never stops talking about dieting - she's got a real bee in her bonnet about it."},
+  {idiom:"Tar somebody with the same brush", meaning:"to think that someone has the same bad qualities as another person", example:"Because they worked so closely in the same department, John was tarred with the same brush as Tim."},
+  {idiom:"Cut a deal", meaning:"to make a business deal; make an agreement", example:"A French company has reportedly cut a deal to produce software for government agencies."},
+  {idiom:"Halcyon Days", meaning:"A time when there are peace and happiness in the land", example:"She recalled the halcyon days of her youth."},
+  {idiom:"In the sack", meaning:"used to talk about sexual activity; in bed; used especially when referring to people having sex", example:"He's just trying to get you in the sack. Whatsapp: 9602-11-4064"},
+  {idiom:"Square the accounts/books", meaning:"to make certain that you have paid and received all the money that you owed or that others owed you", example:"I need to square accounts with Dean now, before I end up owing him even more money!"},
+  {idiom:"By a whisker", meaning:"by a very small amount", example:"Last time she raced against the Brazilian, she won by a whisker."},
+  {idiom:"Speak up for someone/something", meaning:"to express support for a person or idea", example:"Many employees wouldn't speak up for themselves."},
+  {idiom:"A level playing field", meaning:"a situation in which everyone has the same chance of succeeding", example:"If the tax systems are different in each European country, how can industries start on a level playing field?"},
+  {idiom:"Bowl down/along something", meaning:"to go quickly", example:"They bowled down the street on their new bicycles."},
+  {idiom:"With flying colours", meaning:"If you do something such as pass an exam with flying colours, you do it very successfully; with distinction", example:"He passed his exams with flying colours."},
+  {idiom:"A brown study", meaning:"A brown study –The condition of being so lost in solitary thought as to be unaware of one's surroundings; a mood in which you are very involved in your own thoughts and not paying attention to anything else", example:"You are wasting your time in a brown study."},
+  {idiom:"Keep someone/something at bay (hold someone/something at)", meaning:"to prevent something dangerous or unpleasant from happening or from coming too close", example:"A thick wall keeps the noise at bay."},
+  {idiom:"Eye wash", meaning:"a pretence; misleading or deceptive statements, actions, or procedures; insincere talk; nonsense", example:"My friend’s promise to help me just proved an eye wash."},
+  {idiom:"Feather one's (own) nest", meaning:"make money for oneself in an opportunistic or selfish way", example:"I'm sure he feathered his own nest with the money he allegedly raised for charity."},
+  {idiom:"Breathe a word", meaning:"to tell a secret", example:"Don’t breathe a word of this to anyone."},
+  {idiom:"Let the cat out of the bag", meaning:"to tell someone a secret, especially without intending to", example:"I was trying to keep the party a secret, but Mel went and let the cat out of the bag."},
+  {idiom:"Be in the soup", meaning:"to be in trouble", example:"For now, his political career is in the soup."},
+  {idiom:"Be engraved on somebody's memory/mind", meaning:"to be very difficult to forget", example:"That last conversation we had is engraved on my memory forever."},
+  {idiom:"Be wreathed in smiles", meaning:"to be smiling and looking extremely happy", example:"He was wreathed in smiles as he accepted the award."},
+  {idiom:"Push your luck", meaning:"to try too hard to get a particular result and risk losing what you have achieved", example:"She's agreed to help on Saturday, but I think I'd be pushing my luck if I asked her to be here the whole weekend."},
+  {idiom:"Put a spoke in one’s wheel", meaning:"to make it difficult for someone to achieve something they had planned to do", example:"His letter really put a spoke in our wheel."},
+  {idiom:"Like a dose of salts", meaning:"very quickly and easily", example:"The cleaners went through the house like a dose of salts."},
+  {idiom:"Make good on something", meaning:"to do what you have said you would do; to fulfill an obligation, such as keeping a promise or paying a debt", example:"You better make good on all the things you said you would deliver, or the client is not going to be happy."},
+  {idiom:"In the dumps", meaning:"not successful; unhappy; discouraged, depressed, or sad", example:"The team has been in the dumps all season."},
+  {idiom:"Catch somebody’s eye", meaning:"to get someone's attention; to cause someone to notice something or someone", example:"It was the unusual colour of his jacket that caught my eye."},
+  {idiom:"Flex your muscles", meaning:"give a show of strength or power; to try to worry an opponent or enemy by publicly showing military, political, or financial power", example:"The parade is the first sign of the new regime flexing its military muscles."},
+  {idiom:"Not a spark of decency", meaning:"the phrase 'not a spark of decency' refers to someone who has no manners or very rude manners", example:"The class showed not a spark of decency by refusing to stand up when their principle entered the classroom."},
+  {idiom:"Pay/settle an old score", meaning:"take revenge; to punish someone for something wrong that they did to you in the past", example:"Oh, I heard plenty of rumours, but they were nearly all based on settling old scores."},
+  {idiom:"A cheap shot", meaning:"a criticism or attack on someone that is unfair; an act of deliberate roughness against a defenseless opponent especially in a contact sport taking cheap shots at the quarterback", example:"I think her making fun of his wife was a cheap shot."},
+  {idiom:"By rights", meaning:"if the situation was fair; if things had happened or been done fairly or correctly", example:"By rights, it should be my turn next."},
+  {idiom:"Get a raw deal", meaning:"Get a raw deal = bad or unfair treatment; not be treated as well as other people", example:"He said that many children in the city's schools were getting/being given a raw deal by being taught in classes that were too large."},
+  {idiom:"Take five", meaning:"used to tell someone to stop working and relax for a short period of time; have a short break", example:"There was a newsreel crew taking five at a little café nearby."},
+  {idiom:"Have time on your hands", meaning:"to have nothing to do", example:"Now that she was retired, Mary found that she had a lot of time on her hands."},
+  {idiom:"To move heaven and earth", meaning:"to do everything you can do to achieve something", example:"He'll move heaven and earth to get it done on time."},
+  {idiom:"Zero in on somebody/something (home in on something)", meaning:"a). to direct all your attention towards a particular person or thing b). to aim a gun or other weapon towards something or someone", example:"She immediately zeroed in on the weak point in his argument."},
+  {idiom:"As bold as brass", meaning:"with extreme confidence or without the respect or politeness people usually show", example:"She marched into the store, as bold as brass, and demanded her money back."},
+  {idiom:"Get on like a house on fire", meaning:"If two people get on like a house on fire, they like each other very much and become friends very quickly", example:"I was worried that they wouldn't like each other but in fact they're getting on like a house on fire."},
+  {idiom:"Hear something on the grapevine", meaning:"to hear about something because the information has been passed from one person to another in conversation", example:"I heard about his resignation on the grapevine."},
+  {idiom:"Be all eyes", meaning:"to watch someone or something with a lot of interest; used to convey that a particular person or thing is currently the focus of public interest", example:"We were all eyes as the celebrity guests emerged from the car."},
+  {idiom:"Get on someone’s nerves", meaning:"if someone gets on your nerves, they annoy you, especially by doing something all the time", example:"She’s always moaning. It really gets on my nerves."},
+  {idiom:"Stick to your guns", meaning:"to continue to have your beliefs or continue with a plan of action, even if other people disagree with you", example:"Despite harsh criticism, she's sticking to her guns on this issue."},
+  {idiom:"Major on something", meaning:"to pay particular attention to one subject or thing", example:"The Company is planning to major on offering the machines we need."},
+  {idiom:"In harness", meaning:"On duty or at work; in the routine of daily work; doing your usual work", example:"I felt glad to be back in harness."},
+  {idiom:"Birds of a feather (flock together)", meaning:"People who have similar interests, ideas, or characteristics tend to seek out and/or associate with one another", example:"I knew you and John would get along well, you're birds of a feather, after all."},
+  {idiom:"Lay off", meaning:"to end someone’s employment, especially temporarily, because there is not enough work for them", example:"They’ve had to cut back production and lay off workers."},
+  {idiom:"Kill the fatted calf", meaning:"to welcome someone home with a big meal et(c) after they have been away for a long time", example:"My daughter is coming home from college for the summer, so we're going to kill the fatted calf and have a huge barbecue."},
+  {idiom:"Idle hands are the devil's playthings", meaning:"When one has nothing to do, one is more likely to get into trouble", example:"When I'm off from school, my grandmother is always trying to get me out of the house, while reminding me that idle hands are the devil's playthings."},
+  {idiom:"As clear as day", meaning:"very easy to see or understand", example:"The instructions were as clear as day."},
+  {idiom:"A feather in (one's) cap", meaning:"A big achievement or accomplishment that one takes pride in; an honor; a reward for something", example:"Getting promoted to management after spending only a month at the new job was a feather in her cap."},
+  {idiom:"Breathe one's last (breathe your last)", meaning:"to die", example:"Her eyes fluttered open for a moment and then she breathed her last."},
+  {idiom:"See eye to eye", meaning:"If two people see eye to eye, they agree with each other", example:"My sisters don't see eye to eye with me about the arrangements."},
+  {idiom:"At daggers drawn", meaning:"If two people, countries, et(c) are at daggers drawn, they are in a state of extreme unfriendliness and do not trust each other; (of two people) be bitterly hostile towards each other", example:"The two sides have been at daggers drawn for some months now with no sign of improvement in relations."},
+  {idiom:"Blow hot and cold", meaning:"to keep changing your attitude towards someone or something; alternate inconsistently between two moods, attitudes, or courses of action", example:"I can't tell what he wants - he keeps blowing hot and cold."},
+  {idiom:"Steer a course/path", meaning:"to take a series of actions, usually of a particular type, carefully and intentionally", example:"It will be difficult to steer a middle course between the competing claims of the two sides in the conflict."},
+  {idiom:"A small fortune", meaning:"a large amount of money; an amount of money that seems to be a lot", example:"You'll have to spend a small fortune in legal fees if you decide to sue for compensation."},
+  {idiom:"At the push of a button", meaning:"very easily", example:"You can't expect to get everything you need at the push of a button."},
+  {idiom:"Be set in your ways", meaning:"to do the same things every day and to not want to change those habits", example:"As people get older, they often become set in their ways."},
+  {idiom:"Hang fire/hold fire", meaning:"Hang fire/hold fire –means to do nothing, to delay, wait, hold back, or hesitate; remain unsolved because of delay", example:"The Kashmir problem has been hanging fire for many years."},
+  {idiom:"A ball park figure", meaning:"A general financial figure", example:"A ballpark figure is a rough numerical estimate or approximation of the value of something that is otherwise unknown."}
+];
+
 var todaysRule = rules[dayOfYear % rules.length];
 document.getElementById('rotd-rule').textContent = "Rule: " + todaysRule.rule;
 document.getElementById('rotd-wrong').textContent = todaysRule.wrong;
@@ -382,30 +487,36 @@ document.getElementById('wotd-example').textContent = "Ex- " + todaysWord.exampl
 document.getElementById('wotd-syn').textContent = todaysWord.synonyms;
 document.getElementById('wotd-ant').textContent = todaysWord.antonyms;
 
-var rulePanel = document.getElementById('rulePanel');
-var wordPanel = document.getElementById('wordPanel');
-var tabRuleBtn = document.getElementById('tabRuleBtn');
-var tabWordBtn = document.getElementById('tabWordBtn');
+var todaysIdiom = idioms[dayOfYear % idioms.length];
+document.getElementById('iotd-idiom').textContent = todaysIdiom.idiom + " — " + todaysIdiom.meaning;
+document.getElementById('iotd-example').textContent = "Ex- " + todaysIdiom.example;
 
-function toggleTab(panel, btn, otherPanel, otherBtn){
-  var isOpen = panel.classList.contains('active');
-  if(isOpen){
-    panel.classList.remove('active');
-    btn.classList.remove('active');
-  } else {
-    panel.classList.add('active');
-    btn.classList.add('active');
-    otherPanel.classList.remove('active');
-    otherBtn.classList.remove('active');
+var panels = {
+  rule: document.getElementById('rulePanel'),
+  word: document.getElementById('wordPanel'),
+  idiom: document.getElementById('idiomPanel')
+};
+var buttons = {
+  rule: document.getElementById('tabRuleBtn'),
+  word: document.getElementById('tabWordBtn'),
+  idiom: document.getElementById('tabIdiomBtn')
+};
+
+function toggleTab(key){
+  var isOpen = panels[key].classList.contains('active');
+  Object.keys(panels).forEach(function(k){
+    panels[k].classList.remove('active');
+    buttons[k].classList.remove('active');
+  });
+  if(!isOpen){
+    panels[key].classList.add('active');
+    buttons[key].classList.add('active');
   }
 }
 
-tabRuleBtn.addEventListener('click', function(){
-  toggleTab(rulePanel, tabRuleBtn, wordPanel, tabWordBtn);
-});
-tabWordBtn.addEventListener('click', function(){
-  toggleTab(wordPanel, tabWordBtn, rulePanel, tabRuleBtn);
-});
+buttons.rule.addEventListener('click', function(){ toggleTab('rule'); });
+buttons.word.addEventListener('click', function(){ toggleTab('word'); });
+buttons.idiom.addEventListener('click', function(){ toggleTab('idiom'); });
 </script>
 </body>
 </html>
