@@ -14,8 +14,7 @@ font-family:Arial,Helvetica,sans-serif;
 background:#f2f2f2;
 }
 .page-header{
-
-background:#1f2937;
+background:#0d4ea6;
 color:white;
 padding:20px;
 text-align:center;
@@ -35,6 +34,7 @@ padding:20px;
 margin-bottom:20px;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,.1);
+border:1px solid rgba(13,78,166,0.15);
 transition:.3s;
 }
 .month:hover{
@@ -44,7 +44,7 @@ transform:translateY(-3px);
 text-decoration:none;
 font-size:24px;
 font-weight:bold;
-color:#004aad;
+color:#0d4ea6;
 display:block;
 }
 .back{
@@ -53,14 +53,14 @@ text-align:center;
 }
 .back a{
 text-decoration:none;
-background:#004aad;
+background:#0d4ea6;
 color:white;
 padding:12px 25px;
 border-radius:6px;
 font-size:18px;
 }
 .back a:hover{
-background:#00317c;
+background:#083b7d;
 }
 footer{
 margin-top:50px;
@@ -72,9 +72,7 @@ padding:20px;
 </style>
 </head>
 <body>
-
 <div id="site-header"></div>
-
 <div class="page-header">
 <h1>2026 Daily Mock Tests</h1>
 </div>
@@ -104,7 +102,6 @@ padding:20px;
 <footer>
 © Sampuran English
 </footer>
-
 <script>
 fetch('header.html')
   .then(function(response){ return response.text(); })
@@ -114,8 +111,76 @@ fetch('header.html')
     document.getElementById('menuToggle').addEventListener('click', function(){
       document.getElementById('menuList').classList.toggle('open');
     });
+
+    var sitePages = [
+      {name:"Home", href:"index.html"},
+      {name:"Mock Tests", href:"mock-tests.html"},
+      {name:"Grammar", href:"grammar.html"},
+      {name:"Vocabulary", href:"vocab.html"},
+      {name:"Editorial", href:"editorial.html"},
+      {name:"Reading Section", href:"reading.html"},
+      {name:"Previous Year Questions", href:"previous-year-questions.html"},
+      {name:"About", href:"about.html"}
+    ];
+
+    var searchBtn = document.getElementById('searchBtn');
+    var searchPanel = document.getElementById('searchPanel');
+    var searchInput = document.getElementById('searchInput');
+    var searchResults = document.getElementById('searchResults');
+
+    function renderResults(query){
+      var q = query.trim().toLowerCase();
+      var matches = q === '' ? sitePages : sitePages.filter(function(item){
+        return item.name.toLowerCase().indexOf(q) !== -1;
+      });
+      searchResults.innerHTML = '';
+      if(matches.length === 0){
+        var li = document.createElement('li');
+        li.className = 'no-result';
+        li.textContent = 'No matching page found';
+        searchResults.appendChild(li);
+        return;
+      }
+      matches.forEach(function(item){
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = item.href;
+        a.textContent = item.name;
+        li.appendChild(a);
+        searchResults.appendChild(li);
+      });
+    }
+
+    searchBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      searchPanel.classList.toggle('open');
+      if(searchPanel.classList.contains('open')){
+        searchInput.value = '';
+        renderResults('');
+        searchInput.focus();
+      }
+    });
+
+    searchInput.addEventListener('input', function(){
+      renderResults(searchInput.value);
+    });
+
+    searchInput.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        var firstLink = searchResults.querySelector('a');
+        if(firstLink){ window.location.href = firstLink.href; }
+      }
+      if(e.key === 'Escape'){
+        searchPanel.classList.remove('open');
+      }
+    });
+
+    document.addEventListener('click', function(e){
+      if(!searchPanel.contains(e.target) && e.target !== searchBtn){
+        searchPanel.classList.remove('open');
+      }
+    });
   });
 </script>
-
 </body>
 </html>
