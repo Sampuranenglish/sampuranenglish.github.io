@@ -2,69 +2,55 @@
    SAMPURAN ENGLISH
    MASTER STYLESHEET
 =========================== */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
-
 body{
     font-family:Arial, Helvetica, sans-serif;
     background:#f4f4f4;
     color:#333;
     line-height:1.6;
 }
-
 /* Header */
-
 header{
     background:#0d4ea6;
     color:white;
     text-align:center;
     padding:30px 20px;
 }
-
 header h1{
     font-size:42px;
     margin-bottom:10px;
 }
-
 header h2{
     font-size:22px;
     font-weight:normal;
 }
-
 /* Navigation */
-
 nav{
     background:#083b7d;
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
 }
-
 nav a{
     color:white;
     text-decoration:none;
     padding:15px 20px;
     font-weight:bold;
 }
-
 nav a:hover{
     background:#0d4ea6;
 }
-
 /* Container */
-
 .container{
     width:90%;
     max-width:1100px;
     margin:40px auto;
 }
-
 /* Cards */
-
 .card,
 .mock{
     background:white;
@@ -72,22 +58,19 @@ nav a:hover{
     margin-bottom:20px;
     border-radius:10px;
     box-shadow:0 2px 8px rgba(0,0,0,.15);
+    border:1px solid rgba(13,78,166,0.15);
 }
-
 .card a{
     text-decoration:none;
     color:#0d4ea6;
     font-size:22px;
     font-weight:bold;
 }
-
 .mock h2{
     color:#0d4ea6;
     margin-bottom:10px;
 }
-
 /* Buttons */
-
 .button{
     display:inline-block;
     background:#0d4ea6;
@@ -98,18 +81,14 @@ nav a:hover{
     margin-top:15px;
     font-weight:bold;
 }
-
 .button:hover{
     background:#083b7d;
 }
-
 /* Back Button */
-
 .back{
     text-align:center;
     margin-top:40px;
 }
-
 .back a{
     background:#222;
     color:white;
@@ -117,9 +96,7 @@ nav a:hover{
     padding:12px 25px;
     border-radius:6px;
 }
-
 /* Footer */
-
 footer{
     background:#222;
     color:white;
@@ -127,52 +104,40 @@ footer{
     padding:20px;
     margin-top:50px;
 }
-
 /* ===========================
    MOBILE DESIGN
 =========================== */
-
 @media screen and (max-width:768px){
-
 header{
     padding:20px;
 }
-
 header h1{
     font-size:30px;
 }
-
 header h2{
     font-size:18px;
 }
-
 .container{
     width:95%;
 }
-
 .card,
 .mock{
     padding:18px;
 }
-
 .card a{
     font-size:18px;
 }
-
 .button{
     display:block;
     width:100%;
     text-align:center;
 }
-
 nav a{
     padding:12px;
     font-size:16px;
 }
-
 img{
     max-width:100%;
     height:auto;
 }
-
 }
