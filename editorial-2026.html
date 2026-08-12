@@ -1,84 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+<script>
+if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>2026 Editorial Mock Tests</title>
-
+<title>Editorial 2026 - Sampuran English</title>
+<script src="search-index.js"></script>
 <style>
-
 body{
 margin:0;
 font-family:Arial,Helvetica,sans-serif;
 background:#f2f2f2;
 }
-
-header{
-background:#004aad;
+.page-header{
+background:#0d4ea6;
 color:white;
 padding:20px;
 text-align:center;
 }
-
-h1{
+.page-header h1{
 margin:0;
 font-size:38px;
 }
-
 .container{
 width:90%;
 max-width:1000px;
 margin:40px auto;
 }
-
 .month{
 background:white;
 padding:20px;
 margin-bottom:20px;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,.1);
+border:1px solid rgba(13,78,166,0.15);
+transition:.3s;
 }
-
-.month h2{
-margin-top:0;
-color:#004aad;
+.month:hover{
+transform:translateY(-3px);
 }
-
-.button{
-display:inline-block;
-margin-top:15px;
-padding:12px 25px;
-background:#004aad;
-color:white;
+.month a{
 text-decoration:none;
-border-radius:6px;
-font-size:18px;
+font-size:24px;
+font-weight:bold;
+color:#0d4ea6;
+display:block;
 }
-
-.button:hover{
-background:#00317c;
-}
-
 .back{
 margin-top:40px;
 text-align:center;
 }
-
 .back a{
 text-decoration:none;
-background:#222;
+background:#0d4ea6;
 color:white;
 padding:12px 25px;
 border-radius:6px;
 font-size:18px;
 }
-
 .back a:hover{
-background:#000;
+background:#083b7d;
 }
-
 footer{
 margin-top:50px;
 background:#222;
@@ -86,108 +70,118 @@ color:white;
 text-align:center;
 padding:20px;
 }
-
 </style>
-
 </head>
-
 <body>
-
-<header>
-
-<h1>2026 Editorial Mock Tests</h1>
-
-</header>
-
+<div id="site-header"></div>
+<div class="page-header">
+<h1>Editorial 2026</h1>
+</div>
 <div class="container">
-
 <div class="month">
-
-<h2>August</h2>
-
-<p>Editorial Mock Tests - August 2026</p>
-
-<a class="button" href="editorial-august-2026.html">
-
-Open August
-
-</a>
-
+<a href="editorial-july-2026.html">📅 July</a>
 </div>
-
 <div class="month">
-
-<h2>September</h2>
-
-<p>Editorial Mock Tests - September 2026</p>
-
-<a class="button" href="editorial-september-2026.html">
-
-Open September
-
-</a>
-
+<a href="editorial-august-2026.html">📅 August</a>
 </div>
-
 <div class="month">
-
-<h2>October</h2>
-
-<p>Editorial Mock Tests - October 2026</p>
-
-<a class="button" href="editorial-october-2026.html">
-
-Open October
-
-</a>
-
+<a href="editorial-september-2026.html">📅 September</a>
 </div>
-
 <div class="month">
-
-<h2>November</h2>
-
-<p>Editorial Mock Tests - November 2026</p>
-
-<a class="button" href="editorial-november-2026.html">
-
-Open November
-
-</a>
-
+<a href="editorial-october-2026.html">📅 October</a>
 </div>
-
 <div class="month">
-
-<h2>December</h2>
-
-<p>Editorial Mock Tests - December 2026</p>
-
-<a class="button" href="editorial-december-2026.html">
-
-Open December
-
-</a>
-
+<a href="editorial-november-2026.html">📅 November</a>
 </div>
-
+<div class="month">
+<a href="editorial-december-2026.html">📅 December</a>
+</div>
 <div class="back">
-
-<a href="editorial-mock-tests.html">
-
-← Back to Editorial
-
-</a>
-
+<a href="editorial.html">← Back to Editorial</a>
 </div>
-
 </div>
-
 <footer>
-
 © Sampuran English
-
 </footer>
+<script>
+fetch('header.html')
+  .then(function(response){ return response.text(); })
+  .then(function(html){
+    document.getElementById('site-header').innerHTML = html;
+    window.scrollTo(0, 0);
+    document.getElementById('menuToggle').addEventListener('click', function(){
+      document.getElementById('menuList').classList.toggle('open');
+    });
 
+    var sitePages = (typeof searchIndex !== 'undefined') ? searchIndex : [
+      {name:"Home", href:"index.html"},
+      {name:"Mock Tests", href:"mock-tests.html"},
+      {name:"Grammar", href:"grammar.html"},
+      {name:"Vocabulary", href:"vocab.html"},
+      {name:"Editorial", href:"editorial.html"},
+      {name:"Reading Section", href:"reading.html"},
+      {name:"Previous Year Questions", href:"previous-year-questions.html"},
+      {name:"About", href:"about.html"}
+    ];
+
+    var searchBtn = document.getElementById('searchBtn');
+    var searchPanel = document.getElementById('searchPanel');
+    var searchInput = document.getElementById('searchInput');
+    var searchResults = document.getElementById('searchResults');
+
+    function renderResults(query){
+      var q = query.trim().toLowerCase();
+      var matches = q === '' ? sitePages : sitePages.filter(function(item){
+        return item.name.toLowerCase().indexOf(q) !== -1;
+      });
+      searchResults.innerHTML = '';
+      if(matches.length === 0){
+        var li = document.createElement('li');
+        li.className = 'no-result';
+        li.textContent = 'No matching page found';
+        searchResults.appendChild(li);
+        return;
+      }
+      matches.forEach(function(item){
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = item.href;
+        a.textContent = item.name;
+        li.appendChild(a);
+        searchResults.appendChild(li);
+      });
+    }
+
+    searchBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      searchPanel.classList.toggle('open');
+      if(searchPanel.classList.contains('open')){
+        searchInput.value = '';
+        renderResults('');
+        searchInput.focus();
+      }
+    });
+
+    searchInput.addEventListener('input', function(){
+      renderResults(searchInput.value);
+    });
+
+    searchInput.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        var firstLink = searchResults.querySelector('a');
+        if(firstLink){ window.location.href = firstLink.href; }
+      }
+      if(e.key === 'Escape'){
+        searchPanel.classList.remove('open');
+      }
+    });
+
+    document.addEventListener('click', function(e){
+      if(!searchPanel.contains(e.target) && e.target !== searchBtn){
+        searchPanel.classList.remove('open');
+      }
+    });
+  });
+</script>
 </body>
 </html>
