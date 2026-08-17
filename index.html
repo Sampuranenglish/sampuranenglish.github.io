@@ -137,6 +137,43 @@ footer{
     padding:10px;
     font-size:13px;
 }
+.ssc-banner{
+    display:none;
+    align-items:center;
+    gap:10px;
+    background:#fff4e5;
+    border:1px solid #ffcf8f;
+    border-left:5px solid #ff8a00;
+    border-radius:8px;
+    padding:14px 16px;
+    margin-bottom:20px;
+    text-decoration:none;
+    color:#5a3a00;
+    font-size:14px;
+    box-shadow:0 2px 6px rgba(0,0,0,.06);
+}
+.ssc-banner:hover{
+    background:#ffecd1;
+}
+.ssc-banner-label{
+    font-weight:700;
+    color:#0d4ea6;
+    white-space:nowrap;
+}
+.ssc-banner-text{
+    flex:1;
+    font-weight:600;
+}
+.ssc-banner-arrow{
+    font-weight:700;
+    color:#ff8a00;
+}
+@media (max-width:768px){
+.ssc-banner{
+    font-size:13px;
+    align-items:flex-start;
+}
+}
 @media (max-width:768px){
 .grid{
     grid-template-columns:1fr;
@@ -163,6 +200,11 @@ footer{
 <body>
 <div id="site-header"></div>
 <div class="container">
+<a id="ssc-notification-banner" href="#" target="_blank" rel="noopener" class="ssc-banner">
+  <span class="ssc-banner-label">🔔 SSC Notice:</span>
+  <span class="ssc-banner-text" id="ssc-notification-text"></span>
+  <span class="ssc-banner-arrow">View →</span>
+</a>
 <div class="highlight-tabs" id="highlightTabs">
 <button class="tab-btn" id="tabRuleBtn">📜 Rule of the Day</button>
 <button class="tab-btn" id="tabWordBtn">🔤 Word of the Day</button>
@@ -235,75 +277,7 @@ fetch('header.html')
     document.getElementById('menuToggle').addEventListener('click', function(){
       document.getElementById('menuList').classList.toggle('open');
     });
-
-    var sitePages = [
-      {name:"Home", href:"index.html"},
-      {name:"Mock Tests", href:"mock-tests.html"},
-      {name:"Grammar", href:"grammar.html"},
-      {name:"Vocabulary", href:"vocab.html"},
-      {name:"Editorial", href:"editorial.html"},
-      {name:"Reading Section", href:"reading.html"},
-      {name:"Previous Year Questions", href:"previous-year-questions.html"},
-      {name:"About", href:"about.html"}
-    ];
-
-    var searchBtn = document.getElementById('searchBtn');
-    var searchPanel = document.getElementById('searchPanel');
-    var searchInput = document.getElementById('searchInput');
-    var searchResults = document.getElementById('searchResults');
-
-    function renderResults(query){
-      var q = query.trim().toLowerCase();
-      var matches = q === '' ? sitePages : sitePages.filter(function(item){
-        return item.name.toLowerCase().indexOf(q) !== -1;
-      });
-      searchResults.innerHTML = '';
-      if(matches.length === 0){
-        var li = document.createElement('li');
-        li.className = 'no-result';
-        li.textContent = 'No matching page found';
-        searchResults.appendChild(li);
-        return;
-      }
-      matches.forEach(function(item){
-        var li = document.createElement('li');
-        var a = document.createElement('a');
-        a.href = item.href;
-        a.textContent = item.name;
-        li.appendChild(a);
-        searchResults.appendChild(li);
-      });
-    }
-
-    searchBtn.addEventListener('click', function(e){
-      e.stopPropagation();
-      searchPanel.classList.toggle('open');
-      if(searchPanel.classList.contains('open')){
-        searchInput.value = '';
-        renderResults('');
-        searchInput.focus();
-      }
-    });
-
-    searchInput.addEventListener('input', function(){
-      renderResults(searchInput.value);
-    });
-
-    searchInput.addEventListener('keydown', function(e){
-      if(e.key === 'Enter'){
-        var firstLink = searchResults.querySelector('a');
-        if(firstLink){ window.location.href = firstLink.href; }
-      }
-      if(e.key === 'Escape'){
-        searchPanel.classList.remove('open');
-      }
-    });
-
-    document.addEventListener('click', function(e){
-      if(!searchPanel.contains(e.target) && e.target !== searchBtn){
-        searchPanel.classList.remove('open');
-      }
-    });
+    if (typeof initNotifications === 'function') { initNotifications(); }
   });
 
 var startOfYear = new Date(new Date().getFullYear(), 0, 0);
@@ -591,5 +565,6 @@ buttons.rule.addEventListener('click', function(){ toggleTab('rule'); });
 buttons.word.addEventListener('click', function(){ toggleTab('word'); });
 buttons.idiom.addEventListener('click', function(){ toggleTab('idiom'); });
 </script>
+<script src="notifications.js"></script>
 </body>
 </html>
