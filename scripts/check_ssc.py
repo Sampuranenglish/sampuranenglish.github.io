@@ -8,13 +8,23 @@ def main():
     with sync_playwright() as p:
         browser = p.chromium.launch()
         page = browser.new_page()
-        page.goto("https://ssc.gov.in/", timeout=60000)
-        page.wait_for_timeout(6000)
+        page.goto("https://ssc.gov.in/", wait_until="networkidle", timeout=60000)
+        page.wait_for_timeout(8000)
+
+        # Diagnostics: how many links exist on the page at all
+        total_links = page.eval_on_selector_all("a", "els => els.length")
+        print(f"Total <a> links found on page: {total_links}")
 
         links = page.eval_on_selector_all(
-            "a[href*='NoticeBoards'], a[href*='notice'], a[href*='Notice']",
-            "els => els.map(e => ({text: e.innerText.trim(), href: e.href})).filter(x => x.text.length > 3)"
+            "a[href*='.pdf'], a[href*='NoticeBoards'], a[href*='attachment'], "
+            "a[href*='notice'], a[href*='Notice']",
+            "els => els.map(e => ({text: e.innerText.trim(), href: e.href}))"
+            ".filter(x => x.text.length > 3)"
         )
+
+        print(f"Matching notice-like links found: {len(links)}")
+        for l in links[:5]:
+            print(" -", l["text"][:80], "|", l["href"])
 
         browser.close()
 
