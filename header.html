@@ -1,6 +1,22 @@
 <style>
+:root{
+    --topbar-bg:#ffffff;
+    --topbar-text:#000000;
+    --menu-bg:#0d4ea6;
+    --menu-hover-bg:#083b7d;
+    --icon-color:#000000;
+}
+
+html[data-theme="dark"]{
+    --topbar-bg:#111214;
+    --topbar-text:#f2f2f2;
+    --menu-bg:#08183a;
+    --menu-hover-bg:#04102a;
+    --icon-color:#f2f2f2;
+}
+
 .topbar{
-    background:#ffffff;
+    background:var(--topbar-bg);
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -9,6 +25,7 @@
     top:0;
     z-index:1001;
     box-shadow:0 1px 4px rgba(0,0,0,.08);
+    transition:background .25s ease;
 }
 
 .topbar-left{
@@ -32,7 +49,7 @@
     display:block;
     width:22px;
     height:3px;
-    background:#000;
+    background:var(--topbar-text);
     border-radius:2px;
 }
 
@@ -45,7 +62,7 @@
 }
 
 .topbar-brand{
-    color:#000;
+    color:var(--topbar-text);
     font-size:24px;
     font-weight:bold;
     white-space:nowrap;
@@ -64,7 +81,7 @@
 .icon-btn{
     background:none;
     border:none;
-    color:#000;
+    color:var(--icon-color);
     cursor:pointer;
     line-height:1;
     padding:4px;
@@ -87,15 +104,30 @@
     height:9px;
     background:#ff3b30;
     border-radius:50%;
-    border:1.5px solid #ffffff;
+    border:1.5px solid var(--topbar-bg);
+}
+
+/* theme toggle icon swap */
+#themeToggle .icon-moon{
+    display:block;
+}
+#themeToggle .icon-sun{
+    display:none;
+}
+html[data-theme="dark"] #themeToggle .icon-moon{
+    display:none;
+}
+html[data-theme="dark"] #themeToggle .icon-sun{
+    display:block;
 }
 
 .menu{
-    background:#0d4ea6;
+    background:var(--menu-bg);
     border-top:1px solid rgba(255,255,255,.15);
     position:sticky;
     top:60px;
     z-index:1000;
+    transition:background .25s ease;
 }
 
 .menu ul{
@@ -136,13 +168,13 @@
 }
 
 .menu a:hover{
-    background:#083b7d;
+    background:var(--menu-hover-bg);
 }
 
 @media (max-width:768px){
 
 .topbar{
-    background:#0d4ea6;
+    background:var(--menu-bg);
     box-shadow:none;
 }
 
@@ -162,6 +194,10 @@
 
 .icon-btn{
     color:#fff;
+}
+
+.icon-badge{
+    border-color:var(--menu-bg);
 }
 
 .menu{
@@ -198,6 +234,24 @@
     <span class="topbar-brand">Sampuran <span class="brand-red">English</span></span>
   </div>
   <div class="topbar-right">
+    <button class="icon-btn" id="themeToggle" aria-label="Switch to dark mode" aria-pressed="false">
+      <!-- moon: shown in light mode, click to go dark -->
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+      <!-- sun: shown in dark mode, click to go light -->
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </button>
     <button class="icon-btn" aria-label="Notifications">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -224,3 +278,27 @@
     <li><a href="contact.html">☎ Contact</a></li>
   </ul>
 </nav>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var toggleBtn = document.getElementById('themeToggle');
+
+  function applyTheme(theme){
+    root.setAttribute('data-theme', theme);
+    toggleBtn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    toggleBtn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+
+  // 1) saved choice wins, 2) otherwise fall back to the device's preference
+  var saved = localStorage.getItem('sampuran-theme');
+  var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved || (prefersDark ? 'dark' : 'light'));
+
+  toggleBtn.addEventListener('click', function(){
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem('sampuran-theme', next);
+  });
+})();
+</script>
