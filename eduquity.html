@@ -5,17 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eduquity Vocab 2025</title>
 <style>
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f2f2f2;}
-header{background:#004aad;color:white;padding:20px;text-align:center;}
+:root{
+--page-bg:#f2f2f2;
+--card-bg:#ffffff;
+--card-text:#222222;
+--accent:#004aad;
+--accent-hover:#00317c;
+--footer-bg:#222222;
+--footer-text:#ffffff;
+--secondary-btn-bg:#222222;
+--secondary-btn-hover:#000000;
+}
+html[data-theme="dark"]{
+--page-bg:#0b0c0e;
+--card-bg:#1b1c1f;
+--card-text:#f2f2f2;
+--accent:#3b82f6;
+--accent-hover:#2563eb;
+--footer-bg:#000000;
+--footer-text:#f2f2f2;
+--secondary-btn-bg:#3a3a3a;
+--secondary-btn-hover:#555555;
+}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--page-bg);transition:background .25s ease;}
+header{background:var(--accent);color:white;padding:20px;text-align:center;}
 h1{margin:0;font-size:38px;}
 .container{width:90%;max-width:1000px;margin:40px auto;}
-.mock{background:white;padding:20px;margin-bottom:20px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,.1);}
-.mock h2{margin-top:0;color:#004aad;}
-.button{display:inline-block;margin-top:15px;padding:12px 25px;background:#004aad;color:white;text-decoration:none;border-radius:6px;font-size:18px;}
-.button:hover{background:#00317c;}
+.mock{background:var(--card-bg);color:var(--card-text);padding:20px;margin-bottom:20px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,.1);}
+.mock h2{margin-top:0;color:var(--accent);}
+.button{display:inline-block;margin-top:15px;padding:12px 25px;background:var(--accent);color:white;text-decoration:none;border-radius:6px;font-size:18px;}
+.button:hover{background:var(--accent-hover);}
 .back{margin-top:40px;text-align:center;}
-.back a{text-decoration:none;background:#222;color:white;padding:12px 25px;border-radius:6px;font-size:18px;}
-footer{margin-top:50px;background:#222;color:white;text-align:center;padding:20px;}
+.back a{text-decoration:none;background:var(--secondary-btn-bg);color:white;padding:12px 25px;border-radius:6px;font-size:18px;}
+footer{margin-top:50px;background:var(--footer-bg);color:var(--footer-text);text-align:center;padding:20px;}
 </style>
 </head>
 <body>
@@ -36,14 +58,15 @@ footer{margin-top:50px;background:#222;color:white;text-align:center;padding:20p
 <footer>© Sampuran English</footer>
 <script>
 fetch('header.html')
-  .then(function(response){ return response.text(); })
-  .then(function(html){
-    document.getElementById('site-header').innerHTML = html;
-    window.scrollTo(0, 0);
-    document.getElementById('menuToggle').addEventListener('click', function(){
-      document.getElementById('menuList').classList.toggle('open');
-    });
-  });
+.then(function(response){ return response.text(); })
+.then(function(html){
+document.getElementById('site-header').innerHTML = html;
+window.scrollTo(0, 0);
+document.getElementById('menuToggle').addEventListener('click', function(){
+document.getElementById('menuList').classList.toggle('open');
+});
+});
 </script>
+<script src="theme.js"></script>
 </body>
 </html>
