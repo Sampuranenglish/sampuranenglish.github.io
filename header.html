@@ -279,26 +279,7 @@ html[data-theme="dark"] #themeToggle .icon-sun{
   </ul>
 </nav>
 
-<script>
-(function(){
-  var root = document.documentElement;
-  var toggleBtn = document.getElementById('themeToggle');
-
-  function applyTheme(theme){
-    root.setAttribute('data-theme', theme);
-    toggleBtn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
-    toggleBtn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-  }
-
-  // 1) saved choice wins, 2) otherwise fall back to the device's preference
-  var saved = localStorage.getItem('sampuran-theme');
-  var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  applyTheme(saved || (prefersDark ? 'dark' : 'light'));
-
-  toggleBtn.addEventListener('click', function(){
-    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    applyTheme(next);
-    localStorage.setItem('sampuran-theme', next);
-  });
-})();
-</script>
+<!--
+  Theme toggle logic lives in theme.js (loaded separately, once,
+  near the end of <body> on every page — see theme.js for why.
+-->
