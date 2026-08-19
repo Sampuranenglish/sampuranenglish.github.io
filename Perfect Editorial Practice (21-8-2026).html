@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampuran English — United and Free</title>
+<style>
+  :root{
+    --paper:#f6f2e9;
+    --ink:#20201d;
+    --rule:#c9bfa8;
+    --accent:#8a3324;
+    --accent-soft:#e7d9c6;
+    --green:#3f5d3a;
+    --blue:#385170;
+    --telegram:#229ed9;
+    --serif: 'Georgia', 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: 'Helvetica Neue', Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    line-height:1.65;
+  }
+
+  .page-header{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 20px 0;
+  }
+  .title-box{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:8px;
+    padding:14px 20px;
+    display:grid;
+    grid-template-columns:56px 1fr;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .title-box .logo{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#fff;
+    justify-self:start;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--sans);
+    font-weight:800;
+    color:var(--ink);
+    font-size:17px;
+    letter-spacing:0.5px;
+  }
+  .title-box .brand{
+    font-family:var(--sans);
+    font-weight:800;
+    font-size:clamp(18px,6.5vw,30px);
+    letter-spacing:0.5px;
+    text-align:center;
+    white-space:nowrap;
+  }
+
+  .telegram-box{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--telegram);
+    color:#fff;
+    text-decoration:none;
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:14.5px;
+    letter-spacing:0.3px;
+    border-radius:8px;
+    padding:12px 16px;
+    margin-bottom:14px;
+    transition:filter .15s;
+  }
+  .telegram-box:hover{ filter:brightness(1.08); }
+  .telegram-box svg{ width:20px; height:20px; flex-shrink:0; }
+
+  .nav-pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:8px;
+  }
+  .nav-pill{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.3px;
+    background:#fffdf8;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+    border-radius:20px;
+    padding:8px 18px;
+    cursor:pointer;
+    transition:background .15s, color .15s;
+  }
+  .nav-pill:hover{ background:var(--accent-soft); }
+  .nav-pill.active{
+    background:var(--ink);
+    color:var(--paper);
+  }
+
+  .page{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 20px 10px;
+    display:none;
+  }
+  .page.active-page{ display:block; }
+
+  section{ margin-bottom:36px; }
+  .section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:8px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  h2.section-title{
+    font-family:var(--sans);
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0;
+  }
+  .pub-date{
+    font-family:var(--sans);
+    font-size:12px;
+    color:#7a7264;
+    letter-spacing:0.5px;
+  }
+
+  .editorial h3{
+    font-size:24px;
+    margin:0 0 4px;
+  }
+  .editorial .byline{
+    font-family:var(--sans);
+    font-size:12px;
+    color:#7a7264;
+    margin-bottom:20px;
+    font-style:italic;
+  }
+  .editorial p{
+    font-size:17px;
+    margin:0 0 16px;
+    text-align:justify;
+  }
+  .editorial p:first-of-type::first-letter{
+    font-size:44px;
+    float:left;
+    line-height:0.8;
+    padding-right:8px;
+    padding-top:4px;
+    color:var(--accent);
+    font-weight:bold;
+  }
+  .vocab{
+    background:linear-gradient(transparent 60%, var(--accent-soft) 60%);
+    cursor:pointer;
+    font-weight:600;
+    border-bottom:1.5px dotted var(--accent);
+    position:relative;
+    scroll-margin-top:90px;
+  }
+  .vocab:hover{ background:linear-gradient(transparent 55%, #dcc9a8 55%); }
+  .vocab.flash{
+    background:#f6c453;
+    box-shadow:0 0 0 4px rgba(246,196,83,0.55);
+    border-radius:2px;
+  }
+
+  .sv-subj{
+    font-weight:700;
+    border-bottom:2.5px solid var(--blue);
+    padding:0 1px;
+  }
+  .sv-verb{
+    font-weight:700;
+    border-bottom:2.5px solid var(--accent);
+    padding:0 1px;
+  }
+  .sv-note{
+    background:#eef2f4;
+    border:1px solid var(--rule);
+    border-left:4px solid var(--blue);
+    border-radius:4px;
+    padding:8px 16px;
+    margin:-6px 0 18px;
+    font-family:var(--sans);
+    font-size:13px;
+    line-height:1.55;
+    color:#3a362f;
+  }
+  .sv-note .sv-tag{
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size:11px;
+    color:var(--blue);
+    margin-right:6px;
+  }
+  .sv-note b.s{ color:var(--blue); }
+  .sv-note b.v{ color:var(--accent); }
+
+  .tooltip{
+    position:fixed;
+    max-width:280px;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sans);
+    font-size:13.5px;
+    line-height:1.5;
+    padding:12px 14px;
+    border-radius:6px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
+    z-index:1000;
+    display:none;
+  }
+  .tooltip::after{
+    content:"";
+    position:absolute;
+    bottom:-7px;
+    left:20px;
+    border-width:7px 7px 0 7px;
+    border-style:solid;
+    border-color:var(--ink) transparent transparent transparent;
+  }
+  .tooltip .tt-word{
+    display:block;
+    font-weight:700;
+    color:#f0d9a8;
+    margin-bottom:4px;
+    font-size:14px;
+  }
+
+  .analysis-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .a-card{
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:16px 20px;
+    border-left:5px solid var(--blue);
+  }
+  .a-card.core{ border-left-color:var(--accent); }
+  .a-card.inference{ border-left-color:var(--blue); }
+  .a-card.purpose{ border-left-color:#6a4c93; }
+  .a-card.tone{ border-left-color:#b5533c; }
+  .a-card.signals{ border-left-color:#3a726b; }
+  .a-card h4{
+    margin:0 0 8px;
+    font-family:var(--sans);
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:var(--ink);
+  }
+  .a-card p, .a-card li{
+    font-family:var(--sans);
+    font-size:14px;
+    color:#3a362f;
+    margin:0 0 6px;
+  }
+  .a-card ul{ margin:0; padding-left:18px; }
+  .signal-word{
+    display:inline-block;
+    background:var(--accent-soft);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:3px 9px;
+    font-weight:700;
+    color:var(--accent);
+    font-size:13px;
+    margin:0 4px 6px 0;
+    font-family:var(--sans);
+    cursor:pointer;
+    transition:background 0.15s, transform 0.15s;
+  }
+  .signal-word:hover{
+    background:var(--accent);
+    color:#fff;
+    transform:translateY(-1px);
+  }
+  .signal-highlight{
+    background:#fdeecb;
+    border-bottom:2px solid #c8922f;
+    padding:0 1px;
+    border-radius:2px;
+    scroll-margin-top:90px;
+    transition:background 0.4s, box-shadow 0.4s;
+  }
+  .signal-highlight.flash{
+    background:#f6c453;
+    box-shadow:0 0 0 4px rgba(246,196,83,0.55);
+  }
+
+  .qcard{
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:18px 20px;
+    margin-bottom:16px;
+  }
+  .qcard .qnum{
+    font-family:var(--sans);
+    font-weight:700;
+    color:var(--accent);
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .qcard .qtext{
+    font-size:16.5px;
+    margin-bottom:14px;
+  }
+  .options{
+    display:grid;
+    gap:8px;
+  }
+  .option{
+    font-family:var(--sans);
+    font-size:14.5px;
+    background:var(--paper);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:10px 14px;
+    cursor:pointer;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    transition:background 0.15s, border-color .15s;
+  }
+  .option:hover{ background:var(--accent-soft); }
+  .option .tag{ font-weight:700; color:var(--accent); }
+  .option.correct{ background:#dcebd8; border-color:var(--green); }
+  .option.incorrect{ background:#f3d9d4; border-color:var(--accent); }
+  .option.locked{ cursor:default; pointer-events:none; opacity:0.95; }
+
+  .feedback{
+    margin-top:10px;
+    font-family:var(--sans);
+    font-size:13px;
+    display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback.right{color:var(--green);}
+  .feedback.wrong{color:var(--accent);}
+
+  .score-bar{
+    font-family:var(--sans);
+    background:var(--ink);
+    color:var(--paper);
+    text-align:center;
+    padding:10px;
+    border-radius:4px;
+    font-size:14px;
+    letter-spacing:0.5px;
+    margin-bottom:20px;
+  }
+
+  .answer-block{
+    border-left:4px solid var(--green);
+    background:#fffdf8;
+    padding:14px 18px;
+    margin-bottom:14px;
+    border-radius:0 4px 4px 0;
+  }
+  .answer-block .qnum{
+    font-family:var(--sans);
+    font-weight:700;
+    color:var(--accent);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+  .answer-block .ans-line{
+    font-family:var(--sans);
+    font-weight:700;
+    margin:6px 0 4px;
+    color:var(--green);
+  }
+  .answer-block .expl{
+    font-family:var(--sans);
+    font-size:14px;
+    color:#3a362f;
+  }
+
+  .vocab-list{
+    display:flex;
+    flex-direction:column;
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .vocab-card{
+    padding:14px 16px;
+    border-bottom:1px solid var(--rule);
+    font-family:var(--sans);
+    font-size:14px;
+    line-height:1.5;
+  }
+  .vocab-card:last-child{ border-bottom:none; }
+  .vocab-card:nth-child(even){ background:#f1ead9; }
+  .vocab-card .vc-num{
+    display:inline-block;
+    font-weight:700;
+    color:#7a7264;
+    margin-right:4px;
+  }
+  .vocab-card .vc-word{
+    font-weight:700;
+    color:var(--accent);
+    font-size:15px;
+    margin-bottom:5px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:underline;
+    text-decoration-style:dotted;
+    text-decoration-color:var(--accent);
+    text-underline-offset:3px;
+    transition:color 0.15s;
+  }
+  .vocab-card .vc-word:hover{ color:var(--ink); }
+  .vocab-card .vc-word::after{
+    content:"↗";
+    display:inline-block;
+    margin-left:5px;
+    font-size:12px;
+    color:var(--blue);
+    font-weight:400;
+  }
+  .vocab-card .vc-hindi{
+    color:var(--blue);
+    font-weight:600;
+    font-size:14px;
+    display:inline;
+    margin-left:8px;
+    margin-bottom:6px;
+    font-family:'Noto Sans Devanagari', 'Nirmala UI', var(--sans);
+  }
+  .vocab-card .vc-meaning{ color:#20201d; margin-bottom:6px; }
+  .vocab-card .vc-meaning-label{
+    font-weight:700;
+    color:#3a362f;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-right:5px;
+  }
+  .vocab-card .vc-row{ margin-bottom:2px; }
+  .vocab-card .vc-row:last-child{ margin-bottom:0; }
+  .vocab-card .vc-label{
+    font-weight:700;
+    color:#3a362f;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-right:6px;
+  }
+  .syn{ color:#8a3324; }
+  .ant{ color:var(--green); }
+
+  .nav-pills-bottom{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    padding-top:22px;
+    margin-top:10px;
+    border-top:1px solid var(--rule);
+  }
+
+  .page-number{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:700;
+    color:#7a7264;
+    letter-spacing:0.5px;
+    padding:18px 0 30px;
+    border-top:1px solid var(--rule);
+    margin-top:10px;
+  }
+
+  footer.site-footer{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:11px;
+    color:#8a8272;
+    padding:20px;
+  }
+
+  @media (max-width:480px){
+    .editorial p{ font-size:16px; }
+    .tooltip{ max-width:230px; }
+    .section-header{ flex-wrap:wrap; }
+    .title-box{ grid-template-columns:40px 1fr; padding:12px 14px; gap:8px; }
+    .title-box .logo{ width:36px; height:36px; font-size:14px; }
+    .title-box .brand{ font-size:clamp(16px,7vw,24px); letter-spacing:0.2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="title-box">
+    <div class="logo">SE</div>
+    <div class="brand">SAMPURAN ENGLISH</div>
+  </div>
+
+  <a class="telegram-box" href="https://t.me/Sampuran_English" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 4L3 11.5L10 13.5M21 4L18 20L10 13.5M21 4L10 13.5M10 13.5V19L13.2 15.8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Official Telegram Channel
+  </a>
+
+  <div class="nav-pills">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+</div>
+
+<!-- ================= PAGE 1: EDITORIAL ================= -->
+<div class="page active-page" id="page-editorial">
+
+  <section class="editorial">
+    <div class="section-header">
+      <h2 class="section-title">The Editorial</h2>
+      <span class="pub-date">21 Aug 2026</span>
+    </div>
+    <h3>Vote of trust: On Trump&rsquo;s appreciation, clean electoral rolls in India</h3>
+    <div class="byline">The Hindu Editorial &middot; for exam practice</div>
+
+    <p><span class="sv-subj">President Donald Trump&rsquo;s <span class="vocab" data-word="appreciation">appreciation</span></span> of India&rsquo;s election mechanism <span class="sv-verb">has put</span> the spotlight on a <span class="signal-highlight" data-signal="divisive-debate">highly <span class="vocab" data-word="divisive">divisive</span> debate over election <span class="vocab" data-word="integrity">integrity</span> in the two democracies</span>. Mr. Trump is pushing for an SIR-like exercise in the U.S., but its highly <span class="vocab" data-word="federalised">federalised</span> electoral process is governed by <span class="vocab" data-word="fragmented">fragmented</span> rules and politics that resist the idea. <span class="sv-subj">His curious social media post</span> <span class="vocab" data-word="citing">citing</span> India&rsquo;s Chief Election Commissioner, Gyanesh Kumar, as having wondered how the U.S. could conduct elections without a valid photo identity, <span class="sv-verb">has <span class="vocab" data-word="renewed">renewed</span></span> concerns over election <span class="vocab" data-word="integrity">integrity</span> in both the U.S. and India.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9312; <b class="s">President Donald Trump&rsquo;s appreciation</b> ... <b class="v">has put</b> [the spotlight] &mdash; separated by &ldquo;of India&rsquo;s election mechanism&rdquo;. <b>Short form: "<b class="s">Trump&rsquo;s appreciation</b> <b class="v">has put</b> the spotlight on a debate."</b></div>
+      <div style="margin-top:8px;">&#9313; <b class="s">His curious social media post</b> ... <b class="v">has renewed</b> [concerns] &mdash; separated by the long participial phrase &ldquo;citing India&rsquo;s CEC, Gyanesh Kumar, as having wondered ... valid photo identity&rdquo;. <b>Short form: "<b class="s">His post</b> <b class="v">has renewed</b> concerns over election integrity."</b></div>
+    </div>
+
+    <p>While no one can disagree that the process should be fair and transparent, <span class="signal-highlight" data-signal="agreement-ends">the agreement ends there</span>. <span class="vocab" data-word="partisan">Partisan</span> politics in both countries has <span class="vocab" data-word="fostered">fostered</span> political <span class="vocab" data-word="mistrust">mistrust</span>, leading election losers to repeatedly question electoral <span class="vocab" data-word="integrity">integrity</span>. <span class="sv-subj">The liberal and progressive <span class="vocab" data-word="strands">strands</span>, and the conservative and nativist <span class="vocab" data-word="strands">strands</span></span> in both countries, <span class="sv-verb">want</span> to purify and <span class="vocab" data-word="streamline">streamline</span> the electoral rolls and the processes, but in different and often contradictory ways. <span class="signal-highlight" data-signal="shared-agenda">India and the U.S. could lead a shared democratic agenda on election rules, but only after restoring trust and <span class="vocab" data-word="integrity">integrity</span> in their electoral processes</span>.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9314; <b class="s">The liberal and progressive strands, and the conservative and nativist strands</b> ... <b class="v">want</b> &mdash; separated by &ldquo;in both countries&rdquo;. <b>Short form: "<b class="s">The two strands</b> <b class="v">want</b> to purify and streamline the rolls."</b></div>
+    </div>
+
+    <p>India&rsquo;s nationalised election administration system has largely worked well, though it now faces a crisis of <span class="vocab" data-word="legitimacy">legitimacy</span>. The U.S.&rsquo;s <span class="vocab" data-word="decentralised">decentralised</span> system leaves too many <span class="vocab" data-word="loopholes">loopholes</span> in the process of enrolment and voting, and it could benefit from a more <span class="vocab" data-word="robust">robust</span> national framework like the ECI&rsquo;s. The expanded Safeguard American Voter Eligibility (SAVE) Act was passed in February and is pending in the Senate. The Constitution grants each State its own methods: &ldquo;&hellip;but Congress may at any time by law make or <span class="vocab" data-word="alter">alter</span> such regulations&rdquo;, unlike the Indian Constitution, which establishes the ECI as a constitutional body.</p>
+
+    <p>Though there is no <span class="vocab" data-word="ambiguity">ambiguity</span> in existing law either in the U.S. or in India that only citizens may register and vote, the process of ensuring this has become hugely controversial in both countries. The proposed federal law would require proof of citizenship for voter registration and photo ID for voting. In India, the SIR is <span class="signal-highlight" data-signal="sneak-in">trying to <span class="vocab" data-word="sneak">sneak</span> in this requirement without transparency, adequate consultation or sufficient time</span>. <span class="sv-subj">The very fact</span> that SIR is meant to be conducted only once in 20 years <span class="sv-verb">means</span> it should be <span class="vocab" data-word="carried-out">carried out</span> carefully and <span class="vocab" data-word="inclusively">inclusively</span>. <span class="sv-subj">What is needed</span> <span class="sv-verb">is</span> an acceptance that clean electoral rolls of citizens, and voting with photo ID, are <span class="vocab" data-word="elementary">elementary</span> requirements of a fair process. In both countries, <span class="signal-highlight" data-signal="not-weaponise">the state must not selectively <span class="vocab" data-word="weaponise">weaponise</span> these requirements against those not in power</span>.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9315; <b class="s">The very fact</b> ... <b class="v">means</b> &mdash; separated by the entire noun clause &ldquo;that SIR is meant to be conducted only once in 20 years&rdquo;. <b>Short form: "<b class="s">The fact</b> <b class="v">means</b> it should be carried out carefully."</b></div>
+      <div style="margin-top:8px;">&#9316; <b class="s">What is needed</b> ... <b class="v">is</b> [an acceptance] &mdash; here the subject itself is a <i>nominal (fused) relative clause</i>, a &ldquo;what&rdquo;-clause that works as a single noun-phrase subject, so subject and verb actually sit close together; it is included here because this clause type is often mistaken for a question or an incomplete sentence. <b>Short form: "<b class="s">What is needed</b> <b class="v">is</b> an acceptance."</b></div>
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 1 of 5</div>
+</div>
+
+<!-- ================= PAGE 2: QUESTIONS ================= -->
+<div class="page" id="page-questions">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Practice Questions</h2>
+    </div>
+    <div class="score-bar" id="scoreBar">Score: 0 / 5</div>
+
+    <div class="qcard" data-qid="1">
+      <div class="qnum">Question 1 &mdash; Main Idea</div>
+      <div class="qtext">Which statement best captures the editorial&rsquo;s central argument?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> The SAVE Act should be rejected by the Senate since the U.S.&rsquo;s decentralised system is inherently superior to India&rsquo;s centralised model.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> India&rsquo;s ECI system provides an ideal model for U.S. election reform since India&rsquo;s electoral process has no problems whatsoever.</div>
+        <div class="option" data-correct="true"><span class="tag">C.</span> Clean electoral rolls and photo ID are legitimate basic requirements, but both nations must apply these rules fairly rather than as partisan weapons.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Trump&rsquo;s push for an SIR-like exercise in the U.S. is impossible because Congress has no authority over state election laws.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="2">
+      <div class="qnum">Question 2 &mdash; Inference</div>
+      <div class="qtext">Based on the editorial, what can be inferred about the conduct of India&rsquo;s SIR exercise?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> SIR has already been completed successfully in India, and the editorial recommends the U.S. adopt an identical process without modification.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> The editorial suggests SIR is unconstitutional and should be immediately halted by the ECI before further rolls are revised.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> The 20-year frequency of SIR proves Indian electoral rolls are already fully clean and need no further citizenship verification.</div>
+        <div class="option" data-correct="true"><span class="tag">D.</span> Because SIR occurs only once in 20 years, its current rushed and non-transparent conduct is a more serious concern than it might otherwise be.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="3">
+      <div class="qnum">Question 3 &mdash; Vocabulary in Context</div>
+      <div class="qtext">In &ldquo;the U.S.&rsquo;s decentralised system leaves too many loopholes in the process of enrolment and voting,&rdquo; the word &ldquo;loopholes&rdquo; is closest in meaning to:</div>
+      <div class="options">
+        <div class="option" data-correct="true"><span class="tag">A.</span> Ambiguous gaps or weaknesses in a system that allow it to be exploited or bypassed.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> Deliberate legal protections designed to safeguard voters from government overreach.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> Centralised offices responsible for overseeing every stage of an election.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Formal amendments added specifically to strengthen citizenship verification.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="4">
+      <div class="qnum">Question 4 &mdash; Purpose / Structure</div>
+      <div class="qtext">What is the primary function of the editorial&rsquo;s comparison between the U.S. Constitution&rsquo;s clause on State regulations and the Indian Constitution&rsquo;s establishment of the ECI?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> To argue that the U.S. Constitution is fundamentally flawed and must be amended to remove all State-level election control.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> To suggest that the SAVE Act is unconstitutional because it overrides State authority guaranteed by the Constitution.</div>
+        <div class="option" data-correct="true"><span class="tag">C.</span> To explain a structural difference that helps account for why India&rsquo;s nationalised system and America&rsquo;s fragmented one face different integrity challenges.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> To prove that India&rsquo;s ECI has never faced any legitimacy problems, unlike the fragmented U.S. system.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="5">
+      <div class="qnum">Question 5 &mdash; Detail-Based</div>
+      <div class="qtext">According to the passage, what would the proposed federal law in the U.S. require?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Automatic voter registration for all citizens above 18 without any documentation.</div>
+        <div class="option" data-correct="true"><span class="tag">B.</span> Proof of citizenship for voter registration and photo ID for voting.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> A nationalised election commission modelled directly on India&rsquo;s ECI, replacing State-level authorities.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Mandatory biometric registration for all voters once every 20 years.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 2 of 5</div>
+</div>
+
+<!-- ================= PAGE 3: ANSWERS ================= -->
+<div class="page" id="page-answers">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Answers &amp; Explanations</h2>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 1</div>
+      <div class="ans-line">Correct Answer: C</div>
+      <div class="expl">The editorial accepts clean rolls and photo ID as elementary requirements but insists neither country weaponise them against opponents. A and B wrongly claim one system is superior or flawless, and D misreads the passage, which discusses Congress's regulatory power rather than denying it entirely.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 2</div>
+      <div class="ans-line">Correct Answer: D</div>
+      <div class="expl">The passage states SIR is "meant to be conducted only once in 20 years," which "means it should be carried out carefully and inclusively," implying its current haste is especially problematic. A, B, and C each assert outcomes or conclusions the text never states or actively contradicts.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 3</div>
+      <div class="ans-line">Correct Answer: A</div>
+      <div class="expl">"Loopholes" refers to gaps or weaknesses in the decentralised U.S. enrolment and voting process that leave it open to exploitation, matching the editorial's contrast with a "more robust national framework." B, C, and D each describe the opposite of a weakness or gap.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 4</div>
+      <div class="ans-line">Correct Answer: C</div>
+      <div class="expl">The constitutional comparison explains why the U.S. system stays fragmented across States while India's is unified under a constitutional body, framing why each faces distinct integrity challenges. A, B, and D draw conclusions of unconstitutionality or flawlessness that the passage does not make.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 5</div>
+      <div class="ans-line">Correct Answer: B</div>
+      <div class="expl">The passage explicitly states "the proposed federal law would require proof of citizenship for voter registration and photo ID for voting." A, C, and D each introduce requirements or comparisons the text does not mention.</div>
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 3 of 5</div>
+</div>
+
+<!-- ================= PAGE 4: VOCABULARY ================= -->
+<div class="page" id="page-vocab">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Vocabulary Builder</h2>
+    </div>
+    <div class="vocab-list" id="vocabTableBody"></div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 4 of 5</div>
+</div>
+
+<!-- ================= PAGE 5: EDITORIAL ANALYSIS ================= -->
+<div class="page" id="page-analysis">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Analysis</h2>
+    </div>
+    <div class="analysis-grid">
+
+      <div class="a-card core">
+        <h4>Core Message</h4>
+        <ul>
+          <li>Trump's social media praise of India's election system, and his push for an SIR-like exercise in the U.S., have reignited debate over election integrity in both democracies.</li>
+          <li>Partisan politics in both countries have bred mistrust, with liberal and conservative strands both wanting "clean" rolls but pursuing that goal in contradictory ways.</li>
+          <li>India's nationalised, constitutionally-anchored ECI system contrasts with the U.S.'s fragmented, State-run process, each generating its own legitimacy and loophole problems respectively.</li>
+          <li>The editorial insists citizenship checks and photo ID are elementary, fair-process requirements, but warns that either government could selectively weaponise them against political opponents.</li>
+        </ul>
+      </div>
+
+      <div class="a-card inference">
+        <h4>Inference</h4>
+        <ul>
+          <li>Calling Trump's post "curious" while stressing it "renewed" old concerns implies the author sees the remark as more provocative than genuinely instructive for U.S. reform.</li>
+          <li>Noting that "the agreement ends there" after conceding both sides want fairness implies the author expects consensus on election rules to be difficult, not automatic.</li>
+          <li>Stressing SIR's 20-year frequency to argue it "should be carried out carefully and inclusively" implies the author views its present pace as rushed and risky.</li>
+          <li>The closing warning against selective weaponisation implies the author distrusts the motives of incumbents in both countries when they invoke "integrity" reforms.</li>
+        </ul>
+      </div>
+
+      <div class="a-card purpose">
+        <h4>Purpose</h4>
+        <p>To argue that while citizenship verification and photo ID are legitimate, non-negotiable requirements for fair elections, India and the U.S. must first restore public trust and avoid using these reforms as partisan tools before either can credibly lead a shared democratic agenda.</p>
+      </div>
+
+      <div class="a-card tone">
+        <h4>Tone</h4>
+        <p>The passage opens observational, describing Trump's remark and its ripple effects, turns balanced and analytical while comparing the two constitutional systems, becomes cautionary while discussing the SIR's rushed timeline, and closes firm and admonitory in warning against the political weaponisation of election rules.</p>
+      </div>
+
+      <div class="a-card signals">
+        <h4>Signals</h4>
+        <p>Words and phrases that reveal the author's stance or mark a shift in the argument. Tap any word below to find it highlighted in the passage:</p>
+        <p>
+          <button type="button" class="signal-word" data-signal="divisive-debate">highly divisive debate over election integrity</button>
+          <button type="button" class="signal-word" data-signal="agreement-ends">the agreement ends there</button>
+          <button type="button" class="signal-word" data-signal="shared-agenda">could lead a shared democratic agenda ... but only after restoring trust</button>
+          <button type="button" class="signal-word" data-signal="sneak-in">trying to sneak in this requirement without transparency</button>
+          <button type="button" class="signal-word" data-signal="not-weaponise">must not selectively weaponise these requirements</button>
+        </p>
+        <ul>
+          <li><strong>highly divisive debate over election integrity</strong> &mdash; frames the topic's contentiousness right from the opening line.</li>
+          <li><strong>the agreement ends there</strong> &mdash; the pivot from a shared premise (fairness) to the deeper disagreement that follows.</li>
+          <li><strong>could lead a shared democratic agenda ... but only after restoring trust</strong> &mdash; sets a precondition, showing the author's optimism is conditional, not unqualified.</li>
+          <li><strong>trying to sneak in this requirement without transparency</strong> &mdash; the sharpest critical language in the piece, aimed directly at how SIR is being conducted.</li>
+          <li><strong>must not selectively weaponise these requirements</strong> &mdash; the passage's closing imperative, warning both governments against politicising election-integrity rules.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 5 of 5</div>
+</div>
+
+<div class="tooltip" id="tooltip">
+  <span class="tt-word" id="ttWord"></span>
+  <span id="ttMeaning"></span>
+</div>
+
+<footer class="site-footer">Editorial text as provided, for personal exam-practice use only · Questions, vocabulary, and analysis are original content</footer>
+
+<script>
+  const vocabData = {
+    "appreciation": {
+      hindi: "सराहना / प्रशंसा",
+      meaning: "A favourable or admiring recognition of the value, quality, or merit of something.",
+      synonyms: ["Admiration", "Approval", "Regard", "Esteem"],
+      antonyms: ["Disapproval", "Criticism", "Contempt", "Disdain"]
+    },
+    "divisive": {
+      hindi: "विभाजनकारी",
+      meaning: "Tending to cause disagreement or hostility between people, often splitting them into opposing camps.",
+      synonyms: ["Contentious", "Polarising", "Discordant", "Fractious"],
+      antonyms: ["Unifying", "Harmonious", "Consensual", "Cohesive"]
+    },
+    "federalised": {
+      hindi: "संघीकृत",
+      meaning: "Organised as a federation, with power distributed between a central authority and constituent States.",
+      synonyms: ["Decentralised", "Confederated", "State-based", "Devolved"],
+      antonyms: ["Centralised", "Unitary", "Consolidated", "Nationalised"]
+    },
+    "fragmented": {
+      hindi: "खंडित / बिखरा हुआ",
+      meaning: "Broken up into separate, disconnected, or inconsistent parts lacking overall unity.",
+      synonyms: ["Disjointed", "Splintered", "Scattered", "Piecemeal"],
+      antonyms: ["Unified", "Cohesive", "Integrated", "Consolidated"]
+    },
+    "integrity": {
+      hindi: "अखंडता / सत्यनिष्ठा",
+      meaning: "The quality of being honest, fair, and consistent with sound moral and procedural principles.",
+      synonyms: ["Honesty", "Soundness", "Uprightness", "Probity"],
+      antonyms: ["Corruption", "Dishonesty", "Unsoundness", "Fraudulence"]
+    },
+    "citing": {
+      hindi: "उद्धृत करते हुए / हवाला देते हुए",
+      meaning: "Referring to or quoting someone or something as evidence or support for a statement.",
+      synonyms: ["Quoting", "Referencing", "Invoking", "Naming"],
+      antonyms: ["Omitting", "Disregarding", "Ignoring", "Withholding"]
+    },
+    "renewed": {
+      hindi: "पुनर्जीवित / फिर से जागृत",
+      meaning: "Resumed or revived after a pause, giving fresh strength or attention to something.",
+      synonyms: ["Revived", "Reignited", "Rekindled", "Reawakened"],
+      antonyms: ["Extinguished", "Ended", "Abandoned", "Dismissed"]
+    },
+    "partisan": {
+      hindi: "पक्षपाती",
+      meaning: "Strongly and often blindly biased in favour of a particular party, cause, or person.",
+      synonyms: ["Biased", "One-sided", "Factional", "Sectarian"],
+      antonyms: ["Impartial", "Neutral", "Non-partisan", "Even-handed"]
+    },
+    "fostered": {
+      hindi: "बढ़ावा दिया / पोषित किया",
+      meaning: "Encouraged or promoted the development of a feeling, activity, or idea over time.",
+      synonyms: ["Nurtured", "Cultivated", "Encouraged", "Promoted"],
+      antonyms: ["Suppressed", "Stifled", "Discouraged", "Hindered"]
+    },
+    "mistrust": {
+      hindi: "अविश्वास",
+      meaning: "A lack of confidence or trust in someone's honesty, motives, or reliability.",
+      synonyms: ["Suspicion", "Distrust", "Wariness", "Scepticism"],
+      antonyms: ["Trust", "Confidence", "Faith", "Assurance"]
+    },
+    "strands": {
+      hindi: "धाराएं / विचारधाराएं",
+      meaning: "Distinct strains, elements, or schools of thought that make up part of a larger movement or idea.",
+      synonyms: ["Strains", "Factions", "Threads", "Schools of thought"],
+      antonyms: ["Wholes", "Unities", "Monoliths", "Singularities"]
+    },
+    "streamline": {
+      hindi: "सरल / सुव्यवस्थित बनाना",
+      meaning: "To make a process simpler, more efficient, and free of unnecessary complexity.",
+      synonyms: ["Simplify", "Rationalise", "Optimise", "Refine"],
+      antonyms: ["Complicate", "Clutter", "Convolute", "Encumber"]
+    },
+    "legitimacy": {
+      hindi: "वैधता",
+      meaning: "The quality of being lawful, genuine, and generally accepted as valid or rightful.",
+      synonyms: ["Validity", "Credibility", "Authority", "Legality"],
+      antonyms: ["Illegitimacy", "Invalidity", "Illegality", "Dubiousness"]
+    },
+    "decentralised": {
+      hindi: "विकेंद्रीकृत",
+      meaning: "Having authority or functions distributed away from a single central point, often to local units.",
+      synonyms: ["Devolved", "Dispersed", "Localised", "Distributed"],
+      antonyms: ["Centralised", "Consolidated", "Unified", "Nationalised"]
+    },
+    "loopholes": {
+      hindi: "खामियां / कमजोर कड़ियां",
+      meaning: "Ambiguities or gaps in a system, law, or set of rules that allow it to be evaded or exploited.",
+      synonyms: ["Gaps", "Weaknesses", "Ambiguities", "Flaws"],
+      antonyms: ["Safeguards", "Protections", "Assurances", "Certainties"]
+    },
+    "robust": {
+      hindi: "मजबूत / सुदृढ़",
+      meaning: "Strong, sturdy, and capable of withstanding pressure, error, or challenge.",
+      synonyms: ["Sturdy", "Resilient", "Sound", "Solid"],
+      antonyms: ["Fragile", "Weak", "Flimsy", "Vulnerable"]
+    },
+    "ambiguity": {
+      hindi: "अस्पष्टता / द्वयर्थकता",
+      meaning: "The quality of being open to more than one interpretation, causing uncertainty of meaning.",
+      synonyms: ["Vagueness", "Uncertainty", "Obscurity", "Equivocation"],
+      antonyms: ["Clarity", "Precision", "Certainty", "Explicitness"]
+    },
+    "alter": {
+      hindi: "बदलना / परिवर्तित करना",
+      meaning: "To change or modify something, especially a rule, law, or arrangement, in part or in whole.",
+      synonyms: ["Modify", "Amend", "Revise", "Adjust"],
+      antonyms: ["Preserve", "Retain", "Maintain", "Fix"]
+    },
+    "sneak": {
+      display: "Sneak in",
+      hindi: "चुपके से लाना / घुसाना",
+      meaning: "To introduce or bring about something in a quiet, covert, or underhand manner, avoiding notice.",
+      synonyms: ["Smuggle in", "Slip in", "Insert covertly", "Introduce quietly"],
+      antonyms: ["Announce openly", "Declare", "Disclose", "Introduce transparently"]
+    },
+    "carried-out": {
+      display: "Carried out",
+      hindi: "संपन्न किया गया / क्रियान्वित",
+      meaning: "Performed, executed, or conducted, especially a task, process, or exercise.",
+      synonyms: ["Conducted", "Executed", "Performed", "Implemented"],
+      antonyms: ["Abandoned", "Neglected", "Left undone", "Discontinued"]
+    },
+    "inclusively": {
+      hindi: "समावेशी रूप से",
+      meaning: "In a manner that involves or accounts for everyone concerned, leaving no one out.",
+      synonyms: ["Comprehensively", "Broadly", "All-encompassingly", "Universally"],
+      antonyms: ["Exclusively", "Selectively", "Narrowly", "Partially"]
+    },
+    "elementary": {
+      hindi: "प्रारंभिक / मूलभूत",
+      meaning: "Basic or fundamental in nature; forming the essential first principles of something.",
+      synonyms: ["Basic", "Fundamental", "Foundational", "Rudimentary"],
+      antonyms: ["Advanced", "Complex", "Sophisticated", "Elaborate"]
+    },
+    "weaponise": {
+      hindi: "हथियार के रूप में इस्तेमाल करना",
+      meaning: "To use something, such as a rule or policy, as a tool of attack against opponents rather than for its stated purpose.",
+      synonyms: ["Exploit", "Misuse", "Instrumentalise", "Politicise"],
+      antonyms: ["Neutralise", "Depoliticise", "Apply fairly", "Uphold impartially"]
+    }
+  };
+
+  const tbody = document.getElementById('vocabTableBody');
+  Object.keys(vocabData).forEach((word, i) => {
+    const d = vocabData[word];
+    const label = d.display || (word.charAt(0).toUpperCase() + word.slice(1));
+    const card = document.createElement('div');
+    card.className = 'vocab-card';
+    card.innerHTML = `
+      <div>
+        <span class="vc-num">${i + 1}.</span><span class="vc-word jump" data-word="${word}" title="Find this word in the editorial">${label}</span><span class="vc-hindi">${d.hindi}</span>
+      </div>
+      <div class="vc-meaning"><span class="vc-meaning-label">MEANING:</span>${d.meaning}</div>
+      <div class="vc-row"><span class="vc-label">SYNONYMS:</span> <span class="syn">${d.synonyms.join(', ')}</span></div>
+      <div class="vc-row"><span class="vc-label">ANTONYMS:</span> <span class="ant">${d.antonyms.join(', ')}</span></div>
+    `;
+    tbody.appendChild(card);
+  });
+
+  document.querySelectorAll('.vc-word.jump').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const key = cell.getAttribute('data-word');
+      showPage('page-editorial');
+      setTimeout(() => {
+        const target = document.querySelector('.editorial .vocab[data-word="' + key + '"]');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1800);
+      }, 150);
+    });
+  });
+
+  const tooltip = document.getElementById('tooltip');
+  const ttWord = document.getElementById('ttWord');
+  const ttMeaning = document.getElementById('ttMeaning');
+
+  document.querySelectorAll('.vocab').forEach(span => {
+    span.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const key = span.getAttribute('data-word');
+      const data = vocabData[key];
+      if (!data) return;
+
+      const label = data.display || (key.charAt(0).toUpperCase() + key.slice(1));
+      ttWord.textContent = label;
+      ttMeaning.textContent = data.meaning;
+
+      const rect = span.getBoundingClientRect();
+      tooltip.style.display = 'block';
+      const ttRect = tooltip.getBoundingClientRect();
+
+      let left = rect.left;
+      let top = rect.bottom + 10;
+
+      if (left + ttRect.width > window.innerWidth - 10) {
+        left = window.innerWidth - ttRect.width - 10;
+      }
+      if (top + ttRect.height > window.innerHeight - 10) {
+        top = rect.top - ttRect.height - 10;
+      }
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+    });
+  });
+
+  document.addEventListener('click', () => {
+    tooltip.style.display = 'none';
+  });
+  tooltip.addEventListener('click', (e) => e.stopPropagation());
+
+  const navPills = document.querySelectorAll('.nav-pill');
+  const pages = document.querySelectorAll('.page');
+
+  function showPage(pageId) {
+    pages.forEach(p => p.classList.toggle('active-page', p.id === pageId));
+    navPills.forEach(p => p.classList.toggle('active', p.getAttribute('data-page') === pageId));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  navPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      showPage(pill.getAttribute('data-page'));
+    });
+  });
+
+  showPage('page-editorial');
+
+  document.querySelectorAll('.signal-word[data-signal]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-signal');
+      showPage('page-editorial');
+      setTimeout(() => {
+        const target = document.querySelector('.signal-highlight[data-signal="' + key + '"]');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1800);
+      }, 150);
+    });
+  });
+
+  let score = 0;
+  const answered = {};
+  const scoreBar = document.getElementById('scoreBar');
+  const totalQuestions = document.querySelectorAll('.qcard').length;
+
+  let audioCtx = null;
+  function playTickSound() {
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1046.5, now);
+      osc.frequency.setValueAtTime(1568, now + 0.08);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.18, now + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.24);
+    } catch (err) { /* audio not supported, fail silently */ }
+  }
+
+  document.querySelectorAll('.qcard').forEach(card => {
+    const qid = card.getAttribute('data-qid');
+    const feedback = card.querySelector('.feedback');
+    const options = card.querySelectorAll('.option');
+
+    options.forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (answered[qid]) return;
+
+        answered[qid] = true;
+        const isCorrect = opt.getAttribute('data-correct') === 'true';
+
+        options.forEach(o => {
+          o.classList.add('locked');
+          if (o.getAttribute('data-correct') === 'true') {
+            o.classList.add('correct');
+          } else if (o === opt) {
+            o.classList.add('incorrect');
+          }
+        });
+
+        feedback.classList.add('show');
+        if (isCorrect) {
+          score++;
+          playTickSound();
+          feedback.textContent = '✓ Correct!';
+          feedback.classList.add('right');
+        } else {
+          feedback.textContent = '✗ Not quite — the correct answer is highlighted in green.';
+          feedback.classList.add('wrong');
+        }
+
+        scoreBar.textContent = `Score: ${score} / ${totalQuestions}`;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
