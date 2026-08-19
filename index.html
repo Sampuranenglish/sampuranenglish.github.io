@@ -9,153 +9,226 @@ if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
 <title>Sampuran English</title>
 <link rel="stylesheet" href="style.css">
 <style>
+:root{
+--page-bg:#f2f2f2;
+--card-bg:#ffffff;
+--card-text:#222222;
+--accent:#0d4ea6;
+--accent-hover:#083b7d;
+--footer-bg:#222222;
+--footer-text:#ffffff;
+--danger:#b00020;
+--success:#0a7a2f;
+--syn-color:#d10000;
+--banner-bg:#fff4e5;
+--banner-border:#ffcf8f;
+--banner-accent:#ff8a00;
+--banner-text:#5a3a00;
+}
+html[data-theme="dark"]{
+--page-bg:#0b0c0e;
+--card-bg:#1b1c1f;
+--card-text:#f2f2f2;
+--accent:#3b82f6;
+--accent-hover:#2563eb;
+--footer-bg:#000000;
+--footer-text:#f2f2f2;
+--danger:#ff6b6b;
+--success:#4ade80;
+--syn-color:#ff6b6b;
+--banner-bg:#2a1f0a;
+--banner-border:#5a4419;
+--banner-accent:#ffb84d;
+--banner-text:#f2d9a8;
+}
 html,body{
-    height:100%;
-    margin:0;
+height:100%;
+margin:0;
 }
 body{
-    display:flex;
-    flex-direction:column;
-    min-height:100vh;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+background:var(--page-bg);
+transition:background .25s ease;
 }
 .section-title{
-    text-align:center;
-    color:#0d4ea6;
-    margin-bottom:20px;
+text-align:center;
+color:var(--accent);
+margin-bottom:20px;
 }
 .container{
-    flex:1;
-    padding-top:0;
+flex:1;
+padding-top:0;
 }
 .container > *:first-child{
-    margin-top:0;
+margin-top:0;
 }
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 .highlight-grid{
-    margin-bottom:20px;
+margin-bottom:20px;
 }
 .card{
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,.12);
-    text-align:center;
+background:var(--card-bg);
+color:var(--card-text);
+padding:25px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,.12);
+text-align:center;
+transition:background .25s ease,color .25s ease;
 }
 .card h3{
-    color:#0d4ea6;
-    margin-bottom:15px;
+color:var(--accent);
+margin-bottom:15px;
 }
 .card p{
-    margin-bottom:10px;
+margin-bottom:10px;
 }
 .card a{
-    display:inline-block;
-    background:#0d4ea6;
-    color:white;
-    text-decoration:none;
-    padding:12px 22px;
-    border-radius:6px;
-    margin-top:10px;
+display:inline-block;
+background:var(--accent);
+color:white;
+text-decoration:none;
+padding:12px 22px;
+border-radius:6px;
+margin-top:10px;
 }
 .rule-line{
-    text-align:left;
-    font-size:15px;
-    margin-bottom:8px;
+text-align:left;
+font-size:15px;
+margin-bottom:8px;
 }
 .rule-statement{
-    color:#0d4ea6;
-    font-weight:600;
+color:var(--accent);
+font-weight:600;
 }
 .rule-wrong{
-    color:#b00020;
+color:var(--danger);
 }
 .rule-right{
-    color:#0a7a2f;
+color:var(--success);
 }
 .word-title{
-    font-size:15px;
-    font-weight:bold;
-    color:#0d4ea6;
-    margin-bottom:10px;
-    text-align:left;
+font-size:15px;
+font-weight:bold;
+color:var(--accent);
+margin-bottom:10px;
+text-align:left;
 }
 .word-line{
-    text-align:left;
-    font-size:15px;
-    margin-bottom:6px;
+text-align:left;
+font-size:15px;
+margin-bottom:6px;
 }
 .label-syn{
-    color:#d10000;
-    font-weight:bold;
+color:var(--syn-color);
+font-weight:bold;
 }
 .label-ant{
-    color:#0d4ea6;
-    font-weight:bold;
+color:var(--accent);
+font-weight:bold;
 }
 .highlight-tabs{
-    display:flex;
-    gap:10px;
-    margin-bottom:15px;
-    flex-wrap:wrap;
+display:flex;
+gap:10px;
+margin-bottom:15px;
+flex-wrap:wrap;
 }
 .tab-btn{
-    flex:1;
-    min-width:110px;
-    background:white;
-    border:2px solid #0d4ea6;
-    color:#0d4ea6;
-    border-radius:20px;
-    padding:12px 10px;
-    font-size:14px;
-    font-weight:700;
-    cursor:pointer;
-    text-align:center;
+flex:1;
+min-width:110px;
+background:var(--card-bg);
+border:2px solid var(--accent);
+color:var(--accent);
+border-radius:20px;
+padding:12px 10px;
+font-size:14px;
+font-weight:700;
+cursor:pointer;
+text-align:center;
 }
 .tab-btn.active{
-    background:#0d4ea6;
-    color:white;
+background:var(--accent);
+color:white;
 }
 .tab-btn:hover{
-    background:#0d4ea6;
-    color:white;
+background:var(--accent);
+color:white;
 }
 .panel{
-    display:none;
+display:none;
 }
 .panel.active{
-    display:block;
+display:block;
 }
 footer{
-    margin-top:30px;
-    background:#222;
-    color:white;
-    text-align:center;
-    padding:10px;
-    font-size:13px;
+margin-top:30px;
+background:var(--footer-bg);
+color:var(--footer-text);
+text-align:center;
+padding:10px;
+font-size:13px;
+}
+.ssc-banner{
+display:none;
+align-items:center;
+gap:10px;
+background:var(--banner-bg);
+border:1px solid var(--banner-border);
+border-left:5px solid var(--banner-accent);
+border-radius:8px;
+padding:14px 16px;
+margin-bottom:20px;
+text-decoration:none;
+color:var(--banner-text);
+font-size:14px;
+box-shadow:0 2px 6px rgba(0,0,0,.06);
+}
+.ssc-banner:hover{
+background:var(--banner-border);
+}
+.ssc-banner-label{
+font-weight:700;
+color:var(--accent);
+white-space:nowrap;
+}
+.ssc-banner-text{
+flex:1;
+font-weight:600;
+}
+.ssc-banner-arrow{
+font-weight:700;
+color:var(--banner-accent);
+}
+@media (max-width:768px){
+.ssc-banner{
+font-size:13px;
+align-items:flex-start;
+}
 }
 @media (max-width:768px){
 .grid{
-    grid-template-columns:1fr;
+grid-template-columns:1fr;
 }
 .card{
-    padding:22px;
+padding:22px;
 }
 .card a{
-    display:block;
-    width:100%;
-    text-align:center;
+display:block;
+width:100%;
+text-align:center;
 }
 .tab-btn{
-    font-size:12.5px;
-    padding:10px 6px;
+font-size:12.5px;
+padding:10px 6px;
 }
 footer{
-    font-size:12px;
-    padding:10px;
+font-size:12px;
+padding:10px;
 }
 }
 </style>
@@ -163,12 +236,16 @@ footer{
 <body>
 <div id="site-header"></div>
 <div class="container">
+<a id="ssc-notification-banner" href="#" target="_blank" rel="noopener" class="ssc-banner">
+<span class="ssc-banner-label">🔔 SSC Notice:</span>
+<span class="ssc-banner-text" id="ssc-notification-text"></span>
+<span class="ssc-banner-arrow">View →</span>
+</a>
 <div class="highlight-tabs" id="highlightTabs">
 <button class="tab-btn" id="tabRuleBtn">📜 Rule of the Day</button>
 <button class="tab-btn" id="tabWordBtn">🔤 Word of the Day</button>
 <button class="tab-btn" id="tabIdiomBtn">🗣️ Idiom of the Day</button>
 </div>
-
 <div class="highlight-grid">
 <div class="card panel" id="rulePanel">
 <h3>📜 Rule of the Day</h3>
@@ -189,7 +266,6 @@ footer{
 <p class="word-line" id="iotd-example">Loading...</p>
 </div>
 </div>
-
 <div class="grid">
 <div class="card">
 <h3>📝 Mock Tests</h3>
@@ -228,301 +304,292 @@ footer{
 </footer>
 <script>
 fetch('header.html')
-  .then(function(response){ return response.text(); })
-  .then(function(html){
-    document.getElementById('site-header').innerHTML = html;
-    window.scrollTo(0, 0);
-    document.getElementById('menuToggle').addEventListener('click', function(){
-      document.getElementById('menuList').classList.toggle('open');
-    });
-    if (typeof initNotifications === 'function') { initNotifications(); }
-  });
-
+.then(function(response){ return response.text(); })
+.then(function(html){
+document.getElementById('site-header').innerHTML = html;
+window.scrollTo(0, 0);
+document.getElementById('menuToggle').addEventListener('click', function(){
+document.getElementById('menuList').classList.toggle('open');
+});
+if (typeof initNotifications === 'function') { initNotifications(); }
+});
 var startOfYear = new Date(new Date().getFullYear(), 0, 0);
 var diff = new Date() - startOfYear;
 var dayOfYear = Math.floor(diff / 86400000);
-
 var rules = [
-  {rule:"A singular subject always takes a singular verb, and a plural subject takes a plural verb.", wrong:"❌ The list of items are on the table.", right:"✅ The list of items is on the table."},
-  {rule:"\"Each of\", \"either of\", \"neither of\" are always followed by a singular verb.", wrong:"❌ Neither of the boys have come.", right:"✅ Neither of the boys has come."},
-  {rule:"When two singular subjects are joined by \"and\", the verb used must be plural.", wrong:"❌ Ram and Shyam is playing.", right:"✅ Ram and Shyam are playing."},
-  {rule:"When subjects are joined by \"or\"/\"nor\", the verb agrees with the nearer subject.", wrong:"❌ Either he or they is wrong.", right:"✅ Either he or they are wrong."},
-  {rule:"Collective nouns like team, family, jury take a singular verb as one unit.", wrong:"❌ The team are winning the match.", right:"✅ The team is winning the match."},
-  {rule:"Indefinite pronouns like everyone, somebody, nobody take a singular verb.", wrong:"❌ Everyone are ready for the test.", right:"✅ Everyone is ready for the test."},
-  {rule:"Use Simple Past, not Present Perfect, with words like \"yesterday\" or \"ago\".", wrong:"❌ I have met him yesterday.", right:"✅ I met him yesterday."},
-  {rule:"Use Present Perfect with \"since\" a point in time and \"for\" a duration.", wrong:"❌ I am living here since 2010.", right:"✅ I have been living here since 2010."},
-  {rule:"Use Simple Present tense for habitual actions, routines, and general facts.", wrong:"❌ The sun rose in the east.", right:"✅ The sun rises in the east."},
-  {rule:"Use Past Perfect (had + V3) for the action that happened first of two.", wrong:"❌ When I reached, the train left.", right:"✅ When I reached, the train had left."},
-  {rule:"Stative verbs such as know, believe, love are not used in continuous form.", wrong:"❌ I am knowing him well.", right:"✅ I know him well."},
-  {rule:"In a future time clause with \"when/if\", use present tense, not \"will\".", wrong:"❌ I will call when I will reach home.", right:"✅ I will call when I reach home."},
-  {rule:"Zero Conditional (general truths): Simple Present in both if-clause and main clause.", wrong:"❌ If you heat ice, it will melt.", right:"✅ If you heat ice, it melts."},
-  {rule:"First Conditional (real future): Simple Present in if-clause, \"will\" in main clause.", wrong:"❌ If it will rain, we will stay home.", right:"✅ If it rains, we will stay home."},
-  {rule:"Second Conditional (unreal present): Past Simple in if-clause, \"would\" in main clause.", wrong:"❌ If I was you, I will help him.", right:"✅ If I were you, I would help him."},
-  {rule:"Third Conditional (unreal past): Past Perfect in if-clause, \"would have\" in main clause.", wrong:"❌ If he had studied, he will pass.", right:"✅ If he had studied, he would have passed."},
-  {rule:"Use \"were\", not \"was\", for every subject after \"if\" in unreal conditionals.", wrong:"❌ If I was rich, I would travel.", right:"✅ If I were rich, I would travel."},
-  {rule:"Never use \"will\" or \"would\" inside the if-clause of a conditional sentence.", wrong:"❌ If you would come, I would be happy.", right:"✅ If you came, I would be happy."},
-  {rule:"Don't add \"more\" before an adjective that already ends in -er.", wrong:"❌ He is more taller than me.", right:"✅ He is taller than me."},
-  {rule:"Avoid double comparatives or superlatives like \"more better\" or \"most best\".", wrong:"❌ This is the most best answer.", right:"✅ This is the best answer."},
-  {rule:"A superlative adjective is always preceded by the article \"the\".", wrong:"❌ He is tallest boy in the class.", right:"✅ He is the tallest boy in the class."},
-  {rule:"\"Elder/eldest\" is used only for family members; use \"older/oldest\" elsewhere.", wrong:"❌ He is elder than his friend.", right:"✅ He is older than his friend."},
-  {rule:"Use \"fewer\" with countable nouns and \"less\" with uncountable nouns.", wrong:"❌ He has less friends than me.", right:"✅ He has fewer friends than me."},
-  {rule:"Use \"many\" with countable nouns and \"much\" with uncountable nouns.", wrong:"❌ She has much books.", right:"✅ She has many books."},
-  {rule:"A pronoun must always agree in number and gender with the noun it refers to.", wrong:"❌ Every student must submit their ID.", right:"✅ Every student must submit his/her ID."},
-  {rule:"Use subject pronouns like I and he as the subject, never as the object.", wrong:"❌ Me and him went to the market.", right:"✅ He and I went to the market."},
-  {rule:"Use object pronouns like me and him after a preposition, not subject pronouns.", wrong:"❌ Between you and I, this is wrong.", right:"✅ Between you and me, this is wrong."},
-  {rule:"A reflexive pronoun like himself/myself must match the subject's own person.", wrong:"❌ He hurt hisself while playing.", right:"✅ He hurt himself while playing."},
-  {rule:"Possessive pronouns like yours, hers, theirs never take an apostrophe.", wrong:"❌ This book is your's.", right:"✅ This book is yours."},
-  {rule:"Use \"who\" for the subject of a clause and \"whom\" for its object.", wrong:"❌ He is the man who I met yesterday.", right:"✅ He is the man whom I met yesterday."}
+{rule:"A singular subject always takes a singular verb, and a plural subject takes a plural verb.", wrong:"❌ The list of items are on the table.", right:"✅ The list of items is on the table."},
+{rule:"\"Each of\", \"either of\", \"neither of\" are always followed by a singular verb.", wrong:"❌ Neither of the boys have come.", right:"✅ Neither of the boys has come."},
+{rule:"When two singular subjects are joined by \"and\", the verb used must be plural.", wrong:"❌ Ram and Shyam is playing.", right:"✅ Ram and Shyam are playing."},
+{rule:"When subjects are joined by \"or\"/\"nor\", the verb agrees with the nearer subject.", wrong:"❌ Either he or they is wrong.", right:"✅ Either he or they are wrong."},
+{rule:"Collective nouns like team, family, jury take a singular verb as one unit.", wrong:"❌ The team are winning the match.", right:"✅ The team is winning the match."},
+{rule:"Indefinite pronouns like everyone, somebody, nobody take a singular verb.", wrong:"❌ Everyone are ready for the test.", right:"✅ Everyone is ready for the test."},
+{rule:"Use Simple Past, not Present Perfect, with words like \"yesterday\" or \"ago\".", wrong:"❌ I have met him yesterday.", right:"✅ I met him yesterday."},
+{rule:"Use Present Perfect with \"since\" a point in time and \"for\" a duration.", wrong:"❌ I am living here since 2010.", right:"✅ I have been living here since 2010."},
+{rule:"Use Simple Present tense for habitual actions, routines, and general facts.", wrong:"❌ The sun rose in the east.", right:"✅ The sun rises in the east."},
+{rule:"Use Past Perfect (had + V3) for the action that happened first of two.", wrong:"❌ When I reached, the train left.", right:"✅ When I reached, the train had left."},
+{rule:"Stative verbs such as know, believe, love are not used in continuous form.", wrong:"❌ I am knowing him well.", right:"✅ I know him well."},
+{rule:"In a future time clause with \"when/if\", use present tense, not \"will\".", wrong:"❌ I will call when I will reach home.", right:"✅ I will call when I reach home."},
+{rule:"Zero Conditional (general truths): Simple Present in both if-clause and main clause.", wrong:"❌ If you heat ice, it will melt.", right:"✅ If you heat ice, it melts."},
+{rule:"First Conditional (real future): Simple Present in if-clause, \"will\" in main clause.", wrong:"❌ If it will rain, we will stay home.", right:"✅ If it rains, we will stay home."},
+{rule:"Second Conditional (unreal present): Past Simple in if-clause, \"would\" in main clause.", wrong:"❌ If I was you, I will help him.", right:"✅ If I were you, I would help him."},
+{rule:"Third Conditional (unreal past): Past Perfect in if-clause, \"would have\" in main clause.", wrong:"❌ If he had studied, he will pass.", right:"✅ If he had studied, he would have passed."},
+{rule:"Use \"were\", not \"was\", for every subject after \"if\" in unreal conditionals.", wrong:"❌ If I was rich, I would travel.", right:"✅ If I were rich, I would travel."},
+{rule:"Never use \"will\" or \"would\" inside the if-clause of a conditional sentence.", wrong:"❌ If you would come, I would be happy.", right:"✅ If you came, I would be happy."},
+{rule:"Don't add \"more\" before an adjective that already ends in -er.", wrong:"❌ He is more taller than me.", right:"✅ He is taller than me."},
+{rule:"Avoid double comparatives or superlatives like \"more better\" or \"most best\".", wrong:"❌ This is the most best answer.", right:"✅ This is the best answer."},
+{rule:"A superlative adjective is always preceded by the article \"the\".", wrong:"❌ He is tallest boy in the class.", right:"✅ He is the tallest boy in the class."},
+{rule:"\"Elder/eldest\" is used only for family members; use \"older/oldest\" elsewhere.", wrong:"❌ He is elder than his friend.", right:"✅ He is older than his friend."},
+{rule:"Use \"fewer\" with countable nouns and \"less\" with uncountable nouns.", wrong:"❌ He has less friends than me.", right:"✅ He has fewer friends than me."},
+{rule:"Use \"many\" with countable nouns and \"much\" with uncountable nouns.", wrong:"❌ She has much books.", right:"✅ She has many books."},
+{rule:"A pronoun must always agree in number and gender with the noun it refers to.", wrong:"❌ Every student must submit their ID.", right:"✅ Every student must submit his/her ID."},
+{rule:"Use subject pronouns like I and he as the subject, never as the object.", wrong:"❌ Me and him went to the market.", right:"✅ He and I went to the market."},
+{rule:"Use object pronouns like me and him after a preposition, not subject pronouns.", wrong:"❌ Between you and I, this is wrong.", right:"✅ Between you and me, this is wrong."},
+{rule:"A reflexive pronoun like himself/myself must match the subject's own person.", wrong:"❌ He hurt hisself while playing.", right:"✅ He hurt himself while playing."},
+{rule:"Possessive pronouns like yours, hers, theirs never take an apostrophe.", wrong:"❌ This book is your's.", right:"✅ This book is yours."},
+{rule:"Use \"who\" for the subject of a clause and \"whom\" for its object.", wrong:"❌ He is the man who I met yesterday.", right:"✅ He is the man whom I met yesterday."}
 ];
-
 var words = [
-  {word:"Ubiquitous", meaning:"present, appearing or found everywhere", example:"Smartphones are ubiquitous today.", synonyms:"Omnipresent, widespread, pervasive, universal, common", antonyms:"rare, scarce, uncommon, limited"},
-  {word:"Spurious", meaning:"not being what it purports to be; false", example:"He made a spurious claim.", synonyms:"Fake, false, bogus, counterfeit, sham", antonyms:"genuine, authentic, real, true"},
-  {word:"Obsequious", meaning:"obedient or attentive to an excessive degree; servile", example:"The waiter was obsequious to guests.", synonyms:"Servile, submissive, fawning, sycophantic, subservient", antonyms:"arrogant, assertive, domineering, proud"},
-  {word:"Fabricate", meaning:"to invent or concoct, typically with deceitful intent", example:"He fabricated an excuse.", synonyms:"Concoct, invent, forge, contrive, manufacture", antonyms:"verify, confirm, authenticate, prove"},
-  {word:"Opulent", meaning:"ostentatiously rich and luxurious", example:"They live in an opulent mansion.", synonyms:"Lavish, luxurious, sumptuous, rich, grand", antonyms:"modest, poor, austere, plain"},
-  {word:"Consecrate", meaning:"to make or declare something sacred", example:"The bishop consecrated the church.", synonyms:"Sanctify, bless, hallow, dedicate, ordain", antonyms:"desecrate, defile, profane, violate"},
-  {word:"Rhetoric", meaning:"language designed to have a persuasive or impressive effect", example:"His speech was full of rhetoric.", synonyms:"Oratory, eloquence, wording, verbiage, discourse", antonyms:"bluntness, plainness, silence, reticence"},
-  {word:"Chicanery", meaning:"the use of trickery to achieve a political, financial or legal end", example:"The deal involved chicanery.", synonyms:"Deception, trickery, fraud, deceit, subterfuge", antonyms:"honesty, integrity, fairness, sincerity"},
-  {word:"Cadence", meaning:"a rhythmic sequence or flow of sound", example:"Her voice had a soft cadence.", synonyms:"Rhythm, beat, tempo, meter, flow", antonyms:"dissonance, irregularity, discord, unevenness"},
-  {word:"Verbose", meaning:"using more words than needed; wordy", example:"His verbose reply confused everyone.", synonyms:"Wordy, lengthy, long-winded, prolix, garrulous", antonyms:"concise, succinct, terse, brief"},
-  {word:"Redundant", meaning:"not or no longer needed; superfluous", example:"The extra clause was redundant.", synonyms:"Superfluous, excessive, unnecessary, surplus, needless", antonyms:"essential, necessary, needed, vital"},
-  {word:"Erudite", meaning:"having or showing great knowledge or learning", example:"The erudite professor impressed all.", synonyms:"Scholarly, learned, knowledgeable, educated, well-read", antonyms:"ignorant, uneducated, unlearned, illiterate"},
-  {word:"Chagrin", meaning:"annoyance or distress at having failed or been humiliated", example:"To his chagrin, he lost the match.", synonyms:"Embarrassment, humiliation, disappointment, mortification, vexation", antonyms:"satisfaction, pride, delight, pleasure"},
-  {word:"Diffuse", meaning:"spread out over a large area; not concentrated", example:"Light diffused through the curtain.", synonyms:"Scattered, dispersed, spread, dissipated, widespread", antonyms:"concentrated, focused, compact, dense"},
-  {word:"Acerbic", meaning:"sharp, forthright and often bitter in tone", example:"She gave an acerbic reply.", synonyms:"Caustic, biting, sharp, cutting, harsh", antonyms:"gentle, mild, kind, sweet"},
-  {word:"Bravado", meaning:"a bold manner intended to impress or intimidate", example:"His bravado hid real fear.", synonyms:"Swagger, boldness, bluster, machismo, showmanship", antonyms:"timidity, humility, meekness, shyness"},
-  {word:"Compunction", meaning:"a feeling of guilt or moral scruple", example:"He felt no compunction about lying.", synonyms:"Remorse, guilt, regret, contrition, qualm", antonyms:"shamelessness, indifference, satisfaction, ease"},
-  {word:"Meticulous", meaning:"showing great attention to detail; very careful", example:"She is meticulous with her records.", synonyms:"Painstaking, careful, precise, thorough, scrupulous", antonyms:"careless, sloppy, negligent, hasty"},
-  {word:"Berate", meaning:"to scold someone angrily", example:"The coach berated the team.", synonyms:"Reprimand, scold, rebuke, chide, admonish", antonyms:"praise, commend, compliment, applaud"},
-  {word:"Audacity", meaning:"a willingness to take bold risks; boldness", example:"He had the audacity to argue back.", synonyms:"Boldness, daring, nerve, impudence, gall", antonyms:"timidity, caution, meekness, shyness"},
-  {word:"Implicit", meaning:"suggested though not directly expressed", example:"Trust was implicit in the deal.", synonyms:"Implied, unspoken, understood, tacit, indirect", antonyms:"explicit, direct, stated, overt"},
-  {word:"Despoil", meaning:"to plunder or destroy a place", example:"Invaders despoiled the ancient city.", synonyms:"Plunder, ransack, pillage, loot, ravage", antonyms:"protect, preserve, restore, guard"},
-  {word:"Countenance", meaning:"to approve or tolerate; a person's face", example:"He wouldn't countenance cheating.", synonyms:"Approve, tolerate, condone, sanction, allow", antonyms:"oppose, forbid, reject, disapprove"},
-  {word:"Cacophony", meaning:"a harsh, discordant mixture of sounds", example:"The traffic caused a loud cacophony.", synonyms:"Discord, dissonance, noise, racket, din", antonyms:"harmony, melody, silence, euphony"},
-  {word:"Judicious", meaning:"having, showing or done with good judgement", example:"She made a judicious choice.", synonyms:"Prudent, sensible, wise, sound, discerning", antonyms:"reckless, careless, foolish, rash"},
-  {word:"Dally", meaning:"to act or move slowly; to waste time", example:"Stop dallying and get to work.", synonyms:"Dawdle, linger, loiter, delay, procrastinate", antonyms:"hurry, hasten, rush, hustle"},
-  {word:"Discretion", meaning:"the freedom to decide; prudence", example:"Use your discretion wisely.", synonyms:"Prudence, caution, judgment, tact, circumspection", antonyms:"indiscretion, carelessness, imprudence, rashness"},
-  {word:"Buoyant", meaning:"able to keep afloat; cheerful and optimistic", example:"She stayed buoyant despite setbacks.", synonyms:"Cheerful, optimistic, lively, resilient, floating", antonyms:"gloomy, dejected, sinking, despondent"},
-  {word:"Anomaly", meaning:"something that deviates from what is standard", example:"The data revealed a strange anomaly.", synonyms:"Irregularity, deviation, oddity, aberration, exception", antonyms:"norm, standard, regularity, rule"},
-  {word:"Hedonist", meaning:"a person who believes pleasure is most important", example:"He lived like a true hedonist.", synonyms:"Pleasure-seeker, sensualist, epicurean, indulger", antonyms:"ascetic, stoic, puritan, abstainer"},
-  {word:"Decadent", meaning:"characterized by excessive indulgence in pleasure", example:"They enjoyed a decadent dessert.", synonyms:"Self-indulgent, luxurious, indulgent, hedonistic, extravagant", antonyms:"austere, restrained, simple, modest"},
-  {word:"Debase", meaning:"to reduce in quality or value; degrade", example:"Cheating debases the exam's value.", synonyms:"Degrade, devalue, lower, corrupt, cheapen", antonyms:"elevate, uplift, enhance, improve"},
-  {word:"Bequeath", meaning:"to leave property or money to someone in a will", example:"He bequeathed his estate to her.", synonyms:"Hand down, will, leave, pass on, grant", antonyms:"inherit, receive, take, acquire"},
-  {word:"Amorphous", meaning:"without a clearly defined shape or form", example:"The clay had an amorphous form.", synonyms:"Shapeless, formless, vague, unstructured, indefinite", antonyms:"defined, structured, fixed, distinct"},
-  {word:"Caustic", meaning:"sarcastic in a scathing and bitter way", example:"His caustic remark stung deeply.", synonyms:"Scathing, biting, sharp, sarcastic, cutting", antonyms:"kind, gentle, mild, soothing"},
-  {word:"Exacerbate", meaning:"to make a problem or situation worse", example:"The delay exacerbated the crisis.", synonyms:"Aggravate, worsen, intensify, inflame, heighten", antonyms:"alleviate, ease, improve, soothe"},
-  {word:"Uncouth", meaning:"lacking good manners, refinement or grace", example:"His uncouth manners embarrassed us.", synonyms:"Boorish, crude, rude, coarse, vulgar", antonyms:"refined, polite, cultured, courteous"},
-  {word:"Coherent", meaning:"logical and consistent; easy to follow", example:"He gave a coherent explanation.", synonyms:"Lucid, logical, consistent, clear, sound", antonyms:"incoherent, confusing, muddled, disjointed"},
-  {word:"Circuitous", meaning:"longer than the most direct way; roundabout", example:"We took a circuitous route home.", synonyms:"Indirect, roundabout, winding, meandering, tortuous", antonyms:"direct, straight, short, immediate"},
-  {word:"Analogous", meaning:"comparable in certain respects to something else", example:"The two cases are analogous.", synonyms:"Similar, comparable, parallel, equivalent, alike", antonyms:"different, dissimilar, unrelated, unlike"},
-  {word:"Depose", meaning:"to remove from office suddenly and forcefully", example:"The king was deposed in 1688.", synonyms:"Oust, dethrone, overthrow, remove, unseat", antonyms:"install, appoint, crown, instate"},
-  {word:"Callow", meaning:"inexperienced and immature", example:"He was a callow young recruit.", synonyms:"Immature, inexperienced, naive, green, youthful", antonyms:"mature, experienced, seasoned, worldly"},
-  {word:"Acme", meaning:"the point at which a person or thing is best; the peak", example:"She reached the acme of her career.", synonyms:"Pinnacle, peak, zenith, summit, apex", antonyms:"nadir, bottom, low point, base"},
-  {word:"Ebullient", meaning:"cheerful and full of energy", example:"The crowd was ebullient after winning.", synonyms:"Exuberant, enthusiastic, lively, energetic, buoyant", antonyms:"gloomy, listless, subdued, depressed"},
-  {word:"Contemplate", meaning:"to think about deeply and carefully", example:"She contemplated her next move.", synonyms:"Ponder, reflect, consider, deliberate, muse", antonyms:"ignore, disregard, dismiss, neglect"},
-  {word:"Fledgling", meaning:"a new or inexperienced person or organization", example:"The fledgling company grew fast.", synonyms:"Novice, beginner, newcomer, rookie, trainee", antonyms:"veteran, expert, master, professional"},
-  {word:"Clemency", meaning:"mercy or leniency shown to an offender", example:"The judge showed clemency.", synonyms:"Mercy, leniency, forgiveness, pardon, compassion", antonyms:"severity, harshness, cruelty, punishment"},
-  {word:"Exemplify", meaning:"to be a typical example of", example:"This case exemplifies good teamwork.", synonyms:"Illustrate, demonstrate, epitomize, embody, represent", antonyms:"contradict, obscure, misrepresent, conceal"},
-  {word:"Celerity", meaning:"swiftness of movement or action", example:"He acted with great celerity.", synonyms:"Speed, swiftness, quickness, haste, alacrity", antonyms:"slowness, sluggishness, delay, lethargy"},
-  {word:"Benediction", meaning:"a blessing, especially at the end of a service", example:"The priest gave the benediction.", synonyms:"Blessing, grace, prayer, invocation, sanction", antonyms:"curse, condemnation, malediction, denunciation"},
-  {word:"Docile", meaning:"ready to accept control or instruction; submissive", example:"The docile dog obeyed commands.", synonyms:"Submissive, obedient, compliant, tame, meek", antonyms:"rebellious, defiant, unruly, stubborn"},
-  {word:"Allocate", meaning:"to distribute resources for a particular purpose", example:"Funds were allocated to schools.", synonyms:"Allot, assign, distribute, apportion, designate", antonyms:"withhold, retain, deny, keep"},
-  {word:"Prodigal", meaning:"spending money or resources freely and recklessly", example:"The prodigal son wasted his wealth.", synonyms:"Wasteful, extravagant, lavish, reckless, profligate", antonyms:"frugal, thrifty, economical, prudent"},
-  {word:"Collusion", meaning:"secret cooperation, especially for an illegal purpose", example:"The firms acted in collusion.", synonyms:"Conspiracy, connivance, complicity, plot, scheme", antonyms:"honesty, competition, transparency, rivalry"},
-  {word:"Scrupulous", meaning:"diligent, thorough and extremely attentive to detail", example:"He was scrupulous about honesty.", synonyms:"Meticulous, precise, careful, conscientious, thorough", antonyms:"careless, unscrupulous, negligent, sloppy"},
-  {word:"Deprave", meaning:"to make someone immoral or wicked", example:"Power can deprave a person.", synonyms:"Corrupt, degrade, debase, pervert, taint", antonyms:"reform, purify, uplift, improve"},
-  {word:"Canny", meaning:"having good judgement; shrewd, especially in practical matters", example:"She made a canny investment.", synonyms:"Astute, shrewd, sharp, clever, savvy", antonyms:"naive, foolish, gullible, unwise"},
-  {word:"Diverge", meaning:"to develop in different directions from a common point", example:"The paths diverge near the river.", synonyms:"Deviate, split, branch, differ, separate", antonyms:"converge, merge, unite, join"},
-  {word:"Debunk", meaning:"to expose the falseness of an idea or belief", example:"Scientists debunked the old myth.", synonyms:"Disprove, expose, refute, discredit, invalidate", antonyms:"confirm, validate, prove, support"},
-  {word:"Euphemism", meaning:"a mild word substituted for a harsh or blunt one", example:"'Passed away' is a common euphemism.", synonyms:"Understatement, mild expression, polite term, indirect phrase", antonyms:"bluntness, harsh term, direct expression, dysphemism"},
-  {word:"Gregarious", meaning:"fond of company; sociable", example:"He is gregarious at parties.", synonyms:"Sociable, outgoing, friendly, convivial, companionable", antonyms:"reserved, aloof, unsociable, introverted"},
-  {word:"Cede", meaning:"to give up power or territory to another", example:"The nation ceded the disputed territory.", synonyms:"Surrender, yield, relinquish, concede, transfer", antonyms:"retain, keep, claim, seize"},
-  {word:"Acrimony", meaning:"bitterness or ill feeling", example:"The debate ended in acrimony.", synonyms:"Bitterness, animosity, hostility, rancor, resentment", antonyms:"harmony, goodwill, friendliness, affection"},
-  {word:"Unanimous", meaning:"fully in agreement", example:"The vote was unanimous.", synonyms:"Unified, united, agreed, concordant, harmonious", antonyms:"divided, split, disputed, contested"},
-  {word:"Beguile", meaning:"to charm or enchant someone, often deceptively", example:"Her smile beguiled the audience.", synonyms:"Deceive, charm, enchant, mislead, entrance", antonyms:"repel, disgust, discourage, deter"},
-  {word:"Aloof", meaning:"not friendly or forthcoming; distant", example:"He remained aloof at the party.", synonyms:"Reserved, distant, detached, remote, unfriendly", antonyms:"friendly, warm, sociable, approachable"},
-  {word:"Bountiful", meaning:"large in quantity; generous and plentiful", example:"The harvest was bountiful this year.", synonyms:"Abundant, plentiful, generous, ample, copious", antonyms:"scarce, meager, sparse, insufficient"},
-  {word:"Brevity", meaning:"concise and exact use of words", example:"The speech was known for its brevity.", synonyms:"Conciseness, briefness, terseness, succinctness, shortness", antonyms:"verbosity, wordiness, lengthiness, prolixity"},
-  {word:"Aggrandize", meaning:"to increase the power, status or wealth of", example:"He sought to aggrandize his own image.", synonyms:"Exalt, elevate, magnify, boost, enhance", antonyms:"diminish, belittle, humble, lessen"},
-  {word:"Capricious", meaning:"given to sudden and unaccountable changes of mood", example:"The weather was capricious that day.", synonyms:"Fickle, erratic, unpredictable, whimsical, volatile", antonyms:"stable, consistent, steady, predictable"},
-  {word:"Flamboyant", meaning:"tending to attract attention through confidence and style", example:"He wore a flamboyant costume.", synonyms:"Showy, extravagant, colorful, ostentatious, bold", antonyms:"plain, modest, subdued, understated"},
-  {word:"Cavalier", meaning:"showing offhand and often careless disregard", example:"He was cavalier about the risks.", synonyms:"Offhand, careless, dismissive, nonchalant, indifferent", antonyms:"careful, cautious, considerate, serious"},
-  {word:"Dexterous", meaning:"showing or having skill in physical movement", example:"The surgeon's dexterous hands worked fast.", synonyms:"Skilful, adroit, deft, nimble, adept", antonyms:"clumsy, awkward, inept, unskilled"},
-  {word:"Constrict", meaning:"to make narrower, especially by pressure", example:"The snake constricted its prey.", synonyms:"Compress, tighten, squeeze, narrow, contract", antonyms:"expand, widen, loosen, dilate"},
-  {word:"Enigma", meaning:"a person or thing that is mysterious or difficult to understand", example:"His past remains an enigma.", synonyms:"Mystery, puzzle, riddle, conundrum, secret", antonyms:"certainty, fact, clarity, explanation"},
-  {word:"Castigate", meaning:"to reprimand someone severely", example:"The critic castigated the film.", synonyms:"Chastise, rebuke, reprimand, scold, criticize", antonyms:"praise, commend, compliment, applaud"},
-  {word:"Chivalrous", meaning:"courteous and gallant, especially towards women", example:"He was chivalrous towards his guests.", synonyms:"Gallant, courteous, gentlemanly, polite, honorable", antonyms:"rude, discourteous, boorish, ungracious"},
-  {word:"Cogent", meaning:"clear, logical and convincing", example:"She made a cogent argument.", synonyms:"Compelling, convincing, persuasive, sound, logical", antonyms:"unconvincing, weak, illogical, flawed"},
-  {word:"Chronic", meaning:"persisting for a long time; constantly recurring", example:"He suffers from chronic pain.", synonyms:"Persistent, ongoing, constant, recurring, lasting", antonyms:"temporary, acute, occasional, brief"},
-  {word:"Alacrity", meaning:"brisk and cheerful readiness", example:"She accepted the offer with alacrity.", synonyms:"Eagerness, readiness, enthusiasm, willingness, promptness", antonyms:"reluctance, hesitation, sluggishness, unwillingness"},
-  {word:"Despondent", meaning:"in low spirits from loss of hope", example:"He felt despondent after the loss.", synonyms:"Dejected, downcast, gloomy, hopeless, dispirited", antonyms:"cheerful, hopeful, optimistic, upbeat"},
-  {word:"Appall", meaning:"to greatly dismay or horrify someone", example:"The news appalled everyone present.", synonyms:"Horrify, shock, dismay, disgust, stun", antonyms:"delight, please, comfort, reassure"},
-  {word:"Deplete", meaning:"to use up the supply or resources of", example:"Overuse depleted the water supply.", synonyms:"Exhaust, drain, consume, use up, reduce", antonyms:"replenish, refill, restore, increase"},
-  {word:"Blandish", meaning:"to coax someone with flattery", example:"He blandished her into agreeing.", synonyms:"Coax, cajole, flatter, persuade, wheedle", antonyms:"discourage, dissuade, deter, repel"},
-  {word:"Equivocal", meaning:"open to more than one interpretation; ambiguous", example:"His answer was vague and equivocal.", synonyms:"Ambiguous, unclear, vague, uncertain, evasive", antonyms:"clear, definite, unambiguous, explicit"},
-  {word:"Avarice", meaning:"extreme greed for wealth or material gain", example:"Avarice drove him to cheat.", synonyms:"Greed, covetousness, acquisitiveness, cupidity, rapacity", antonyms:"generosity, charity, altruism, contentment"},
-  {word:"Demure", meaning:"reserved, modest and shy", example:"She gave a demure smile.", synonyms:"Modest, reserved, shy, coy, bashful", antonyms:"bold, brazen, outgoing, immodest"},
-  {word:"Infamous", meaning:"well known for some bad quality or deed", example:"He is infamous for his crimes.", synonyms:"Notorious, disreputable, scandalous, ill-famed, shameful", antonyms:"reputable, honorable, respected, esteemed"},
-  {word:"Annihilate", meaning:"to destroy completely", example:"The army annihilated the enemy fort.", synonyms:"Obliterate, destroy, demolish, eradicate, exterminate", antonyms:"build, create, restore, preserve"},
-  {word:"Fervent", meaning:"having or displaying passionate intensity", example:"She is a fervent supporter of reform.", synonyms:"Passionate, ardent, intense, zealous, eager", antonyms:"indifferent, apathetic, cold, unenthusiastic"},
-  {word:"Connoisseur", meaning:"an expert judge in matters of taste", example:"He is a connoisseur of fine wine.", synonyms:"Expert, aficionado, specialist, authority, gourmet", antonyms:"novice, amateur, layman, beginner"},
-  {word:"Candor", meaning:"the quality of being open and honest", example:"She spoke with complete candor.", synonyms:"Frankness, honesty, openness, sincerity, directness", antonyms:"deceit, dishonesty, secrecy, evasiveness"},
-  {word:"Ascendancy", meaning:"a position of dominant power or influence", example:"The party gained political ascendancy.", synonyms:"Dominance, supremacy, control, power, influence", antonyms:"subordination, weakness, decline, submission"},
-  {word:"Antithesis", meaning:"the exact or direct opposite of something", example:"Kindness is the antithesis of cruelty.", synonyms:"Opposite, contrast, reverse, converse, contrary", antonyms:"equivalent, similarity, likeness, sameness"},
-  {word:"Astringent", meaning:"severe or harsh in tone or manner", example:"His astringent tone silenced the room.", synonyms:"Harsh, severe, sharp, biting, caustic", antonyms:"gentle, mild, soothing, soft"},
-  {word:"Falter", meaning:"to lose strength or momentum; hesitate", example:"Her voice faltered with emotion.", synonyms:"Waver, hesitate, stumble, wobble, stammer", antonyms:"persist, continue, steady, proceed"},
-  {word:"Arcane", meaning:"understood by only a few; mysterious", example:"The rules were arcane and confusing.", synonyms:"Mysterious, obscure, cryptic, esoteric, secret", antonyms:"clear, obvious, well-known, simple"},
-  {word:"Adroit", meaning:"clever or skilful in using the hands or mind", example:"He gave an adroit reply.", synonyms:"Skilful, adept, deft, clever, dexterous", antonyms:"clumsy, awkward, inept, unskilled"},
-  {word:"Myriad", meaning:"a countless or extremely great number", example:"There are myriad ways to solve it.", synonyms:"Countless, numerous, innumerable, multitude, abundant", antonyms:"few, scarce, limited, handful"},
-  {word:"Bane", meaning:"a cause of great distress or annoyance", example:"Traffic is the bane of city life.", synonyms:"Curse, scourge, affliction, torment, plague", antonyms:"blessing, boon, benefit, joy"}
+{word:"Ubiquitous", meaning:"present, appearing or found everywhere", example:"Smartphones are ubiquitous today.", synonyms:"Omnipresent, widespread, pervasive, universal, common", antonyms:"rare, scarce, uncommon, limited"},
+{word:"Spurious", meaning:"not being what it purports to be; false", example:"He made a spurious claim.", synonyms:"Fake, false, bogus, counterfeit, sham", antonyms:"genuine, authentic, real, true"},
+{word:"Obsequious", meaning:"obedient or attentive to an excessive degree; servile", example:"The waiter was obsequious to guests.", synonyms:"Servile, submissive, fawning, sycophantic, subservient", antonyms:"arrogant, assertive, domineering, proud"},
+{word:"Fabricate", meaning:"to invent or concoct, typically with deceitful intent", example:"He fabricated an excuse.", synonyms:"Concoct, invent, forge, contrive, manufacture", antonyms:"verify, confirm, authenticate, prove"},
+{word:"Opulent", meaning:"ostentatiously rich and luxurious", example:"They live in an opulent mansion.", synonyms:"Lavish, luxurious, sumptuous, rich, grand", antonyms:"modest, poor, austere, plain"},
+{word:"Consecrate", meaning:"to make or declare something sacred", example:"The bishop consecrated the church.", synonyms:"Sanctify, bless, hallow, dedicate, ordain", antonyms:"desecrate, defile, profane, violate"},
+{word:"Rhetoric", meaning:"language designed to have a persuasive or impressive effect", example:"His speech was full of rhetoric.", synonyms:"Oratory, eloquence, wording, verbiage, discourse", antonyms:"bluntness, plainness, silence, reticence"},
+{word:"Chicanery", meaning:"the use of trickery to achieve a political, financial or legal end", example:"The deal involved chicanery.", synonyms:"Deception, trickery, fraud, deceit, subterfuge", antonyms:"honesty, integrity, fairness, sincerity"},
+{word:"Cadence", meaning:"a rhythmic sequence or flow of sound", example:"Her voice had a soft cadence.", synonyms:"Rhythm, beat, tempo, meter, flow", antonyms:"dissonance, irregularity, discord, unevenness"},
+{word:"Verbose", meaning:"using more words than needed; wordy", example:"His verbose reply confused everyone.", synonyms:"Wordy, lengthy, long-winded, prolix, garrulous", antonyms:"concise, succinct, terse, brief"},
+{word:"Redundant", meaning:"not or no longer needed; superfluous", example:"The extra clause was redundant.", synonyms:"Superfluous, excessive, unnecessary, surplus, needless", antonyms:"essential, necessary, needed, vital"},
+{word:"Erudite", meaning:"having or showing great knowledge or learning", example:"The erudite professor impressed all.", synonyms:"Scholarly, learned, knowledgeable, educated, well-read", antonyms:"ignorant, uneducated, unlearned, illiterate"},
+{word:"Chagrin", meaning:"annoyance or distress at having failed or been humiliated", example:"To his chagrin, he lost the match.", synonyms:"Embarrassment, humiliation, disappointment, mortification, vexation", antonyms:"satisfaction, pride, delight, pleasure"},
+{word:"Diffuse", meaning:"spread out over a large area; not concentrated", example:"Light diffused through the curtain.", synonyms:"Scattered, dispersed, spread, dissipated, widespread", antonyms:"concentrated, focused, compact, dense"},
+{word:"Acerbic", meaning:"sharp, forthright and often bitter in tone", example:"She gave an acerbic reply.", synonyms:"Caustic, biting, sharp, cutting, harsh", antonyms:"gentle, mild, kind, sweet"},
+{word:"Bravado", meaning:"a bold manner intended to impress or intimidate", example:"His bravado hid real fear.", synonyms:"Swagger, boldness, bluster, machismo, showmanship", antonyms:"timidity, humility, meekness, shyness"},
+{word:"Compunction", meaning:"a feeling of guilt or moral scruple", example:"He felt no compunction about lying.", synonyms:"Remorse, guilt, regret, contrition, qualm", antonyms:"shamelessness, indifference, satisfaction, ease"},
+{word:"Meticulous", meaning:"showing great attention to detail; very careful", example:"She is meticulous with her records.", synonyms:"Painstaking, careful, precise, thorough, scrupulous", antonyms:"careless, sloppy, negligent, hasty"},
+{word:"Berate", meaning:"to scold someone angrily", example:"The coach berated the team.", synonyms:"Reprimand, scold, rebuke, chide, admonish", antonyms:"praise, commend, compliment, applaud"},
+{word:"Audacity", meaning:"a willingness to take bold risks; boldness", example:"He had the audacity to argue back.", synonyms:"Boldness, daring, nerve, impudence, gall", antonyms:"timidity, caution, meekness, shyness"},
+{word:"Implicit", meaning:"suggested though not directly expressed", example:"Trust was implicit in the deal.", synonyms:"Implied, unspoken, understood, tacit, indirect", antonyms:"explicit, direct, stated, overt"},
+{word:"Despoil", meaning:"to plunder or destroy a place", example:"Invaders despoiled the ancient city.", synonyms:"Plunder, ransack, pillage, loot, ravage", antonyms:"protect, preserve, restore, guard"},
+{word:"Countenance", meaning:"to approve or tolerate; a person's face", example:"He wouldn't countenance cheating.", synonyms:"Approve, tolerate, condone, sanction, allow", antonyms:"oppose, forbid, reject, disapprove"},
+{word:"Cacophony", meaning:"a harsh, discordant mixture of sounds", example:"The traffic caused a loud cacophony.", synonyms:"Discord, dissonance, noise, racket, din", antonyms:"harmony, melody, silence, euphony"},
+{word:"Judicious", meaning:"having, showing or done with good judgement", example:"She made a judicious choice.", synonyms:"Prudent, sensible, wise, sound, discerning", antonyms:"reckless, careless, foolish, rash"},
+{word:"Dally", meaning:"to act or move slowly; to waste time", example:"Stop dallying and get to work.", synonyms:"Dawdle, linger, loiter, delay, procrastinate", antonyms:"hurry, hasten, rush, hustle"},
+{word:"Discretion", meaning:"the freedom to decide; prudence", example:"Use your discretion wisely.", synonyms:"Prudence, caution, judgment, tact, circumspection", antonyms:"indiscretion, carelessness, imprudence, rashness"},
+{word:"Buoyant", meaning:"able to keep afloat; cheerful and optimistic", example:"She stayed buoyant despite setbacks.", synonyms:"Cheerful, optimistic, lively, resilient, floating", antonyms:"gloomy, dejected, sinking, despondent"},
+{word:"Anomaly", meaning:"something that deviates from what is standard", example:"The data revealed a strange anomaly.", synonyms:"Irregularity, deviation, oddity, aberration, exception", antonyms:"norm, standard, regularity, rule"},
+{word:"Hedonist", meaning:"a person who believes pleasure is most important", example:"He lived like a true hedonist.", synonyms:"Pleasure-seeker, sensualist, epicurean, indulger", antonyms:"ascetic, stoic, puritan, abstainer"},
+{word:"Decadent", meaning:"characterized by excessive indulgence in pleasure", example:"They enjoyed a decadent dessert.", synonyms:"Self-indulgent, luxurious, indulgent, hedonistic, extravagant", antonyms:"austere, restrained, simple, modest"},
+{word:"Debase", meaning:"to reduce in quality or value; degrade", example:"Cheating debases the exam's value.", synonyms:"Degrade, devalue, lower, corrupt, cheapen", antonyms:"elevate, uplift, enhance, improve"},
+{word:"Bequeath", meaning:"to leave property or money to someone in a will", example:"He bequeathed his estate to her.", synonyms:"Hand down, will, leave, pass on, grant", antonyms:"inherit, receive, take, acquire"},
+{word:"Amorphous", meaning:"without a clearly defined shape or form", example:"The clay had an amorphous form.", synonyms:"Shapeless, formless, vague, unstructured, indefinite", antonyms:"defined, structured, fixed, distinct"},
+{word:"Caustic", meaning:"sarcastic in a scathing and bitter way", example:"His caustic remark stung deeply.", synonyms:"Scathing, biting, sharp, sarcastic, cutting", antonyms:"kind, gentle, mild, soothing"},
+{word:"Exacerbate", meaning:"to make a problem or situation worse", example:"The delay exacerbated the crisis.", synonyms:"Aggravate, worsen, intensify, inflame, heighten", antonyms:"alleviate, ease, improve, soothe"},
+{word:"Uncouth", meaning:"lacking good manners, refinement or grace", example:"His uncouth manners embarrassed us.", synonyms:"Boorish, crude, rude, coarse, vulgar", antonyms:"refined, polite, cultured, courteous"},
+{word:"Coherent", meaning:"logical and consistent; easy to follow", example:"He gave a coherent explanation.", synonyms:"Lucid, logical, consistent, clear, sound", antonyms:"incoherent, confusing, muddled, disjointed"},
+{word:"Circuitous", meaning:"longer than the most direct way; roundabout", example:"We took a circuitous route home.", synonyms:"Indirect, roundabout, winding, meandering, tortuous", antonyms:"direct, straight, short, immediate"},
+{word:"Analogous", meaning:"comparable in certain respects to something else", example:"The two cases are analogous.", synonyms:"Similar, comparable, parallel, equivalent, alike", antonyms:"different, dissimilar, unrelated, unlike"},
+{word:"Depose", meaning:"to remove from office suddenly and forcefully", example:"The king was deposed in 1688.", synonyms:"Oust, dethrone, overthrow, remove, unseat", antonyms:"install, appoint, crown, instate"},
+{word:"Callow", meaning:"inexperienced and immature", example:"He was a callow young recruit.", synonyms:"Immature, inexperienced, naive, green, youthful", antonyms:"mature, experienced, seasoned, worldly"},
+{word:"Acme", meaning:"the point at which a person or thing is best; the peak", example:"She reached the acme of her career.", synonyms:"Pinnacle, peak, zenith, summit, apex", antonyms:"nadir, bottom, low point, base"},
+{word:"Ebullient", meaning:"cheerful and full of energy", example:"The crowd was ebullient after winning.", synonyms:"Exuberant, enthusiastic, lively, energetic, buoyant", antonyms:"gloomy, listless, subdued, depressed"},
+{word:"Contemplate", meaning:"to think about deeply and carefully", example:"She contemplated her next move.", synonyms:"Ponder, reflect, consider, deliberate, muse", antonyms:"ignore, disregard, dismiss, neglect"},
+{word:"Fledgling", meaning:"a new or inexperienced person or organization", example:"The fledgling company grew fast.", synonyms:"Novice, beginner, newcomer, rookie, trainee", antonyms:"veteran, expert, master, professional"},
+{word:"Clemency", meaning:"mercy or leniency shown to an offender", example:"The judge showed clemency.", synonyms:"Mercy, leniency, forgiveness, pardon, compassion", antonyms:"severity, harshness, cruelty, punishment"},
+{word:"Exemplify", meaning:"to be a typical example of", example:"This case exemplifies good teamwork.", synonyms:"Illustrate, demonstrate, epitomize, embody, represent", antonyms:"contradict, obscure, misrepresent, conceal"},
+{word:"Celerity", meaning:"swiftness of movement or action", example:"He acted with great celerity.", synonyms:"Speed, swiftness, quickness, haste, alacrity", antonyms:"slowness, sluggishness, delay, lethargy"},
+{word:"Benediction", meaning:"a blessing, especially at the end of a service", example:"The priest gave the benediction.", synonyms:"Blessing, grace, prayer, invocation, sanction", antonyms:"curse, condemnation, malediction, denunciation"},
+{word:"Docile", meaning:"ready to accept control or instruction; submissive", example:"The docile dog obeyed commands.", synonyms:"Submissive, obedient, compliant, tame, meek", antonyms:"rebellious, defiant, unruly, stubborn"},
+{word:"Allocate", meaning:"to distribute resources for a particular purpose", example:"Funds were allocated to schools.", synonyms:"Allot, assign, distribute, apportion, designate", antonyms:"withhold, retain, deny, keep"},
+{word:"Prodigal", meaning:"spending money or resources freely and recklessly", example:"The prodigal son wasted his wealth.", synonyms:"Wasteful, extravagant, lavish, reckless, profligate", antonyms:"frugal, thrifty, economical, prudent"},
+{word:"Collusion", meaning:"secret cooperation, especially for an illegal purpose", example:"The firms acted in collusion.", synonyms:"Conspiracy, connivance, complicity, plot, scheme", antonyms:"honesty, competition, transparency, rivalry"},
+{word:"Scrupulous", meaning:"diligent, thorough and extremely attentive to detail", example:"He was scrupulous about honesty.", synonyms:"Meticulous, precise, careful, conscientious, thorough", antonyms:"careless, unscrupulous, negligent, sloppy"},
+{word:"Deprave", meaning:"to make someone immoral or wicked", example:"Power can deprave a person.", synonyms:"Corrupt, degrade, debase, pervert, taint", antonyms:"reform, purify, uplift, improve"},
+{word:"Canny", meaning:"having good judgement; shrewd, especially in practical matters", example:"She made a canny investment.", synonyms:"Astute, shrewd, sharp, clever, savvy", antonyms:"naive, foolish, gullible, unwise"},
+{word:"Diverge", meaning:"to develop in different directions from a common point", example:"The paths diverge near the river.", synonyms:"Deviate, split, branch, differ, separate", antonyms:"converge, merge, unite, join"},
+{word:"Debunk", meaning:"to expose the falseness of an idea or belief", example:"Scientists debunked the old myth.", synonyms:"Disprove, expose, refute, discredit, invalidate", antonyms:"confirm, validate, prove, support"},
+{word:"Euphemism", meaning:"a mild word substituted for a harsh or blunt one", example:"'Passed away' is a common euphemism.", synonyms:"Understatement, mild expression, polite term, indirect phrase", antonyms:"bluntness, harsh term, direct expression, dysphemism"},
+{word:"Gregarious", meaning:"fond of company; sociable", example:"He is gregarious at parties.", synonyms:"Sociable, outgoing, friendly, convivial, companionable", antonyms:"reserved, aloof, unsociable, introverted"},
+{word:"Cede", meaning:"to give up power or territory to another", example:"The nation ceded the disputed territory.", synonyms:"Surrender, yield, relinquish, concede, transfer", antonyms:"retain, keep, claim, seize"},
+{word:"Acrimony", meaning:"bitterness or ill feeling", example:"The debate ended in acrimony.", synonyms:"Bitterness, animosity, hostility, rancor, resentment", antonyms:"harmony, goodwill, friendliness, affection"},
+{word:"Unanimous", meaning:"fully in agreement", example:"The vote was unanimous.", synonyms:"Unified, united, agreed, concordant, harmonious", antonyms:"divided, split, disputed, contested"},
+{word:"Beguile", meaning:"to charm or enchant someone, often deceptively", example:"Her smile beguiled the audience.", synonyms:"Deceive, charm, enchant, mislead, entrance", antonyms:"repel, disgust, discourage, deter"},
+{word:"Aloof", meaning:"not friendly or forthcoming; distant", example:"He remained aloof at the party.", synonyms:"Reserved, distant, detached, remote, unfriendly", antonyms:"friendly, warm, sociable, approachable"},
+{word:"Bountiful", meaning:"large in quantity; generous and plentiful", example:"The harvest was bountiful this year.", synonyms:"Abundant, plentiful, generous, ample, copious", antonyms:"scarce, meager, sparse, insufficient"},
+{word:"Brevity", meaning:"concise and exact use of words", example:"The speech was known for its brevity.", synonyms:"Conciseness, briefness, terseness, succinctness, shortness", antonyms:"verbosity, wordiness, lengthiness, prolixity"},
+{word:"Aggrandize", meaning:"to increase the power, status or wealth of", example:"He sought to aggrandize his own image.", synonyms:"Exalt, elevate, magnify, boost, enhance", antonyms:"diminish, belittle, humble, lessen"},
+{word:"Capricious", meaning:"given to sudden and unaccountable changes of mood", example:"The weather was capricious that day.", synonyms:"Fickle, erratic, unpredictable, whimsical, volatile", antonyms:"stable, consistent, steady, predictable"},
+{word:"Flamboyant", meaning:"tending to attract attention through confidence and style", example:"He wore a flamboyant costume.", synonyms:"Showy, extravagant, colorful, ostentatious, bold", antonyms:"plain, modest, subdued, understated"},
+{word:"Cavalier", meaning:"showing offhand and often careless disregard", example:"He was cavalier about the risks.", synonyms:"Offhand, careless, dismissive, nonchalant, indifferent", antonyms:"careful, cautious, considerate, serious"},
+{word:"Dexterous", meaning:"showing or having skill in physical movement", example:"The surgeon's dexterous hands worked fast.", synonyms:"Skilful, adroit, deft, nimble, adept", antonyms:"clumsy, awkward, inept, unskilled"},
+{word:"Constrict", meaning:"to make narrower, especially by pressure", example:"The snake constricted its prey.", synonyms:"Compress, tighten, squeeze, narrow, contract", antonyms:"expand, widen, loosen, dilate"},
+{word:"Enigma", meaning:"a person or thing that is mysterious or difficult to understand", example:"His past remains an enigma.", synonyms:"Mystery, puzzle, riddle, conundrum, secret", antonyms:"certainty, fact, clarity, explanation"},
+{word:"Castigate", meaning:"to reprimand someone severely", example:"The critic castigated the film.", synonyms:"Chastise, rebuke, reprimand, scold, criticize", antonyms:"praise, commend, compliment, applaud"},
+{word:"Chivalrous", meaning:"courteous and gallant, especially towards women", example:"He was chivalrous towards his guests.", synonyms:"Gallant, courteous, gentlemanly, polite, honorable", antonyms:"rude, discourteous, boorish, ungracious"},
+{word:"Cogent", meaning:"clear, logical and convincing", example:"She made a cogent argument.", synonyms:"Compelling, convincing, persuasive, sound, logical", antonyms:"unconvincing, weak, illogical, flawed"},
+{word:"Chronic", meaning:"persisting for a long time; constantly recurring", example:"He suffers from chronic pain.", synonyms:"Persistent, ongoing, constant, recurring, lasting", antonyms:"temporary, acute, occasional, brief"},
+{word:"Alacrity", meaning:"brisk and cheerful readiness", example:"She accepted the offer with alacrity.", synonyms:"Eagerness, readiness, enthusiasm, willingness, promptness", antonyms:"reluctance, hesitation, sluggishness, unwillingness"},
+{word:"Despondent", meaning:"in low spirits from loss of hope", example:"He felt despondent after the loss.", synonyms:"Dejected, downcast, gloomy, hopeless, dispirited", antonyms:"cheerful, hopeful, optimistic, upbeat"},
+{word:"Appall", meaning:"to greatly dismay or horrify someone", example:"The news appalled everyone present.", synonyms:"Horrify, shock, dismay, disgust, stun", antonyms:"delight, please, comfort, reassure"},
+{word:"Deplete", meaning:"to use up the supply or resources of", example:"Overuse depleted the water supply.", synonyms:"Exhaust, drain, consume, use up, reduce", antonyms:"replenish, refill, restore, increase"},
+{word:"Blandish", meaning:"to coax someone with flattery", example:"He blandished her into agreeing.", synonyms:"Coax, cajole, flatter, persuade, wheedle", antonyms:"discourage, dissuade, deter, repel"},
+{word:"Equivocal", meaning:"open to more than one interpretation; ambiguous", example:"His answer was vague and equivocal.", synonyms:"Ambiguous, unclear, vague, uncertain, evasive", antonyms:"clear, definite, unambiguous, explicit"},
+{word:"Avarice", meaning:"extreme greed for wealth or material gain", example:"Avarice drove him to cheat.", synonyms:"Greed, covetousness, acquisitiveness, cupidity, rapacity", antonyms:"generosity, charity, altruism, contentment"},
+{word:"Demure", meaning:"reserved, modest and shy", example:"She gave a demure smile.", synonyms:"Modest, reserved, shy, coy, bashful", antonyms:"bold, brazen, outgoing, immodest"},
+{word:"Infamous", meaning:"well known for some bad quality or deed", example:"He is infamous for his crimes.", synonyms:"Notorious, disreputable, scandalous, ill-famed, shameful", antonyms:"reputable, honorable, respected, esteemed"},
+{word:"Annihilate", meaning:"to destroy completely", example:"The army annihilated the enemy fort.", synonyms:"Obliterate, destroy, demolish, eradicate, exterminate", antonyms:"build, create, restore, preserve"},
+{word:"Fervent", meaning:"having or displaying passionate intensity", example:"She is a fervent supporter of reform.", synonyms:"Passionate, ardent, intense, zealous, eager", antonyms:"indifferent, apathetic, cold, unenthusiastic"},
+{word:"Connoisseur", meaning:"an expert judge in matters of taste", example:"He is a connoisseur of fine wine.", synonyms:"Expert, aficionado, specialist, authority, gourmet", antonyms:"novice, amateur, layman, beginner"},
+{word:"Candor", meaning:"the quality of being open and honest", example:"She spoke with complete candor.", synonyms:"Frankness, honesty, openness, sincerity, directness", antonyms:"deceit, dishonesty, secrecy, evasiveness"},
+{word:"Ascendancy", meaning:"a position of dominant power or influence", example:"The party gained political ascendancy.", synonyms:"Dominance, supremacy, control, power, influence", antonyms:"subordination, weakness, decline, submission"},
+{word:"Antithesis", meaning:"the exact or direct opposite of something", example:"Kindness is the antithesis of cruelty.", synonyms:"Opposite, contrast, reverse, converse, contrary", antonyms:"equivalent, similarity, likeness, sameness"},
+{word:"Astringent", meaning:"severe or harsh in tone or manner", example:"His astringent tone silenced the room.", synonyms:"Harsh, severe, sharp, biting, caustic", antonyms:"gentle, mild, soothing, soft"},
+{word:"Falter", meaning:"to lose strength or momentum; hesitate", example:"Her voice faltered with emotion.", synonyms:"Waver, hesitate, stumble, wobble, stammer", antonyms:"persist, continue, steady, proceed"},
+{word:"Arcane", meaning:"understood by only a few; mysterious", example:"The rules were arcane and confusing.", synonyms:"Mysterious, obscure, cryptic, esoteric, secret", antonyms:"clear, obvious, well-known, simple"},
+{word:"Adroit", meaning:"clever or skilful in using the hands or mind", example:"He gave an adroit reply.", synonyms:"Skilful, adept, deft, clever, dexterous", antonyms:"clumsy, awkward, inept, unskilled"},
+{word:"Myriad", meaning:"a countless or extremely great number", example:"There are myriad ways to solve it.", synonyms:"Countless, numerous, innumerable, multitude, abundant", antonyms:"few, scarce, limited, handful"},
+{word:"Bane", meaning:"a cause of great distress or annoyance", example:"Traffic is the bane of city life.", synonyms:"Curse, scourge, affliction, torment, plague", antonyms:"blessing, boon, benefit, joy"}
 ];
-
 var idioms = [
-  {idiom:"Play somebody at their own game", meaning:"to try to get an advantage over someone by using the same methods as they use", example:"If women want to succeed in business, they have to play men at their own game."},
-  {idiom:"White knight", meaning:"a person or company that puts money into a business in order to save it from being controlled by another company; a person or thing that comes to someone's aid", example:"Hartwell had handed his birthright on a silver salver to the rescuing white knight."},
-  {idiom:"On pins and needles", meaning:"worried or excited about something that is going to happen", example:"Don’t keep Margaret on pins and needles – give her a call."},
-  {idiom:"Show white feather", meaning:"to act in a cowardly manner", example:"Brave people never show white feather in the face of difficulties."},
-  {idiom:"A chip on your shoulder", meaning:"an angry attitude from someone who feels unfairly treated", example:"She’s not going to make any friends if she walks around with a chip on her shoulder like that."},
-  {idiom:"A snowball effect", meaning:"a situation in which something increases in size or importance at a faster and faster rate", example:"The more successful you become, the more publicity you get and that publicity generates sales. It's a kind of snowball effect."},
-  {idiom:"Be devoured by something", meaning:"to feel an emotion, especially a bad emotion, very strongly so that it strongly influences your behaviour", example:"He was devoured by jealousy/hatred."},
-  {idiom:"To cut a sorry figure", meaning:"To be ashamed", example:"She cut a sorry figure in her maiden speech"},
-  {idiom:"Leave somebody in the lurch", meaning:"to leave someone at a time when you should stay and help them", example:"But I won't leave you in the lurch even if that time comes."},
-  {idiom:"A leap of faith", meaning:"an act of believing something that is not easily believed", example:"It took a big leap of faith to decide to quit my job and try something new."},
-  {idiom:"Play second fiddle", meaning:"to be less important or in a weaker position than someone else", example:"I'm not prepared to play second fiddle to Christina any more - I'm looking for another job!"},
-  {idiom:"Chapter and verse", meaning:"to give exact information about something, especially something in a book; an exact reference or authority", example:"I can't quote you chapter and verse but I think it's a line from \"Macbeth\"."},
-  {idiom:"Be on the cards", meaning:"to be likely to happen", example:"\"So you think they'll get married next year?\" \"I think it's on the cards.\""},
-  {idiom:"Take one to task", meaning:"to strongly criticize somebody for something they have done", example:"He was taken to task for not reporting the problem earlier."},
-  {idiom:"Pay lip service", meaning:"pretend to regard or agree (to say that you agree with something but do nothing to support it); Insincere agreement", example:"Most of the political parties pay lip service to the plight of the poor."},
-  {idiom:"To lead to the altar", meaning:"to ultimately lead to marriage", example:"They started a romance that eventually led (them) to the altar."},
-  {idiom:"Take/sign the pledge", meaning:"to make a formal promise to stop drinking alcohol", example:"What's this then, you're only drinking orange juice - have you signed the pledge or something?"},
-  {idiom:"Like the clappers", meaning:"Meaning: extremely fast; very fast or very hard", example:"You'll have to run like the clappers if you want to catch your train."},
-  {idiom:"Gobs of something", meaning:"a large amount of something", example:"He's got gobs of money."},
-  {idiom:"Go nuts", meaning:"to become extremely angry; to become mentally ill", example:"My sister will go nuts when she finds out I crashed her car."},
-  {idiom:"A cash cow", meaning:"a product or service that makes a lot of money over a long period of time for the company, often money that is used to support the company's other activities", example:"The studios discovered that movie rentals were an even bigger cash cow than movie tickets."},
-  {idiom:"A good old something", meaning:"used to talk about something you enjoy", example:"We had a good old time at the reunion."},
-  {idiom:"Stick in somebody's throat", meaning:"to make you angry; to be unable to say the words you want to say, usually because of a strong emotion", example:"It really sticks in my throat that I did all the work, and she's getting all the credit."},
-  {idiom:"Put heads together", meaning:"consult something seriously", example:"Our leaders should put their heads together to solve national problems."},
-  {idiom:"Ruffle somebody's feathers", meaning:"to upset or annoy someone", example:"She knows how to ruffle his feathers."},
-  {idiom:"Above board", meaning:"honest and legal; if a plan/person/business or agreement is above board, it is honest and not trying to deceive anyone", example:"The deal was completely open and above board."},
-  {idiom:"To be wise after the event", meaning:"used to mean that it is easy to understand what you could have done to prevent something bad from happening after it has happened; understand and assess a situation only after its implications have become obvious", example:"In retrospect, we should have insisted on checking his calculations, but it's easy to be wise after the event."},
-  {idiom:"In the brain/looks department", meaning:"humorous; in intelligence or beauty", example:"He somehow lacks in the brain department."},
-  {idiom:"By right of", meaning:"because of", example:"She spoke first, by right of her position as director. (Note: By right = suitable; appropriate; legally or morally correct)"},
-  {idiom:"Be/get lost in the shuffle", meaning:"If something or someone gets lost in the shuffle, that thing or person does not get the attention they deserve; be overlooked or missed in a confused or crowded situation", example:"Refugee children in the big camps just get lost in the shuffle and are sometimes left without food."},
-  {idiom:"In Cold Blood", meaning:"without feeling or mercy; ruthlessly; in a cruel and deliberate way", example:"Evans had been murdered in cold blood."},
-  {idiom:"Wet behind the ears", meaning:"very young and without much experience of life", example:"He is wet behind the ears in share market business."},
-  {idiom:"Be scattered to the four winds", meaning:"If a group of things or people are scattered to the four winds, they go or are sent to different places that are far away from each other", example:"It was the finest collection of paintings in Denmark, but during the last war it was broken up and scattered to the four winds."},
-  {idiom:"Be gasping for something", meaning:"to want or need something very much", example:"I'm absolutely gasping for a cigarette."},
-  {idiom:"A man of straw", meaning:"someone who has a weak character; a person regarded as having no substance or integrity", example:"He was accused by his opponents of being a man of straw and lacking in decisiveness."},
-  {idiom:"At a stretch (at one stretch)", meaning:"continuously; at one time, during one period", example:"Sometimes I work for ten hours at a stretch."},
-  {idiom:"Be above somebody's pay grade", meaning:"to be something that a person does not have enough knowledge or authority to do", example:"She declined to comment on the controversial tape, saying \"That's above my pay grade."},
-  {idiom:"Wash one’s dirty linen", meaning:"to discuss very private, personal matters, especially that which may be sensitive or embarrassing, in public or with other people", example:"It always makes me uncomfortable when John starts going into all his personal problems whenever our friends get together. I just wish he wouldn't wash his dirty linen in public like that."},
-  {idiom:"A shadow of your former self", meaning:"Meaning: someone or something that is not as strong, powerful, or useful as it once was", example:"Since her accident, she’s become a shadow of her former self."},
-  {idiom:"Be in the doldrums", meaning:"a). unsuccessful or showing no activity or development b). sad and with no energy or enthusiasm", example:"Her career was in the doldrums during those years."},
-  {idiom:"(Have) a bee in one’s bonnet", meaning:"to be fussy; to keep talking about something again and again because you think it is very important", example:"She never stops talking about dieting - she's got a real bee in her bonnet about it."},
-  {idiom:"Tar somebody with the same brush", meaning:"to think that someone has the same bad qualities as another person", example:"Because they worked so closely in the same department, John was tarred with the same brush as Tim."},
-  {idiom:"Cut a deal", meaning:"to make a business deal; make an agreement", example:"A French company has reportedly cut a deal to produce software for government agencies."},
-  {idiom:"Halcyon Days", meaning:"A time when there are peace and happiness in the land", example:"She recalled the halcyon days of her youth."},
-  {idiom:"In the sack", meaning:"used to talk about sexual activity; in bed; used especially when referring to people having sex", example:"He's just trying to get you in the sack. Whatsapp: 9602-11-4064"},
-  {idiom:"Square the accounts/books", meaning:"to make certain that you have paid and received all the money that you owed or that others owed you", example:"I need to square accounts with Dean now, before I end up owing him even more money!"},
-  {idiom:"By a whisker", meaning:"by a very small amount", example:"Last time she raced against the Brazilian, she won by a whisker."},
-  {idiom:"Speak up for someone/something", meaning:"to express support for a person or idea", example:"Many employees wouldn't speak up for themselves."},
-  {idiom:"A level playing field", meaning:"a situation in which everyone has the same chance of succeeding", example:"If the tax systems are different in each European country, how can industries start on a level playing field?"},
-  {idiom:"Bowl down/along something", meaning:"to go quickly", example:"They bowled down the street on their new bicycles."},
-  {idiom:"With flying colours", meaning:"If you do something such as pass an exam with flying colours, you do it very successfully; with distinction", example:"He passed his exams with flying colours."},
-  {idiom:"A brown study", meaning:"A brown study –The condition of being so lost in solitary thought as to be unaware of one's surroundings; a mood in which you are very involved in your own thoughts and not paying attention to anything else", example:"You are wasting your time in a brown study."},
-  {idiom:"Keep someone/something at bay (hold someone/something at)", meaning:"to prevent something dangerous or unpleasant from happening or from coming too close", example:"A thick wall keeps the noise at bay."},
-  {idiom:"Eye wash", meaning:"a pretence; misleading or deceptive statements, actions, or procedures; insincere talk; nonsense", example:"My friend’s promise to help me just proved an eye wash."},
-  {idiom:"Feather one's (own) nest", meaning:"make money for oneself in an opportunistic or selfish way", example:"I'm sure he feathered his own nest with the money he allegedly raised for charity."},
-  {idiom:"Breathe a word", meaning:"to tell a secret", example:"Don’t breathe a word of this to anyone."},
-  {idiom:"Let the cat out of the bag", meaning:"to tell someone a secret, especially without intending to", example:"I was trying to keep the party a secret, but Mel went and let the cat out of the bag."},
-  {idiom:"Be in the soup", meaning:"to be in trouble", example:"For now, his political career is in the soup."},
-  {idiom:"Be engraved on somebody's memory/mind", meaning:"to be very difficult to forget", example:"That last conversation we had is engraved on my memory forever."},
-  {idiom:"Be wreathed in smiles", meaning:"to be smiling and looking extremely happy", example:"He was wreathed in smiles as he accepted the award."},
-  {idiom:"Push your luck", meaning:"to try too hard to get a particular result and risk losing what you have achieved", example:"She's agreed to help on Saturday, but I think I'd be pushing my luck if I asked her to be here the whole weekend."},
-  {idiom:"Put a spoke in one’s wheel", meaning:"to make it difficult for someone to achieve something they had planned to do", example:"His letter really put a spoke in our wheel."},
-  {idiom:"Like a dose of salts", meaning:"very quickly and easily", example:"The cleaners went through the house like a dose of salts."},
-  {idiom:"Make good on something", meaning:"to do what you have said you would do; to fulfill an obligation, such as keeping a promise or paying a debt", example:"You better make good on all the things you said you would deliver, or the client is not going to be happy."},
-  {idiom:"In the dumps", meaning:"not successful; unhappy; discouraged, depressed, or sad", example:"The team has been in the dumps all season."},
-  {idiom:"Catch somebody’s eye", meaning:"to get someone's attention; to cause someone to notice something or someone", example:"It was the unusual colour of his jacket that caught my eye."},
-  {idiom:"Flex your muscles", meaning:"give a show of strength or power; to try to worry an opponent or enemy by publicly showing military, political, or financial power", example:"The parade is the first sign of the new regime flexing its military muscles."},
-  {idiom:"Not a spark of decency", meaning:"the phrase 'not a spark of decency' refers to someone who has no manners or very rude manners", example:"The class showed not a spark of decency by refusing to stand up when their principle entered the classroom."},
-  {idiom:"Pay/settle an old score", meaning:"take revenge; to punish someone for something wrong that they did to you in the past", example:"Oh, I heard plenty of rumours, but they were nearly all based on settling old scores."},
-  {idiom:"A cheap shot", meaning:"a criticism or attack on someone that is unfair; an act of deliberate roughness against a defenseless opponent especially in a contact sport taking cheap shots at the quarterback", example:"I think her making fun of his wife was a cheap shot."},
-  {idiom:"By rights", meaning:"if the situation was fair; if things had happened or been done fairly or correctly", example:"By rights, it should be my turn next."},
-  {idiom:"Get a raw deal", meaning:"Get a raw deal = bad or unfair treatment; not be treated as well as other people", example:"He said that many children in the city's schools were getting/being given a raw deal by being taught in classes that were too large."},
-  {idiom:"Take five", meaning:"used to tell someone to stop working and relax for a short period of time; have a short break", example:"There was a newsreel crew taking five at a little café nearby."},
-  {idiom:"Have time on your hands", meaning:"to have nothing to do", example:"Now that she was retired, Mary found that she had a lot of time on her hands."},
-  {idiom:"To move heaven and earth", meaning:"to do everything you can do to achieve something", example:"He'll move heaven and earth to get it done on time."},
-  {idiom:"Zero in on somebody/something (home in on something)", meaning:"a). to direct all your attention towards a particular person or thing b). to aim a gun or other weapon towards something or someone", example:"She immediately zeroed in on the weak point in his argument."},
-  {idiom:"As bold as brass", meaning:"with extreme confidence or without the respect or politeness people usually show", example:"She marched into the store, as bold as brass, and demanded her money back."},
-  {idiom:"Get on like a house on fire", meaning:"If two people get on like a house on fire, they like each other very much and become friends very quickly", example:"I was worried that they wouldn't like each other but in fact they're getting on like a house on fire."},
-  {idiom:"Hear something on the grapevine", meaning:"to hear about something because the information has been passed from one person to another in conversation", example:"I heard about his resignation on the grapevine."},
-  {idiom:"Be all eyes", meaning:"to watch someone or something with a lot of interest; used to convey that a particular person or thing is currently the focus of public interest", example:"We were all eyes as the celebrity guests emerged from the car."},
-  {idiom:"Get on someone’s nerves", meaning:"if someone gets on your nerves, they annoy you, especially by doing something all the time", example:"She’s always moaning. It really gets on my nerves."},
-  {idiom:"Stick to your guns", meaning:"to continue to have your beliefs or continue with a plan of action, even if other people disagree with you", example:"Despite harsh criticism, she's sticking to her guns on this issue."},
-  {idiom:"Major on something", meaning:"to pay particular attention to one subject or thing", example:"The Company is planning to major on offering the machines we need."},
-  {idiom:"In harness", meaning:"On duty or at work; in the routine of daily work; doing your usual work", example:"I felt glad to be back in harness."},
-  {idiom:"Birds of a feather (flock together)", meaning:"People who have similar interests, ideas, or characteristics tend to seek out and/or associate with one another", example:"I knew you and John would get along well, you're birds of a feather, after all."},
-  {idiom:"Lay off", meaning:"to end someone’s employment, especially temporarily, because there is not enough work for them", example:"They’ve had to cut back production and lay off workers."},
-  {idiom:"Kill the fatted calf", meaning:"to welcome someone home with a big meal et(c) after they have been away for a long time", example:"My daughter is coming home from college for the summer, so we're going to kill the fatted calf and have a huge barbecue."},
-  {idiom:"Idle hands are the devil's playthings", meaning:"When one has nothing to do, one is more likely to get into trouble", example:"When I'm off from school, my grandmother is always trying to get me out of the house, while reminding me that idle hands are the devil's playthings."},
-  {idiom:"As clear as day", meaning:"very easy to see or understand", example:"The instructions were as clear as day."},
-  {idiom:"A feather in (one's) cap", meaning:"A big achievement or accomplishment that one takes pride in; an honor; a reward for something", example:"Getting promoted to management after spending only a month at the new job was a feather in her cap."},
-  {idiom:"Breathe one's last (breathe your last)", meaning:"to die", example:"Her eyes fluttered open for a moment and then she breathed her last."},
-  {idiom:"See eye to eye", meaning:"If two people see eye to eye, they agree with each other", example:"My sisters don't see eye to eye with me about the arrangements."},
-  {idiom:"At daggers drawn", meaning:"If two people, countries, et(c) are at daggers drawn, they are in a state of extreme unfriendliness and do not trust each other; (of two people) be bitterly hostile towards each other", example:"The two sides have been at daggers drawn for some months now with no sign of improvement in relations."},
-  {idiom:"Blow hot and cold", meaning:"to keep changing your attitude towards someone or something; alternate inconsistently between two moods, attitudes, or courses of action", example:"I can't tell what he wants - he keeps blowing hot and cold."},
-  {idiom:"Steer a course/path", meaning:"to take a series of actions, usually of a particular type, carefully and intentionally", example:"It will be difficult to steer a middle course between the competing claims of the two sides in the conflict."},
-  {idiom:"A small fortune", meaning:"a large amount of money; an amount of money that seems to be a lot", example:"You'll have to spend a small fortune in legal fees if you decide to sue for compensation."},
-  {idiom:"At the push of a button", meaning:"very easily", example:"You can't expect to get everything you need at the push of a button."},
-  {idiom:"Be set in your ways", meaning:"to do the same things every day and to not want to change those habits", example:"As people get older, they often become set in their ways."},
-  {idiom:"Hang fire/hold fire", meaning:"Hang fire/hold fire –means to do nothing, to delay, wait, hold back, or hesitate; remain unsolved because of delay", example:"The Kashmir problem has been hanging fire for many years."},
-  {idiom:"A ball park figure", meaning:"A general financial figure", example:"A ballpark figure is a rough numerical estimate or approximation of the value of something that is otherwise unknown."}
+{idiom:"Play somebody at their own game", meaning:"to try to get an advantage over someone by using the same methods as they use", example:"If women want to succeed in business, they have to play men at their own game."},
+{idiom:"White knight", meaning:"a person or company that puts money into a business in order to save it from being controlled by another company; a person or thing that comes to someone's aid", example:"Hartwell had handed his birthright on a silver salver to the rescuing white knight."},
+{idiom:"On pins and needles", meaning:"worried or excited about something that is going to happen", example:"Don't keep Margaret on pins and needles – give her a call."},
+{idiom:"Show white feather", meaning:"to act in a cowardly manner", example:"Brave people never show white feather in the face of difficulties."},
+{idiom:"A chip on your shoulder", meaning:"an angry attitude from someone who feels unfairly treated", example:"She's not going to make any friends if she walks around with a chip on her shoulder like that."},
+{idiom:"A snowball effect", meaning:"a situation in which something increases in size or importance at a faster and faster rate", example:"The more successful you become, the more publicity you get and that publicity generates sales. It's a kind of snowball effect."},
+{idiom:"Be devoured by something", meaning:"to feel an emotion, especially a bad emotion, very strongly so that it strongly influences your behaviour", example:"He was devoured by jealousy/hatred."},
+{idiom:"To cut a sorry figure", meaning:"To be ashamed", example:"She cut a sorry figure in her maiden speech"},
+{idiom:"Leave somebody in the lurch", meaning:"to leave someone at a time when you should stay and help them", example:"But I won't leave you in the lurch even if that time comes."},
+{idiom:"A leap of faith", meaning:"an act of believing something that is not easily believed", example:"It took a big leap of faith to decide to quit my job and try something new."},
+{idiom:"Play second fiddle", meaning:"to be less important or in a weaker position than someone else", example:"I'm not prepared to play second fiddle to Christina any more - I'm looking for another job!"},
+{idiom:"Chapter and verse", meaning:"to give exact information about something, especially something in a book; an exact reference or authority", example:"I can't quote you chapter and verse but I think it's a line from \"Macbeth\"."},
+{idiom:"Be on the cards", meaning:"to be likely to happen", example:"\"So you think they'll get married next year?\" \"I think it's on the cards.\""},
+{idiom:"Take one to task", meaning:"to strongly criticize somebody for something they have done", example:"He was taken to task for not reporting the problem earlier."},
+{idiom:"Pay lip service", meaning:"pretend to regard or agree (to say that you agree with something but do nothing to support it); Insincere agreement", example:"Most of the political parties pay lip service to the plight of the poor."},
+{idiom:"To lead to the altar", meaning:"to ultimately lead to marriage", example:"They started a romance that eventually led (them) to the altar."},
+{idiom:"Take/sign the pledge", meaning:"to make a formal promise to stop drinking alcohol", example:"What's this then, you're only drinking orange juice - have you signed the pledge or something?"},
+{idiom:"Like the clappers", meaning:"Meaning: extremely fast; very fast or very hard", example:"You'll have to run like the clappers if you want to catch your train."},
+{idiom:"Gobs of something", meaning:"a large amount of something", example:"He's got gobs of money."},
+{idiom:"Go nuts", meaning:"to become extremely angry; to become mentally ill", example:"My sister will go nuts when she finds out I crashed her car."},
+{idiom:"A cash cow", meaning:"a product or service that makes a lot of money over a long period of time for the company, often money that is used to support the company's other activities", example:"The studios discovered that movie rentals were an even bigger cash cow than movie tickets."},
+{idiom:"A good old something", meaning:"used to talk about something you enjoy", example:"We had a good old time at the reunion."},
+{idiom:"Stick in somebody's throat", meaning:"to make you angry; to be unable to say the words you want to say, usually because of a strong emotion", example:"It really sticks in my throat that I did all the work, and she's getting all the credit."},
+{idiom:"Put heads together", meaning:"consult something seriously", example:"Our leaders should put their heads together to solve national problems."},
+{idiom:"Ruffle somebody's feathers", meaning:"to upset or annoy someone", example:"She knows how to ruffle his feathers."},
+{idiom:"Above board", meaning:"honest and legal; if a plan/person/business or agreement is above board, it is honest and not trying to deceive anyone", example:"The deal was completely open and above board."},
+{idiom:"To be wise after the event", meaning:"used to mean that it is easy to understand what you could have done to prevent something bad from happening after it has happened; understand and assess a situation only after its implications have become obvious", example:"In retrospect, we should have insisted on checking his calculations, but it's easy to be wise after the event."},
+{idiom:"In the brain/looks department", meaning:"humorous; in intelligence or beauty", example:"He somehow lacks in the brain department."},
+{idiom:"By right of", meaning:"because of", example:"She spoke first, by right of her position as director. (Note: By right = suitable; appropriate; legally or morally correct)"},
+{idiom:"Be/get lost in the shuffle", meaning:"If something or someone gets lost in the shuffle, that thing or person does not get the attention they deserve; be overlooked or missed in a confused or crowded situation", example:"Refugee children in the big camps just get lost in the shuffle and are sometimes left without food."},
+{idiom:"In Cold Blood", meaning:"without feeling or mercy; ruthlessly; in a cruel and deliberate way", example:"Evans had been murdered in cold blood."},
+{idiom:"Wet behind the ears", meaning:"very young and without much experience of life", example:"He is wet behind the ears in share market business."},
+{idiom:"Be scattered to the four winds", meaning:"If a group of things or people are scattered to the four winds, they go or are sent to different places that are far away from each other", example:"It was the finest collection of paintings in Denmark, but during the last war it was broken up and scattered to the four winds."},
+{idiom:"Be gasping for something", meaning:"to want or need something very much", example:"I'm absolutely gasping for a cigarette."},
+{idiom:"A man of straw", meaning:"someone who has a weak character; a person regarded as having no substance or integrity", example:"He was accused by his opponents of being a man of straw and lacking in decisiveness."},
+{idiom:"At a stretch (at one stretch)", meaning:"continuously; at one time, during one period", example:"Sometimes I work for ten hours at a stretch."},
+{idiom:"Be above somebody's pay grade", meaning:"to be something that a person does not have enough knowledge or authority to do", example:"She declined to comment on the controversial tape, saying \"That's above my pay grade."},
+{idiom:"Wash one's dirty linen", meaning:"to discuss very private, personal matters, especially that which may be sensitive or embarrassing, in public or with other people", example:"It always makes me uncomfortable when John starts going into all his personal problems whenever our friends get together. I just wish he wouldn't wash his dirty linen in public like that."},
+{idiom:"A shadow of your former self", meaning:"Meaning: someone or something that is not as strong, powerful, or useful as it once was", example:"Since her accident, she's become a shadow of her former self."},
+{idiom:"Be in the doldrums", meaning:"a). unsuccessful or showing no activity or development b). sad and with no energy or enthusiasm", example:"Her career was in the doldrums during those years."},
+{idiom:"(Have) a bee in one's bonnet", meaning:"to be fussy; to keep talking about something again and again because you think it is very important", example:"She never stops talking about dieting - she's got a real bee in her bonnet about it."},
+{idiom:"Tar somebody with the same brush", meaning:"to think that someone has the same bad qualities as another person", example:"Because they worked so closely in the same department, John was tarred with the same brush as Tim."},
+{idiom:"Cut a deal", meaning:"to make a business deal; make an agreement", example:"A French company has reportedly cut a deal to produce software for government agencies."},
+{idiom:"Halcyon Days", meaning:"A time when there are peace and happiness in the land", example:"She recalled the halcyon days of her youth."},
+{idiom:"In the sack", meaning:"used to talk about sexual activity; in bed; used especially when referring to people having sex", example:"He's just trying to get you in the sack. Whatsapp: 9602-11-4064"},
+{idiom:"Square the accounts/books", meaning:"to make certain that you have paid and received all the money that you owed or that others owed you", example:"I need to square accounts with Dean now, before I end up owing him even more money!"},
+{idiom:"By a whisker", meaning:"by a very small amount", example:"Last time she raced against the Brazilian, she won by a whisker."},
+{idiom:"Speak up for someone/something", meaning:"to express support for a person or idea", example:"Many employees wouldn't speak up for themselves."},
+{idiom:"A level playing field", meaning:"a situation in which everyone has the same chance of succeeding", example:"If the tax systems are different in each European country, how can industries start on a level playing field?"},
+{idiom:"Bowl down/along something", meaning:"to go quickly", example:"They bowled down the street on their new bicycles."},
+{idiom:"With flying colours", meaning:"If you do something such as pass an exam with flying colours, you do it very successfully; with distinction", example:"He passed his exams with flying colours."},
+{idiom:"A brown study", meaning:"A brown study –The condition of being so lost in solitary thought as to be unaware of one's surroundings; a mood in which you are very involved in your own thoughts and not paying attention to anything else", example:"You are wasting your time in a brown study."},
+{idiom:"Keep someone/something at bay (hold someone/something at)", meaning:"to prevent something dangerous or unpleasant from happening or from coming too close", example:"A thick wall keeps the noise at bay."},
+{idiom:"Eye wash", meaning:"a pretence; misleading or deceptive statements, actions, or procedures; insincere talk; nonsense", example:"My friend's promise to help me just proved an eye wash."},
+{idiom:"Feather one's (own) nest", meaning:"make money for oneself in an opportunistic or selfish way", example:"I'm sure he feathered his own nest with the money he allegedly raised for charity."},
+{idiom:"Breathe a word", meaning:"to tell a secret", example:"Don't breathe a word of this to anyone."},
+{idiom:"Let the cat out of the bag", meaning:"to tell someone a secret, especially without intending to", example:"I was trying to keep the party a secret, but Mel went and let the cat out of the bag."},
+{idiom:"Be in the soup", meaning:"to be in trouble", example:"For now, his political career is in the soup."},
+{idiom:"Be engraved on somebody's memory/mind", meaning:"to be very difficult to forget", example:"That last conversation we had is engraved on my memory forever."},
+{idiom:"Be wreathed in smiles", meaning:"to be smiling and looking extremely happy", example:"He was wreathed in smiles as he accepted the award."},
+{idiom:"Push your luck", meaning:"to try too hard to get a particular result and risk losing what you have achieved", example:"She's agreed to help on Saturday, but I think I'd be pushing my luck if I asked her to be here the whole weekend."},
+{idiom:"Put a spoke in one's wheel", meaning:"to make it difficult for someone to achieve something they had planned to do", example:"His letter really put a spoke in our wheel."},
+{idiom:"Like a dose of salts", meaning:"very quickly and easily", example:"The cleaners went through the house like a dose of salts."},
+{idiom:"Make good on something", meaning:"to do what you have said you would do; to fulfill an obligation, such as keeping a promise or paying a debt", example:"You better make good on all the things you said you would deliver, or the client is not going to be happy."},
+{idiom:"In the dumps", meaning:"not successful; unhappy; discouraged, depressed, or sad", example:"The team has been in the dumps all season."},
+{idiom:"Catch somebody's eye", meaning:"to get someone's attention; to cause someone to notice something or someone", example:"It was the unusual colour of his jacket that caught my eye."},
+{idiom:"Flex your muscles", meaning:"give a show of strength or power; to try to worry an opponent or enemy by publicly showing military, political, or financial power", example:"The parade is the first sign of the new regime flexing its military muscles."},
+{idiom:"Not a spark of decency", meaning:"the phrase 'not a spark of decency' refers to someone who has no manners or very rude manners", example:"The class showed not a spark of decency by refusing to stand up when their principle entered the classroom."},
+{idiom:"Pay/settle an old score", meaning:"take revenge; to punish someone for something wrong that they did to you in the past", example:"Oh, I heard plenty of rumours, but they were nearly all based on settling old scores."},
+{idiom:"A cheap shot", meaning:"a criticism or attack on someone that is unfair; an act of deliberate roughness against a defenseless opponent especially in a contact sport taking cheap shots at the quarterback", example:"I think her making fun of his wife was a cheap shot."},
+{idiom:"By rights", meaning:"if the situation was fair; if things had happened or been done fairly or correctly", example:"By rights, it should be my turn next."},
+{idiom:"Get a raw deal", meaning:"Get a raw deal = bad or unfair treatment; not be treated as well as other people", example:"He said that many children in the city's schools were getting/being given a raw deal by being taught in classes that were too large."},
+{idiom:"Take five", meaning:"used to tell someone to stop working and relax for a short period of time; have a short break", example:"There was a newsreel crew taking five at a little café nearby."},
+{idiom:"Have time on your hands", meaning:"to have nothing to do", example:"Now that she was retired, Mary found that she had a lot of time on her hands."},
+{idiom:"To move heaven and earth", meaning:"to do everything you can do to achieve something", example:"He'll move heaven and earth to get it done on time."},
+{idiom:"Zero in on somebody/something (home in on something)", meaning:"a). to direct all your attention towards a particular person or thing b). to aim a gun or other weapon towards something or someone", example:"She immediately zeroed in on the weak point in his argument."},
+{idiom:"As bold as brass", meaning:"with extreme confidence or without the respect or politeness people usually show", example:"She marched into the store, as bold as brass, and demanded her money back."},
+{idiom:"Get on like a house on fire", meaning:"If two people get on like a house on fire, they like each other very much and become friends very quickly", example:"I was worried that they wouldn't like each other but in fact they're getting on like a house on fire."},
+{idiom:"Hear something on the grapevine", meaning:"to hear about something because the information has been passed from one person to another in conversation", example:"I heard about his resignation on the grapevine."},
+{idiom:"Be all eyes", meaning:"to watch someone or something with a lot of interest; used to convey that a particular person or thing is currently the focus of public interest", example:"We were all eyes as the celebrity guests emerged from the car."},
+{idiom:"Get on someone's nerves", meaning:"if someone gets on your nerves, they annoy you, especially by doing something all the time", example:"She's always moaning. It really gets on my nerves."},
+{idiom:"Stick to your guns", meaning:"to continue to have your beliefs or continue with a plan of action, even if other people disagree with you", example:"Despite harsh criticism, she's sticking to her guns on this issue."},
+{idiom:"Major on something", meaning:"to pay particular attention to one subject or thing", example:"The Company is planning to major on offering the machines we need."},
+{idiom:"In harness", meaning:"On duty or at work; in the routine of daily work; doing your usual work", example:"I felt glad to be back in harness."},
+{idiom:"Birds of a feather (flock together)", meaning:"People who have similar interests, ideas, or characteristics tend to seek out and/or associate with one another", example:"I knew you and John would get along well, you're birds of a feather, after all."},
+{idiom:"Lay off", meaning:"to end someone's employment, especially temporarily, because there is not enough work for them", example:"They've had to cut back production and lay off workers."},
+{idiom:"Kill the fatted calf", meaning:"to welcome someone home with a big meal et(c) after they have been away for a long time", example:"My daughter is coming home from college for the summer, so we're going to kill the fatted calf and have a huge barbecue."},
+{idiom:"Idle hands are the devil's playthings", meaning:"When one has nothing to do, one is more likely to get into trouble", example:"When I'm off from school, my grandmother is always trying to get me out of the house, while reminding me that idle hands are the devil's playthings."},
+{idiom:"As clear as day", meaning:"very easy to see or understand", example:"The instructions were as clear as day."},
+{idiom:"A feather in (one's) cap", meaning:"A big achievement or accomplishment that one takes pride in; an honor; a reward for something", example:"Getting promoted to management after spending only a month at the new job was a feather in her cap."},
+{idiom:"Breathe one's last (breathe your last)", meaning:"to die", example:"Her eyes fluttered open for a moment and then she breathed her last."},
+{idiom:"See eye to eye", meaning:"If two people see eye to eye, they agree with each other", example:"My sisters don't see eye to eye with me about the arrangements."},
+{idiom:"At daggers drawn", meaning:"If two people, countries, et(c) are at daggers drawn, they are in a state of extreme unfriendliness and do not trust each other; (of two people) be bitterly hostile towards each other", example:"The two sides have been at daggers drawn for some months now with no sign of improvement in relations."},
+{idiom:"Blow hot and cold", meaning:"to keep changing your attitude towards someone or something; alternate inconsistently between two moods, attitudes, or courses of action", example:"I can't tell what he wants - he keeps blowing hot and cold."},
+{idiom:"Steer a course/path", meaning:"to take a series of actions, usually of a particular type, carefully and intentionally", example:"It will be difficult to steer a middle course between the competing claims of the two sides in the conflict."},
+{idiom:"A small fortune", meaning:"a large amount of money; an amount of money that seems to be a lot", example:"You'll have to spend a small fortune in legal fees if you decide to sue for compensation."},
+{idiom:"At the push of a button", meaning:"very easily", example:"You can't expect to get everything you need at the push of a button."},
+{idiom:"Be set in your ways", meaning:"to do the same things every day and to not want to change those habits", example:"As people get older, they often become set in their ways."},
+{idiom:"Hang fire/hold fire", meaning:"Hang fire/hold fire –means to do nothing, to delay, wait, hold back, or hesitate; remain unsolved because of delay", example:"The Kashmir problem has been hanging fire for many years."},
+{idiom:"A ball park figure", meaning:"A general financial figure", example:"A ballpark figure is a rough numerical estimate or approximation of the value of something that is otherwise unknown."}
 ];
-
 var todaysRule = rules[dayOfYear % rules.length];
 document.getElementById('rotd-rule').textContent = "Rule: " + todaysRule.rule;
 document.getElementById('rotd-wrong').textContent = todaysRule.wrong;
 document.getElementById('rotd-right').textContent = todaysRule.right;
-
 var todaysWord = words[dayOfYear % words.length];
 document.getElementById('wotd-word').textContent = todaysWord.word + " — " + todaysWord.meaning;
 document.getElementById('wotd-example').textContent = "Ex- " + todaysWord.example;
 document.getElementById('wotd-syn').textContent = todaysWord.synonyms;
 document.getElementById('wotd-ant').textContent = todaysWord.antonyms;
-
 var todaysIdiom = idioms[dayOfYear % idioms.length];
 document.getElementById('iotd-idiom').textContent = todaysIdiom.idiom + " — " + todaysIdiom.meaning;
 document.getElementById('iotd-example').textContent = "Ex- " + todaysIdiom.example;
-
 var panels = {
-  rule: document.getElementById('rulePanel'),
-  word: document.getElementById('wordPanel'),
-  idiom: document.getElementById('idiomPanel')
+rule: document.getElementById('rulePanel'),
+word: document.getElementById('wordPanel'),
+idiom: document.getElementById('idiomPanel')
 };
 var buttons = {
-  rule: document.getElementById('tabRuleBtn'),
-  word: document.getElementById('tabWordBtn'),
-  idiom: document.getElementById('tabIdiomBtn')
+rule: document.getElementById('tabRuleBtn'),
+word: document.getElementById('tabWordBtn'),
+idiom: document.getElementById('tabIdiomBtn')
 };
-
 function toggleTab(key){
-  var isOpen = panels[key].classList.contains('active');
-  Object.keys(panels).forEach(function(k){
-    panels[k].classList.remove('active');
-    buttons[k].classList.remove('active');
-  });
-  if(!isOpen){
-    panels[key].classList.add('active');
-    buttons[key].classList.add('active');
-  }
+var isOpen = panels[key].classList.contains('active');
+Object.keys(panels).forEach(function(k){
+panels[k].classList.remove('active');
+buttons[k].classList.remove('active');
+});
+if(!isOpen){
+panels[key].classList.add('active');
+buttons[key].classList.add('active');
 }
-
+}
 buttons.rule.addEventListener('click', function(){ toggleTab('rule'); });
 buttons.word.addEventListener('click', function(){ toggleTab('word'); });
 buttons.idiom.addEventListener('click', function(){ toggleTab('idiom'); });
 </script>
 <script src="notifications.js"></script>
+<script src="theme.js"></script>
 </body>
 </html>
