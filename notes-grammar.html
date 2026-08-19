@@ -5,17 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Notes - Grammar</title>
 <style>
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f2f2f2;}
-header{background:#004aad;color:white;padding:20px;text-align:center;}
+:root{
+--page-bg:#f2f2f2;
+--card-bg:#ffffff;
+--card-text:#222222;
+--accent:#004aad;
+--accent-hover:#00317c;
+--footer-bg:#222222;
+--footer-text:#ffffff;
+--secondary-btn-bg:#222222;
+}
+html[data-theme="dark"]{
+--page-bg:#0b0c0e;
+--card-bg:#1b1c1f;
+--card-text:#f2f2f2;
+--accent:#3b82f6;
+--accent-hover:#2563eb;
+--footer-bg:#000000;
+--footer-text:#f2f2f2;
+--secondary-btn-bg:#3a3a3a;
+}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--page-bg);transition:background .25s ease;}
+header{background:var(--accent);color:white;padding:20px;text-align:center;}
 h1{margin:0;font-size:38px;}
 .container{width:90%;max-width:1000px;margin:40px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
-.card{background:white;padding:25px;text-align:center;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,.1);}
-.card h2{color:#004aad;font-size:22px;margin-top:0;}
-.button{display:inline-block;margin-top:15px;padding:12px 25px;background:#004aad;color:white;text-decoration:none;border-radius:6px;font-size:18px;}
-.button:hover{background:#00317c;}
+.card{background:var(--card-bg);color:var(--card-text);padding:25px;text-align:center;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,.1);transition:background .25s ease,color .25s ease;}
+.card h2{color:var(--accent);font-size:22px;margin-top:0;}
+.button{display:inline-block;margin-top:15px;padding:12px 25px;background:var(--accent);color:white;text-decoration:none;border-radius:6px;font-size:18px;}
+.button:hover{background:var(--accent-hover);}
 .back{margin-top:40px;text-align:center;grid-column:1/-1;}
-.back a{text-decoration:none;background:#222;color:white;padding:12px 25px;border-radius:6px;font-size:18px;}
-footer{margin-top:50px;background:#222;color:white;text-align:center;padding:20px;}
+.back a{text-decoration:none;background:var(--secondary-btn-bg);color:white;padding:12px 25px;border-radius:6px;font-size:18px;}
+footer{margin-top:50px;background:var(--footer-bg);color:var(--footer-text);text-align:center;padding:20px;}
 </style>
 </head>
 <body>
@@ -28,6 +48,10 @@ footer{margin-top:50px;background:#222;color:white;text-align:center;padding:20p
 <h2>Subject-Verb Agreement</h2>
 <a class="button" href="subject-verb-agreement-pdf-grammar.html">Open</a>
 </div>
+<div class="card">
+<h2>Conditional Tense</h2>
+<a class="button" href="Conditional%20Tense%20(Notes).pdf">Open</a>
+</div>
 <div class="back">
 <a href="grammar.html">← Back to Grammar</a>
 </div>
@@ -35,14 +59,15 @@ footer{margin-top:50px;background:#222;color:white;text-align:center;padding:20p
 <footer>© Sampuran English</footer>
 <script>
 fetch('header.html')
-  .then(function(response){ return response.text(); })
-  .then(function(html){
-    document.getElementById('site-header').innerHTML = html;
-    window.scrollTo(0, 0);
-    document.getElementById('menuToggle').addEventListener('click', function(){
-      document.getElementById('menuList').classList.toggle('open');
-    });
-  });
+.then(function(response){ return response.text(); })
+.then(function(html){
+document.getElementById('site-header').innerHTML = html;
+window.scrollTo(0, 0);
+document.getElementById('menuToggle').addEventListener('click', function(){
+document.getElementById('menuList').classList.toggle('open');
+});
+});
 </script>
+<script src="theme.js"></script>
 </body>
 </html>
