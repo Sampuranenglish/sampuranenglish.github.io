@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampuran English — SSC English Practice, 30-7-2026</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  :root{
+    --ink:#1c2b3a;
+    --paper:#f6f3ea;
+    --rule:#c9bfa4;
+    --navy:#163a5f;
+    --brick:#a8321f;
+    --brick-deep:#7e2417;
+    --gold:#b8862c;
+    --correct:#1f7a4d;
+    --correct-bg:#e5f3ea;
+    --wrong:#a8321f;
+    --wrong-bg:#fbe9e5;
+    --unattempted:#7a6f57;
+    --card:#fffdf8;
+    --shadow:0 4px 10px rgba(0,0,0,.08);
+    --radius:10px;
+    --trans:all .2s ease;
+
+    --d-bg:#141b24;
+    --d-card:#1e2733;
+    --d-ink:#e8e3d3;
+    --d-rule:#33404c;
+    --d-paper:#10161d;
+  }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0)),
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 34px);
+    color: var(--ink);
+    font-family: "Georgia", "Iowan Old Style", "Palatino Linotype", serif;
+    line-height: 1.5;
+    transition: var(--trans);
+  }
+  body.dark-mode{
+    background: var(--d-bg);
+    background-image:none;
+    color: var(--d-ink);
+  }
+
+  img{ max-width:100%; height:auto; }
+
+  /* ---------- Welcome screen ---------- */
+  .welcome-screen{
+    position:fixed; inset:0;
+    background: var(--paper);
+    z-index:1000;
+    display:flex; flex-direction:column; align-items:center;
+    padding: 24px 20px 40px;
+    text-align:center;
+    transition: var(--trans);
+    overflow-y:auto;
+  }
+  body.dark-mode .welcome-screen{ background:var(--d-bg); }
+  .welcome-screen.hidden{ display:none; }
+
+  .welcome-kicker{
+    font-family:"Trebuchet MS", sans-serif;
+    letter-spacing:1.5px;
+    font-size: clamp(24px, 7vw, 38px);
+    text-transform:uppercase;
+    color: var(--brick);
+    font-weight:800;
+    margin-bottom:10px;
+    line-height:1.15;
+  }
+  .welcome-title{
+    font-size:15px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color: var(--navy);
+    margin-bottom:6px;
+  }
+  body.dark-mode .welcome-title{ color:#9fc1e6; }
+  .welcome-sub{
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13.5px;
+    color: var(--unattempted);
+    margin-bottom:26px;
+  }
+
+  .welcome-card{
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--brick);
+    box-shadow: var(--shadow);
+    width:100%; max-width:420px;
+    padding: 22px 24px;
+    margin-bottom:26px;
+    text-align:left;
+  }
+  body.dark-mode .welcome-card{ background:var(--d-card); border-color:var(--d-rule); }
+  .welcome-card .head{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color: var(--navy);
+    border-bottom:1px solid var(--rule);
+    padding-bottom:10px;
+    margin-bottom:12px;
+  }
+  body.dark-mode .welcome-card .head{ color:#9fc1e6; border-color:var(--d-rule); }
+  .w-row{
+    display:flex; justify-content:space-between;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:14px;
+    padding:7px 0;
+  }
+  .w-row b{ color:var(--brick); }
+  body.dark-mode .w-row b{ color:#e08a72; }
+
+  .welcome-button{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    background: var(--brick);
+    color:#fff;
+    border:none;
+    padding:14px 40px;
+    cursor:pointer;
+    box-shadow: 0 3px 0 var(--brick-deep);
+    transition: transform .1s;
+    margin-bottom:16px;
+  }
+  .welcome-button:active{ transform:translateY(3px); box-shadow:none; }
+
+  /* ---------- Daily content: Rule / Word of the Day ---------- */
+  .daily-content{
+    width:100%; max-width:420px;
+    text-align:left;
+    margin-bottom:26px;
+  }
+  .cat-row{
+    display:flex; gap:10px; justify-content:center;
+    margin-bottom:20px; flex-wrap:wrap;
+  }
+  .cat-pill{
+    flex:1; min-width:96px;
+    background: var(--card);
+    border:2px solid var(--navy);
+    color: var(--navy);
+    border-radius:50px;
+    text-align:center;
+    padding:14px 6px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:12.5px;
+    line-height:1.3;
+  }
+  body.dark-mode .cat-pill{ background:var(--d-card); border-color:#9fc1e6; color:#9fc1e6; }
+  .cat-pill:nth-child(2){ border-color: var(--correct); color: var(--correct); }
+  body.dark-mode .cat-pill:nth-child(2){ border-color:#5fd28d; color:#5fd28d; }
+  .cat-pill:nth-child(3){ border-color: var(--brick); color: var(--brick); }
+  body.dark-mode .cat-pill:nth-child(3){ border-color:#e08a72; color:#e08a72; }
+
+  .dc-banner{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    background: var(--brick);
+    color:#FFD86B;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:800; font-size:14px; letter-spacing:1px; text-transform:uppercase;
+    padding:9px 12px;
+    margin:18px 0 10px;
+  }
+  .dc-banner i{ font-size:12px; color:#fff; }
+
+  .rule-box{
+    background: var(--navy);
+    color:#FFD86B;
+    padding:14px 16px;
+    font-size:13.5px;
+    font-weight:700;
+    line-height:1.55;
+    margin-bottom:8px;
+    border-left:3px solid var(--gold);
+  }
+  body.dark-mode .rule-box{ border-left-color:#ffd86b; }
+  .rule-box .eg{ margin-top:10px; font-size:12.5px; font-weight:400; color:#f2ede0; display:block; }
+  .rule-box .eg .wrong{ color:#ffb0a3; }
+  .rule-box .eg .right{ color:#a7f0b0; }
+
+  .word-box{
+    background: var(--card);
+    border:1px solid var(--rule);
+    padding:16px 18px;
+    text-align:center;
+  }
+  body.dark-mode .word-box{ background:var(--d-card); border-color:var(--d-rule); }
+  .word-title{
+    font-size:22px; font-weight:700;
+    color: var(--navy);
+    text-decoration:underline;
+    margin-bottom:8px;
+  }
+  body.dark-mode .word-title{ color:#9fc1e6; }
+  .word-meta{
+    text-align:left; font-size:13px; margin-top:8px; line-height:1.5;
+  }
+  .word-meta u{ font-weight:700; color:var(--navy); }
+  body.dark-mode .word-meta u{ color:#9fc1e6; }
+  .word-trick{
+    text-align:left; font-size:12.5px; font-style:italic; font-weight:700;
+    color: var(--brick); margin-top:10px;
+    background:#fde2e2; padding:8px 10px; border-radius:4px;
+    border-left:3px solid var(--brick);
+  }
+  body.dark-mode .word-trick{ color:#ffb0a3; background:#3a2320; border-left-color:#e08a72; }
+  .syn-anto{ text-align:left; font-size:13px; margin-top:8px; }
+  .syn-anto b{ text-decoration:underline; color:var(--navy); }
+  body.dark-mode .syn-anto b{ color:#9fc1e6; }
+  .syn-anto .hl{ color: var(--brick); font-weight:700; }
+  body.dark-mode .syn-anto .hl{ color:#e08a72; }
+
+  .join-channel{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13px; font-weight:600;
+    color: var(--navy);
+    text-decoration:none;
+    padding:9px 16px;
+    border:1px solid var(--navy);
+    border-radius: 20px;
+    transition: var(--trans);
+  }
+  .join-channel:hover{ background:var(--navy); color:#fff; }
+  body.dark-mode .join-channel{ color:#9fc1e6; border-color:#9fc1e6; }
+
+  /* ---------- Header ---------- */
+  .hdr{
+    background: var(--navy);
+    color:#f2ede0;
+    padding:10px 14px;
+    display:grid;
+    grid-template-columns: auto 1fr auto;
+    align-items:center;
+    gap:10px;
+    position:sticky; top:0; z-index:100;
+    border-bottom:4px solid var(--brick);
+  }
+  .hdr-l{ font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:14px; }
+  .hdr-l small{ display:block; font-weight:400; font-size:10.5px; color:#cfd8e3; letter-spacing:0.5px; }
+  .hdr-c{ text-align:center; font-family:"Trebuchet MS", sans-serif; font-size:13px; font-weight:600; }
+  .hdr-r{ display:flex; align-items:center; gap:8px; justify-content:flex-end; flex-wrap:wrap; }
+  .timer{
+    background:#FEF3C7; color:#78350F;
+    padding:6px 12px; border-radius:16px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13px; font-weight:700;
+  }
+  .timer.low{ background:#fde2e2; color:#7e2417; }
+  .icon-btn{
+    border:1px solid rgba(255,255,255,0.4);
+    background:transparent; color:#fff;
+    width:34px; height:34px; border-radius:8px;
+    cursor:pointer; font-size:14px;
+    display:flex; align-items:center; justify-content:center;
+    transition: var(--trans);
+  }
+  .icon-btn:hover{ background:rgba(255,255,255,0.15); }
+  .btn-submit-top{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; font-size:12.5px;
+    background: var(--brick); color:#fff;
+    border:none; padding:9px 14px; border-radius:8px;
+    cursor:pointer;
+  }
+  .btn-submit-top:disabled{ background:#8a8377; cursor:not-allowed; }
+
+  .subject-tag{
+    background:#f1ece0;
+    border-bottom:1px solid var(--rule);
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color: var(--navy);
+    font-weight:700;
+    padding:9px 16px;
+  }
+  body.dark-mode .subject-tag{ background:#1a2330; border-color:var(--d-rule); color:#9fc1e6; }
+
+  /* ---------- Question area ---------- */
+  .cont{ max-width:720px; margin:0 auto; padding:18px 16px 110px; }
+
+  .qcard{
+    background: var(--card);
+    border:1px solid var(--rule);
+    border-left:4px solid var(--navy);
+    padding:18px 20px 20px;
+    box-shadow: var(--shadow);
+  }
+  body.dark-mode .qcard{ background:var(--d-card); border-color:var(--d-rule); border-left-color:#9fc1e6; }
+
+  .qnum{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; color: var(--brick);
+    font-size:13px; margin-bottom:8px; letter-spacing:0.5px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .status-tag{
+    display:inline-block;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:10.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+    padding:3px 9px; border-radius:2px; color:#fff;
+  }
+  .status-tag.correct{ background:var(--correct); }
+  .status-tag.wrong{ background:var(--wrong); }
+  .status-tag.skipped{ background:var(--unattempted); }
+
+  .passage{
+    font-size:15px;
+    background:#f1ece0;
+    border-left:3px solid var(--gold);
+    padding:10px 14px;
+    margin-bottom:14px;
+    font-style:italic;
+    color:#40372a;
+  }
+  body.dark-mode .passage{ background:#1a2330; color:#c9c2ab; }
+
+  .qtext{ font-size:17px; margin-bottom:16px; color:var(--ink); }
+  body.dark-mode .qtext{ color:var(--d-ink); }
+
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:12px 14px;
+    border:1px solid var(--rule);
+    background:#fff;
+    cursor:pointer;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:14.5px;
+    transition: border-color .15s, background .15s;
+  }
+  body.dark-mode .opt{ background:#232d3a; border-color:var(--d-rule); color:var(--d-ink); }
+  .opt:hover{ border-color:var(--navy); background:#f3f6fa; }
+  body.dark-mode .opt:hover{ background:#2b3646; }
+  .opt.selected{ border-color:var(--navy); background:#e9eff6; font-weight:700; }
+  body.dark-mode .opt.selected{ background:#28405e; }
+  .opt-letter{ font-weight:700; color:var(--brick); flex-shrink:0; }
+  .opt.correct-answer{ background:var(--correct-bg); border-color:var(--correct); }
+  body.dark-mode .opt.correct-answer{ background:#164a34; border-color:var(--correct); }
+  .opt.wrong-answer{ background:var(--wrong-bg); border-color:var(--wrong); }
+  body.dark-mode .opt.wrong-answer{ background:#5c2018; border-color:var(--wrong); }
+  .qcard.locked .opt{ cursor:default; pointer-events:none; }
+
+  .explanation{
+    margin-top:16px; padding:12px 14px;
+    background:#fbf7ec;
+    border:1px dashed var(--gold);
+    font-size:14px;
+    display:none;
+  }
+  body.dark-mode .explanation{ background:#241f14; }
+  .explanation b{ color:var(--navy); }
+  body.dark-mode .explanation b{ color:#9fc1e6; }
+  .qcard.locked .explanation{ display:block; }
+
+  /* ---------- Bottom nav ---------- */
+  .navbar{
+    position:fixed; left:0; right:0; bottom:0;
+    background: var(--card);
+    border-top:1px solid var(--rule);
+    padding:10px 14px;
+    display:flex; justify-content:space-between; align-items:center;
+    box-shadow:0 -2px 10px rgba(0,0,0,.06);
+    z-index:100;
+  }
+  body.dark-mode .navbar{ background:var(--d-card); border-color:var(--d-rule); }
+  .nav-btn{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; font-size:12.5px;
+    padding:10px 14px; border-radius:8px; border:none; cursor:pointer;
+    display:flex; align-items:center; gap:6px;
+    min-width:64px; justify-content:center;
+  }
+  .nav-btn:disabled{ opacity:.45; cursor:not-allowed; }
+  .nav-btn.prev{ background:transparent; border:1px solid var(--rule); color:var(--ink); }
+  body.dark-mode .nav-btn.prev{ border-color:var(--d-rule); color:var(--d-ink); }
+  .nav-btn.review{ background:#f6dfa0; color:#5a4008; }
+  .nav-btn.review.active{ background:var(--gold); color:#fff; }
+  .nav-btn.next{ background:var(--navy); color:#fff; }
+  .nav-mid{ text-align:center; font-family:"Trebuchet MS", sans-serif; font-size:11.5px; color:var(--unattempted); }
+  body.dark-mode .nav-mid{ color:#a49a80; }
+
+  /* ---------- Grid panel ---------- */
+  .panel{
+    position:fixed; inset:0;
+    background: var(--paper);
+    z-index:200;
+    transform: translateY(100%);
+    transition: transform .3s ease;
+    overflow-y:auto;
+    display:none;
+  }
+  body.dark-mode .panel{ background:var(--d-bg); }
+  .panel.open{ display:block; transform:translateY(0); }
+  .panel-hdr{
+    background: var(--navy); color:#fff;
+    padding:16px; display:flex; justify-content:space-between; align-items:center;
+    position:sticky; top:0;
+  }
+  .panel-close{ background:none; border:none; color:#fff; font-size:20px; cursor:pointer; }
+  .panel-body{ padding:18px; }
+  .legend{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:18px; font-family:"Trebuchet MS", sans-serif; font-size:12px; }
+  .legend span{ display:flex; align-items:center; gap:6px; }
+  .legend i{ width:14px; height:14px; border-radius:3px; display:inline-block; }
+  .grid-nav{ display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; }
+  @media (min-width:480px){ .grid-nav{ grid-template-columns:repeat(6, 1fr); } }
+  .g-btn{
+    aspect-ratio:1; border-radius:8px; border:2px solid var(--rule);
+    background:#fff; font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:14px;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  body.dark-mode .g-btn{ background:var(--d-card); border-color:var(--d-rule); color:var(--d-ink); }
+  .g-btn.answered{ background:var(--correct); color:#fff; border-color:var(--correct); }
+  .g-btn.review{ background:var(--gold); color:#fff; border-color:var(--gold); }
+  .g-btn.current{ outline:3px solid var(--brick); outline-offset:1px; }
+
+  /* ---------- Modal ---------- */
+  .modal{
+    position:fixed; inset:0; background:rgba(0,0,0,.55);
+    display:none; align-items:center; justify-content:center; z-index:300; padding:16px;
+  }
+  .modal.show{ display:flex; }
+  .modal-box{
+    background: var(--card);
+    max-width:400px; width:100%;
+    border:1px solid var(--rule);
+    border-top:5px solid var(--brick);
+    box-shadow: var(--shadow);
+  }
+  body.dark-mode .modal-box{ background:var(--d-card); border-color:var(--d-rule); }
+  .modal-head{ text-align:center; padding:22px 20px 14px; }
+  .modal-head .kicker{ font-family:"Trebuchet MS", sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--unattempted); }
+  .modal-head .score{ font-size:38px; font-weight:700; color:var(--navy); margin-top:6px; }
+  body.dark-mode .modal-head .score{ color:#9fc1e6; }
+  .modal-head .score span{ font-size:18px; color:var(--unattempted); }
+  .stat-grid{ display:grid; grid-template-columns:repeat(4,1fr); text-align:center; font-family:"Trebuchet MS", sans-serif; border-top:1px solid var(--rule); }
+  body.dark-mode .stat-grid{ border-color:var(--d-rule); }
+  .stat-grid div{ padding:12px 4px; border-right:1px solid var(--rule); }
+  body.dark-mode .stat-grid div{ border-color:var(--d-rule); }
+  .stat-grid div:last-child{ border-right:none; }
+  .stat-grid .num{ font-size:19px; font-weight:700; }
+  .stat-grid .lbl{ font-size:10px; text-transform:uppercase; color:var(--unattempted); margin-top:2px; }
+  .modal-actions{ display:flex; gap:8px; padding:16px 20px; }
+  .modal-actions button{
+    flex:1; padding:11px; border-radius:6px; border:none; cursor:pointer;
+    font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:13px;
+  }
+  .m-close{ background:transparent; border:1px solid var(--rule) !important; color:var(--ink); }
+  body.dark-mode .m-close{ border-color:var(--d-rule) !important; color:var(--d-ink); }
+  .m-review{ background:var(--navy); color:#fff; }
+  .m-print{ background:var(--brick); color:#fff; margin:0 20px 18px; padding:11px; border:none; border-radius:6px; font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:13px; cursor:pointer; width:calc(100% - 40px); display:none; }
+  .m-print.show{ display:block; }
+
+  footer{
+    text-align:center; padding:16px; background:var(--brick); color:#fff;
+    font-family:"Trebuchet MS", sans-serif; font-size:12.5px;
+  }
+  footer a{ color:#ffe9c7; }
+</style>
+</head>
+<body>
+
+<!-- ============ WELCOME SCREEN ============ -->
+<div class="welcome-screen" id="welcomeScreen">
+  <div class="welcome-kicker">Sampuran English</div>
+  <a class="join-channel" href="https://t.me/Sampuran_English" target="_blank">
+    <i class="fa-brands fa-telegram"></i> Official Telegram Channel
+  </a>
+  <div class="welcome-sub" style="color:#000;font-weight:700;margin-top:14px">SSC English Practice — 30 · 7 · 2026</div>
+
+  <div class="welcome-card">
+    <div class="head" style="text-align:center;font-weight:900;font-size:14px">Mock Test No: 24</div>
+    <div class="w-row"><span>Total Questions</span><b>25</b></div>
+    <div class="w-row"><span>Total Marks</span><b>50</b></div>
+    <div class="w-row"><span>Duration</span><b>15 minutes</b></div>
+    <div class="w-row"><span>Marking</span><b>+2.0 / −0.5</b></div>
+  </div>
+
+  <button class="welcome-button" id="startTestBtn">Start Test</button>
+
+  <div class="daily-content">
+    <div class="cat-row">
+      <div class="cat-pill">Grammar<br>Practice</div>
+      <div class="cat-pill">Vocab<br>Practice</div>
+      <div class="cat-pill">Reading<br>Practice</div>
+    </div>
+
+    <div class="dc-banner"><i class="fas fa-arrow-left"></i> Rule of the Day <i class="fas fa-arrow-right"></i></div>
+    <div class="rule-box">
+      Use "fewer" with plural countable nouns (things you can count one by one), and "less" with singular or uncountable nouns (things measured in bulk, not counted).
+      <span class="eg">Ex – There were <span class="wrong">less</span> candidates in this year's exam. <i>(Incorrect)</i></span>
+      <span class="eg">Ex – There were <span class="right">fewer</span> candidates in this year's exam. <i>(Correct)</i></span>
+    </div>
+
+    <div class="dc-banner"><i class="fas fa-arrow-left"></i> Word of the Day <i class="fas fa-arrow-right"></i></div>
+    <div class="word-box">
+      <div class="word-title">Ephemeral (Adjective)</div>
+      <div class="word-meta">
+        <u>Meaning</u>: lasting for a very short time<br>
+        Ex – The beauty of cherry blossoms is ephemeral, lasting only a week or two each spring.
+      </div>
+      <div class="syn-anto">
+        <b>Synonyms</b>: transient, fleeting, <span class="hl">transitory</span>, momentary
+      </div>
+      <div class="syn-anto">
+        <b>Antonyms</b>: permanent, enduring, <span class="hl">everlasting</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MAIN TEST INTERFACE ============ -->
+<div id="mainTestInterface" style="display:none">
+
+  <div class="hdr">
+    <div class="hdr-l">Sampuran English<small>Daily Practice</small></div>
+    <div class="hdr-c" id="qInfo">Q 1 / 20</div>
+    <div class="hdr-r">
+      <div class="timer" id="timer">15:00</div>
+      <button class="icon-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="icon-btn" id="menuBtn" title="Question palette"><i class="fas fa-th"></i></button>
+      <button class="btn-submit-top" id="subBtn">Submit</button>
+    </div>
+  </div>
+  <div class="subject-tag" id="subjectTag"></div>
+
+  <div class="cont">
+    <div class="qcard" id="qcard">
+      <div class="qnum">Question <span id="qNumTxt">1</span> <span class="status-tag" id="statusTag" style="display:none"></span></div>
+      <div class="passage" id="passageBox" style="display:none"></div>
+      <div class="qtext" id="qTxt"></div>
+      <div class="options" id="opts"></div>
+      <div class="explanation" id="explanation"></div>
+    </div>
+  </div>
+
+  <div class="navbar">
+    <button class="nav-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i> Prev</button>
+    <div class="nav-mid">
+      <div id="progTxt">1 of 20</div>
+      <div>Answered: <span id="ansCnt">0</span></div>
+    </div>
+    <button class="nav-btn review" id="reviewBtn"><i class="fas fa-flag"></i></button>
+    <button class="nav-btn next" id="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
+  </div>
+
+  <!-- Question palette panel -->
+  <div class="panel" id="panel">
+    <div class="panel-hdr">
+      <span style="font-family:'Trebuchet MS',sans-serif;font-weight:700">Question Palette</span>
+      <button class="panel-close" id="panelClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="panel-body">
+      <div class="legend">
+        <span><i style="background:var(--correct)"></i> Answered</span>
+        <span><i style="background:var(--gold)"></i> Marked for Review</span>
+        <span><i style="background:#fff;border:2px solid var(--rule)"></i> Not Answered</span>
+      </div>
+      <div class="grid-nav" id="gridNav"></div>
+    </div>
+  </div>
+
+  <!-- Result modal -->
+  <div class="modal" id="modalOver">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="kicker">Your Result</div>
+        <div class="score" id="scoreDisp">0.0<span> / 50</span></div>
+      </div>
+      <div class="stat-grid">
+        <div><div class="num" id="corrStat" style="color:var(--correct)">0</div><div class="lbl">Correct</div></div>
+        <div><div class="num" id="incStat" style="color:var(--wrong)">0</div><div class="lbl">Incorrect</div></div>
+        <div><div class="num" id="unaStat">0</div><div class="lbl">Unattempted</div></div>
+        <div><div class="num" id="timeStat">0</div><div class="lbl">Minutes</div></div>
+      </div>
+      <button class="m-print" id="printBtn"><i class="fas fa-print"></i> Print Full Review</button>
+      <div class="modal-actions">
+        <button class="m-close" id="closeModal">Close</button>
+        <button class="m-review" id="revBtn">Review</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Daily Practice: <a href="https://t.me/Sampuran_English" target="_blank">t.me/Sampuran_English</a>
+    &nbsp;&middot;&nbsp; Doubts: <a href="https://t.me/sampuranenglish" target="_blank">t.me/sampuranenglish</a>
+  </footer>
+</div>
+
+<script>
+const questions = [
+  {
+    "id": 1,
+    "section": "Grammar Practice — Fill in the Blanks",
+    "text": "Despite the __________ evidence presented by the defence, the jury remained unconvinced of the defendant's innocence.",
+    "options": {
+      "a": "compelling",
+      "b": "contrite",
+      "c": "complacent",
+      "d": "congruent"
+    },
+    "answer": "a",
+    "exp": "\"Compelling\" means evoking interest or belief in a powerfully convincing way, fitting evidence meant to persuade a jury. \"Contrite\" means feeling remorseful, \"complacent\" means self-satisfied and unconcerned, and \"congruent\" means matching or in agreement — none fit the context of persuasive evidence."
+  },
+  {
+    "id": 2,
+    "section": "Grammar Practice — Fill in the Blanks",
+    "text": "If she __________ harder for the exam, she would have secured a much better rank.",
+    "options": {
+      "a": "studied",
+      "b": "had studied",
+      "c": "has studied",
+      "d": "would study"
+    },
+    "answer": "b",
+    "exp": "This is a Type 3 (past unreal) conditional sentence, referring to an imagined change to a past event. The structure requires \"If + Past Perfect (had studied), ... would have + V3 (would have secured)\". \"Studied\", \"has studied\" and \"would study\" do not fit this structure."
+  },
+  {
+    "id": 3,
+    "section": "Grammar Practice — Common Error",
+    "text": "Neither of the two candidates were fully prepared (a)/ for the rigorous interview process (b)/ conducted by the panel. (c)/ No error (d)",
+    "options": {
+      "a": "(a)",
+      "b": "(b)",
+      "c": "(c)",
+      "d": "No error"
+    },
+    "answer": "a",
+    "exp": "\"Neither of\" is always followed by a singular verb, regardless of the plural noun that follows it, since \"neither\" itself is a singular indefinite pronoun. It should be corrected to \"Neither of the two candidates was fully prepared\"."
+  },
+  {
+    "id": 4,
+    "section": "Grammar Practice — Common Error",
+    "text": "One of the biggest challenge (a)/ that the new government faces (b)/ is controlling rising inflation. (c)/ No error (d)",
+    "options": {
+      "a": "(a)",
+      "b": "(b)",
+      "c": "(c)",
+      "d": "No error"
+    },
+    "answer": "a",
+    "exp": "The structure \"one of the + plural noun\" always requires a plural noun, since it refers to a single item from among several — here, one challenge from among many challenges. It should be corrected to \"One of the biggest challenges\"."
+  },
+  {
+    "id": 5,
+    "section": "Grammar Practice — Sentence Improvement",
+    "text": "The committee insists that every member <u>submits</u> the report by Friday.",
+    "options": {
+      "a": "submitted",
+      "b": "will submit",
+      "c": "submit",
+      "d": "No improvement"
+    },
+    "answer": "c",
+    "exp": "After verbs of demand or insistence such as \"insists that\", the subjunctive mood is used, which takes the base form of the verb (\"submit\") regardless of the subject, not the usual third-person \"-s\" form. Hence \"submits\" should be corrected to \"submit\"."
+  },
+  {
+    "id": 6,
+    "section": "Grammar Practice — Sentence Improvement",
+    "text": "Hardly <u>he had reached</u> the station when the train left.",
+    "options": {
+      "a": "he has reached",
+      "b": "did he reached",
+      "c": "had he reached",
+      "d": "No improvement"
+    },
+    "answer": "c",
+    "exp": "When a sentence begins with the negative adverb \"Hardly\", the subject and auxiliary verb must be inverted (\"had he reached\"), following the same rule as \"Scarcely\" and \"No sooner\". The plain word order \"he had reached\" is therefore incorrect after a fronted \"Hardly\"."
+  },
+  {
+    "id": 7,
+    "section": "Vocab Practice — Synonyms",
+    "text": "Recalcitrant",
+    "options": {
+      "a": "Obstinate",
+      "b": "Compliant",
+      "c": "Docile",
+      "d": "Amenable"
+    },
+    "answer": "a",
+    "exp": "Recalcitrant means having an obstinately uncooperative attitude towards authority or discipline. Obstinate carries this exact sense of stubborn resistance. Compliant, Docile and Amenable all describe a willingness to cooperate — the opposite quality."
+  },
+  {
+    "id": 8,
+    "section": "Vocab Practice — Synonyms",
+    "text": "Loquacious",
+    "options": {
+      "a": "Reserved",
+      "b": "Talkative",
+      "c": "Taciturn",
+      "d": "Introverted"
+    },
+    "answer": "b",
+    "exp": "Loquacious means tending to talk a great deal; very talkative. Talkative carries this exact meaning. Reserved, Taciturn and Introverted all describe a tendency to speak little — the opposite quality."
+  },
+  {
+    "id": 9,
+    "section": "Vocab Practice — Antonyms",
+    "text": "Frugal",
+    "options": {
+      "a": "Thrifty",
+      "b": "Prudent",
+      "c": "Extravagant",
+      "d": "Economical"
+    },
+    "answer": "c",
+    "exp": "Frugal means sparing or economical with money or resources. Its opposite is Extravagant, meaning spending money or resources excessively. Thrifty, Prudent and Economical are all close in meaning to \"frugal\" rather than its opposite."
+  },
+  {
+    "id": 10,
+    "section": "Vocab Practice — Antonyms",
+    "text": "Reticent",
+    "options": {
+      "a": "Reserved",
+      "b": "Garrulous",
+      "c": "Taciturn",
+      "d": "Withdrawn"
+    },
+    "answer": "b",
+    "exp": "Reticent means not revealing one’s thoughts or feelings readily; reserved in speech. Its opposite is Garrulous, meaning excessively talkative. Reserved, Taciturn and Withdrawn are all close in meaning to \"reticent\" rather than its opposite."
+  },
+  {
+    "id": 11,
+    "section": "Vocab Practice — One Word Substitution",
+    "text": "A place where orphans are housed, fed and cared for",
+    "options": {
+      "a": "Asylum",
+      "b": "Orphanage",
+      "c": "Hospice",
+      "d": "Shelter"
+    },
+    "answer": "b",
+    "exp": "Orphanage = an institution specifically for the housing and care of orphaned children. Asylum = an institution for the care of the mentally ill, or a place of refuge for those fleeing persecution. Hospice = a facility providing care for the terminally ill. Shelter = a general term for temporary refuge for anyone in need, not specific to orphaned children."
+  },
+  {
+    "id": 12,
+    "section": "Vocab Practice — One Word Substitution",
+    "text": "A statement that seems self-contradictory but may nonetheless be true",
+    "options": {
+      "a": "Oxymoron",
+      "b": "Irony",
+      "c": "Paradox",
+      "d": "Anomaly"
+    },
+    "answer": "c",
+    "exp": "Paradox = a statement that seems self-contradictory or absurd but may actually be true. Oxymoron = a compact figure of speech combining two contradictory terms (e.g. \"deafening silence\"). Irony = a contrast between expectation and reality. Anomaly = something that deviates from what is standard or expected."
+  },
+  {
+    "id": 13,
+    "section": "Vocab Practice — Idioms & Phrases",
+    "text": "To let the cat out of the bag",
+    "options": {
+      "a": "To adopt a pet without proper planning",
+      "b": "To reveal a secret, often unintentionally",
+      "c": "To escape from a dangerous situation narrowly",
+      "d": "To create unnecessary panic over a minor issue"
+    },
+    "answer": "b",
+    "exp": "\"To let the cat out of the bag\" means to reveal a secret or piece of confidential information, often by accident or carelessness."
+  },
+  {
+    "id": 14,
+    "section": "Vocab Practice — Idioms & Phrases",
+    "text": "To beat around the bush",
+    "options": {
+      "a": "To avoid talking directly about an uncomfortable topic",
+      "b": "To work extremely hard without any rest",
+      "c": "To search thoroughly for something that is lost",
+      "d": "To provoke someone into losing their temper"
+    },
+    "answer": "a",
+    "exp": "\"To beat around the bush\" means to avoid speaking directly about the main issue, often to delay or soften an uncomfortable topic, instead of addressing it plainly."
+  },
+  {
+    "id": 15,
+    "section": "Reading Practice — Parajumbles",
+    "group": true,
+    "passage": "P. News of this energising drink spread across the Arabian Peninsula and eventually reached Europe by the seventeenth century<br>Q. Legend has it that a goat herder named Kaldi first discovered coffee after noticing his goats became unusually energetic upon eating certain red berries<br>R. Today, coffee is one of the most widely consumed beverages in the world, cultivated across more than seventy countries<br>S. Curious, he brought the berries to a local monastery, where the monks experimented with them and found that the resulting drink kept them alert during long hours of prayer",
+    "text": "Arrange P, Q, R, S in the correct logical sequence.",
+    "options": {
+      "a": "PQRS",
+      "b": "QSPR",
+      "c": "SRQP",
+      "d": "RPSQ"
+    },
+    "answer": "b",
+    "exp": "The correct order is QSPR: Q introduces the legendary discovery of coffee by the goat herder → S describes what happened next, when the berries were taken to the monastery → P moves forward in time to describe the drink’s spread to Europe → R closes with coffee’s status in the present day. Notice that the sentences are always printed in the fixed P, Q, R, S order above — the printed order gives no clue to the logical order, which must be worked out purely from the meaning of each sentence."
+  },
+  {
+    "id": 16,
+    "section": "Reading Practice — Parajumbles",
+    "group": true,
+    "passage": "P. It took over a decade, along with the work of other scientists, before penicillin could be purified and mass-produced as a practical antibiotic<br>Q. Its widespread use during the Second World War saved countless lives and ushered in the modern era of antibiotic medicine<br>R. In 1928, Alexander Fleming noticed that a mould called Penicillium had contaminated one of his bacterial culture plates and was killing the surrounding bacteria<br>S. Intrigued by this accidental observation, he began further tests and identified the active substance responsible, which he named penicillin",
+    "text": "Arrange P, Q, R, S in the correct logical sequence.",
+    "options": {
+      "a": "RSPQ",
+      "b": "PQRS",
+      "c": "QPSR",
+      "d": "SRPQ"
+    },
+    "answer": "a",
+    "exp": "The correct order is RSPQ: R introduces Fleming’s accidental discovery in 1928 → S describes his follow-up investigation and the naming of penicillin → P moves ahead to describe the decade-long effort to mass-produce it → Q closes with its life-saving impact during the Second World War. As with the previous question, the sentences are always printed in the same P, Q, R, S order regardless of their logical sequence, so the printed order cannot be used as a shortcut."
+  },
+  {
+    "id": 17,
+    "section": "Reading Practice — Cloze Test",
+    "group": true,
+    "passage": "The startup had been operating ___(17)___ heavy losses for nearly two years before the new CEO took charge. Once she joined, she ___(18)___ a complete overhaul of the company’s outdated supply chain. Her decisive reforms ___(19)___ a dramatic turnaround within just six months. Employees, who had grown used to constant uncertainty, finally began to feel that the company’s future was ___(20)___ secure.",
+    "text": "Blank (17): The startup had been operating __________ heavy losses for nearly two years.",
+    "options": {
+      "a": "in",
+      "b": "with",
+      "c": "under",
+      "d": "at"
+    },
+    "answer": "c",
+    "exp": "To \"operate under\" losses, pressure or a burden is the standard idiomatic collocation describing a difficult condition a business continues to function despite. \"In\", \"with\" and \"at\" do not form this fixed collocation with \"losses\" in this sense."
+  },
+  {
+    "id": 18,
+    "section": "Reading Practice — Cloze Test",
+    "group": true,
+    "passage": "The startup had been operating ___(17)___ heavy losses for nearly two years before the new CEO took charge. Once she joined, she ___(18)___ a complete overhaul of the company’s outdated supply chain. Her decisive reforms ___(19)___ a dramatic turnaround within just six months. Employees, who had grown used to constant uncertainty, finally began to feel that the company’s future was ___(20)___ secure.",
+    "text": "Blank (18): Once she joined, she __________ a complete overhaul of the supply chain.",
+    "options": {
+      "a": "initiates",
+      "b": "was initiating",
+      "c": "had initiated",
+      "d": "initiated"
+    },
+    "answer": "d",
+    "exp": "The passage is narrated throughout in the simple past tense (“had been operating”, “took charge”), describing a single completed action once she joined. The simple past \"initiated\" matches this narrative tense; \"initiates\" is present tense, \"was initiating\" wrongly suggests an ongoing, interrupted action, and \"had initiated\" would wrongly place this action before her joining rather than immediately after it."
+  },
+  {
+    "id": 19,
+    "section": "Reading Practice — Cloze Test",
+    "group": true,
+    "passage": "The startup had been operating ___(17)___ heavy losses for nearly two years before the new CEO took charge. Once she joined, she ___(18)___ a complete overhaul of the company’s outdated supply chain. Her decisive reforms ___(19)___ a dramatic turnaround within just six months. Employees, who had grown used to constant uncertainty, finally began to feel that the company’s future was ___(20)___ secure.",
+    "text": "Blank (19): Her decisive reforms __________ a dramatic turnaround within six months.",
+    "options": {
+      "a": "brought on",
+      "b": "brought up",
+      "c": "brought about",
+      "d": "brought forth"
+    },
+    "answer": "c",
+    "exp": "\"Bring about\" means to cause something to happen, fitting the reforms causing a turnaround. \"Bring on\" typically suggests causing something unwelcome, such as an illness or crisis, \"bring up\" means to raise a topic or raise a child, and \"bring forth\" is an archaic phrase mainly used for producing or giving birth — none fit this context of a positive business outcome as precisely as \"brought about\"."
+  },
+  {
+    "id": 20,
+    "section": "Reading Practice — Cloze Test",
+    "group": true,
+    "passage": "The startup had been operating ___(17)___ heavy losses for nearly two years before the new CEO took charge. Once she joined, she ___(18)___ a complete overhaul of the company’s outdated supply chain. Her decisive reforms ___(19)___ a dramatic turnaround within just six months. Employees, who had grown used to constant uncertainty, finally began to feel that the company’s future was ___(20)___ secure.",
+    "text": "Blank (20): The company’s future finally felt __________ secure.",
+    "options": {
+      "a": "hardly",
+      "b": "scarcely",
+      "c": "barely",
+      "d": "reasonably"
+    },
+    "answer": "d",
+    "exp": "\"Reasonably\" means to a fairly satisfactory degree, fitting the positive, hard-won stability described in the passage. \"Hardly\", \"scarcely\" and \"barely\" are near-negative adverbs implying the future was almost NOT secure, which contradicts the passage’s description of a successful turnaround."
+  },
+  {
+    "id": 21,
+    "section": "Grammar Practice — Voice Change",
+    "text": "The manager has cancelled today's meeting due to unforeseen circumstances. <i>(Change into Passive Voice)</i>",
+    "options": {
+      "a": "Today's meeting was cancelled by the manager due to unforeseen circumstances.",
+      "b": "Today's meeting has been cancelled by the manager due to unforeseen circumstances.",
+      "c": "Today's meeting has cancelled by the manager due to unforeseen circumstances.",
+      "d": "Today's meeting is cancelled by the manager due to unforeseen circumstances."
+    },
+    "answer": "b",
+    "exp": "The active sentence is in the Present Perfect Tense (\"has cancelled\"). Its passive form follows the structure \"has/have + been + V3\". Hence the correct passive form is \"has been cancelled\"."
+  },
+  {
+    "id": 22,
+    "section": "Grammar Practice — Voice Change",
+    "text": "By this time next year, the workers will have completed the new bridge. <i>(Change into Passive Voice)</i>",
+    "options": {
+      "a": "By this time next year, the new bridge will be completed by the workers.",
+      "b": "By this time next year, the new bridge is completed by the workers.",
+      "c": "By this time next year, the new bridge was completed by the workers.",
+      "d": "By this time next year, the new bridge will have been completed by the workers."
+    },
+    "answer": "d",
+    "exp": "The active sentence is in the Future Perfect Tense (\"will have completed\"). Its passive form follows the structure \"will have been + V3\". Hence the correct passive form is \"will have been completed\"."
+  },
+  {
+    "id": 23,
+    "section": "Grammar Practice — Narration",
+    "text": "The teacher asked me, \"Why are you late again today?\" <i>(Change into Indirect Speech)</i>",
+    "options": {
+      "a": "The teacher asked me why I was late again that day.",
+      "b": "The teacher asked me why was I late again today.",
+      "c": "The teacher asked me that why I was late again that day.",
+      "d": "The teacher asked me why I am late again today."
+    },
+    "answer": "a",
+    "exp": "In indirect speech, a \"wh-\" question retains the question word (\"why\") but changes to statement word order (subject before verb: \"I was\"), the tense shifts back (Present \"are\" → Past \"was\"), and the time reference \"today\" changes to \"that day\" since the reporting is done at a later time. Option (b) wrongly keeps question word order, (c) wrongly adds \"that\" before a wh-question, and (d) fails to shift the tense and time reference."
+  },
+  {
+    "id": 24,
+    "section": "Grammar Practice — Narration",
+    "text": "She said to him, \"Please lend me the book for a few days.\" <i>(Change into Indirect Speech)</i>",
+    "options": {
+      "a": "She said to him to lend her the book for a few days.",
+      "b": "She requested him to lend her the book for a few days.",
+      "c": "She requested him that he should lend her the book for a few days.",
+      "d": "She told him to lend her the book for a few days."
+    },
+    "answer": "b",
+    "exp": "A polite request beginning with \"Please\" is reported using \"requested\" as the reporting verb, followed by an infinitive (\"to lend\"), with pronouns changed appropriately (\"me\" → \"her\"). \"Said to\" is not idiomatic for reporting a request, \"requested that he should\" is an unnecessarily clumsy construction, and \"told\" is used for instructions or commands rather than polite requests."
+  },
+  {
+    "id": 25,
+    "section": "Vocab Practice — Spelling",
+    "text": "Choose the correctly spelt word.",
+    "options": {
+      "a": "Occurence",
+      "b": "Occurrance",
+      "c": "Ocurrence",
+      "d": "Occurrence"
+    },
+    "answer": "d",
+    "exp": "The correct spelling is \"Occurrence\", with a double \"r\" and a double \"r\" again before \"-ence\" (oc-CURR-ence), and ending in \"-ence\" not \"-ance\". This is one of the most frequently misspelt words in competitive exams."
+  }
+];
+
+
+class TestApp {
+  constructor(){
+    this.qs = questions;
+    this.cur = 0;
+    this.ans = new Array(this.qs.length).fill(null);
+    this.reviewed = new Array(this.qs.length).fill(false);
+    this.sub = false;
+    this.dark = false;
+    this.duration = 15 * 60;
+    this.timeLeft = this.duration;
+    this.timer = null;
+    this.startT = null;
+
+    this.els = {
+      qInfo: document.getElementById('qInfo'),
+      subjectTag: document.getElementById('subjectTag'),
+      qNumTxt: document.getElementById('qNumTxt'),
+      statusTag: document.getElementById('statusTag'),
+      passageBox: document.getElementById('passageBox'),
+      qTxt: document.getElementById('qTxt'),
+      opts: document.getElementById('opts'),
+      explanation: document.getElementById('explanation'),
+      qcard: document.getElementById('qcard'),
+      progTxt: document.getElementById('progTxt'),
+      ansCnt: document.getElementById('ansCnt'),
+      timer: document.getElementById('timer'),
+      gridNav: document.getElementById('gridNav'),
+      panel: document.getElementById('panel'),
+      modalOver: document.getElementById('modalOver'),
+      scoreDisp: document.getElementById('scoreDisp'),
+      corrStat: document.getElementById('corrStat'),
+      incStat: document.getElementById('incStat'),
+      unaStat: document.getElementById('unaStat'),
+      timeStat: document.getElementById('timeStat'),
+      printBtn: document.getElementById('printBtn')
+    };
+
+    this.bindStaticEvents();
+  }
+
+  bindStaticEvents(){
+    document.getElementById('startTestBtn').addEventListener('click', () => this.startTest());
+    document.getElementById('prevBtn').addEventListener('click', () => this.go(-1));
+    document.getElementById('nextBtn').addEventListener('click', () => this.go(1));
+    document.getElementById('reviewBtn').addEventListener('click', () => this.toggleReview());
+    document.getElementById('subBtn').addEventListener('click', () => this.confirmSubmit());
+    document.getElementById('menuBtn').addEventListener('click', () => this.openPanel());
+    document.getElementById('panelClose').addEventListener('click', () => this.closePanel());
+    document.getElementById('themeToggle').addEventListener('click', () => this.toggleDark());
+    document.getElementById('closeModal').addEventListener('click', () => this.closeModal());
+    document.getElementById('revBtn').addEventListener('click', () => { this.closeModal(); this.loadQ(0); });
+    document.getElementById('printBtn').addEventListener('click', () => this.printReview());
+
+    window.addEventListener('beforeunload', (e) => {
+      if(!this.sub){
+        e.preventDefault();
+        e.returnValue = 'Are you sure you want to leave? Your test progress will be lost.';
+        return e.returnValue;
+      }
+    });
+  }
+
+  startTest(){
+    document.getElementById('welcomeScreen').classList.add('hidden');
+    document.getElementById('mainTestInterface').style.display = '';
+    this.startT = Date.now();
+    this.buildGrid();
+    this.loadQ(0);
+    this.startTimer();
+  }
+
+  startTimer(){
+    this.timer = setInterval(() => {
+      this.timeLeft--;
+      this.renderTimer();
+      if(this.timeLeft <= 0){
+        clearInterval(this.timer);
+        this.submitTest();
+      }
+    }, 1000);
+  }
+
+  renderTimer(){
+    const m = Math.floor(this.timeLeft / 60);
+    const s = this.timeLeft % 60;
+    this.els.timer.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    this.els.timer.classList.toggle('low', this.timeLeft <= 60);
+  }
+
+  buildGrid(){
+    this.els.gridNav.innerHTML = '';
+    this.qs.forEach((q, i) => {
+      const b = document.createElement('button');
+      b.className = 'g-btn';
+      b.id = 'g-' + i;
+      b.textContent = i + 1;
+      b.addEventListener('click', () => { this.closePanel(); this.loadQ(i); });
+      this.els.gridNav.appendChild(b);
+    });
+  }
+
+  updateGrid(){
+    this.qs.forEach((q, i) => {
+      const b = document.getElementById('g-' + i);
+      b.className = 'g-btn';
+      if(this.ans[i] !== null) b.classList.add('answered');
+      if(this.reviewed[i]) b.classList.add('review');
+      if(i === this.cur) b.classList.add('current');
+    });
+  }
+
+  openPanel(){ this.els.panel.classList.add('open'); }
+  closePanel(){ this.els.panel.classList.remove('open'); }
+
+  toggleDark(){
+    this.dark = !this.dark;
+    document.body.classList.toggle('dark-mode', this.dark);
+    document.getElementById('themeToggle').innerHTML = this.dark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  }
+
+  loadQ(idx){
+    this.cur = idx;
+    const q = this.qs[idx];
+
+    this.els.qInfo.textContent = `Q ${idx+1} / ${this.qs.length}`;
+    this.els.progTxt.textContent = `${idx+1} of ${this.qs.length}`;
+    this.els.subjectTag.textContent = q.section;
+    this.els.qNumTxt.textContent = idx + 1;
+
+    if(q.passage){
+      this.els.passageBox.style.display = '';
+      this.els.passageBox.innerHTML = q.passage;
+    } else {
+      this.els.passageBox.style.display = 'none';
+      this.els.passageBox.innerHTML = '';
+    }
+
+    this.els.qTxt.innerHTML = q.text;
+
+    this.els.opts.innerHTML = '';
+    Object.entries(q.options).forEach(([key, val]) => {
+      const label = document.createElement('label');
+      label.className = 'opt';
+      label.id = `opt-${idx}-${key}`;
+      label.dataset.key = key;
+      if(this.ans[idx] === key) label.classList.add('selected');
+      label.innerHTML = `<span class="opt-letter">(${key})</span> <span>${val}</span>`;
+      label.addEventListener('click', () => this.selectOpt(idx, key));
+      this.els.opts.appendChild(label);
+    });
+
+    this.els.qcard.classList.toggle('locked', this.sub);
+
+    const tag = this.els.statusTag;
+    if(this.sub){
+      const chosen = this.ans[idx];
+      if(chosen === null){
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Unattempted';
+        tag.className = 'status-tag skipped';
+      } else if(chosen === q.answer){
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Correct';
+        tag.className = 'status-tag correct';
+      } else {
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Incorrect';
+        tag.className = 'status-tag wrong';
+      }
+      if(chosen && chosen !== q.answer){
+        const wrongEl = document.getElementById(`opt-${idx}-${chosen}`);
+        if(wrongEl) wrongEl.classList.add('wrong-answer');
+      }
+      const correctEl = document.getElementById(`opt-${idx}-${q.answer}`);
+      if(correctEl) correctEl.classList.add('correct-answer');
+
+      this.els.explanation.innerHTML = `<b>Correct answer: (${q.answer}) ${q.options[q.answer]}.</b><br>${q.exp}`;
+    } else {
+      tag.style.display = 'none';
+      this.els.explanation.innerHTML = '';
+    }
+
+    document.getElementById('prevBtn').disabled = idx === 0;
+    document.getElementById('nextBtn').disabled = idx === this.qs.length - 1;
+
+    const revBtn = document.getElementById('reviewBtn');
+    revBtn.classList.toggle('active', this.reviewed[idx]);
+
+    this.updateGrid();
+    this.updateAnsCount();
+  }
+
+  selectOpt(idx, key){
+    if(this.sub) return;
+    this.ans[idx] = key;
+    document.querySelectorAll(`#opts .opt`).forEach(o => o.classList.remove('selected'));
+    document.getElementById(`opt-${idx}-${key}`).classList.add('selected');
+    this.updateGrid();
+    this.updateAnsCount();
+  }
+
+  toggleReview(){
+    this.reviewed[this.cur] = !this.reviewed[this.cur];
+    document.getElementById('reviewBtn').classList.toggle('active', this.reviewed[this.cur]);
+    this.updateGrid();
+  }
+
+  updateAnsCount(){
+    const answered = this.ans.filter(a => a !== null).length;
+    this.els.ansCnt.textContent = answered;
+  }
+
+  go(dir){
+    const next = this.cur + dir;
+    if(next >= 0 && next < this.qs.length) this.loadQ(next);
+  }
+
+  confirmSubmit(){
+    if(this.sub) return;
+    const btn = document.getElementById('subBtn');
+    if(!this.confirmPending){
+      const unanswered = this.ans.filter(a => a === null).length;
+      this.confirmPending = true;
+      this._origSubText = btn.textContent;
+      btn.textContent = unanswered > 0 ? `${unanswered} left! Tap again` : 'Tap again to confirm';
+      this._confirmTimeout = setTimeout(() => {
+        this.confirmPending = false;
+        btn.textContent = this._origSubText;
+      }, 3000);
+      return;
+    }
+    clearTimeout(this._confirmTimeout);
+    this.confirmPending = false;
+    this.submitTest();
+  }
+
+  submitTest(){
+    if(this.sub) return;
+    this.sub = true;
+    clearInterval(this.timer);
+    document.getElementById('subBtn').disabled = true;
+    document.getElementById('subBtn').textContent = 'Submitted';
+
+    const results = this.calcResults();
+    this.showModal(results);
+    this.loadQ(this.cur);
+  }
+
+  calcResults(){
+    let correct = 0, incorrect = 0, unattempted = 0, score = 0;
+    this.qs.forEach((q, i) => {
+      const chosen = this.ans[i];
+      if(chosen === null){
+        unattempted++;
+      } else if(chosen === q.answer){
+        correct++; score += 2;
+      } else {
+        incorrect++; score -= 0.5;
+      }
+    });
+    const timeTaken = Math.max(1, Math.round((Date.now() - this.startT) / 60000));
+    return { score: Math.max(0, score), correct, incorrect, unattempted, timeTaken };
+  }
+
+  showModal(r){
+    this.els.scoreDisp.innerHTML = `${r.score.toFixed(1)}<span> / 50</span>`;
+    this.els.corrStat.textContent = r.correct;
+    this.els.incStat.textContent = r.incorrect;
+    this.els.unaStat.textContent = r.unattempted;
+    this.els.timeStat.textContent = r.timeTaken;
+    this.els.printBtn.classList.add('show');
+    this.els.modalOver.classList.add('show');
+  }
+
+  closeModal(){ this.els.modalOver.classList.remove('show'); }
+
+  printReview(){
+    const w = window.open('', '_blank');
+    const rows = this.qs.map((q, i) => {
+      const chosen = this.ans[i];
+      const isCorrect = chosen === q.answer;
+      return `
+        <div style="page-break-inside:avoid;margin-bottom:26px;border-bottom:1px solid #eee;padding-bottom:16px">
+          <h3 style="color:#163a5f;margin-bottom:4px">Question ${i+1} <span style="font-size:12px;color:#7a6f57">(${q.section})</span></h3>
+          ${q.passage ? `<div style="font-style:italic;background:#f1ece0;padding:8px 12px;margin-bottom:8px">${q.passage}</div>` : ''}
+          <div style="margin-bottom:10px">${q.text}</div>
+          ${Object.entries(q.options).map(([key,val]) => `
+            <div style="margin:4px 0;padding:6px 10px;border-left:3px solid ${
+              key === q.answer ? '#1f7a4d' : (key === chosen ? '#a8321f' : '#c9bfa4')
+            }">(${key}) ${val}</div>
+          `).join('')}
+          <div style="margin-top:10px;font-size:13px;color:#555">
+            <b>Your answer:</b> ${chosen ? `(${chosen}) ${q.options[chosen]}` : 'Not attempted'}
+            ${chosen ? ` — <span style="color:${isCorrect ? '#1f7a4d' : '#a8321f'}">${isCorrect ? 'Correct' : 'Incorrect'}</span>` : ''}
+          </div>
+          <div style="margin-top:10px;background:#f0fdf4;padding:10px;border-radius:6px">
+            <b style="color:#1f7a4d">Explanation</b><br>${q.exp}
+          </div>
+        </div>`;
+    }).join('');
+
+    w.document.write(`
+      <!DOCTYPE html><html><head><title>Sampuran English — Full Review</title>
+      <style>body{font-family:Georgia,serif;padding:20px;color:#1c2b3a}
+      h2{border-bottom:2px solid #a8321f;padding-bottom:10px}</style></head>
+      <body>
+        <h2>Sampuran English — Mock Test No. 24 Review (30-7-2026)</h2>
+        <p><b>Score:</b> ${this.els.scoreDisp.textContent.replace(/<[^>]+>/g,' ')} &nbsp;|&nbsp;
+        <b>Correct:</b> ${this.els.corrStat.textContent} &nbsp;|&nbsp;
+        <b>Incorrect:</b> ${this.els.incStat.textContent} &nbsp;|&nbsp;
+        <b>Unattempted:</b> ${this.els.unaStat.textContent} &nbsp;|&nbsp;
+        <b>Time:</b> ${this.els.timeStat.textContent} min</p>
+        ${rows}
+        <script>setTimeout(()=>window.print(),400);<\/script>
+      </body></html>
+    `);
+    w.document.close();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => new TestApp());
+</script>
+
+</body>
+</html>
