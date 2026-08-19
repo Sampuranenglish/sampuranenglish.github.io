@@ -5,15 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mock Test (Mix Grammar Topics) - Grammar</title>
 <style>
+:root{
+--page-bg:#f2f2f2;
+--card-text:#555555;
+--accent:#004aad;
+--footer-bg:#222222;
+--footer-text:#ffffff;
+--secondary-btn-bg:#222222;
+}
+html[data-theme="dark"]{
+--page-bg:#0b0c0e;
+--card-text:#c9c9c9;
+--accent:#3b82f6;
+--footer-bg:#000000;
+--footer-text:#f2f2f2;
+--secondary-btn-bg:#3a3a3a;
+}
 html,body{height:100%;margin:0;}
-body{display:flex;flex-direction:column;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:#f2f2f2;}
-header{background:#004aad;color:white;padding:12px;text-align:center;}
+body{display:flex;flex-direction:column;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--page-bg);transition:background .25s ease;}
+header{background:var(--accent);color:white;padding:12px;text-align:center;}
 h1{margin:0;font-size:26px;}
 .container{width:90%;max-width:1000px;margin:30px auto;flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;align-content:start;}
-.note{grid-column:1/-1;text-align:center;color:#555;font-size:16px;}
+.note{grid-column:1/-1;text-align:center;color:var(--card-text);font-size:16px;}
 .back{margin-top:20px;text-align:center;grid-column:1/-1;}
-.back a{text-decoration:none;background:#222;color:white;padding:12px 25px;border-radius:6px;font-size:18px;}
-footer{background:#222;color:white;text-align:center;padding:10px;font-size:13px;}
+.back a{text-decoration:none;background:var(--secondary-btn-bg);color:white;padding:12px 25px;border-radius:6px;font-size:18px;}
+footer{background:var(--footer-bg);color:var(--footer-text);text-align:center;padding:10px;font-size:13px;}
 </style>
 </head>
 <body>
@@ -22,9 +38,7 @@ footer{background:#222;color:white;text-align:center;padding:10px;font-size:13px
 <h1>Mock Test (Mix Grammar Topics)</h1>
 </header>
 <div class="container">
-
 <p class="note">Mix grammar mock tests coming soon.</p>
-
 <div class="back">
 <a href="grammar.html">← Back to Grammar</a>
 </div>
@@ -32,14 +46,15 @@ footer{background:#222;color:white;text-align:center;padding:10px;font-size:13px
 <footer>© Sampuran English</footer>
 <script>
 fetch('header.html')
-  .then(function(response){ return response.text(); })
-  .then(function(html){
-    document.getElementById('site-header').innerHTML = html;
-    window.scrollTo(0, 0);
-    document.getElementById('menuToggle').addEventListener('click', function(){
-      document.getElementById('menuList').classList.toggle('open');
-    });
-  });
+.then(function(response){ return response.text(); })
+.then(function(html){
+document.getElementById('site-header').innerHTML = html;
+window.scrollTo(0, 0);
+document.getElementById('menuToggle').addEventListener('click', function(){
+document.getElementById('menuList').classList.toggle('open');
+});
+});
 </script>
+<script src="theme.js"></script>
 </body>
 </html>
