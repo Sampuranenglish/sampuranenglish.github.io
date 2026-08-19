@@ -1,143 +1,194 @@
 /* ===========================
-   SAMPURAN ENGLISH
-   MASTER STYLESHEET
+SAMPURAN ENGLISH
+MASTER STYLESHEET
 =========================== */
+
+:root{
+--page-bg:#f4f4f4;
+--page-text:#333333;
+--card-bg:#ffffff;
+--card-border:rgba(13,78,166,0.15);
+--accent:#0d4ea6;
+--accent-hover:#083b7d;
+--footer-bg:#222222;
+--footer-text:#ffffff;
+--secondary-btn-bg:#222222;
+}
+html[data-theme="dark"]{
+--page-bg:#0b0c0e;
+--page-text:#e6e6e6;
+--card-bg:#1b1c1f;
+--card-border:rgba(255,255,255,0.12);
+--accent:#3b82f6;
+--accent-hover:#2563eb;
+--footer-bg:#000000;
+--footer-text:#f2f2f2;
+--secondary-btn-bg:#3a3a3a;
+}
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
+
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f4f4f4;
-    color:#333;
-    line-height:1.6;
+font-family:Arial, Helvetica, sans-serif;
+background:var(--page-bg);
+color:var(--page-text);
+line-height:1.6;
+transition:background .25s ease,color .25s ease;
 }
+
 /* Header */
 header{
-    background:#0d4ea6;
-    color:white;
-    text-align:center;
-    padding:30px 20px;
+background:var(--accent);
+color:white;
+text-align:center;
+padding:30px 20px;
 }
+
 header h1{
-    font-size:42px;
-    margin-bottom:10px;
+font-size:42px;
+margin-bottom:10px;
 }
+
 header h2{
-    font-size:22px;
-    font-weight:normal;
+font-size:22px;
+font-weight:normal;
 }
+
 /* Navigation */
 nav{
-    background:#083b7d;
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
+background:var(--accent-hover);
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
 }
+
 nav a{
-    color:white;
-    text-decoration:none;
-    padding:15px 20px;
-    font-weight:bold;
+color:white;
+text-decoration:none;
+padding:15px 20px;
+font-weight:bold;
 }
+
 nav a:hover{
-    background:#0d4ea6;
+background:var(--accent);
 }
+
 /* Container */
 .container{
-    width:90%;
-    max-width:1100px;
-    margin:40px auto;
+width:90%;
+max-width:1100px;
+margin:40px auto;
 }
+
 /* Cards */
 .card,
 .mock{
-    background:white;
-    padding:25px;
-    margin-bottom:20px;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,.15);
-    border:1px solid rgba(13,78,166,0.15);
+background:var(--card-bg);
+color:var(--page-text);
+padding:25px;
+margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,.15);
+border:1px solid var(--card-border);
 }
+
 .card a{
-    text-decoration:none;
-    color:#0d4ea6;
-    font-size:22px;
-    font-weight:bold;
+text-decoration:none;
+color:var(--accent);
+font-size:22px;
+font-weight:bold;
 }
+
 .mock h2{
-    color:#0d4ea6;
-    margin-bottom:10px;
+color:var(--accent);
+margin-bottom:10px;
 }
+
 /* Buttons */
 .button{
-    display:inline-block;
-    background:#0d4ea6;
-    color:white;
-    text-decoration:none;
-    padding:12px 25px;
-    border-radius:6px;
-    margin-top:15px;
-    font-weight:bold;
+display:inline-block;
+background:var(--accent);
+color:white;
+text-decoration:none;
+padding:12px 25px;
+border-radius:6px;
+margin-top:15px;
+font-weight:bold;
 }
+
 .button:hover{
-    background:#083b7d;
+background:var(--accent-hover);
 }
+
 /* Back Button */
 .back{
-    text-align:center;
-    margin-top:40px;
+text-align:center;
+margin-top:40px;
 }
+
 .back a{
-    background:#222;
-    color:white;
-    text-decoration:none;
-    padding:12px 25px;
-    border-radius:6px;
+background:var(--secondary-btn-bg);
+color:white;
+text-decoration:none;
+padding:12px 25px;
+border-radius:6px;
 }
+
 /* Footer */
 footer{
-    background:#222;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:50px;
+background:var(--footer-bg);
+color:var(--footer-text);
+text-align:center;
+padding:20px;
+margin-top:50px;
 }
+
 /* ===========================
-   MOBILE DESIGN
+MOBILE DESIGN
 =========================== */
 @media screen and (max-width:768px){
 header{
-    padding:20px;
+padding:20px;
 }
+
 header h1{
-    font-size:30px;
+font-size:30px;
 }
+
 header h2{
-    font-size:18px;
+font-size:18px;
 }
+
 .container{
-    width:95%;
+width:95%;
 }
+
 .card,
 .mock{
-    padding:18px;
+padding:18px;
 }
+
 .card a{
-    font-size:18px;
+font-size:18px;
 }
+
 .button{
-    display:block;
-    width:100%;
-    text-align:center;
+display:block;
+width:100%;
+text-align:center;
 }
+
 nav a{
-    padding:12px;
-    font-size:16px;
+padding:12px;
+font-size:16px;
 }
+
 img{
-    max-width:100%;
-    height:auto;
+max-width:100%;
+height:auto;
 }
 }
