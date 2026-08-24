@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampuran English — SSC CGL Common Error Masterclass</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  :root{
+    --ink:#1c2b3a;
+    --paper:#f6f3ea;
+    --rule:#c9bfa4;
+    --navy:#163a5f;
+    --brick:#a8321f;
+    --brick-deep:#7e2417;
+    --gold:#b8862c;
+    --correct:#1f7a4d;
+    --correct-bg:#e5f3ea;
+    --wrong:#a8321f;
+    --wrong-bg:#fbe9e5;
+    --unattempted:#7a6f57;
+    --card:#fffdf8;
+    --shadow:0 4px 10px rgba(0,0,0,.08);
+    --radius:10px;
+    --trans:all .2s ease;
+
+    --d-bg:#141b24;
+    --d-card:#1e2733;
+    --d-ink:#e8e3d3;
+    --d-rule:#33404c;
+    --d-paper:#10161d;
+  }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0)),
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 34px);
+    color: var(--ink);
+    font-family: "Georgia", "Iowan Old Style", "Palatino Linotype", serif;
+    line-height: 1.5;
+    transition: var(--trans);
+  }
+  body.dark-mode{
+    background: var(--d-bg);
+    background-image:none;
+    color: var(--d-ink);
+  }
+
+  /* ---------- Welcome screen ---------- */
+  .welcome-screen{
+    position:fixed; inset:0;
+    background: var(--paper);
+    z-index:1000;
+    display:flex; flex-direction:column; align-items:center;
+    padding: 24px 20px 40px;
+    text-align:center;
+    transition: var(--trans);
+    overflow-y:auto;
+  }
+  body.dark-mode .welcome-screen{ background:var(--d-bg); }
+  .welcome-screen.hidden{ display:none; }
+
+  .welcome-kicker{
+    font-family:"Trebuchet MS", sans-serif;
+    letter-spacing:1.5px;
+    font-size: clamp(24px, 7vw, 38px);
+    text-transform:uppercase;
+    color: var(--brick);
+    font-weight:800;
+    margin-bottom:10px;
+    line-height:1.15;
+  }
+  .welcome-title{
+    font-size:15px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color: var(--navy);
+    margin-bottom:6px;
+  }
+  body.dark-mode .welcome-title{ color:#9fc1e6; }
+  .welcome-sub{
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13.5px;
+    color: var(--unattempted);
+    margin-bottom:26px;
+  }
+
+  .welcome-card{
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--brick);
+    box-shadow: var(--shadow);
+    width:100%; max-width:420px;
+    padding: 22px 24px;
+    margin-bottom:26px;
+    text-align:left;
+  }
+  body.dark-mode .welcome-card{ background:var(--d-card); border-color:var(--d-rule); }
+  .welcome-card .head{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color: var(--navy);
+    border-bottom:1px solid var(--rule);
+    padding-bottom:10px;
+    margin-bottom:12px;
+  }
+  body.dark-mode .welcome-card .head{ color:#9fc1e6; border-color:var(--d-rule); }
+  .w-row{
+    display:flex; justify-content:space-between;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:14px;
+    padding:7px 0;
+  }
+  .w-row b{ color:var(--brick); }
+  body.dark-mode .w-row b{ color:#e08a72; }
+
+  .welcome-button{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    background: var(--brick);
+    color:#fff;
+    border:none;
+    padding:14px 40px;
+    cursor:pointer;
+    box-shadow: 0 3px 0 var(--brick-deep);
+    transition: transform .1s;
+    margin-bottom:16px;
+  }
+  .welcome-button:active{ transform:translateY(3px); box-shadow:none; }
+
+  /* ---------- Daily content ---------- */
+  .daily-content{
+    width:100%; max-width:420px;
+    text-align:left;
+    margin-bottom:26px;
+  }
+  .cat-row{
+    display:flex; gap:10px; justify-content:center;
+    margin-bottom:20px; flex-wrap:wrap;
+  }
+  .cat-pill{
+    flex:1; min-width:96px;
+    background: var(--card);
+    border:2px solid var(--navy);
+    color: var(--navy);
+    border-radius:50px;
+    text-align:center;
+    padding:14px 6px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:12.5px;
+    line-height:1.3;
+  }
+  body.dark-mode .cat-pill{ background:var(--d-card); border-color:#9fc1e6; color:#9fc1e6; }
+  .cat-pill:nth-child(2){ border-color: var(--correct); color: var(--correct); }
+  .cat-pill:nth-child(3){ border-color: var(--brick); color: var(--brick); }
+
+  .dc-banner{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    background: var(--brick);
+    color:#FFD86B;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:800; font-size:14px; letter-spacing:1px; text-transform:uppercase;
+    padding:9px 12px;
+    margin:18px 0 10px;
+  }
+
+  .rule-box{
+    background: var(--navy);
+    color:#FFD86B;
+    padding:14px 16px;
+    font-size:13.5px;
+    font-weight:700;
+    line-height:1.55;
+    margin-bottom:8px;
+    border-left:3px solid var(--gold);
+  }
+  .rule-box .eg{ margin-top:10px; font-size:12.5px; font-weight:400; color:#f2ede0; display:block; }
+  .rule-box .eg .wrong{ color:#ffb0a3; text-decoration:line-through; }
+  .rule-box .eg .right{ color:#a7f0b0; font-weight:bold; }
+
+  .word-box{
+    background: var(--card);
+    border:1px solid var(--rule);
+    padding:16px 18px;
+    text-align:center;
+  }
+  body.dark-mode .word-box{ background:var(--d-card); border-color:var(--d-rule); }
+  .word-title{
+    font-size:22px; font-weight:700;
+    color: var(--navy);
+    text-decoration:underline;
+    margin-bottom:8px;
+  }
+  .word-meta{ text-align:left; font-size:13px; margin-top:8px; line-height:1.5; }
+
+  /* ---------- Header ---------- */
+  .hdr{
+    background: var(--navy);
+    color:#f2ede0;
+    padding:10px 14px;
+    display:grid;
+    grid-template-columns: auto 1fr auto;
+    align-items:center;
+    gap:10px;
+    position:sticky; top:0; z-index:100;
+    border-bottom:4px solid var(--brick);
+  }
+  .hdr-l{ font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:14px; }
+  .hdr-l small{ display:block; font-weight:400; font-size:10.5px; color:#cfd8e3; letter-spacing:0.5px; }
+  .hdr-c{ text-align:center; font-family:"Trebuchet MS", sans-serif; font-size:13px; font-weight:600; }
+  .hdr-r{ display:flex; align-items:center; gap:8px; justify-content:flex-end; }
+  .timer{
+    background:#FEF3C7; color:#78350F;
+    padding:6px 12px; border-radius:16px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13px; font-weight:700;
+  }
+  .timer.low{ background:#fde2e2; color:#7e2417; }
+  .icon-btn{
+    border:1px solid rgba(255,255,255,0.4);
+    background:transparent; color:#fff;
+    width:34px; height:34px; border-radius:8px;
+    cursor:pointer; font-size:14px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .btn-submit-top{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; font-size:12.5px;
+    background: var(--brick); color:#fff;
+    border:none; padding:9px 14px; border-radius:8px;
+    cursor:pointer;
+  }
+
+  .subject-tag{
+    background:#f1ece0;
+    border-bottom:1px solid var(--rule);
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color: var(--navy);
+    font-weight:700;
+    padding:9px 16px;
+  }
+  body.dark-mode .subject-tag{ background:#1a2330; border-color:var(--d-rule); color:#9fc1e6; }
+
+  /* ---------- Question area ---------- */
+  .cont{ max-width:720px; margin:0 auto; padding:18px 16px 110px; }
+
+  .qcard{
+    background: var(--card);
+    border:1px solid var(--rule);
+    border-left:4px solid var(--navy);
+    padding:18px 20px 20px;
+    box-shadow: var(--shadow);
+  }
+  body.dark-mode .qcard{ background:var(--d-card); border-color:var(--d-rule); border-left-color:#9fc1e6; }
+
+  .qnum{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; color: var(--brick);
+    font-size:13px; margin-bottom:8px; letter-spacing:0.5px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .status-tag{
+    display:inline-block;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:10.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+    padding:3px 9px; border-radius:2px; color:#fff;
+  }
+  .status-tag.correct{ background:var(--correct); }
+  .status-tag.wrong{ background:var(--wrong); }
+  .status-tag.skipped{ background:var(--unattempted); }
+
+  .qtext{ font-size:17px; margin-bottom:16px; color:var(--ink); font-weight: 500; }
+  body.dark-mode .qtext{ color:var(--d-ink); }
+
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:12px 14px;
+    border:1px solid var(--rule);
+    background:#fff;
+    cursor:pointer;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:14.5px;
+    transition: var(--trans);
+  }
+  body.dark-mode .opt{ background:#232d3a; border-color:var(--d-rule); color:var(--d-ink); }
+  .opt:hover{ border-color:var(--navy); background:#f3f6fa; }
+  .opt.selected{ border-color:var(--navy); background:#e9eff6; font-weight:700; }
+  .opt-letter{ font-weight:700; color:var(--brick); flex-shrink:0; }
+  
+  .opt.correct-answer{ background:var(--correct-bg); border-color:var(--correct); }
+  body.dark-mode .opt.correct-answer{ background:#164a34; border-color:var(--correct); }
+  .opt.wrong-answer{ background:var(--wrong-bg); border-color:var(--wrong); }
+  body.dark-mode .opt.wrong-answer{ background:#5c2018; border-color:var(--wrong); }
+  
+  .explanation{
+    margin-top:16px; padding:12px 14px;
+    background:#fbf7ec;
+    border:1px dashed var(--gold);
+    font-size:14px;
+    display:none;
+    line-height: 1.6;
+  }
+  body.dark-mode .explanation{ background:#241f14; }
+  .qcard.locked .explanation{ display:block; }
+
+  /* ---------- Bottom nav ---------- */
+  .navbar{
+    position:fixed; left:0; right:0; bottom:0;
+    background: var(--card);
+    border-top:1px solid var(--rule);
+    padding:10px 14px;
+    display:flex; justify-content:space-between; align-items:center;
+    box-shadow:0 -2px 10px rgba(0,0,0,.06);
+    z-index:100;
+  }
+  body.dark-mode .navbar{ background:var(--d-card); border-color:var(--d-rule); }
+  .nav-btn{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; font-size:12.5px;
+    padding:10px 14px; border-radius:8px; border:none; cursor:pointer;
+    display:flex; align-items:center; gap:6px;
+  }
+  .nav-btn.prev{ background:transparent; border:1px solid var(--rule); color:var(--ink); }
+  .nav-btn.next{ background:var(--navy); color:#fff; }
+  .nav-mid{ text-align:center; font-family:"Trebuchet MS", sans-serif; font-size:11.5px; color:var(--unattempted); }
+
+  /* ---------- Palette panel ---------- */
+  .panel{
+    position:fixed; inset:0;
+    background: var(--paper);
+    z-index:200;
+    transform: translateY(100%);
+    transition: transform .3s ease;
+    overflow-y:auto;
+    display:none;
+  }
+  .panel.open{ display:block; transform:translateY(0); }
+  .panel-hdr{
+    background: var(--navy); color:#fff;
+    padding:16px; display:flex; justify-content:space-between; align-items:center;
+    position:sticky; top:0;
+  }
+  .panel-body{ padding:18px; }
+  .grid-nav{ display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; }
+  @media (min-width:480px){ .grid-nav{ grid-template-columns:repeat(10, 1fr); } }
+  .g-btn{
+    aspect-ratio:1; border-radius:8px; border:2px solid var(--rule);
+    background:#fff; font-family:"Trebuchet MS", sans-serif; font-weight:700;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .g-btn.answered{ background:var(--correct); color:#fff; border-color:var(--correct); }
+  .g-btn.current{ outline:3px solid var(--brick); outline-offset:1px; }
+
+  /* ---------- Result modal ---------- */
+  .modal{
+    position:fixed; inset:0; background:rgba(0,0,0,.55);
+    display:none; align-items:center; justify-content:center; z-index:300; padding:16px;
+  }
+  .modal.show{ display:flex; }
+  .modal-box{ background: var(--card); max-width:400px; width:100%; border-top:5px solid var(--brick); }
+  .modal-head{ text-align:center; padding:22px 20px 14px; }
+  .modal-head .score{ font-size:38px; font-weight:700; color:var(--navy); }
+  .stat-grid{ display:grid; grid-template-columns:repeat(4,1fr); text-align:center; border-top:1px solid var(--rule); }
+  .stat-grid div{ padding:12px 4px; border-right:1px solid var(--rule); }
+  .stat-grid div:last-child{ border-right:none; }
+  .stat-grid .num{ font-size:19px; font-weight:700; }
+  .stat-grid .lbl{ font-size:10px; text-transform:uppercase; color:var(--unattempted); }
+
+  footer{ text-align:center; padding:16px; background:var(--brick); color:#fff; font-family:sans-serif; font-size:12px; }
+  footer a{ color:#ffd86b; }
+</style>
+</head>
+<body>
+
+<!-- ============ WELCOME SCREEN ============ -->
+<div class="welcome-screen" id="welcomeScreen">
+  <div class="welcome-kicker">Sampuran English</div>
+  <a class="join-channel" href="https://t.me/Sampuran_English" target="_blank" style="text-decoration:none; color:var(--navy); font-weight:600; border:1px solid; padding:5px 15px; border-radius:20px; margin-top:10px;">
+    <i class="fa-brands fa-telegram"></i> Official Telegram Channel
+  </a>
+  
+  <div class="welcome-sub" style="color:#000;font-weight:700;margin-top:20px">SSC CGL Tier 1/2 Masterclass — Common Error Edition</div>
+
+  <div class="welcome-card">
+    <div class="head" style="text-align:center;font-weight:900;font-size:14px">Mock Test: High-Yield 50 Errors</div>
+    <div class="w-row"><span>Questions</span><b>50</b></div>
+    <div class="w-row"><span>Total Marks</span><b>100</b></div>
+    <div class="w-row"><span>Time Limit</span><b>30 minutes</b></div>
+    <div class="w-row"><span>Marking</span><b>+2.0 / −0.5</b></div>
+  </div>
+
+  <button class="welcome-button" id="startTestBtn">Start Mock Test</button>
+</div>
+
+<!-- ============ MAIN TEST INTERFACE ============ -->
+<div id="mainTestInterface" style="display:none">
+  <div class="hdr">
+    <div class="hdr-l">Sampuran English<small>Common Error Masterclass</small></div>
+    <div class="hdr-c" id="qInfo">Q 1 / 50</div>
+    <div class="hdr-r">
+      <div class="timer" id="timer">30:00</div>
+      <button class="icon-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+      <button class="icon-btn" id="menuBtn"><i class="fas fa-th"></i></button>
+      <button class="btn-submit-top" id="subBtn">Submit</button>
+    </div>
+  </div>
+  <div class="subject-tag" id="subjectTag">Grammar — Spotting the Error</div>
+
+  <div class="cont">
+    <div class="qcard" id="qcard">
+      <div class="qnum">Question <span id="qNumTxt">1</span> <span class="status-tag" id="statusTag" style="display:none"></span></div>
+      <div class="qtext" id="qTxt"></div>
+      <div class="options" id="opts"></div>
+      <div class="explanation" id="explanation"></div>
+    </div>
+  </div>
+
+  <div class="navbar">
+    <button class="nav-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i> Prev</button>
+    <div class="nav-mid">
+      <div id="progTxt">1 of 50</div>
+      <div>Answered: <span id="ansCnt">0</span></div>
+    </div>
+    <button class="nav-btn next" id="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
+  </div>
+
+  <div class="panel" id="panel">
+    <div class="panel-hdr">
+      <span>Question Palette</span>
+      <button class="panel-close" id="panelClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="panel-body">
+      <div class="grid-nav" id="gridNav"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="modalOver">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="score" id="scoreDisp">0.0<span> / 100</span></div>
+      </div>
+      <div class="stat-grid">
+        <div><div class="num" id="corrStat" style="color:var(--correct)">0</div><div class="lbl">Correct</div></div>
+        <div><div class="num" id="incStat" style="color:var(--wrong)">0</div><div class="lbl">Wrong</div></div>
+        <div><div class="num" id="unaStat">0</div><div class="lbl">Skipped</div></div>
+        <div><div class="num" id="timeStat">0</div><div class="lbl">Min</div></div>
+      </div>
+      <div style="padding:15px; display:flex; gap:10px;">
+        <button id="closeModal" style="flex:1; padding:10px;">Close</button>
+        <button id="revBtn" style="flex:1; padding:10px; background:var(--navy); color:#fff; border:none;">Review</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    SSC CGL Prep &middot; Sampuran English &middot; <a href="https://t.me/Sampuran_English">Join Telegram</a>
+  </footer>
+</div>
+
+<script>
+const questions = [
+  { id:1, text: "The list of (a) / items are (b) / on the desk. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "Subject is 'The list' (singular). The verb should be 'is'." },
+  { id:2, text: "Hardly had I (a) / entered the room (b) / than the phone rang. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "Hardly/Scarcely is followed by 'when', not 'than'." },
+  { id:3, text: "She is (a) / senior than (b) / me in service. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "Words like senior, junior, superior take 'to' instead of 'than'." },
+  { id:4, text: "Unless you do not (a) / work hard, you (b) / will not pass. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "a", exp: "'Unless' is already negative. Remove 'do not'." },
+  { id:5, text: "One of the (a) / boy has (b) / done his work. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "After 'One of the', noun must be plural. Use 'boys'." },
+  { id:6, text: "Neither of the (a) / two candidates (b) / were selected. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "'Neither' takes a singular verb. Use 'was'." },
+  { id:7, text: "I have (a) / been living here (b) / since five years. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "For a duration (five years), use 'for' instead of 'since'." },
+  { id:8, text: "The scenery (a) / of Kashmir (b) / are very beautiful. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "'Scenery' is an uncountable noun and always singular. Use 'is'." },
+  { id:9, text: "The teacher as well as (a) / the students (b) / were present. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "When joined by 'as well as', the verb agrees with the first subject (The teacher). Use 'was'." },
+  { id:10, text: "He had (a) / no other choice (b) / but to leave. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "'No other' is followed by 'than', not 'but'." },
+  { id:11, text: "Two miles (a) / are a (b) / long distance. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "Distances/Weights as a unit take a singular verb. Use 'is'." },
+  { id:12, text: "Suppose if (a) / you are late, (b) / what will you do? (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "a", exp: "'Suppose' and 'if' mean the same. Use only one (Redundancy error)." },
+  { id:13, text: "The reason why (a) / he failed is (b) / because he didn't study. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "'The reason why' is followed by 'that', not 'because'." },
+  { id:14, text: "Many a (a) / man have (b) / died of hunger. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "'Many a' always takes a singular noun and singular verb. Use 'has'." },
+  { id:15, text: "Each of (a) / the students (b) / have a book. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "'Each of' takes a singular verb. Use 'has'." },
+  { id:16, text: "I prefer (a) / tea (b) / than coffee. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "'Prefer' is followed by 'to', not 'than'." },
+  { id:17, text: "If I (a) / was you, (b) / I would go. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "In hypothetical conditions, use 'were' for all persons." },
+  { id:18, text: "He is (a) / one of the tallest boy (b) / in the class. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "'One of the' + Superlative + Plural Noun. Use 'boys'." },
+  { id:19, text: "No sooner (a) / did I reach (b) / then it started raining. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "No sooner is followed by 'than' (T-H-A-N), not 'then'." },
+  { id:20, text: "The captain (a) / along with (b) / his team are coming. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "Verb agrees with the first subject 'The captain'. Use 'is'." },
+  { id:21, text: "Although he is rich, (a) / but (b) / he is unhappy. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "'Although' is followed by 'yet' or a comma, never 'but'." },
+  { id:22, text: "Bread and butter (a) / are (b) / my favorite breakfast. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "When two nouns represent one idea/item, use singular verb. Use 'is'." },
+  { id:23, text: "It is I (a) / who (b) / is to blame. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "Relative pronoun 'who' refers to 'I'. Verb should be 'am'." },
+  { id:24, text: "He (a) / died from (b) / cancer. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "One dies 'of' a disease, not 'from'. Use 'died of cancer'." },
+  { id:25, text: "Please (a) / return back (b) / my book. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "'Return' means to give back. 'Back' is redundant." },
+  { id:26, text: "He works (a) / hardly (b) / to earn a living. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "'Hardly' means 'almost not'. Use 'hard' (adverb of manner)." },
+  { id:27, text: "I look (a) / forward to (b) / meet you. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "'Look forward to' is followed by a Gerund (V+ing). Use 'meeting'." },
+  { id:28, text: "The police (a) / has arrested (b) / the thief. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "'Police' is always plural. Use 'have'." },
+  { id:29, text: "Cattle (a) / is (b) / grazing in the field. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "'Cattle' is a plural noun. Use 'are'." },
+  { id:30, text: "I (a) / did not (b) / saw him. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "After 'did', use base form of verb. Use 'see'." },
+  { id:31, text: "He (a) / is more (b) / taller than me. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "Avoid double comparatives. Remove 'more'." },
+  { id:32, text: "Neither he (a) / nor his (b) / friends is coming. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "In neither-nor, verb agrees with the nearest subject (friends). Use 'are'." },
+  { id:33, text: "I (a) / have (b) / a ten-rupees note. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "When a number+noun acts as an adjective, it is singular. Use 'ten-rupee note'." },
+  { id:34, text: "Each (a) / boy and girl (b) / were given a prize. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "Subjects preceded by 'each' take a singular verb. Use 'was'." },
+  { id:35, text: "He (a) / is (b) / an university student. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "'University' starts with a consonant sound ('yu'). Use 'a'." },
+  { id:36, text: "I (a) / am (b) / used to get up early. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "After 'be + used to', use Gerund. Use 'getting'." },
+  { id:37, text: "The furniture (a) / in the room (b) / were broken. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "'Furniture' is an uncountable noun. Use 'was'." },
+  { id:38, text: "Work hard (a) / lest you (b) / may fail. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "'Lest' is followed by 'should'." },
+  { id:39, text: "He (a) / as well as I (b) / am going. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "Verb agrees with 'He'. Use 'is'." },
+  { id:40, text: "I asked (a) / him why (b) / was he crying. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "In indirect speech, sentence is assertive. Use 'why he was crying'." },
+  { id:41, text: "She (a) / is the (b) / most cleverest girl. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "Avoid double superlatives. Use 'cleverest' or 'most clever'." },
+  { id:42, text: "This (a) / book is (b) / superior than that. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "Use 'superior to'." },
+  { id:43, text: "The news (a) / are (b) / true. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "'News' is singular. Use 'is'." },
+  { id:44, text: "Many (a) / a (b) / flowers fade unseen. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "After 'Many a', use singular noun. Use 'flower fades'." },
+  { id:45, text: "The jury (a) / was divided (b) / in their opinion. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "When a collective noun is divided, use plural verb. Use 'were'." },
+  { id:46, text: "Five (a) / times five (b) / are twenty-five. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "Mathematical expressions usually take a singular verb. Use 'is'." },
+  { id:47, text: "I (a) / shall (b) / wait for you until you will come. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "In time clauses, use Simple Present instead of Future. Use 'until you come'." },
+  { id:48, text: "He (a) / is very (b) / honest man. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "b", exp: "Singular countable noun needs an article. Use 'a very honest man'." },
+  { id:49, text: "Your (a) / hair (b) / are black. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "'Hair' as a whole is uncountable. Use 'is'." },
+  { id:50, text: "This (a) / is the same (b) / man who helped me. (c) / No error (d)", options: {a:"(a)", b:"(b)", c:"(c)", d:"No error"}, answer: "c", exp: "After 'the same', use relative pronoun 'that' instead of 'who'." }
+];
+
+class TestApp {
+  constructor(){
+    this.qs = questions;
+    this.cur = 0;
+    this.ans = new Array(this.qs.length).fill(null);
+    this.sub = false;
+    this.duration = 30 * 60;
+    this.timeLeft = this.duration;
+    this.timer = null;
+    this.startT = null;
+
+    this.els = {
+      qInfo: document.getElementById('qInfo'),
+      qNumTxt: document.getElementById('qNumTxt'),
+      statusTag: document.getElementById('statusTag'),
+      qTxt: document.getElementById('qTxt'),
+      opts: document.getElementById('opts'),
+      explanation: document.getElementById('explanation'),
+      qcard: document.getElementById('qcard'),
+      progTxt: document.getElementById('progTxt'),
+      ansCnt: document.getElementById('ansCnt'),
+      timer: document.getElementById('timer'),
+      gridNav: document.getElementById('gridNav'),
+      panel: document.getElementById('panel'),
+      modalOver: document.getElementById('modalOver'),
+      scoreDisp: document.getElementById('scoreDisp'),
+      corrStat: document.getElementById('corrStat'),
+      incStat: document.getElementById('incStat'),
+      unaStat: document.getElementById('unaStat'),
+      timeStat: document.getElementById('timeStat')
+    };
+
+    this.init();
+  }
+
+  init(){
+    document.getElementById('startTestBtn').onclick = () => this.start();
+    document.getElementById('prevBtn').onclick = () => this.go(-1);
+    document.getElementById('nextBtn').onclick = () => this.go(1);
+    document.getElementById('subBtn').onclick = () => this.submit();
+    document.getElementById('menuBtn').onclick = () => this.els.panel.classList.add('open');
+    document.getElementById('panelClose').onclick = () => this.els.panel.classList.remove('open');
+    document.getElementById('themeToggle').onclick = () => {
+      document.body.classList.toggle('dark-mode');
+    };
+    document.getElementById('closeModal').onclick = () => this.els.modalOver.classList.remove('show');
+    document.getElementById('revBtn').onclick = () => {
+       this.els.modalOver.classList.remove('show');
+       this.loadQ(0);
+    };
+  }
+
+  start(){
+    document.getElementById('welcomeScreen').classList.add('hidden');
+    document.getElementById('mainTestInterface').style.display = '';
+    this.startT = Date.now();
+    this.buildGrid();
+    this.loadQ(0);
+    this.timer = setInterval(() => {
+      this.timeLeft--;
+      const m = Math.floor(this.timeLeft / 60);
+      const s = this.timeLeft % 60;
+      this.els.timer.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      if(this.timeLeft <= 60) this.els.timer.classList.add('low');
+      if(this.timeLeft <= 0) this.submit();
+    }, 1000);
+  }
+
+  buildGrid(){
+    this.qs.forEach((q, i) => {
+      const b = document.createElement('button');
+      b.className = 'g-btn';
+      b.textContent = i + 1;
+      b.id = 'g-' + i;
+      b.onclick = () => { this.els.panel.classList.remove('open'); this.loadQ(i); };
+      this.els.gridNav.appendChild(b);
+    });
+  }
+
+  loadQ(idx){
+    this.cur = idx;
+    const q = this.qs[idx];
+    this.els.qInfo.textContent = `Q ${idx+1} / ${this.qs.length}`;
+    this.els.qNumTxt.textContent = idx + 1;
+    this.els.qTxt.innerHTML = q.text;
+    this.els.progTxt.textContent = `${idx+1} of ${this.qs.length}`;
+    
+    this.els.opts.innerHTML = '';
+    Object.entries(q.options).forEach(([key, val]) => {
+      const l = document.createElement('label');
+      l.className = 'opt' + (this.ans[idx] === key ? ' selected' : '');
+      if(this.sub){
+        if(key === q.answer) l.classList.add('correct-answer');
+        if(this.ans[idx] === key && key !== q.answer) l.classList.add('wrong-answer');
+      }
+      l.innerHTML = `<span class="opt-letter">(${key})</span> <span>${val}</span>`;
+      l.onclick = () => this.select(idx, key);
+      this.els.opts.appendChild(l);
+    });
+
+    if(this.sub){
+      this.els.statusTag.style.display = 'inline-block';
+      const a = this.ans[idx];
+      this.els.statusTag.textContent = a === null ? 'Skipped' : (a === q.answer ? 'Correct' : 'Wrong');
+      this.els.statusTag.className = 'status-tag ' + (a === null ? 'skipped' : (a === q.answer ? 'correct' : 'wrong'));
+      this.els.explanation.innerHTML = `<b>Rule:</b> ${q.exp}`;
+      this.els.qcard.classList.add('locked');
+    }
+
+    document.querySelectorAll('.g-btn').forEach(b => b.classList.remove('current'));
+    document.getElementById('g-' + idx).classList.add('current');
+    this.updateStats();
+  }
+
+  select(idx, key){
+    if(this.sub) return;
+    this.ans[idx] = key;
+    document.getElementById('g-' + idx).classList.add('answered');
+    this.loadQ(idx);
+  }
+
+  go(d){
+    const next = this.cur + d;
+    if(next >= 0 && next < this.qs.length) this.loadQ(next);
+  }
+
+  updateStats(){
+    this.els.ansCnt.textContent = this.ans.filter(a => a !== null).length;
+  }
+
+  submit(){
+    if(this.sub) return;
+    if(!confirm("Confirm submission?")) return;
+    this.sub = true;
+    clearInterval(this.timer);
+    
+    let c = 0, w = 0, u = 0, s = 0;
+    this.qs.forEach((q, i) => {
+      if(this.ans[i] === null) u++;
+      else if(this.ans[i] === q.answer){ c++; s += 2; }
+      else { w++; s -= 0.5; }
+    });
+
+    this.els.scoreDisp.innerHTML = `${s.toFixed(1)}<span> / 100</span>`;
+    this.els.corrStat.textContent = c;
+    this.els.incStat.textContent = w;
+    this.els.unaStat.textContent = u;
+    this.els.timeStat.textContent = Math.round((Date.now() - this.startT)/60000);
+    this.els.modalOver.classList.add('show');
+    this.loadQ(this.cur);
+  }
+}
+
+window.onload = () => new TestApp();
+</script>
+</body>
+</html>
