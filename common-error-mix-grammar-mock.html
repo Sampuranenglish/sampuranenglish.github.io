@@ -1,11 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Loading...</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common Error - Mix Grammar Mock Test</title>
+<style>
+:root{
+--page-bg:#f2f2f2;
+--card-bg:#ffffff;
+--card-text:#555555;
+--accent:#004aad;
+--footer-bg:#222222;
+--footer-text:#ffffff;
+--secondary-btn-bg:#222222;
+}
+html[data-theme="dark"]{
+--page-bg:#0b0c0e;
+--card-bg:#1a1b1e;
+--card-text:#c9c9c9;
+--accent:#3b82f6;
+--footer-bg:#000000;
+--footer-text:#f2f2f2;
+--secondary-btn-bg:#3a3a3a;
+}
+html,body{height:100%;margin:0;}
+body{display:flex;flex-direction:column;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--page-bg);transition:background .25s ease;}
+header{background:var(--accent);color:white;padding:12px;text-align:center;}
+h1{margin:0;font-size:26px;}
+.container{width:90%;max-width:1000px;margin:30px auto;flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;align-content:start;}
+.card{background:var(--card-bg);border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.15);padding:25px 15px;text-align:center;text-decoration:none;color:var(--card-text);font-size:18px;font-weight:bold;transition:transform .2s ease, box-shadow .2s ease;}
+.card:hover{transform:translateY(-4px);box-shadow:0 4px 12px rgba(0,0,0,0.25);color:var(--accent);}
+.back{margin-top:20px;text-align:center;grid-column:1/-1;}
+.back a{text-decoration:none;background:var(--secondary-btn-bg);color:white;padding:12px 25px;border-radius:6px;font-size:18px;}
+footer{background:var(--footer-bg);color:var(--footer-text);text-align:center;padding:10px;font-size:13px;}
+</style>
 </head>
 <body>
-
-Loading...
-
+<div id="site-header"></div>
+<header>
+<h1>Common Error - Mix Grammar Mock Test</h1>
+</header>
+<div class="container">
+<a class="card" href="50%20Most%20Repeated%20Common%20Errors.html">50 Most Repeated Common Errors</a>
+<a class="card" href="Mix%20Grammar%20Mock%20Test%20-1.html">Mix Grammar Mock Test - 1</a>
+<a class="card" href="Mix%20Grammar%20Mock%20Test%20-2.html">Mix Grammar Mock Test - 2</a>
+<a class="card" href="Mix%20Grammar%20Mock%20Test%20-3.html">Mix Grammar Mock Test - 3</a>
+<a class="card" href="Mix%20Grammar%20Mock%20Test%20-4.html">Mix Grammar Mock Test - 4</a>
+<a class="card" href="Mix%20Grammar%20Mock%20Test%20-5.html">Mix Grammar Mock Test - 5</a>
+<a class="card" href="Mix%20Grammar%20Mock%20Test%20-6.html">Mix Grammar Mock Test - 6</a>
+<a class="card" href="Mix%20Grammar%20Mock%20Test%20-7.html">Mix Grammar Mock Test - 7</a>
+<a class="card" href="Mix%20Grammar%20Mock%20Test%20-8.html">Mix Grammar Mock Test - 8</a>
+<a class="card" href="Mix%20Grammar%20Mock%20Test%20-9.html">Mix Grammar Mock Test - 9</a>
+<a class="card" href="Mix%20Grammar%20Mock%20Test%20-10.html">Mix Grammar Mock Test - 10</a>
+<div class="back">
+<a href="mock-test-mix-grammar.html">← Back to Mock Test</a>
+</div>
+</div>
+<footer>© Sampuran English</footer>
+<script>
+fetch('header.html')
+.then(function(response){ return response.text(); })
+.then(function(html){
+document.getElementById('site-header').innerHTML = html;
+window.scrollTo(0, 0);
+document.getElementById('menuToggle').addEventListener('click', function(){
+document.getElementById('menuList').classList.toggle('open');
+});
+});
+</script>
+<script src="theme.js"></script>
 </body>
 </html>
