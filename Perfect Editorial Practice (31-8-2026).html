@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampuran English — United and Free</title>
+<style>
+  :root{
+    --paper:#f6f2e9;
+    --ink:#20201d;
+    --rule:#c9bfa8;
+    --accent:#8a3324;
+    --accent-soft:#e7d9c6;
+    --green:#3f5d3a;
+    --blue:#385170;
+    --telegram:#229ed9;
+    --serif: 'Georgia', 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: 'Helvetica Neue', Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    line-height:1.65;
+  }
+
+  .page-header{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 20px 0;
+  }
+  .title-box{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:8px;
+    padding:14px 20px;
+    display:grid;
+    grid-template-columns:56px 1fr;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .title-box .logo{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#fff;
+    justify-self:start;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--sans);
+    font-weight:800;
+    color:var(--ink);
+    font-size:17px;
+    letter-spacing:0.5px;
+  }
+  .title-box .brand{
+    font-family:var(--sans);
+    font-weight:800;
+    font-size:clamp(18px,6.5vw,30px);
+    letter-spacing:0.5px;
+    text-align:center;
+    white-space:nowrap;
+  }
+
+  .telegram-box{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--telegram);
+    color:#fff;
+    text-decoration:none;
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:14.5px;
+    letter-spacing:0.3px;
+    border-radius:8px;
+    padding:12px 16px;
+    margin-bottom:14px;
+    transition:filter .15s;
+  }
+  .telegram-box:hover{ filter:brightness(1.08); }
+  .telegram-box svg{ width:20px; height:20px; flex-shrink:0; }
+
+  .nav-pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:8px;
+  }
+  .nav-pill{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.3px;
+    background:#fffdf8;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+    border-radius:20px;
+    padding:8px 18px;
+    cursor:pointer;
+    transition:background .15s, color .15s;
+  }
+  .nav-pill:hover{ background:var(--accent-soft); }
+  .nav-pill.active{
+    background:var(--ink);
+    color:var(--paper);
+  }
+
+  .page{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 20px 10px;
+    display:none;
+  }
+  .page.active-page{ display:block; }
+
+  section{ margin-bottom:36px; }
+  .section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:8px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  h2.section-title{
+    font-family:var(--sans);
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0;
+  }
+  .pub-date{
+    font-family:var(--sans);
+    font-size:12px;
+    color:#7a7264;
+    letter-spacing:0.5px;
+  }
+
+  .editorial h3{
+    font-size:24px;
+    margin:0 0 4px;
+  }
+  .editorial .byline{
+    font-family:var(--sans);
+    font-size:12px;
+    color:#7a7264;
+    margin-bottom:20px;
+    font-style:italic;
+  }
+  .editorial p{
+    font-size:17px;
+    margin:0 0 16px;
+    text-align:justify;
+  }
+  .editorial p:first-of-type::first-letter{
+    font-size:44px;
+    float:left;
+    line-height:0.8;
+    padding-right:8px;
+    padding-top:4px;
+    color:var(--accent);
+    font-weight:bold;
+  }
+  .vocab{
+    background:linear-gradient(transparent 60%, var(--accent-soft) 60%);
+    cursor:pointer;
+    font-weight:600;
+    border-bottom:1.5px dotted var(--accent);
+    position:relative;
+    scroll-margin-top:90px;
+  }
+  .vocab:hover{ background:linear-gradient(transparent 55%, #dcc9a8 55%); }
+  .vocab.flash{
+    background:#f6c453;
+    box-shadow:0 0 0 4px rgba(246,196,83,0.55);
+    border-radius:2px;
+  }
+
+  .sv-subj{
+    font-weight:700;
+    border-bottom:2.5px solid var(--blue);
+    padding:0 1px;
+  }
+  .sv-verb{
+    font-weight:700;
+    border-bottom:2.5px solid var(--accent);
+    padding:0 1px;
+  }
+  .sv-note{
+    background:#eef2f4;
+    border:1px solid var(--rule);
+    border-left:4px solid var(--blue);
+    border-radius:4px;
+    padding:8px 16px;
+    margin:-6px 0 18px;
+    font-family:var(--sans);
+    font-size:13px;
+    line-height:1.55;
+    color:#3a362f;
+  }
+  .sv-note .sv-tag{
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size:11px;
+    color:var(--blue);
+    margin-right:6px;
+  }
+  .sv-note b.s{ color:var(--blue); }
+  .sv-note b.v{ color:var(--accent); }
+
+  .tooltip{
+    position:fixed;
+    max-width:280px;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sans);
+    font-size:13.5px;
+    line-height:1.5;
+    padding:12px 14px;
+    border-radius:6px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
+    z-index:1000;
+    display:none;
+  }
+  .tooltip::after{
+    content:"";
+    position:absolute;
+    bottom:-7px;
+    left:20px;
+    border-width:7px 7px 0 7px;
+    border-style:solid;
+    border-color:var(--ink) transparent transparent transparent;
+  }
+  .tooltip .tt-word{
+    display:block;
+    font-weight:700;
+    color:#f0d9a8;
+    margin-bottom:4px;
+    font-size:14px;
+  }
+
+  .analysis-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .a-card{
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:16px 20px;
+    border-left:5px solid var(--blue);
+  }
+  .a-card.core{ border-left-color:var(--accent); }
+  .a-card.inference{ border-left-color:var(--blue); }
+  .a-card.purpose{ border-left-color:#6a4c93; }
+  .a-card.tone{ border-left-color:#b5533c; }
+  .a-card.signals{ border-left-color:#3a726b; }
+  .a-card h4{
+    margin:0 0 8px;
+    font-family:var(--sans);
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:var(--ink);
+  }
+  .a-card p, .a-card li{
+    font-family:var(--sans);
+    font-size:14px;
+    color:#3a362f;
+    margin:0 0 6px;
+  }
+  .a-card ul{ margin:0; padding-left:18px; }
+  .signal-word{
+    display:inline-block;
+    background:var(--accent-soft);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:3px 9px;
+    font-weight:700;
+    color:var(--accent);
+    font-size:13px;
+    margin:0 4px 6px 0;
+    font-family:var(--sans);
+    cursor:pointer;
+    transition:background 0.15s, transform 0.15s;
+  }
+  .signal-word:hover{
+    background:var(--accent);
+    color:#fff;
+    transform:translateY(-1px);
+  }
+  .signal-highlight{
+    background:#fdeecb;
+    border-bottom:2px solid #c8922f;
+    padding:0 1px;
+    border-radius:2px;
+    scroll-margin-top:90px;
+    transition:background 0.4s, box-shadow 0.4s;
+  }
+  .signal-highlight.flash{
+    background:#f6c453;
+    box-shadow:0 0 0 4px rgba(246,196,83,0.55);
+  }
+
+  .qcard{
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:18px 20px;
+    margin-bottom:16px;
+  }
+  .qcard .qnum{
+    font-family:var(--sans);
+    font-weight:700;
+    color:var(--accent);
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .qcard .qtext{
+    font-size:16.5px;
+    margin-bottom:14px;
+  }
+  .options{
+    display:grid;
+    gap:8px;
+  }
+  .option{
+    font-family:var(--sans);
+    font-size:14.5px;
+    background:var(--paper);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:10px 14px;
+    cursor:pointer;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    transition:background 0.15s, border-color .15s;
+  }
+  .option:hover{ background:var(--accent-soft); }
+  .option .tag{ font-weight:700; color:var(--accent); }
+  .option.correct{ background:#dcebd8; border-color:var(--green); }
+  .option.incorrect{ background:#f3d9d4; border-color:var(--accent); }
+  .option.locked{ cursor:default; pointer-events:none; opacity:0.95; }
+
+  .feedback{
+    margin-top:10px;
+    font-family:var(--sans);
+    font-size:13px;
+    display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback.right{color:var(--green);}
+  .feedback.wrong{color:var(--accent);}
+
+  .score-bar{
+    font-family:var(--sans);
+    background:var(--ink);
+    color:var(--paper);
+    text-align:center;
+    padding:10px;
+    border-radius:4px;
+    font-size:14px;
+    letter-spacing:0.5px;
+    margin-bottom:20px;
+  }
+
+  .answer-block{
+    border-left:4px solid var(--green);
+    background:#fffdf8;
+    padding:14px 18px;
+    margin-bottom:14px;
+    border-radius:0 4px 4px 0;
+  }
+  .answer-block .qnum{
+    font-family:var(--sans);
+    font-weight:700;
+    color:var(--accent);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+  .answer-block .ans-line{
+    font-family:var(--sans);
+    font-weight:700;
+    margin:6px 0 4px;
+    color:var(--green);
+  }
+  .answer-block .expl{
+    font-family:var(--sans);
+    font-size:14px;
+    color:#3a362f;
+  }
+
+  .vocab-list{
+    display:flex;
+    flex-direction:column;
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .vocab-card{
+    padding:14px 16px;
+    border-bottom:1px solid var(--rule);
+    font-family:var(--sans);
+    font-size:14px;
+    line-height:1.5;
+  }
+  .vocab-card:last-child{ border-bottom:none; }
+  .vocab-card:nth-child(even){ background:#f1ead9; }
+  .vocab-card .vc-num{
+    display:inline-block;
+    font-weight:700;
+    color:#7a7264;
+    margin-right:4px;
+  }
+  .vocab-card .vc-word{
+    font-weight:700;
+    color:var(--accent);
+    font-size:15px;
+    margin-bottom:5px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:underline;
+    text-decoration-style:dotted;
+    text-decoration-color:var(--accent);
+    text-underline-offset:3px;
+    transition:color 0.15s;
+  }
+  .vocab-card .vc-word:hover{ color:var(--ink); }
+  .vocab-card .vc-word::after{
+    content:"↗";
+    display:inline-block;
+    margin-left:5px;
+    font-size:12px;
+    color:var(--blue);
+    font-weight:400;
+  }
+  .vocab-card .vc-hindi{
+    color:var(--blue);
+    font-weight:600;
+    font-size:14px;
+    display:inline;
+    margin-left:8px;
+    margin-bottom:6px;
+    font-family:'Noto Sans Devanagari', 'Nirmala UI', var(--sans);
+  }
+  .vocab-card .vc-meaning{ color:#20201d; margin-bottom:6px; }
+  .vocab-card .vc-meaning-label{
+    font-weight:700;
+    color:#3a362f;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-right:5px;
+  }
+  .vocab-card .vc-row{ margin-bottom:2px; }
+  .vocab-card .vc-row:last-child{ margin-bottom:0; }
+  .vocab-card .vc-label{
+    font-weight:700;
+    color:#3a362f;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-right:6px;
+  }
+  .syn{ color:#8a3324; }
+  .ant{ color:var(--green); }
+
+  .nav-pills-bottom{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    padding-top:22px;
+    margin-top:10px;
+    border-top:1px solid var(--rule);
+  }
+
+  .page-number{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:700;
+    color:#7a7264;
+    letter-spacing:0.5px;
+    padding:18px 0 30px;
+    border-top:1px solid var(--rule);
+    margin-top:10px;
+  }
+
+  footer.site-footer{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:11px;
+    color:#8a8272;
+    padding:20px;
+  }
+
+  @media (max-width:480px){
+    .editorial p{ font-size:16px; }
+    .tooltip{ max-width:230px; }
+    .section-header{ flex-wrap:wrap; }
+    .title-box{ grid-template-columns:40px 1fr; padding:12px 14px; gap:8px; }
+    .title-box .logo{ width:36px; height:36px; font-size:14px; }
+    .title-box .brand{ font-size:clamp(16px,7vw,24px); letter-spacing:0.2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="title-box">
+    <div class="logo">SE</div>
+    <div class="brand"><span style="color:#e2483c;">SAMPURAN</span> ENGLISH</div>
+  </div>
+
+  <a class="telegram-box" href="https://t.me/Sampuran_English" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 4L3 11.5L10 13.5M21 4L18 20L10 13.5M21 4L10 13.5M10 13.5V19L13.2 15.8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Official Telegram Channel
+  </a>
+
+  <div class="nav-pills">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+</div>
+
+<!-- ================= PAGE 1: EDITORIAL ================= -->
+<div class="page active-page" id="page-editorial">
+
+  <section class="editorial">
+    <div class="section-header">
+      <h2 class="section-title">The Editorial</h2>
+      <span class="pub-date">31 Aug 2026</span>
+    </div>
+    <h3>Nepal floods: Himalaya needs shared early-warning system</h3>
+    <div class="byline">Editorial &middot; for exam practice</div>
+
+    <p><span class="sv-subj">The tragedy</span> <span class="vocab" data-word="unfolding">unfolding</span> in Nepal <span class="sv-verb">is</span> a reminder of the <span class="vocab" data-word="fragility">fragility</span> of the Himalayan ecosystem. <span class="signal-highlight" data-signal="uncertainty-opening"><span class="vocab" data-word="jury is out">The jury is out</span> on what exactly caused Wednesday&rsquo;s <span class="vocab" data-word="flash flood">flash flood</span> in the Bhote Koshi River, which has claimed at least 270 lives and left several hundred missing</span>. Satellite analysis points to a <span class="vocab" data-word="massive">massive</span> collapse of glacier ice and rock in Tibet, which temporarily <span class="vocab" data-word="obstructed">obstructed</span> the river before releasing a destructive <span class="vocab" data-word="surge">surge</span> <span class="vocab" data-word="downstream">downstream</span>. The landslide was so intense it was initially thought to be an earthquake. By the time it reached the China-Nepal border, the <span class="vocab" data-word="cascading">cascading</span> <span class="vocab" data-word="debris">debris</span> reportedly <span class="vocab" data-word="resembled">resembled</span> a tsunami of mud.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9312; <b class="s">The tragedy</b> ... <b class="v">is</b> &mdash; separated by &ldquo;unfolding in Nepal&rdquo;.</div>
+    </div>
+
+    <p>Authorities have correctly made rescue their immediate priority. Experts are working to <span class="vocab" data-word="pinpoint">pinpoint</span> the cause of the <span class="vocab" data-word="calamity">calamity</span>. The next step should be to find ways to keep local people, <span class="vocab" data-word="pilgrims">pilgrims</span>, and tourists out of harm&rsquo;s way in a region of high <span class="vocab" data-word="vulnerability">vulnerability</span> to nature&rsquo;s <span class="vocab" data-word="vagaries">vagaries</span>. Floods, landslides, and glacial lake <span class="vocab" data-word="bursts">bursts</span> are not <span class="vocab" data-word="alien">alien</span> to the Himalayan region. In 2013, the Kedarnath disaster in Uttarakhand killed thousands after exceptionally heavy rainfall <span class="vocab" data-word="triggered">triggered</span> floods and landslides across the Mandakini and Alaknanda valleys.</p>
+
+    <p>Five years ago, a massive <span class="vocab" data-word="debris flow">debris flow</span> in Uttarakhand&rsquo;s Chamoli district killed more than 200 people and damaged hydropower projects. The disaster was linked to a rock-and-ice <span class="vocab" data-word="avalanche">avalanche</span> in a Himalayan valley. Then, in 2023, <span class="sv-subj">the collapse</span> of the South Lhonak glacial lake in Sikkim <span class="sv-verb">sent</span> a wall of water down the Teesta Valley, killing at least 50 people and damaging dams, bridges and roads. There is, however, a <span class="vocab" data-word="crucial">crucial</span> difference between these <span class="vocab" data-word="calamities">calamities</span> and Wednesday&rsquo;s tragedy: the latter happened in peak monsoon season, when the rivers already have a fair amount of water. That&rsquo;s why <span class="sv-subj">cooperation</span> between <span class="vocab" data-word="upstream">upstream</span> and <span class="vocab" data-word="downstream">downstream</span> Himalayan nations <span class="sv-verb">shouldn&rsquo;t be limited</span> to rescue and relief efforts. As temperatures rise, <span class="sv-subj">systems</span> that monitor rapidly rising river levels, intense rainfall and <span class="vocab" data-word="seismic">seismic</span> activity <span class="sv-verb">will become</span> increasingly important to alert people in villages and towns located near melting glaciers or <span class="vocab" data-word="thawing">thawing</span> <span class="vocab" data-word="permafrost">permafrost</span>.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9313; <b class="s">the collapse</b> ... <b class="v">sent</b> &mdash; separated by &ldquo;of the South Lhonak glacial lake in Sikkim&rdquo;.</div>
+      <div style="margin-top:6px;">&#9314; <b class="s">cooperation</b> ... <b class="v">shouldn&rsquo;t be limited</b> &mdash; separated by &ldquo;between upstream and downstream Himalayan nations&rdquo;.</div>
+      <div style="margin-top:6px;">&#9315; <b class="s">systems</b> ... <b class="v">will become</b> &mdash; separated by &ldquo;that monitor rapidly rising river levels, intense rainfall and seismic activity&rdquo;.</div>
+    </div>
+
+    <p>There are already foundations for such cooperation. The World Meteorological Organisation&rsquo;s South Asia Hydromet Forum brings together the region&rsquo;s <span class="vocab" data-word="meteorological">meteorological</span> and hydrological agencies, while the South Asia Flash Flood Guidance System provides regional <span class="vocab" data-word="forecasting">forecasting</span> and guidance. These systems need to be <span class="vocab" data-word="scaled up">scaled up</span> to enable greater sharing of data, forecasting expertise and early-warning systems among countries in the Himalayan region. Despite <span class="vocab" data-word="geopolitical">geopolitical</span> differences, India and China are often on the same page in climate negotiations. <span class="signal-highlight" data-signal="conclusion-call"><span class="sv-subj">Their shared outlook</span> on protecting development <span class="vocab" data-word="imperatives">imperatives</span> now <span class="sv-verb">needs</span> to be translated into securing people&rsquo;s lives.</span></p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9316; <b class="s">Their shared outlook</b> ... <b class="v">needs</b> &mdash; separated by &ldquo;on protecting development imperatives now&rdquo;.</div>
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 1 of 5</div>
+</div>
+
+<!-- ================= PAGE 2: QUESTIONS ================= -->
+<div class="page" id="page-questions">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Practice Questions</h2>
+      <span class="pub-date">31 Aug 2026</span>
+    </div>
+    <div class="score-bar" id="scoreBar">Score: 0 / 5</div>
+
+    <div class="qcard" data-qid="1">
+      <div class="qnum">Question 1 &mdash; Main Idea</div>
+      <div class="qtext">Which statement best captures the editorial&rsquo;s central argument?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> The Bhote Koshi flood was caused entirely by unusually heavy monsoon rainfall in the Everest region.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> Nepal alone must build glacier monitoring stations, since neighbouring countries cannot meaningfully assist during future floods.</div>
+        <div class="option" data-correct="true"><span class="tag">C.</span> Beyond rescue efforts, Himalayan nations need to scale up shared systems that warn people before disasters strike.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Glacial lake bursts began occurring in the Himalayas only after 2013, following the Kedarnath tragedy in Uttarakhand.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="2">
+      <div class="qnum">Question 2 &mdash; Inference</div>
+      <div class="qtext">What does the editorial imply by noting that Wednesday&rsquo;s flood, unlike Kedarnath, Chamoli, or Sikkim, happened during peak monsoon season?</div>
+      <div class="options">
+        <div class="option" data-correct="true"><span class="tag">A.</span> Rivers swollen by the monsoon can turn a glacier collapse into a far deadlier, harder-to-predict surge.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> Past disasters such as Kedarnath and Chamoli also struck during the same peak monsoon season each year.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> Monsoon-season floods in the Himalayas are always milder than floods occurring in other seasons of the year.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Nepal&rsquo;s government has officially confirmed that monsoon rainfall was the single cause of the glacier collapse.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="3">
+      <div class="qnum">Question 3 &mdash; Vocabulary in Context</div>
+      <div class="qtext">In &ldquo;a region of high vulnerability to nature&rsquo;s vagaries,&rdquo; &ldquo;vagaries&rdquo; most nearly means:</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> The permanent and unchanging seasonal weather patterns that a region experiences every single year.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> Official government policies designed specifically to manage and reduce the impact of natural disasters.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> The scientific instruments meteorologists use to measure river levels and rainfall in real time.</div>
+        <div class="option" data-correct="true"><span class="tag">D.</span> Unpredictable, erratic shifts and extremes in natural conditions that are difficult to foresee accurately.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="4">
+      <div class="qnum">Question 4 &mdash; Purpose / Structure</div>
+      <div class="qtext">Why does the editorial recall the Kedarnath, Chamoli, and South Lhonak disasters before discussing early-warning systems?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> To prove that Wednesday&rsquo;s flood caused less damage than each of the three earlier disasters.</div>
+        <div class="option" data-correct="true"><span class="tag">B.</span> To show a recurring pattern of Himalayan disasters that supports building shared regional warning systems.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> To assign full responsibility for all three earlier disasters to the Nepalese government alone entirely.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> To criticise the World Meteorological Organisation for failing to prevent each of these three disasters.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="5">
+      <div class="qnum">Question 5 &mdash; Tone / Author&rsquo;s Attitude</div>
+      <div class="qtext">The overall tone of the editorial toward regional cooperation on early-warning systems can best be described as:</div>
+      <div class="options">
+        <div class="option" data-correct="true"><span class="tag">A.</span> Constructive and urging, acknowledging existing cooperation while pressing for it to be expanded further.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> Dismissive, suggesting that shared warning systems are impossible given deep geopolitical tensions today.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> Purely mournful, focused solely on lamenting lost lives without proposing any solutions at all.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Indifferent, treating the flood as an isolated event carrying no wider policy implications whatsoever.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </section>
+
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 2 of 5</div>
+</div>
+
+<!-- ================= PAGE 3: ANSWERS ================= -->
+<div class="page" id="page-answers">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Answers &amp; Explanations</h2>
+      <span class="pub-date">31 Aug 2026</span>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 1</div>
+      <div class="ans-line">Correct Answer: C</div>
+      <div class="expl">The editorial moves from the immediate tragedy to a broader argument that shared warning systems need to be scaled up so people are alerted before disaster strikes. The other options overstate certainty about the cause, place unwarranted sole responsibility on Nepal, or wrongly claim glacial bursts are a new phenomenon.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 2</div>
+      <div class="ans-line">Correct Answer: A</div>
+      <div class="expl">The editorial highlights peak monsoon timing as a "crucial difference" because rivers already carrying a fair amount of water can turn a glacier or landslide event into an even more destructive, harder-to-foresee surge. The other options invent a sole cause, misstate the timing of past disasters, or make an unsupported generalisation.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 3</div>
+      <div class="ans-line">Correct Answer: D</div>
+      <div class="expl">"Vagaries" refers to nature's unpredictable, erratic shifts, exactly the kind of sudden extremes the passage describes. The other options mistake it for stable patterns, policies, or instruments, none of which the word means.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 4</div>
+      <div class="ans-line">Correct Answer: B</div>
+      <div class="expl">By listing Kedarnath, Chamoli, and South Lhonak, the editorial builds the case that such disasters recur across the Himalayan region, strengthening its call for shared, scaled-up warning systems. The other options misread this as ranking severity, assigning sole blame, or criticising the WMO, none of which the text does.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 5</div>
+      <div class="ans-line">Correct Answer: A</div>
+      <div class="expl">The editorial notes that foundations for cooperation already exist and argues they "need to be scaled up," a constructive, forward-looking stance rather than dismissal, mourning, or indifference.</div>
+    </div>
+  </section>
+
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 3 of 5</div>
+</div>
+
+<!-- ================= PAGE 4: VOCABULARY ================= -->
+<div class="page" id="page-vocab">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Vocabulary Builder</h2>
+      <span class="pub-date">31 Aug 2026</span>
+    </div>
+    <div class="vocab-list" id="vocabTableBody"></div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 4 of 5</div>
+</div>
+
+<!-- ================= PAGE 5: EDITORIAL ANALYSIS ================= -->
+<div class="page" id="page-analysis">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Analysis</h2>
+      <span class="pub-date">31 Aug 2026</span>
+    </div>
+    <div class="analysis-grid">
+
+      <div class="a-card core">
+        <h4>Core Message</h4>
+        <ul>
+          <li>Wednesday's flash flood on the Bhote Koshi River, likely triggered by a glacier and rock collapse in Tibet, has killed at least 270 people and left several hundred missing.</li>
+          <li>Such disasters &mdash; Kedarnath (2013), Chamoli (2021), South Lhonak (2023) &mdash; are not new to the Himalayan region, but this one struck during peak monsoon, when rivers were already swollen.</li>
+          <li>Existing regional mechanisms such as the South Asia Hydromet Forum and the South Asia Flash Flood Guidance System provide a foundation, but need to be scaled up for better data-sharing and forecasting.</li>
+          <li>India and China's shared outlook in climate negotiations should now be translated into concrete cooperation that protects lives near melting glaciers and thawing permafrost.</li>
+        </ul>
+      </div>
+
+      <div class="a-card inference">
+        <h4>Inference</h4>
+        <ul>
+          <li>Noting that the flood happened in peak monsoon season implies that rivers already carrying substantial water can turn a glacial collapse into a far deadlier surge.</li>
+          <li>Listing three prior disasters across a decade implies these are not isolated accidents but a recurring pattern the region has failed to fully prepare for.</li>
+          <li>Highlighting that "foundations" already exist implies the gap is not the absence of cooperation but its insufficient scale and sharing of expertise.</li>
+          <li>Pointing to India-China alignment in climate talks implies that political will for cooperation exists and simply needs to be redirected toward disaster preparedness.</li>
+        </ul>
+      </div>
+
+      <div class="a-card purpose">
+        <h4>Purpose</h4>
+        <p>To argue that the human cost of Wednesday's Bhote Koshi flood reflects a wider, recurring vulnerability across the Himalayan region, and to press upstream and downstream nations to move beyond rescue and relief by scaling up shared systems that monitor river levels, rainfall, and seismic activity, so that people living near glaciers and permafrost are warned before disaster strikes.</p>
+      </div>
+
+      <div class="a-card tone">
+        <h4>Tone</h4>
+        <p>The passage opens cautiously, acknowledging that the exact cause is still uncertain, turns descriptive while recounting the scale of the disaster and its resemblance to past Himalayan calamities, becomes analytical while distinguishing this flood's monsoon-season timing, and closes with a constructive, urging tone calling for shared early-warning systems to be scaled up.</p>
+      </div>
+
+      <div class="a-card signals">
+        <h4>Signals</h4>
+        <p>Words and phrases that reveal the author's stance or mark a shift in the argument. Tap any word below to find it highlighted in the passage:</p>
+        <p>
+          <button type="button" class="signal-word" data-signal="uncertainty-opening">The jury is out on what exactly caused Wednesday's flash flood in the Bhote Koshi River, which has claimed at least 270 lives and left several hundred missing</button>
+          <button type="button" class="signal-word" data-signal="conclusion-call">Their shared outlook on protecting development imperatives now needs to be translated into securing people's lives</button>
+        </p>
+        <ul>
+          <li><strong>The jury is out on what exactly caused Wednesday's flash flood...</strong> &mdash; the cautious opening signals the editorial's fact-checking, non-speculative stance from its very first lines.</li>
+          <li><strong>Their shared outlook on protecting development imperatives now needs to be translated into securing people's lives</strong> &mdash; the closing call to action, urging that shared intent be converted into concrete, life-saving cooperation.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 5 of 5</div>
+</div>
+
+<div class="tooltip" id="tooltip">
+  <span class="tt-word" id="ttWord"></span>
+  <span id="ttMeaning"></span>
+</div>
+
+<footer class="site-footer">Editorial text as provided, for personal exam-practice use only · Questions, vocabulary, and analysis are original content</footer>
+
+<script>
+  const vocabData = {
+    "unfolding": {
+      hindi: "घटित होता हुआ",
+      meaning: "Developing or being revealed gradually, especially as events happen.",
+      synonyms: ["Developing", "Emerging", "Occurring", "Taking place"],
+      antonyms: ["Concluding", "Ending", "Resolved", "Finished"]
+    },
+    "fragility": {
+      hindi: "नाज़ुकता",
+      meaning: "The quality of being easily damaged, broken, or destabilised; delicacy.",
+      synonyms: ["Frailty", "Delicacy", "Vulnerability", "Brittleness"],
+      antonyms: ["Sturdiness", "Resilience", "Robustness", "Strength"]
+    },
+    "jury is out": {
+      hindi: "अभी निर्णय बाकी है",
+      meaning: "An idiom meaning that a final decision or conclusion has not yet been reached; the matter is still uncertain.",
+      synonyms: ["Undecided", "Unresolved", "Still uncertain", "Open question"],
+      antonyms: ["Settled", "Confirmed", "Decided", "Established"]
+    },
+    "flash flood": {
+      hindi: "अचानक आई बाढ़",
+      meaning: "A sudden, rapidly rising flood, often caused by intense rainfall or the abrupt release of dammed or obstructed water.",
+      synonyms: ["Sudden flood", "Torrent", "Deluge", "Flash surge"],
+      antonyms: ["Drought", "Trickle", "Gradual flow", "Dry spell"]
+    },
+    "massive": {
+      hindi: "विशाल",
+      meaning: "Extremely large in size, extent, or degree.",
+      synonyms: ["Huge", "Enormous", "Immense", "Colossal"],
+      antonyms: ["Tiny", "Minor", "Small", "Negligible"]
+    },
+    "obstructed": {
+      hindi: "अवरुद्ध किया",
+      meaning: "Blocked or impeded the passage or flow of something.",
+      synonyms: ["Blocked", "Impeded", "Hindered", "Choked"],
+      antonyms: ["Cleared", "Freed", "Unblocked", "Opened"]
+    },
+    "surge": {
+      hindi: "उफान",
+      meaning: "A sudden, powerful, and often overwhelming rush or increase, especially of water.",
+      synonyms: ["Rush", "Torrent", "Upsurge", "Swell"],
+      antonyms: ["Ebb", "Trickle", "Decline", "Recession"]
+    },
+    "downstream": {
+      hindi: "नदी की धारा की दिशा में",
+      meaning: "In the direction that a river or stream flows, away from its source.",
+      synonyms: ["Downriver", "Below", "Onward flow", "Further along the river"],
+      antonyms: ["Upstream", "Upriver", "Toward the source", "Against the flow"]
+    },
+    "cascading": {
+      hindi: "झरने की तरह गिरता हुआ",
+      meaning: "Falling or flowing rapidly and in large quantity, one wave or mass after another.",
+      synonyms: ["Tumbling", "Pouring", "Flowing rapidly", "Torrential"],
+      antonyms: ["Trickling", "Still", "Stagnant", "Motionless"]
+    },
+    "debris": {
+      hindi: "मलबा",
+      meaning: "Scattered fragments of rock, wood, or other material left after destruction.",
+      synonyms: ["Rubble", "Wreckage", "Remains", "Debris field"],
+      antonyms: ["Order", "Wholeness", "Intact structure", "Cleared ground"]
+    },
+    "resembled": {
+      hindi: "समानता रखी",
+      meaning: "Had a similar appearance or set of qualities to something else.",
+      synonyms: ["Looked like", "Mirrored", "Echoed", "Paralleled"],
+      antonyms: ["Differed from", "Contrasted with", "Diverged from", "Unlike"]
+    },
+    "pinpoint": {
+      hindi: "सटीक रूप से पहचानना",
+      meaning: "To identify or locate something precisely and exactly.",
+      synonyms: ["Identify precisely", "Determine exactly", "Locate", "Establish"],
+      antonyms: ["Obscure", "Guess vaguely", "Misidentify", "Blur"]
+    },
+    "calamity": {
+      hindi: "विपत्ति",
+      meaning: "A disastrous event causing serious loss, damage, or distress.",
+      synonyms: ["Disaster", "Catastrophe", "Tragedy", "Misfortune"],
+      antonyms: ["Blessing", "Boon", "Triumph", "Fortune"]
+    },
+    "pilgrims": {
+      hindi: "तीर्थयात्री",
+      meaning: "People who travel to a sacred or holy place as an act of religious devotion.",
+      synonyms: ["Devotees", "Worshippers", "Faith travellers", "Pilgrimage-goers"],
+      antonyms: ["Residents", "Locals", "Settlers", "Non-travellers"]
+    },
+    "vulnerability": {
+      hindi: "सुभेद्यता",
+      meaning: "The state of being exposed to the possibility of being harmed, physically or otherwise.",
+      synonyms: ["Susceptibility", "Exposure", "Fragility", "Weakness"],
+      antonyms: ["Immunity", "Security", "Invulnerability", "Protection"]
+    },
+    "vagaries": {
+      hindi: "अनियमितताएं",
+      meaning: "Unpredictable or erratic changes or fluctuations in behaviour or circumstances, especially of nature.",
+      synonyms: ["Unpredictability", "Whims", "Fluctuations", "Caprices"],
+      antonyms: ["Constancy", "Predictability", "Stability", "Regularity"]
+    },
+    "bursts": {
+      hindi: "फटना",
+      meaning: "Sudden breaks or ruptures, here referring to the abrupt breaching of glacial lakes.",
+      synonyms: ["Ruptures", "Breaches", "Outbursts", "Eruptions"],
+      antonyms: ["Containment", "Stability", "Sealing", "Holding"]
+    },
+    "alien": {
+      hindi: "अपरिचित",
+      meaning: "Unfamiliar, foreign, or out of place; not natural or belonging to a particular context.",
+      synonyms: ["Foreign", "Unfamiliar", "Strange", "Unnatural"],
+      antonyms: ["Familiar", "Native", "Common", "Natural"]
+    },
+    "triggered": {
+      hindi: "उत्पन्न किया",
+      meaning: "Caused a particular event or process to begin, often suddenly.",
+      synonyms: ["Caused", "Set off", "Initiated", "Sparked"],
+      antonyms: ["Prevented", "Averted", "Stopped", "Suppressed"]
+    },
+    "debris flow": {
+      hindi: "मलबे का प्रवाह",
+      meaning: "A fast-moving mixture of rock, soil, mud and water that flows down a slope or valley, often destructively.",
+      synonyms: ["Mudslide", "Landslide flow", "Rubble flow", "Sediment flow"],
+      antonyms: ["Stable ground", "Solid slope", "Settled terrain", "Firm land"]
+    },
+    "avalanche": {
+      hindi: "हिमस्खलन",
+      meaning: "A large mass of snow, ice, rock, or debris that slides suddenly and rapidly down a mountainside.",
+      synonyms: ["Landslide", "Snowslide", "Rockfall", "Slide"],
+      antonyms: ["Stability", "Stillness", "Solid ground", "Calm slope"]
+    },
+    "calamities": {
+      hindi: "विपत्तियां",
+      meaning: "Plural of calamity; events that cause great and often widespread damage or suffering.",
+      synonyms: ["Disasters", "Catastrophes", "Tragedies", "Misfortunes"],
+      antonyms: ["Blessings", "Triumphs", "Fortunes", "Successes"]
+    },
+    "crucial": {
+      hindi: "महत्वपूर्ण",
+      meaning: "Of great importance or significance, especially in relation to an outcome or decision.",
+      synonyms: ["Critical", "Vital", "Essential", "Key"],
+      antonyms: ["Trivial", "Minor", "Unimportant", "Insignificant"]
+    },
+    "upstream": {
+      hindi: "नदी के स्रोत की ओर",
+      meaning: "In the direction against a river's flow, toward its source.",
+      synonyms: ["Upriver", "Toward the source", "Above", "Higher up the river"],
+      antonyms: ["Downstream", "Downriver", "Below", "Toward the mouth"]
+    },
+    "seismic": {
+      hindi: "भूकंपीय",
+      meaning: "Relating to earthquakes or other vibrations of the earth and its crust.",
+      synonyms: ["Earthquake-related", "Tectonic", "Geological", "Ground-shaking"],
+      antonyms: ["Non-seismic", "Stable", "Still", "Unshaken"]
+    },
+    "thawing": {
+      hindi: "पिघलता हुआ",
+      meaning: "Changing from a frozen to a liquid or softer state due to warming temperatures.",
+      synonyms: ["Melting", "Softening", "Defrosting", "Liquefying"],
+      antonyms: ["Freezing", "Solidifying", "Hardening", "Icing over"]
+    },
+    "permafrost": {
+      hindi: "स्थायी हिमजमीन",
+      meaning: "A layer of soil or rock beneath the surface that remains frozen throughout the year, common in high-altitude and polar regions.",
+      synonyms: ["Frozen ground", "Perennially frozen soil", "Frozen subsoil", "Ice-bound earth"],
+      antonyms: ["Thawed ground", "Fertile soil", "Temperate earth", "Unfrozen land"]
+    },
+    "meteorological": {
+      hindi: "मौसम विज्ञान संबंधी",
+      meaning: "Relating to weather and the atmosphere, and the scientific study of them.",
+      synonyms: ["Weather-related", "Climatic", "Atmospheric", "Weather-science"],
+      antonyms: ["Non-weather-related", "Unrelated to climate", "Terrestrial only", "Non-atmospheric"]
+    },
+    "forecasting": {
+      hindi: "पूर्वानुमान",
+      meaning: "The process of predicting future events or conditions, especially weather, based on current data and trends.",
+      synonyms: ["Predicting", "Projecting", "Anticipating", "Foreseeing"],
+      antonyms: ["Guessing blindly", "Ignoring trends", "Overlooking", "Disregarding"]
+    },
+    "scaled up": {
+      hindi: "विस्तार किया गया",
+      meaning: "Increased in size, extent, or capacity, especially to meet greater demand or need.",
+      synonyms: ["Expanded", "Enlarged", "Ramped up", "Increased"],
+      antonyms: ["Scaled down", "Reduced", "Shrunk", "Curtailed"]
+    },
+    "geopolitical": {
+      hindi: "भू-राजनीतिक",
+      meaning: "Relating to politics as influenced by geographical factors, especially the relations between nations.",
+      synonyms: ["International political", "Global strategic", "Diplomatic", "Cross-border political"],
+      antonyms: ["Domestic", "Local", "Internal", "Non-political"]
+    },
+    "imperatives": {
+      hindi: "अनिवार्यताएं",
+      meaning: "Things that are of vital importance or urgently necessary; essential requirements.",
+      synonyms: ["Necessities", "Priorities", "Essentials", "Requirements"],
+      antonyms: ["Options", "Non-essentials", "Trivialities", "Luxuries"]
+    }
+  };
+
+  const tbody = document.getElementById('vocabTableBody');
+  Object.keys(vocabData).forEach((word, i) => {
+    const d = vocabData[word];
+    const label = d.display || (word.charAt(0).toUpperCase() + word.slice(1));
+    const card = document.createElement('div');
+    card.className = 'vocab-card';
+    card.innerHTML = `
+      <div>
+        <span class="vc-num">${i + 1}.</span><span class="vc-word jump" data-word="${word}" title="Find this word in the editorial">${label}</span><span class="vc-hindi">${d.hindi}</span>
+      </div>
+      <div class="vc-meaning"><span class="vc-meaning-label">MEANING:</span>${d.meaning}</div>
+      <div class="vc-row"><span class="vc-label">SYNONYMS:</span> <span class="syn">${d.synonyms.join(', ')}</span></div>
+      <div class="vc-row"><span class="vc-label">ANTONYMS:</span> <span class="ant">${d.antonyms.join(', ')}</span></div>
+    `;
+    tbody.appendChild(card);
+  });
+
+  document.querySelectorAll('.vc-word.jump').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const key = cell.getAttribute('data-word');
+      showPage('page-editorial');
+      setTimeout(() => {
+        const target = document.querySelector('.editorial .vocab[data-word="' + key + '"]');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1800);
+      }, 150);
+    });
+  });
+
+  const tooltip = document.getElementById('tooltip');
+  const ttWord = document.getElementById('ttWord');
+  const ttMeaning = document.getElementById('ttMeaning');
+
+  document.querySelectorAll('.vocab').forEach(span => {
+    span.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const key = span.getAttribute('data-word');
+      const data = vocabData[key];
+      if (!data) return;
+
+      const label = data.display || (key.charAt(0).toUpperCase() + key.slice(1));
+      ttWord.textContent = label;
+      ttMeaning.textContent = data.meaning;
+
+      const rect = span.getBoundingClientRect();
+      tooltip.style.display = 'block';
+      const ttRect = tooltip.getBoundingClientRect();
+
+      let left = rect.left;
+      let top = rect.bottom + 10;
+
+      if (left + ttRect.width > window.innerWidth - 10) {
+        left = window.innerWidth - ttRect.width - 10;
+      }
+      if (top + ttRect.height > window.innerHeight - 10) {
+        top = rect.top - ttRect.height - 10;
+      }
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+    });
+  });
+
+  document.addEventListener('click', () => {
+    tooltip.style.display = 'none';
+  });
+  tooltip.addEventListener('click', (e) => e.stopPropagation());
+
+  const navPills = document.querySelectorAll('.nav-pill');
+  const pages = document.querySelectorAll('.page');
+
+  function showPage(pageId) {
+    pages.forEach(p => p.classList.toggle('active-page', p.id === pageId));
+    navPills.forEach(p => p.classList.toggle('active', p.getAttribute('data-page') === pageId));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  navPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      showPage(pill.getAttribute('data-page'));
+    });
+  });
+
+  showPage('page-editorial');
+
+  document.querySelectorAll('.signal-word[data-signal]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-signal');
+      showPage('page-editorial');
+      setTimeout(() => {
+        const target = document.querySelector('.signal-highlight[data-signal="' + key + '"]');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1800);
+      }, 150);
+    });
+  });
+
+  let score = 0;
+  const answered = {};
+  const scoreBar = document.getElementById('scoreBar');
+  const totalQuestions = document.querySelectorAll('.qcard').length;
+
+  let audioCtx = null;
+  function playTickSound() {
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1046.5, now);
+      osc.frequency.setValueAtTime(1568, now + 0.08);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.18, now + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.24);
+    } catch (err) { /* audio not supported, fail silently */ }
+  }
+
+  document.querySelectorAll('.qcard').forEach(card => {
+    const qid = card.getAttribute('data-qid');
+    const feedback = card.querySelector('.feedback');
+    const options = card.querySelectorAll('.option');
+
+    options.forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (answered[qid]) return;
+
+        answered[qid] = true;
+        const isCorrect = opt.getAttribute('data-correct') === 'true';
+
+        options.forEach(o => {
+          o.classList.add('locked');
+          if (o.getAttribute('data-correct') === 'true') {
+            o.classList.add('correct');
+          } else if (o === opt) {
+            o.classList.add('incorrect');
+          }
+        });
+
+        feedback.classList.add('show');
+        if (isCorrect) {
+          score++;
+          playTickSound();
+          feedback.textContent = '✓ Correct!';
+          feedback.classList.add('right');
+        } else {
+          feedback.textContent = '✗ Not quite — the correct answer is highlighted in green.';
+          feedback.classList.add('wrong');
+        }
+
+        scoreBar.textContent = `Score: ${score} / ${totalQuestions}`;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
