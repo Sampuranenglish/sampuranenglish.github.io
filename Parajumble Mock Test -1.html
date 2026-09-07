@@ -491,7 +491,7 @@
   <div class="welcome-card">
     <div class="w-row"><span>Total Questions</span><b>10</b></div>
     <div class="w-row"><span>Total Marks</span><b>20</b></div>
-    <div class="w-row"><span>Duration</span><b>No Limit</b></div>
+    <div class="w-row"><span>Duration</span><b>6 Minutes</b></div>
     <div class="w-row"><span>Marking</span><b>+2.0 / −0.5</b></div>
   </div>
 
@@ -689,6 +689,7 @@ class TestApp {
     this.elapsed = 0;
     this.timer = null;
     this.startT = null;
+    this.duration = 6 * 60; // 6 minutes, in seconds
 
     this.els = {
       qInfo: document.getElementById('qInfo'),
@@ -749,16 +750,23 @@ class TestApp {
   }
 
   startTimer(){
+    this.renderTimer();
     this.timer = setInterval(() => {
       this.elapsed++;
       this.renderTimer();
+      if(this.elapsed >= this.duration){
+        clearInterval(this.timer);
+        this.submitTest();
+      }
     }, 1000);
   }
 
   renderTimer(){
-    const m = Math.floor(this.elapsed / 60);
-    const s = this.elapsed % 60;
+    const remaining = Math.max(0, this.duration - this.elapsed);
+    const m = Math.floor(remaining / 60);
+    const s = remaining % 60;
     this.els.timer.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    this.els.timer.classList.toggle('low', remaining <= 60);
   }
 
   buildGrid(){
