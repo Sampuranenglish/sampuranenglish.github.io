@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampuran English — United and Free</title>
+<style>
+  :root{
+    --paper:#f6f2e9;
+    --ink:#20201d;
+    --rule:#c9bfa8;
+    --accent:#8a3324;
+    --accent-soft:#e7d9c6;
+    --green:#3f5d3a;
+    --blue:#385170;
+    --telegram:#229ed9;
+    --serif: 'Georgia', 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: 'Helvetica Neue', Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    line-height:1.65;
+  }
+
+  .page-header{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 20px 0;
+  }
+  .title-box{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:8px;
+    padding:14px 20px;
+    display:grid;
+    grid-template-columns:56px 1fr;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .title-box .logo{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#fff;
+    justify-self:start;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--sans);
+    font-weight:800;
+    color:var(--ink);
+    font-size:17px;
+    letter-spacing:0.5px;
+  }
+  .title-box .brand{
+    font-family:var(--sans);
+    font-weight:800;
+    font-size:clamp(18px,6.5vw,30px);
+    letter-spacing:0.5px;
+    text-align:center;
+    white-space:nowrap;
+  }
+
+  .telegram-box{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--telegram);
+    color:#fff;
+    text-decoration:none;
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:14.5px;
+    letter-spacing:0.3px;
+    border-radius:8px;
+    padding:12px 16px;
+    margin-bottom:14px;
+    transition:filter .15s;
+  }
+  .telegram-box:hover{ filter:brightness(1.08); }
+  .telegram-box svg{ width:20px; height:20px; flex-shrink:0; }
+
+  .nav-pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:8px;
+  }
+  .nav-pill{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.3px;
+    background:#fffdf8;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+    border-radius:20px;
+    padding:8px 18px;
+    cursor:pointer;
+    transition:background .15s, color .15s;
+  }
+  .nav-pill:hover{ background:var(--accent-soft); }
+  .nav-pill.active{
+    background:var(--ink);
+    color:var(--paper);
+  }
+
+  .page{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 20px 10px;
+    display:none;
+  }
+  .page.active-page{ display:block; }
+
+  section{ margin-bottom:36px; }
+  .section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:8px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  h2.section-title{
+    font-family:var(--sans);
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0;
+  }
+  .pub-date{
+    font-family:var(--sans);
+    font-size:12px;
+    color:#7a7264;
+    letter-spacing:0.5px;
+  }
+
+  .editorial h3{
+    font-size:24px;
+    margin:0 0 4px;
+  }
+  .editorial .byline{
+    font-family:var(--sans);
+    font-size:12px;
+    color:#7a7264;
+    margin-bottom:20px;
+    font-style:italic;
+  }
+  .editorial p{
+    font-size:17px;
+    margin:0 0 16px;
+    text-align:justify;
+  }
+  .editorial p:first-of-type::first-letter{
+    font-size:44px;
+    float:left;
+    line-height:0.8;
+    padding-right:8px;
+    padding-top:4px;
+    color:var(--accent);
+    font-weight:bold;
+  }
+  .vocab{
+    background:linear-gradient(transparent 60%, var(--accent-soft) 60%);
+    cursor:pointer;
+    font-weight:600;
+    border-bottom:1.5px dotted var(--accent);
+    position:relative;
+    scroll-margin-top:90px;
+  }
+  .vocab:hover{ background:linear-gradient(transparent 55%, #dcc9a8 55%); }
+  .vocab.flash{
+    background:#f6c453;
+    box-shadow:0 0 0 4px rgba(246,196,83,0.55);
+    border-radius:2px;
+  }
+
+  .sv-subj{
+    font-weight:700;
+    border-bottom:2.5px solid var(--blue);
+    padding:0 1px;
+  }
+  .sv-verb{
+    font-weight:700;
+    border-bottom:2.5px solid var(--accent);
+    padding:0 1px;
+  }
+  .sv-note{
+    background:#eef2f4;
+    border:1px solid var(--rule);
+    border-left:4px solid var(--blue);
+    border-radius:4px;
+    padding:8px 16px;
+    margin:-6px 0 18px;
+    font-family:var(--sans);
+    font-size:13px;
+    line-height:1.55;
+    color:#3a362f;
+  }
+  .sv-note .sv-tag{
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size:11px;
+    color:var(--blue);
+    margin-right:6px;
+  }
+  .sv-note b.s{ color:var(--blue); }
+  .sv-note b.v{ color:var(--accent); }
+
+  .tooltip{
+    position:fixed;
+    max-width:280px;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sans);
+    font-size:13.5px;
+    line-height:1.5;
+    padding:12px 14px;
+    border-radius:6px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
+    z-index:1000;
+    display:none;
+  }
+  .tooltip::after{
+    content:"";
+    position:absolute;
+    bottom:-7px;
+    left:20px;
+    border-width:7px 7px 0 7px;
+    border-style:solid;
+    border-color:var(--ink) transparent transparent transparent;
+  }
+  .tooltip .tt-word{
+    display:block;
+    font-weight:700;
+    color:#f0d9a8;
+    margin-bottom:4px;
+    font-size:14px;
+  }
+
+  .analysis-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .a-card{
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:16px 20px;
+    border-left:5px solid var(--blue);
+  }
+  .a-card.core{ border-left-color:var(--accent); }
+  .a-card.inference{ border-left-color:var(--blue); }
+  .a-card.purpose{ border-left-color:#6a4c93; }
+  .a-card.tone{ border-left-color:#b5533c; }
+  .a-card.signals{ border-left-color:#3a726b; }
+  .a-card h4{
+    margin:0 0 8px;
+    font-family:var(--sans);
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:var(--ink);
+  }
+  .a-card p, .a-card li{
+    font-family:var(--sans);
+    font-size:14px;
+    color:#3a362f;
+    margin:0 0 6px;
+  }
+  .a-card ul{ margin:0; padding-left:18px; }
+  .signal-word{
+    display:inline-block;
+    background:var(--accent-soft);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:3px 9px;
+    font-weight:700;
+    color:var(--accent);
+    font-size:13px;
+    margin:0 4px 6px 0;
+    font-family:var(--sans);
+    cursor:pointer;
+    transition:background 0.15s, transform 0.15s;
+  }
+  .signal-word:hover{
+    background:var(--accent);
+    color:#fff;
+    transform:translateY(-1px);
+  }
+  .signal-highlight{
+    background:#fdeecb;
+    border-bottom:2px solid #c8922f;
+    padding:0 1px;
+    border-radius:2px;
+    scroll-margin-top:90px;
+    transition:background 0.4s, box-shadow 0.4s;
+  }
+  .signal-highlight.flash{
+    background:#f6c453;
+    box-shadow:0 0 0 4px rgba(246,196,83,0.55);
+  }
+
+  .qcard{
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:18px 20px;
+    margin-bottom:16px;
+  }
+  .qcard .qnum{
+    font-family:var(--sans);
+    font-weight:700;
+    color:var(--accent);
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .qcard .qtext{
+    font-size:16.5px;
+    margin-bottom:14px;
+  }
+  .options{
+    display:grid;
+    gap:8px;
+  }
+  .option{
+    font-family:var(--sans);
+    font-size:14.5px;
+    background:var(--paper);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:10px 14px;
+    cursor:pointer;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    transition:background 0.15s, border-color .15s;
+  }
+  .option:hover{ background:var(--accent-soft); }
+  .option .tag{ font-weight:700; color:var(--accent); }
+  .option.correct{ background:#dcebd8; border-color:var(--green); }
+  .option.incorrect{ background:#f3d9d4; border-color:var(--accent); }
+  .option.locked{ cursor:default; pointer-events:none; opacity:0.95; }
+
+  .feedback{
+    margin-top:10px;
+    font-family:var(--sans);
+    font-size:13px;
+    display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback.right{color:var(--green);}
+  .feedback.wrong{color:var(--accent);}
+
+  .score-bar{
+    font-family:var(--sans);
+    background:var(--ink);
+    color:var(--paper);
+    text-align:center;
+    padding:10px;
+    border-radius:4px;
+    font-size:14px;
+    letter-spacing:0.5px;
+    margin-bottom:20px;
+  }
+
+  .answer-block{
+    border-left:4px solid var(--green);
+    background:#fffdf8;
+    padding:14px 18px;
+    margin-bottom:14px;
+    border-radius:0 4px 4px 0;
+  }
+  .answer-block .qnum{
+    font-family:var(--sans);
+    font-weight:700;
+    color:var(--accent);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+  .answer-block .ans-line{
+    font-family:var(--sans);
+    font-weight:700;
+    margin:6px 0 4px;
+    color:var(--green);
+  }
+  .answer-block .expl{
+    font-family:var(--sans);
+    font-size:14px;
+    color:#3a362f;
+  }
+
+  .vocab-list{
+    display:flex;
+    flex-direction:column;
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .vocab-card{
+    padding:14px 16px;
+    border-bottom:1px solid var(--rule);
+    font-family:var(--sans);
+    font-size:14px;
+    line-height:1.5;
+  }
+  .vocab-card:last-child{ border-bottom:none; }
+  .vocab-card:nth-child(even){ background:#f1ead9; }
+  .vocab-card .vc-num{
+    display:inline-block;
+    font-weight:700;
+    color:#7a7264;
+    margin-right:4px;
+  }
+  .vocab-card .vc-word{
+    font-weight:700;
+    color:var(--accent);
+    font-size:15px;
+    margin-bottom:5px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:underline;
+    text-decoration-style:dotted;
+    text-decoration-color:var(--accent);
+    text-underline-offset:3px;
+    transition:color 0.15s;
+  }
+  .vocab-card .vc-word:hover{ color:var(--ink); }
+  .vocab-card .vc-word::after{
+    content:"↗";
+    display:inline-block;
+    margin-left:5px;
+    font-size:12px;
+    color:var(--blue);
+    font-weight:400;
+  }
+  .vocab-card .vc-hindi{
+    color:var(--blue);
+    font-weight:600;
+    font-size:14px;
+    display:inline;
+    margin-left:8px;
+    margin-bottom:6px;
+    font-family:'Noto Sans Devanagari', 'Nirmala UI', var(--sans);
+  }
+  .vocab-card .vc-meaning{ color:#20201d; margin-bottom:6px; }
+  .vocab-card .vc-meaning-label{
+    font-weight:700;
+    color:#3a362f;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-right:5px;
+  }
+  .vocab-card .vc-row{ margin-bottom:2px; }
+  .vocab-card .vc-row:last-child{ margin-bottom:0; }
+  .vocab-card .vc-label{
+    font-weight:700;
+    color:#3a362f;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-right:6px;
+  }
+  .syn{ color:#8a3324; }
+  .ant{ color:var(--green); }
+
+  .nav-pills-bottom{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    padding-top:22px;
+    margin-top:10px;
+    border-top:1px solid var(--rule);
+  }
+
+  .page-number{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:700;
+    color:#7a7264;
+    letter-spacing:0.5px;
+    padding:18px 0 30px;
+    border-top:1px solid var(--rule);
+    margin-top:10px;
+  }
+
+  footer.site-footer{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:11px;
+    color:#8a8272;
+    padding:20px;
+  }
+
+  @media (max-width:480px){
+    .editorial p{ font-size:16px; }
+    .tooltip{ max-width:230px; }
+    .section-header{ flex-wrap:wrap; }
+    .title-box{ grid-template-columns:40px 1fr; padding:12px 14px; gap:8px; }
+    .title-box .logo{ width:36px; height:36px; font-size:14px; }
+    .title-box .brand{ font-size:clamp(16px,7vw,24px); letter-spacing:0.2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="title-box">
+    <div class="logo">
+      <svg viewBox="0 0 48 48" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sampuran English logo">
+        <defs>
+          <linearGradient id="logoRing" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e2483c"/>
+            <stop offset="100%" stop-color="#8a3324"/>
+          </linearGradient>
+        </defs>
+        <circle cx="24" cy="24" r="23" fill="#20201d" stroke="url(#logoRing)" stroke-width="2"/>
+        <text x="24" y="29" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="19" fill="#f6f2e9">SE</text>
+        <path d="M9 34c4-2.5 26-2.5 30 0" stroke="#e2483c" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="brand"><span style="color:#e2483c;">SAMPURAN</span> ENGLISH</div>
+  </div>
+
+  <a class="telegram-box" href="https://t.me/Sampuran_English" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 4L3 11.5L10 13.5M21 4L18 20L10 13.5M21 4L10 13.5M10 13.5V19L13.2 15.8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Official Telegram Channel
+  </a>
+
+  <div class="nav-pills">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+</div>
+
+<!-- ================= PAGE 1: EDITORIAL ================= -->
+<div class="page active-page" id="page-editorial">
+
+  <section class="editorial">
+    <div class="section-header">
+      <h2 class="section-title">The Editorial</h2>
+      <span class="pub-date">1 Sep 2026</span>
+    </div>
+    <h3>State of exception: On India, the UN CERD report</h3>
+    <div class="byline">Editorial &middot; for exam practice</div>
+
+    <p>In its first review by the U.N. Committee on the Elimination of Racial Discrimination (CERD) since 2007, India has <span class="signal-highlight" data-signal="concern-opening"><span class="vocab" data-word="elicited">elicited</span> an expression of &ldquo;<span class="vocab" data-word="grave">grave</span> concern&rdquo; about reports of the law enforcement <span class="vocab" data-word="apparatus">apparatus</span> <span class="vocab" data-word="resorting">resorting</span> to violence &mdash; physical and otherwise &mdash; against minority ethnic and ethno-religious groups, Dalits, and non-citizens over the years</span>. The Committee also noted that <span class="sv-subj">India</span>, which <span class="vocab" data-word="ratified">ratified</span> the International Convention on the Elimination of All Forms of Racial Discrimination in 1968, <span class="sv-verb">has not provided</span> detailed and updated information about the state&rsquo;s inquiries and <span class="vocab" data-word="sanctions">sanctions</span> arising from <span class="vocab" data-word="allegations">allegations</span> of such violence. While the government has told CERD that caste <span class="vocab" data-word="bias">bias</span> falls outside Article 1 of the <span class="vocab" data-word="convention">convention</span> because caste is not synonymous with race, CERD has allowed all forms of discrimination based on <span class="vocab" data-word="inherited">inherited</span> status.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9312; <b class="s">India</b> ... <b class="v">has not provided</b> &mdash; separated by &ldquo;which ratified the International Convention on the Elimination of All Forms of Racial Discrimination in 1968&rdquo;.</div>
+    </div>
+
+    <p>The Committee&rsquo;s concerns also <span class="vocab" data-word="span">span</span> the practice of manual cleaning of sewers despite a law banning it; hate speech against, poor living conditions of, and the mass <span class="vocab" data-word="refoulement">refoulement</span> of Rohingya Muslims; the mass <span class="vocab" data-word="deprivation">deprivation</span> of citizenship via the National Register of Citizens; large-scale <span class="vocab" data-word="deletions">deletions</span> from the Special Intensive Revisions of electoral rolls; the government&rsquo;s use of the FCRA, UAPA, AFSPA, and PMLA instruments to <span class="vocab" data-word="hamper">hamper</span> the work of civil society organisations; the Bharatiya Nyaya Sanhita not expressly <span class="vocab" data-word="criminalising">criminalising</span> racist hate speech; and the Forest (Conservation) Amendment Act <span class="vocab" data-word="exempting">exempting</span> &ldquo;national security&rdquo; projects from <span class="vocab" data-word="consultative">consultative</span> decision-making.</p>
+
+    <p>Given these issues and the <span class="vocab" data-word="fragmented">fragmented</span> <span class="vocab" data-word="recourse">recourse</span> available, <span class="sv-subj">the lack</span> of suitably <span class="vocab" data-word="disaggregated">disaggregated</span> data on <span class="vocab" data-word="disenfranchised">disenfranchised</span> communities, including due to a much-delayed Census and the slow release of NCRB data, <span class="sv-verb">has transcended</span> the <span class="vocab" data-word="bounds">bounds</span> of administrative <span class="vocab" data-word="lethargy">lethargy</span> to actively <span class="vocab" data-word="impeding">impeding</span> independent checks of India&rsquo;s claims about fighting caste- and faith-based discrimination. In fact, India has been implementing &ldquo;special measures&rdquo; based on 2011 Census data, which could mask a <span class="vocab" data-word="regression">regression</span> in the socioeconomic status of Scheduled Tribes and Adivasis. Together with the Global <span class="vocab" data-word="Alliance">Alliance</span> of National Human Rights Institutions recommending the <span class="vocab" data-word="downgrade">downgrade</span> of the NHRC last year, following the government appointing police officers to investigative roles and a lack of <span class="vocab" data-word="pluralism">pluralism</span>, CERD is effectively stepping into a <span class="vocab" data-word="vacuum">vacuum</span>.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9313; <b class="s">the lack</b> ... <b class="v">has transcended</b> &mdash; separated by &ldquo;of suitably disaggregated data on disenfranchised communities, including due to a much-delayed Census and the slow release of NCRB data&rdquo;.</div>
+    </div>
+
+    <p>The road ahead remains clear, from <span class="vocab" data-word="restoring">restoring</span> the NHRC&rsquo;s independence and criminalising hate speech to supportive affirmative action, collecting and publishing disaggregated data, and improving the <span class="vocab" data-word="transparency">transparency</span> of the electoral roll revisions, and strengthening <span class="vocab" data-word="enforcement">enforcement</span> overall. But if <span class="sv-subj">the government&rsquo;s attempted use</span> of a technicality to keep the issues of 200 million Dalits a &ldquo;domestic matter&rdquo; and avoid international <span class="vocab" data-word="accountability">accountability</span> &mdash; and its <span class="vocab" data-word="dismissal">dismissal</span> of CERD&rsquo;s concerns as politically motivated &mdash; <span class="sv-verb">is</span> any guide, <span class="signal-highlight" data-signal="conclusion-call">the task continues to fall to civil society to <span class="vocab" data-word="exert">exert</span> influence in multilateral <span class="vocab" data-word="fora">fora</span> and sustain political, legal, and administrative resistance to government choices that normalise India&rsquo;s sadly <span class="vocab" data-word="widespread">widespread</span> culture of discrimination of all sorts</span>.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9314; <b class="s">the government&rsquo;s attempted use</b> ... <b class="v">is</b> &mdash; separated by &ldquo;of a technicality to keep the issues of 200 million Dalits a &lsquo;domestic matter&rsquo; and avoid international accountability &mdash; and its dismissal of CERD&rsquo;s concerns as politically motivated &mdash;&rdquo;.</div>
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 1 of 5</div>
+</div>
+
+<!-- ================= PAGE 2: QUESTIONS ================= -->
+<div class="page" id="page-questions">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Practice Questions</h2>
+      <span class="pub-date">1 Sep 2026</span>
+    </div>
+    <div class="score-bar" id="scoreBar">Score: 0 / 5</div>
+
+    <div class="qcard" data-qid="1">
+      <div class="qnum">Question 1 &mdash; Main Idea</div>
+      <div class="qtext">What is the central argument of the editorial regarding India&rsquo;s first CERD review since 2007?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> The CERD review confirms that India has fully complied with its obligations under the Convention since ratification in 1968.</div>
+        <div class="option" data-correct="true"><span class="tag">B.</span> CERD&rsquo;s findings expose serious gaps in protecting marginalised communities, compounded by the absence of transparent, disaggregated official data.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> The review recommends that India immediately withdraw from the International Convention on the Elimination of Racial Discrimination.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> The editorial argues that caste-based discrimination falls entirely outside the scope of the Convention&rsquo;s Article 1 provisions.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="2">
+      <div class="qnum">Question 2 &mdash; Inference</div>
+      <div class="qtext">What can be inferred from the editorial&rsquo;s mention that India&rsquo;s &ldquo;special measures&rdquo; are based on 2011 Census data?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> India has updated its affirmative action policies annually using the latest NCRB crime statistics.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> The absence of a fresh Census has no bearing on the accuracy of welfare measures.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> The government has voluntarily released updated socioeconomic data on Scheduled Tribes since 2011.</div>
+        <div class="option" data-correct="true"><span class="tag">D.</span> Outdated Census data may conceal a worsening socioeconomic condition among Scheduled Tribes and Adivasis.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="3">
+      <div class="qnum">Question 3 &mdash; Vocabulary in Context</div>
+      <div class="qtext">In the passage, the word &ldquo;disaggregated&rdquo; (as in &ldquo;disaggregated data&rdquo;) most nearly means:</div>
+      <div class="options">
+        <div class="option" data-correct="true"><span class="tag">A.</span> Broken down into separate, detailed categories rather than presented as a single combined figure.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> Collected secretly by unauthorised private agencies without the knowledge or consent of communities.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> Compiled entirely by international human rights organisations rather than domestic government agencies themselves.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Estimated roughly using future projections instead of actual field-level census enumeration figures.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="4">
+      <div class="qnum">Question 4 &mdash; Tone</div>
+      <div class="qtext">How would you best describe the tone of the editorial&rsquo;s closing lines, which place the &ldquo;task&rdquo; of resistance on civil society?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Celebratory, praising the government&rsquo;s swift response to CERD&rsquo;s findings.</div>
+        <div class="option" data-correct="true"><span class="tag">B.</span> Firm and admonitory, holding civil society responsible since the government is unlikely to act unprompted.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> Neutral and purely descriptive, offering no judgement on who should act next.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Apologetic, excusing the government&rsquo;s reluctance to engage with international scrutiny.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="5">
+      <div class="qnum">Question 5 &mdash; Fact-Based Detail</div>
+      <div class="qtext">Which of the following correctly identifies the legal instruments the editorial says the government has used against civil society organisations?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> The Citizenship Amendment Act, the RTI Act, the IT Act, and the Sedition Law.</div>
+        <div class="option" data-correct="true"><span class="tag">B.</span> The FCRA, the UAPA, the AFSPA, and the PMLA, according to the editorial&rsquo;s account.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> The Forest Conservation Act, the National Register of Citizens, and the Bharatiya Nyaya Sanhita.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> The Special Intensive Revision rules, the Census Act, and the NCRB reporting guidelines.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </section>
+
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 2 of 5</div>
+</div>
+
+<!-- ================= PAGE 3: ANSWERS ================= -->
+<div class="page" id="page-answers">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Answers &amp; Explanations</h2>
+      <span class="pub-date">1 Sep 2026</span>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 1</div>
+      <div class="ans-line">Correct Answer: B</div>
+      <div class="expl">The editorial catalogues CERD's "grave concern" over India's treatment of minorities, Dalits, and non-citizens, and links this to the absence of transparent, disaggregated data that would allow independent verification of the government's claims. The other options either overstate compliance, invent a withdrawal recommendation, or restate the government's rejected position on caste and Article 1.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 2</div>
+      <div class="ans-line">Correct Answer: D</div>
+      <div class="expl">The editorial explicitly states that relying on 2011 Census data "could mask a regression in the socioeconomic status of Scheduled Tribes and Adivasis," meaning outdated figures may hide a worsening situation. The other options invent updates that the passage does not mention or wrongly claim the old data has no bearing on accuracy.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 3</div>
+      <div class="ans-line">Correct Answer: A</div>
+      <div class="expl">"Disaggregated" describes data that has been broken down into separate, detailed categories rather than left as one combined figure, which is exactly why its absence hampers independent scrutiny. The other options describe secrecy, sourcing, or estimation, none of which the word itself conveys.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 4</div>
+      <div class="ans-line">Correct Answer: B</div>
+      <div class="expl">The closing lines assign the "task" of sustained resistance to civil society precisely because the editorial doubts the government will act unprompted, which is a firm, admonitory note rather than a neutral, celebratory, or apologetic one. The other options misread the passage's clearly critical stance toward the government's response.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 5</div>
+      <div class="ans-line">Correct Answer: B</div>
+      <div class="expl">The editorial specifically names "the government's use of the FCRA, UAPA, AFSPA, and PMLA instruments to hamper the work of civil society organisations." The other options mix in laws and mechanisms mentioned elsewhere in the passage (the NRC, the Forest Act, the SIR, the BNS) that are not part of this particular list.</div>
+    </div>
+  </section>
+
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 3 of 5</div>
+</div>
+
+<!-- ================= PAGE 4: VOCABULARY ================= -->
+<div class="page" id="page-vocab">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Vocabulary Builder</h2>
+      <span class="pub-date">1 Sep 2026</span>
+    </div>
+    <div class="vocab-list" id="vocabTableBody"></div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 4 of 5</div>
+</div>
+
+<!-- ================= PAGE 5: EDITORIAL ANALYSIS ================= -->
+<div class="page" id="page-analysis">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Analysis</h2>
+      <span class="pub-date">1 Sep 2026</span>
+    </div>
+    <div class="analysis-grid">
+
+      <div class="a-card core">
+        <h4>Core Message</h4>
+        <ul>
+          <li>In its first review of India since 2007, CERD has raised "grave concern" over law-enforcement violence against minorities, Dalits, and non-citizens, and over India's failure to share updated information on inquiries and sanctions.</li>
+          <li>CERD's concerns span manual sewer cleaning, the treatment of Rohingya Muslims, the NRC, electoral roll deletions, restrictive laws used against civil society, and gaps in hate-speech law and forest clearances.</li>
+          <li>A lack of disaggregated data, including a delayed Census, actively impedes independent scrutiny of India's claims, while outdated 2011 data may mask a worsening situation for Scheduled Tribes and Adivasis.</li>
+          <li>With the NHRC's global standing also downgraded, CERD is filling an oversight vacuum, and the editorial argues civil society must keep pressing for accountability if the government treats these issues as a technicality.</li>
+        </ul>
+      </div>
+
+      <div class="a-card inference">
+        <h4>Inference</h4>
+        <ul>
+          <li>Noting that India has not "provided detailed and updated information" implies a pattern of limited cooperation with international scrutiny rather than an isolated lapse.</li>
+          <li>Highlighting the government's Article 1 argument on caste alongside CERD's rejection of it implies the editorial views this as a deliberate attempt to narrow the Convention's scope.</li>
+          <li>Linking the delayed Census to "special measures" based on 2011 data implies current welfare policy may be responding to a socioeconomic reality that no longer exists.</li>
+          <li>Describing the government's "domestic matter" argument and its dismissal of CERD as "politically motivated" implies the editorial sees these as tactics to deflect accountability rather than engage with the substance of the findings.</li>
+        </ul>
+      </div>
+
+      <div class="a-card purpose">
+        <h4>Purpose</h4>
+        <p>To detail the scope of CERD's concerns about discrimination and rights violations in India, to argue that the absence of disaggregated, updated official data is not mere administrative delay but an active obstacle to accountability, and to press the case that civil society must continue to press for reform given the government's reluctance to accept international scrutiny.</p>
+      </div>
+
+      <div class="a-card tone">
+        <h4>Tone</h4>
+        <p>The passage opens gravely, cataloguing CERD's concerns in measured but pointed language, becomes increasingly critical while describing the data vacuum and its consequences for Scheduled Tribes and Adivasis, and closes with a firm, almost admonitory tone that places the burden of continued vigilance on civil society rather than the state.</p>
+      </div>
+
+      <div class="a-card signals">
+        <h4>Signals</h4>
+        <p>Words and phrases that reveal the author's stance or mark a shift in the argument. Tap any word below to find it highlighted in the passage:</p>
+        <p>
+          <button type="button" class="signal-word" data-signal="concern-opening">elicited an expression of "grave concern" about reports of the law enforcement apparatus resorting to violence</button>
+          <button type="button" class="signal-word" data-signal="conclusion-call">the task continues to fall to civil society to exert influence in multilateral fora and sustain political, legal, and administrative resistance</button>
+        </p>
+        <ul>
+          <li><strong>elicited an expression of "grave concern"...</strong> &mdash; the grave opening signals the editorial's critical stance from the very first sentence, framing the entire piece as a serious indictment rather than a routine report summary.</li>
+          <li><strong>the task continues to fall to civil society...</strong> &mdash; the closing line places responsibility squarely on non-state actors, signalling the editorial's scepticism that the government will act on CERD's findings unprompted.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 5 of 5</div>
+</div>
+
+<div class="tooltip" id="tooltip">
+  <span class="tt-word" id="ttWord"></span>
+  <span id="ttMeaning"></span>
+</div>
+
+<footer class="site-footer">Editorial text as provided, for personal exam-practice use only · Questions, vocabulary, and analysis are original content</footer>
+
+<script>
+  const vocabData = {
+    "elicited": {
+      hindi: "उद्घाटित किया",
+      meaning: "Drew out or brought forth a response or reaction, often through questioning or effort.",
+      synonyms: ["Drew out", "Evoked", "Provoked", "Prompted"],
+      antonyms: ["Suppressed", "Concealed", "Withheld", "Stifled"]
+    },
+    "apparatus": {
+      hindi: "तंत्र",
+      meaning: "The complex structure or system of an organisation, especially one used to carry out a particular function.",
+      synonyms: ["Machinery", "System", "Structure", "Framework"],
+      antonyms: ["Disorder", "Chaos", "Fragment", "Individual part"]
+    },
+    "ratified": {
+      hindi: "अनुसमर्थित किया",
+      meaning: "Formally approved or confirmed an agreement or treaty, making it officially binding.",
+      synonyms: ["Approved", "Endorsed", "Sanctioned", "Confirmed"],
+      antonyms: ["Rejected", "Repealed", "Annulled", "Revoked"]
+    },
+    "sanctions": {
+      hindi: "प्रतिबंध",
+      meaning: "Official penalties or measures imposed to enforce compliance with rules or laws.",
+      synonyms: ["Penalties", "Punishments", "Restrictions", "Measures"],
+      antonyms: ["Rewards", "Approvals", "Permissions", "Incentives"]
+    },
+    "allegations": {
+      hindi: "आरोप",
+      meaning: "Claims or assertions that someone has done something wrong, typically made without proof.",
+      synonyms: ["Accusations", "Claims", "Charges", "Assertions"],
+      antonyms: ["Proof", "Denials", "Confirmations", "Evidence"]
+    },
+    "inherited": {
+      hindi: "विरासत में मिला",
+      meaning: "Received or derived from one's family, ancestry, or an earlier condition, rather than acquired independently.",
+      synonyms: ["Ancestral", "Hereditary", "Passed down", "Bequeathed"],
+      antonyms: ["Acquired", "Earned", "Self-made", "Chosen"]
+    },
+    "refoulement": {
+      hindi: "जबरन निर्वासन",
+      meaning: "The forcible return of refugees or asylum seekers to a country where they may face persecution.",
+      synonyms: ["Forced return", "Deportation", "Expulsion", "Repatriation"],
+      antonyms: ["Asylum", "Protection", "Sanctuary", "Shelter"]
+    },
+    "deprivation": {
+      hindi: "वंचन",
+      meaning: "The state of being denied access to something considered a basic necessity or right.",
+      synonyms: ["Denial", "Loss", "Dispossession", "Want"],
+      antonyms: ["Provision", "Abundance", "Access", "Fulfilment"]
+    },
+    "hamper": {
+      hindi: "बाधा डालना",
+      meaning: "To hinder or obstruct the progress or activity of someone or something.",
+      synonyms: ["Hinder", "Obstruct", "Impede", "Restrict"],
+      antonyms: ["Facilitate", "Assist", "Enable", "Support"]
+    },
+    "criminalising": {
+      hindi: "अपराध घोषित करना",
+      meaning: "Making a particular act or behaviour a punishable criminal offence under law.",
+      synonyms: ["Outlawing", "Banning", "Prohibiting", "Penalising"],
+      antonyms: ["Legalising", "Permitting", "Decriminalising", "Authorising"]
+    },
+    "exempting": {
+      hindi: "छूट देना",
+      meaning: "Freeing someone or something from an obligation, rule, or requirement that applies to others.",
+      synonyms: ["Excusing", "Excluding", "Releasing", "Waiving"],
+      antonyms: ["Obligating", "Including", "Binding", "Subjecting"]
+    },
+    "consultative": {
+      hindi: "सलाहकारी",
+      meaning: "Involving discussion and consultation with relevant stakeholders before decisions are made.",
+      synonyms: ["Advisory", "Deliberative", "Collaborative", "Participatory"],
+      antonyms: ["Unilateral", "Autocratic", "Arbitrary", "Dictatorial"]
+    },
+    "disaggregated": {
+      hindi: "पृथक्कृत",
+      meaning: "Broken down into separate, detailed categories rather than presented as a single combined figure.",
+      synonyms: ["Broken down", "Segregated", "Itemised", "Separated"],
+      antonyms: ["Combined", "Aggregated", "Merged", "Consolidated"]
+    },
+    "disenfranchised": {
+      hindi: "अधिकारविहीन",
+      meaning: "Deprived of a right or privilege, especially the right to vote or participate fully in society.",
+      synonyms: ["Marginalised", "Excluded", "Deprived", "Powerless"],
+      antonyms: ["Empowered", "Enfranchised", "Included", "Privileged"]
+    },
+    "lethargy": {
+      hindi: "सुस्ती",
+      meaning: "A lack of energy, enthusiasm, or activity; sluggishness.",
+      synonyms: ["Sluggishness", "Inertia", "Apathy", "Torpor"],
+      antonyms: ["Energy", "Vigour", "Dynamism", "Alacrity"]
+    },
+    "impeding": {
+      hindi: "बाधा डालना",
+      meaning: "Delaying or preventing something by obstructing it.",
+      synonyms: ["Hindering", "Obstructing", "Blocking", "Hampering"],
+      antonyms: ["Aiding", "Facilitating", "Enabling", "Assisting"]
+    },
+    "regression": {
+      hindi: "पतन",
+      meaning: "A return to a former, typically worse or less developed, state or condition.",
+      synonyms: ["Decline", "Deterioration", "Backslide", "Relapse"],
+      antonyms: ["Progress", "Advancement", "Improvement", "Growth"]
+    },
+    "downgrade": {
+      hindi: "दर्जा घटाना",
+      meaning: "To lower the rank, status, or classification of something.",
+      synonyms: ["Demote", "Lower", "Reduce", "Diminish"],
+      antonyms: ["Upgrade", "Promote", "Elevate", "Enhance"]
+    },
+    "pluralism": {
+      hindi: "बहुलवाद",
+      meaning: "A condition in which multiple distinct groups, views, or interests coexist within a system.",
+      synonyms: ["Diversity", "Multiplicity", "Heterogeneity", "Inclusiveness"],
+      antonyms: ["Uniformity", "Homogeneity", "Monopoly", "Exclusivity"]
+    },
+    "vacuum": {
+      hindi: "रिक्तता",
+      meaning: "A gap or void left by an absence, especially of leadership, authority, or oversight.",
+      synonyms: ["Void", "Gap", "Emptiness", "Absence"],
+      antonyms: ["Fullness", "Presence", "Completeness", "Abundance"]
+    },
+    "restoring": {
+      hindi: "पुनर्स्थापित करना",
+      meaning: "Bringing something back to its former condition, position, or strength.",
+      synonyms: ["Reinstating", "Rebuilding", "Reviving", "Renewing"],
+      antonyms: ["Destroying", "Abolishing", "Removing", "Dismantling"]
+    },
+    "transparency": {
+      hindi: "पारदर्शिता",
+      meaning: "The quality of being open, clear, and easily understood, especially regarding processes and decisions.",
+      synonyms: ["Openness", "Clarity", "Accountability", "Candour"],
+      antonyms: ["Secrecy", "Opacity", "Concealment", "Obscurity"]
+    },
+    "enforcement": {
+      hindi: "प्रवर्तन",
+      meaning: "The act of compelling compliance with a law, rule, or obligation.",
+      synonyms: ["Implementation", "Compliance", "Execution", "Application"],
+      antonyms: ["Neglect", "Non-compliance", "Disregard", "Laxity"]
+    },
+    "accountability": {
+      hindi: "जवाबदेही",
+      meaning: "The state of being responsible or answerable for one's actions or decisions.",
+      synonyms: ["Responsibility", "Answerability", "Liability", "Obligation"],
+      antonyms: ["Impunity", "Irresponsibility", "Unaccountability", "Immunity"]
+    },
+    "dismissal": {
+      hindi: "अस्वीकृति",
+      meaning: "The act of rejecting or refusing to consider something as valid or worthy of attention.",
+      synonyms: ["Rejection", "Refusal", "Disregard", "Repudiation"],
+      antonyms: ["Acceptance", "Acknowledgement", "Endorsement", "Consideration"]
+    },
+    "fora": {
+      hindi: "मंच",
+      meaning: "Plural of forum; venues or platforms for public discussion and debate.",
+      synonyms: ["Forums", "Platforms", "Venues", "Assemblies"],
+      antonyms: ["Isolation", "Silence", "Seclusion", "Absence of discussion"]
+    },
+    "grave": {
+      hindi: "गंभीर",
+      meaning: "Very serious or important, giving cause for anxiety.",
+      synonyms: ["Serious", "Solemn", "Severe", "Critical"],
+      antonyms: ["Trivial", "Minor", "Insignificant", "Light-hearted"]
+    },
+    "resorting": {
+      hindi: "सहारा लेना",
+      meaning: "Turning to and adopting a course of action, especially an undesirable one, as a means of achieving something.",
+      synonyms: ["Turning to", "Falling back on", "Employing", "Using"],
+      antonyms: ["Avoiding", "Refraining", "Abstaining", "Forgoing"]
+    },
+    "bias": {
+      hindi: "पूर्वाग्रह",
+      meaning: "A tendency to favour or disfavour a person, group, or thing unfairly.",
+      synonyms: ["Prejudice", "Partiality", "Favouritism", "Slant"],
+      antonyms: ["Impartiality", "Fairness", "Neutrality", "Objectivity"]
+    },
+    "convention": {
+      hindi: "संधि",
+      meaning: "A formal international agreement, or an accepted way of behaving or doing something.",
+      synonyms: ["Treaty", "Agreement", "Pact", "Accord"],
+      antonyms: ["Disagreement", "Breach", "Innovation", "Departure"]
+    },
+    "span": {
+      hindi: "विस्तृत होना",
+      meaning: "To extend across or cover a range of subjects, time, or space.",
+      synonyms: ["Cover", "Extend across", "Encompass", "Range over"],
+      antonyms: ["Exclude", "Omit", "Narrow", "Limit"]
+    },
+    "deletions": {
+      hindi: "विलोपन",
+      meaning: "The removal or striking out of items, especially names or entries, from a list or record.",
+      synonyms: ["Removals", "Erasures", "Omissions", "Strikings-out"],
+      antonyms: ["Additions", "Insertions", "Inclusions", "Entries"]
+    },
+    "fragmented": {
+      hindi: "खंडित",
+      meaning: "Broken up or divided into separate, disconnected parts.",
+      synonyms: ["Disjointed", "Scattered", "Broken up", "Disconnected"],
+      antonyms: ["Unified", "Whole", "Cohesive", "Integrated"]
+    },
+    "recourse": {
+      hindi: "सहारा",
+      meaning: "A source of help or a course of action that can be resorted to in a difficult situation.",
+      synonyms: ["Resort", "Remedy", "Redress", "Option"],
+      antonyms: ["Helplessness", "Powerlessness", "Dead end", "Impasse"]
+    },
+    "bounds": {
+      hindi: "सीमाएं",
+      meaning: "The limits of a subject or sphere of activity.",
+      synonyms: ["Limits", "Boundaries", "Confines", "Extent"],
+      antonyms: ["Boundlessness", "Infinity", "Limitlessness", "Vastness"]
+    },
+    "Alliance": {
+      hindi: "गठबंधन",
+      meaning: "A union or association formed for mutual benefit, especially between organisations or nations.",
+      synonyms: ["Coalition", "Union", "Federation", "Partnership"],
+      antonyms: ["Division", "Rivalry", "Opposition", "Separation"]
+    },
+    "exert": {
+      hindi: "प्रयोग करना",
+      meaning: "To apply or bring to bear a force, influence, or quality.",
+      synonyms: ["Apply", "Wield", "Exercise", "Bring to bear"],
+      antonyms: ["Withhold", "Restrain", "Suppress", "Relinquish"]
+    },
+    "widespread": {
+      hindi: "व्यापक",
+      meaning: "Found or distributed over a large area or number of people; common.",
+      synonyms: ["Prevalent", "Extensive", "Pervasive", "Common"],
+      antonyms: ["Rare", "Localised", "Limited", "Uncommon"]
+    }
+  };
+
+  const tbody = document.getElementById('vocabTableBody');
+  Object.keys(vocabData).forEach((word, i) => {
+    const d = vocabData[word];
+    const label = d.display || (word.charAt(0).toUpperCase() + word.slice(1));
+    const card = document.createElement('div');
+    card.className = 'vocab-card';
+    card.innerHTML = `
+      <div>
+        <span class="vc-num">${i + 1}.</span><span class="vc-word jump" data-word="${word}" title="Find this word in the editorial">${label}</span><span class="vc-hindi">${d.hindi}</span>
+      </div>
+      <div class="vc-meaning"><span class="vc-meaning-label">MEANING:</span>${d.meaning}</div>
+      <div class="vc-row"><span class="vc-label">SYNONYMS:</span> <span class="syn">${d.synonyms.join(', ')}</span></div>
+      <div class="vc-row"><span class="vc-label">ANTONYMS:</span> <span class="ant">${d.antonyms.join(', ')}</span></div>
+    `;
+    tbody.appendChild(card);
+  });
+
+  document.querySelectorAll('.vc-word.jump').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const key = cell.getAttribute('data-word');
+      showPage('page-editorial');
+      setTimeout(() => {
+        const target = document.querySelector('.editorial .vocab[data-word="' + key + '"]');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1800);
+      }, 150);
+    });
+  });
+
+  const tooltip = document.getElementById('tooltip');
+  const ttWord = document.getElementById('ttWord');
+  const ttMeaning = document.getElementById('ttMeaning');
+
+  document.querySelectorAll('.vocab').forEach(span => {
+    span.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const key = span.getAttribute('data-word');
+      const data = vocabData[key];
+      if (!data) return;
+
+      const label = data.display || (key.charAt(0).toUpperCase() + key.slice(1));
+      ttWord.textContent = label;
+      ttMeaning.textContent = data.meaning;
+
+      const rect = span.getBoundingClientRect();
+      tooltip.style.display = 'block';
+      const ttRect = tooltip.getBoundingClientRect();
+
+      let left = rect.left;
+      let top = rect.bottom + 10;
+
+      if (left + ttRect.width > window.innerWidth - 10) {
+        left = window.innerWidth - ttRect.width - 10;
+      }
+      if (top + ttRect.height > window.innerHeight - 10) {
+        top = rect.top - ttRect.height - 10;
+      }
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+    });
+  });
+
+  document.addEventListener('click', () => {
+    tooltip.style.display = 'none';
+  });
+  tooltip.addEventListener('click', (e) => e.stopPropagation());
+
+  const navPills = document.querySelectorAll('.nav-pill');
+  const pages = document.querySelectorAll('.page');
+
+  function showPage(pageId) {
+    pages.forEach(p => p.classList.toggle('active-page', p.id === pageId));
+    navPills.forEach(p => p.classList.toggle('active', p.getAttribute('data-page') === pageId));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  navPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      showPage(pill.getAttribute('data-page'));
+    });
+  });
+
+  showPage('page-editorial');
+
+  document.querySelectorAll('.signal-word[data-signal]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-signal');
+      showPage('page-editorial');
+      setTimeout(() => {
+        const target = document.querySelector('.signal-highlight[data-signal="' + key + '"]');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1800);
+      }, 150);
+    });
+  });
+
+  let score = 0;
+  const answered = {};
+  const scoreBar = document.getElementById('scoreBar');
+  const totalQuestions = document.querySelectorAll('.qcard').length;
+
+  let audioCtx = null;
+  function playTickSound() {
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1046.5, now);
+      osc.frequency.setValueAtTime(1568, now + 0.08);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.18, now + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.24);
+    } catch (err) { /* audio not supported, fail silently */ }
+  }
+
+  document.querySelectorAll('.qcard').forEach(card => {
+    const qid = card.getAttribute('data-qid');
+    const feedback = card.querySelector('.feedback');
+    const options = card.querySelectorAll('.option');
+
+    options.forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (answered[qid]) return;
+
+        answered[qid] = true;
+        const isCorrect = opt.getAttribute('data-correct') === 'true';
+
+        options.forEach(o => {
+          o.classList.add('locked');
+          if (o.getAttribute('data-correct') === 'true') {
+            o.classList.add('correct');
+          } else if (o === opt) {
+            o.classList.add('incorrect');
+          }
+        });
+
+        feedback.classList.add('show');
+        if (isCorrect) {
+          score++;
+          playTickSound();
+          feedback.textContent = '✓ Correct!';
+          feedback.classList.add('right');
+        } else {
+          feedback.textContent = '✗ Not quite — the correct answer is highlighted in green.';
+          feedback.classList.add('wrong');
+        }
+
+        scoreBar.textContent = `Score: ${score} / ${totalQuestions}`;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
