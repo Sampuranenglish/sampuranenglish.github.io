@@ -1,11 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Loading...</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fill in the Blank - Mix Grammar Mock Test</title>
+<style>
+:root{
+--page-bg:#f2f2f2;
+--card-bg:#ffffff;
+--card-text:#555555;
+--accent:#004aad;
+--footer-bg:#222222;
+--footer-text:#ffffff;
+--secondary-btn-bg:#222222;
+}
+html[data-theme="dark"]{
+--page-bg:#0b0c0e;
+--card-bg:#1a1b1e;
+--card-text:#c9c9c9;
+--accent:#3b82f6;
+--footer-bg:#000000;
+--footer-text:#f2f2f2;
+--secondary-btn-bg:#3a3a3a;
+}
+html,body{height:100%;margin:0;}
+body{display:flex;flex-direction:column;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:var(--page-bg);transition:background .25s ease;}
+header{background:var(--accent);color:white;padding:12px;text-align:center;}
+h1{margin:0;font-size:26px;}
+.container{width:90%;max-width:1000px;margin:30px auto;flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;align-content:start;}
+.card{background:var(--card-bg);border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.15);padding:25px 15px;text-align:center;text-decoration:none;color:var(--card-text);font-size:18px;font-weight:bold;transition:transform .2s ease, box-shadow .2s ease;}
+.card:hover{transform:translateY(-4px);box-shadow:0 4px 12px rgba(0,0,0,0.25);color:var(--accent);}
+.back{margin-top:20px;text-align:center;grid-column:1/-1;}
+.back a{text-decoration:none;background:var(--secondary-btn-bg);color:white;padding:12px 25px;border-radius:6px;font-size:18px;}
+footer{background:var(--footer-bg);color:var(--footer-text);text-align:center;padding:10px;font-size:13px;}
+</style>
 </head>
 <body>
-
-Loading...
-
+<div id="site-header"></div>
+<header>
+<h1>Fill in the Blank - Mix Grammar Mock Test</h1>
+</header>
+<div class="container">
+<a class="card" href="Fillers_Mock_Test_1.html">Fillers Mock Test - 1</a>
+<a class="card" href="Fillers_Mock_Test_2.html">Fillers Mock Test - 2</a>
+<a class="card" href="Fillers_Mock_Test_3.html">Fillers Mock Test - 3</a>
+<a class="card" href="Fillers_Mock_Test_4.html">Fillers Mock Test - 4</a>
+<a class="card" href="Fillers_Mock_Test_5.html">Fillers Mock Test - 5</a>
+<a class="card" href="Fillers_Mock_Test_6.html">Fillers Mock Test - 6</a>
+<a class="card" href="Fillers_Mock_Test_7.html">Fillers Mock Test - 7</a>
+<a class="card" href="Fillers_Mock_Test_8.html">Fillers Mock Test - 8</a>
+<a class="card" href="Fillers_Mock_Test_9.html">Fillers Mock Test - 9</a>
+<a class="card" href="Fillers_Mock_Test_10.html">Fillers Mock Test - 10</a>
+<div class="back">
+<a href="mock-test-mix-grammar.html">← Back to Mock Test</a>
+</div>
+</div>
+<footer>© Sampuran English</footer>
+<script>
+fetch('header.html')
+.then(function(response){ return response.text(); })
+.then(function(html){
+document.getElementById('site-header').innerHTML = html;
+window.scrollTo(0, 0);
+document.getElementById('menuToggle').addEventListener('click', function(){
+document.getElementById('menuList').classList.toggle('open');
+});
+});
+</script>
+<script src="theme.js"></script>
 </body>
 </html>
