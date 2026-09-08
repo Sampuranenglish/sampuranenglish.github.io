@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampuran English — SSC English Practice - Common Error Mock Test</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  :root{
+    --ink:#1c2b3a;
+    --paper:#f6f3ea;
+    --rule:#c9bfa4;
+    --navy:#163a5f;
+    --brick:#a8321f;
+    --brick-deep:#7e2417;
+    --gold:#b8862c;
+    --correct:#1f7a4d;
+    --correct-bg:#e5f3ea;
+    --wrong:#a8321f;
+    --wrong-bg:#fbe9e5;
+    --unattempted:#7a6f57;
+    --card:#fffdf8;
+    --shadow:0 4px 10px rgba(0,0,0,.08);
+    --radius:10px;
+    --trans:all .2s ease;
+
+    --d-bg:#141b24;
+    --d-card:#1e2733;
+    --d-ink:#e8e3d3;
+    --d-rule:#33404c;
+    --d-paper:#10161d;
+  }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0)),
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 34px);
+    color: var(--ink);
+    font-family: "Georgia", "Iowan Old Style", "Palatino Linotype", serif;
+    line-height: 1.5;
+    transition: var(--trans);
+  }
+  body.dark-mode{
+    background: var(--d-bg);
+    background-image:none;
+    color: var(--d-ink);
+  }
+
+  img{ max-width:100%; height:auto; }
+
+  /* ---------- Welcome screen ---------- */
+  .welcome-screen{
+    position:fixed; inset:0;
+    background: var(--paper);
+    z-index:1000;
+    display:flex; flex-direction:column; align-items:center;
+    padding: 24px 20px 40px;
+    text-align:center;
+    transition: var(--trans);
+    overflow-y:auto;
+  }
+  body.dark-mode .welcome-screen{ background:var(--d-bg); }
+  .welcome-screen.hidden{ display:none; }
+
+  .welcome-kicker{
+    font-family:"Trebuchet MS", sans-serif;
+    letter-spacing:1.5px;
+    font-size: clamp(24px, 7vw, 38px);
+    text-transform:uppercase;
+    color: var(--brick);
+    font-weight:800;
+    margin-bottom:10px;
+    line-height:1.15;
+  }
+  .welcome-title{
+    font-size:15px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color: var(--navy);
+    margin-bottom:6px;
+  }
+  body.dark-mode .welcome-title{ color:#9fc1e6; }
+  .welcome-sub{
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13.5px;
+    color: var(--unattempted);
+    margin-bottom:26px;
+  }
+
+  .welcome-card{
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--brick);
+    box-shadow: var(--shadow);
+    width:100%; max-width:420px;
+    padding: 22px 24px;
+    margin-bottom:26px;
+    text-align:left;
+  }
+  body.dark-mode .welcome-card{ background:var(--d-card); border-color:var(--d-rule); }
+  .welcome-card .head{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color: var(--navy);
+    border-bottom:1px solid var(--rule);
+    padding-bottom:10px;
+    margin-bottom:12px;
+  }
+  body.dark-mode .welcome-card .head{ color:#9fc1e6; border-color:var(--d-rule); }
+  .w-row{
+    display:flex; justify-content:space-between;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:14px;
+    padding:7px 0;
+  }
+  .w-row b{ color:var(--brick); }
+  body.dark-mode .w-row b{ color:#e08a72; }
+
+  .welcome-button{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    background: var(--brick);
+    color:#fff;
+    border:none;
+    padding:14px 40px;
+    cursor:pointer;
+    box-shadow: 0 3px 0 var(--brick-deep);
+    transition: transform .1s;
+    margin-bottom:16px;
+  }
+  .welcome-button:active{ transform:translateY(3px); box-shadow:none; }
+
+  /* ---------- Daily content: Rule / Word of the Day ---------- */
+  .daily-content{
+    width:100%; max-width:420px;
+    text-align:left;
+    margin-bottom:26px;
+  }
+  .cat-row{
+    display:flex; gap:10px; justify-content:center;
+    margin-bottom:20px; flex-wrap:wrap;
+  }
+  .cat-pill{
+    flex:1; min-width:96px;
+    background: var(--card);
+    border:2px solid var(--navy);
+    color: var(--navy);
+    border-radius:50px;
+    text-align:center;
+    padding:14px 6px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:12.5px;
+    line-height:1.3;
+  }
+  body.dark-mode .cat-pill{ background:var(--d-card); border-color:#9fc1e6; color:#9fc1e6; }
+  .cat-pill:nth-child(2){ border-color: var(--correct); color: var(--correct); }
+  body.dark-mode .cat-pill:nth-child(2){ border-color:#5fd28d; color:#5fd28d; }
+  .cat-pill:nth-child(3){ border-color: var(--brick); color: var(--brick); }
+  body.dark-mode .cat-pill:nth-child(3){ border-color:#e08a72; color:#e08a72; }
+
+  .dc-banner{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    background: var(--brick);
+    color:#FFD86B;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:800; font-size:14px; letter-spacing:1px; text-transform:uppercase;
+    padding:9px 12px;
+    margin:18px 0 10px;
+  }
+  .dc-banner i{ font-size:12px; color:#fff; }
+
+  .rule-box{
+    background: var(--navy);
+    color:#FFD86B;
+    padding:14px 16px;
+    font-size:13.5px;
+    font-weight:700;
+    line-height:1.55;
+    margin-bottom:8px;
+    border-left:3px solid var(--gold);
+  }
+  body.dark-mode .rule-box{ border-left-color:#ffd86b; }
+  .rule-box .eg{ margin-top:10px; font-size:12.5px; font-weight:400; color:#f2ede0; display:block; }
+  .rule-box .eg .wrong{ color:#ffb0a3; }
+  .rule-box .eg .right{ color:#a7f0b0; }
+
+  .word-box{
+    background: var(--card);
+    border:1px solid var(--rule);
+    padding:16px 18px;
+    text-align:center;
+  }
+  body.dark-mode .word-box{ background:var(--d-card); border-color:var(--d-rule); }
+  .word-title{
+    font-size:22px; font-weight:700;
+    color: var(--navy);
+    text-decoration:underline;
+    margin-bottom:8px;
+  }
+  body.dark-mode .word-title{ color:#9fc1e6; }
+  .word-meta{
+    text-align:left; font-size:13px; margin-top:8px; line-height:1.5;
+  }
+  .word-meta u{ font-weight:700; color:var(--navy); }
+  body.dark-mode .word-meta u{ color:#9fc1e6; }
+  .word-trick{
+    text-align:left; font-size:12.5px; font-style:italic; font-weight:700;
+    color: var(--brick); margin-top:10px;
+    background:#fde2e2; padding:8px 10px; border-radius:4px;
+    border-left:3px solid var(--brick);
+  }
+  body.dark-mode .word-trick{ color:#ffb0a3; background:#3a2320; border-left-color:#e08a72; }
+  .syn-anto{ text-align:left; font-size:13px; margin-top:8px; }
+  .syn-anto b{ text-decoration:underline; color:var(--navy); }
+  body.dark-mode .syn-anto b{ color:#9fc1e6; }
+  .syn-anto .hl{ color: var(--brick); font-weight:700; }
+  body.dark-mode .syn-anto .hl{ color:#e08a72; }
+
+  .join-channel{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13px; font-weight:600;
+    color: var(--navy);
+    text-decoration:none;
+    padding:9px 16px;
+    border:1px solid var(--navy);
+    border-radius: 20px;
+    transition: var(--trans);
+  }
+  .join-channel:hover{ background:var(--navy); color:#fff; }
+  body.dark-mode .join-channel{ color:#9fc1e6; border-color:#9fc1e6; }
+
+  /* ---------- Header ---------- */
+  .hdr{
+    background: var(--navy);
+    color:#f2ede0;
+    padding:10px 14px;
+    display:grid;
+    grid-template-columns: auto 1fr auto;
+    align-items:center;
+    gap:10px;
+    position:sticky; top:0; z-index:100;
+    border-bottom:4px solid var(--brick);
+  }
+  .hdr-l{ font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:14px; }
+  .hdr-l small{ display:block; font-weight:400; font-size:10.5px; color:#cfd8e3; letter-spacing:0.5px; }
+  .hdr-c{ text-align:center; font-family:"Trebuchet MS", sans-serif; font-size:13px; font-weight:600; }
+  .hdr-r{ display:flex; align-items:center; gap:8px; justify-content:flex-end; flex-wrap:wrap; }
+  .timer{
+    background:#FEF3C7; color:#78350F;
+    padding:6px 12px; border-radius:16px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13px; font-weight:700;
+  }
+  .timer.low{ background:#fde2e2; color:#7e2417; }
+  .icon-btn{
+    border:1px solid rgba(255,255,255,0.4);
+    background:transparent; color:#fff;
+    width:34px; height:34px; border-radius:8px;
+    cursor:pointer; font-size:14px;
+    display:flex; align-items:center; justify-content:center;
+    transition: var(--trans);
+  }
+  .icon-btn:hover{ background:rgba(255,255,255,0.15); }
+  .btn-submit-top{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; font-size:12.5px;
+    background: var(--brick); color:#fff;
+    border:none; padding:9px 14px; border-radius:8px;
+    cursor:pointer;
+  }
+  .btn-submit-top:disabled{ background:#8a8377; cursor:not-allowed; }
+
+  .subject-tag{
+    background:#f1ece0;
+    border-bottom:1px solid var(--rule);
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color: var(--navy);
+    font-weight:700;
+    padding:9px 16px;
+  }
+  body.dark-mode .subject-tag{ background:#1a2330; border-color:var(--d-rule); color:#9fc1e6; }
+
+  /* ---------- Question area ---------- */
+  .cont{ max-width:720px; margin:0 auto; padding:18px 16px 110px; }
+
+  .qcard{
+    background: var(--card);
+    border:1px solid var(--rule);
+    border-left:4px solid var(--navy);
+    padding:18px 20px 20px;
+    box-shadow: var(--shadow);
+  }
+  body.dark-mode .qcard{ background:var(--d-card); border-color:var(--d-rule); border-left-color:#9fc1e6; }
+
+  .qnum{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; color: var(--brick);
+    font-size:13px; margin-bottom:8px; letter-spacing:0.5px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .status-tag{
+    display:inline-block;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:10.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+    padding:3px 9px; border-radius:2px; color:#fff;
+  }
+  .status-tag.correct{ background:var(--correct); }
+  .status-tag.wrong{ background:var(--wrong); }
+  .status-tag.skipped{ background:var(--unattempted); }
+
+  .passage{
+    font-size:15px;
+    background:#f1ece0;
+    border-left:3px solid var(--gold);
+    padding:10px 14px;
+    margin-bottom:14px;
+    font-style:italic;
+    color:#40372a;
+  }
+  body.dark-mode .passage{ background:#1a2330; color:#c9c2ab; }
+
+  .qtext{ font-size:17px; margin-bottom:16px; color:var(--ink); }
+  body.dark-mode .qtext{ color:var(--d-ink); }
+
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:12px 14px;
+    border:1px solid var(--rule);
+    background:#fff;
+    cursor:pointer;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:14.5px;
+    transition: border-color .15s, background .15s;
+  }
+  body.dark-mode .opt{ background:#232d3a; border-color:var(--d-rule); color:var(--d-ink); }
+  .opt:hover{ border-color:var(--navy); background:#f3f6fa; }
+  body.dark-mode .opt:hover{ background:#2b3646; }
+  .opt.selected{ border-color:var(--navy); background:#e9eff6; font-weight:700; }
+  body.dark-mode .opt.selected{ background:#28405e; }
+  .opt-letter{ font-weight:700; color:var(--brick); flex-shrink:0; }
+  .opt.correct-answer{ background:var(--correct-bg); border-color:var(--correct); }
+  body.dark-mode .opt.correct-answer{ background:#164a34; border-color:var(--correct); }
+  .opt.wrong-answer{ background:var(--wrong-bg); border-color:var(--wrong); }
+  body.dark-mode .opt.wrong-answer{ background:#5c2018; border-color:var(--wrong); }
+  .qcard.locked .opt{ cursor:default; pointer-events:none; }
+
+  .explanation{
+    margin-top:16px; padding:12px 14px;
+    background:#fbf7ec;
+    border:1px dashed var(--gold);
+    font-size:14px;
+    display:none;
+  }
+  body.dark-mode .explanation{ background:#241f14; }
+  .explanation b{ color:var(--navy); }
+  body.dark-mode .explanation b{ color:#9fc1e6; }
+  .qcard.locked .explanation{ display:block; }
+
+  /* ---------- Bottom nav ---------- */
+  .navbar{
+    position:fixed; left:0; right:0; bottom:0;
+    background: var(--card);
+    border-top:1px solid var(--rule);
+    padding:10px 14px;
+    display:flex; justify-content:space-between; align-items:center;
+    box-shadow:0 -2px 10px rgba(0,0,0,.06);
+    z-index:100;
+  }
+  body.dark-mode .navbar{ background:var(--d-card); border-color:var(--d-rule); }
+  .nav-btn{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; font-size:12.5px;
+    padding:10px 14px; border-radius:8px; border:none; cursor:pointer;
+    display:flex; align-items:center; gap:6px;
+    min-width:64px; justify-content:center;
+  }
+  .nav-btn:disabled{ opacity:.45; cursor:not-allowed; }
+  .nav-btn.prev{ background:transparent; border:1px solid var(--rule); color:var(--ink); }
+  body.dark-mode .nav-btn.prev{ border-color:var(--d-rule); color:var(--d-ink); }
+  .nav-btn.review{ background:#f6dfa0; color:#5a4008; }
+  .nav-btn.review.active{ background:var(--gold); color:#fff; }
+  .nav-btn.next{ background:var(--navy); color:#fff; }
+  .nav-mid{ text-align:center; font-family:"Trebuchet MS", sans-serif; font-size:11.5px; color:var(--unattempted); }
+  body.dark-mode .nav-mid{ color:#a49a80; }
+
+  /* ---------- Grid panel ---------- */
+  .panel{
+    position:fixed; inset:0;
+    background: var(--paper);
+    z-index:200;
+    transform: translateY(100%);
+    transition: transform .3s ease;
+    overflow-y:auto;
+    display:none;
+  }
+  body.dark-mode .panel{ background:var(--d-bg); }
+  .panel.open{ display:block; transform:translateY(0); }
+  .panel-hdr{
+    background: var(--navy); color:#fff;
+    padding:16px; display:flex; justify-content:space-between; align-items:center;
+    position:sticky; top:0;
+  }
+  .panel-close{ background:none; border:none; color:#fff; font-size:20px; cursor:pointer; }
+  .panel-body{ padding:18px; }
+  .legend{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:18px; font-family:"Trebuchet MS", sans-serif; font-size:12px; }
+  .legend span{ display:flex; align-items:center; gap:6px; }
+  .legend i{ width:14px; height:14px; border-radius:3px; display:inline-block; }
+  .grid-nav{ display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; }
+  @media (min-width:480px){ .grid-nav{ grid-template-columns:repeat(6, 1fr); } }
+  .g-btn{
+    aspect-ratio:1; border-radius:8px; border:2px solid var(--rule);
+    background:#fff; font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:14px;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  body.dark-mode .g-btn{ background:var(--d-card); border-color:var(--d-rule); color:var(--d-ink); }
+  .g-btn.answered{ background:var(--correct); color:#fff; border-color:var(--correct); }
+  .g-btn.review{ background:var(--gold); color:#fff; border-color:var(--gold); }
+  .g-btn.current{ outline:3px solid var(--brick); outline-offset:1px; }
+
+  /* ---------- Modal ---------- */
+  .modal{
+    position:fixed; inset:0; background:rgba(0,0,0,.55);
+    display:none; align-items:center; justify-content:center; z-index:300; padding:16px;
+  }
+  .modal.show{ display:flex; }
+  .modal-box{
+    background: var(--card);
+    max-width:400px; width:100%;
+    border:1px solid var(--rule);
+    border-top:5px solid var(--brick);
+    box-shadow: var(--shadow);
+  }
+  body.dark-mode .modal-box{ background:var(--d-card); border-color:var(--d-rule); }
+  .modal-head{ text-align:center; padding:22px 20px 14px; }
+  .modal-head .kicker{ font-family:"Trebuchet MS", sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--unattempted); }
+  .modal-head .score{ font-size:38px; font-weight:700; color:var(--navy); margin-top:6px; }
+  body.dark-mode .modal-head .score{ color:#9fc1e6; }
+  .modal-head .score span{ font-size:18px; color:var(--unattempted); }
+  .stat-grid{ display:grid; grid-template-columns:repeat(4,1fr); text-align:center; font-family:"Trebuchet MS", sans-serif; border-top:1px solid var(--rule); }
+  body.dark-mode .stat-grid{ border-color:var(--d-rule); }
+  .stat-grid div{ padding:12px 4px; border-right:1px solid var(--rule); }
+  body.dark-mode .stat-grid div{ border-color:var(--d-rule); }
+  .stat-grid div:last-child{ border-right:none; }
+  .stat-grid .num{ font-size:19px; font-weight:700; }
+  .stat-grid .lbl{ font-size:10px; text-transform:uppercase; color:var(--unattempted); margin-top:2px; }
+  .modal-actions{ display:flex; gap:8px; padding:16px 20px; }
+  .modal-actions button{
+    flex:1; padding:11px; border-radius:6px; border:none; cursor:pointer;
+    font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:13px;
+  }
+  .m-close{ background:transparent; border:1px solid var(--rule) !important; color:var(--ink); }
+  body.dark-mode .m-close{ border-color:var(--d-rule) !important; color:var(--d-ink); }
+  .m-review{ background:var(--navy); color:#fff; }
+  .m-print{ background:var(--brick); color:#fff; margin:0 20px 18px; padding:11px; border:none; border-radius:6px; font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:13px; cursor:pointer; width:calc(100% - 40px); display:none; }
+  .m-print.show{ display:block; }
+
+  footer{
+    text-align:center; padding:16px; background:var(--brick); color:#fff;
+    font-family:"Trebuchet MS", sans-serif; font-size:12.5px;
+  }
+  footer a{ color:#ffe9c7; }
+</style>
+</head>
+<body>
+
+<!-- ============ WELCOME SCREEN ============ -->
+<div class="welcome-screen" id="welcomeScreen">
+  <div class="welcome-kicker">Sampuran English</div>
+  <a class="join-channel" href="https://t.me/Sampuran_English" target="_blank">
+    <i class="fa-brands fa-telegram"></i> Official Telegram Channel
+  </a>
+  <div class="welcome-sub" style="color:#000;font-weight:700;margin-top:14px">SSC English Practice - Common Error</div>
+
+  <div class="welcome-card">
+    <div class="head" style="text-align:center;font-weight:900;font-size:14px">2025 SSC CGL Ediquity Common Errors (All Shifts)</div>
+    <div class="w-row"><span>Total Questions</span><b>238</b></div>
+    <div class="w-row"><span>Total Marks</span><b>476</b></div>
+    <div class="w-row"><span>Duration</span><b>40 minutes</b></div>
+    <div class="w-row"><span>Marking</span><b>+2.0 / −0.5</b></div>
+  </div>
+
+  <button class="welcome-button" id="startTestBtn">Start Test</button>
+
+  <div class="daily-content">
+    <div class="cat-row">
+      <div class="cat-pill">Grammar<br>Practice</div>
+      <div class="cat-pill">Vocab<br>Practice</div>
+      <div class="cat-pill">Reading<br>Practice</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MAIN TEST INTERFACE ============ -->
+<div id="mainTestInterface" style="display:none">
+
+  <div class="hdr">
+    <div class="hdr-l">Sampuran English<small>Mock Test</small></div>
+    <div class="hdr-c" id="qInfo">Q 1 / 238</div>
+    <div class="hdr-r">
+      <div class="timer" id="timer">40:00</div>
+      <button class="icon-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="icon-btn" id="menuBtn" title="Question palette"><i class="fas fa-th"></i></button>
+      <button class="btn-submit-top" id="subBtn">Submit</button>
+    </div>
+  </div>
+  <div class="subject-tag" id="subjectTag"></div>
+
+  <div class="cont">
+    <div class="qcard" id="qcard">
+      <div class="qnum">Question <span id="qNumTxt">1</span> <span class="status-tag" id="statusTag" style="display:none"></span></div>
+      <div class="passage" id="passageBox" style="display:none"></div>
+      <div class="qtext" id="qTxt"></div>
+      <div class="options" id="opts"></div>
+      <div class="explanation" id="explanation"></div>
+    </div>
+  </div>
+
+  <div class="navbar">
+    <button class="nav-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i> Prev</button>
+    <div class="nav-mid">
+      <div id="progTxt">1 of 238</div>
+      <div>Answered: <span id="ansCnt">0</span></div>
+    </div>
+    <button class="nav-btn review" id="reviewBtn"><i class="fas fa-flag"></i></button>
+    <button class="nav-btn next" id="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
+  </div>
+
+  <!-- Question palette panel -->
+  <div class="panel" id="panel">
+    <div class="panel-hdr">
+      <span style="font-family:'Trebuchet MS',sans-serif;font-weight:700">Question Palette</span>
+      <button class="panel-close" id="panelClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="panel-body">
+      <div class="legend">
+        <span><i style="background:var(--correct)"></i> Answered</span>
+        <span><i style="background:var(--gold)"></i> Marked for Review</span>
+        <span><i style="background:#fff;border:2px solid var(--rule)"></i> Not Answered</span>
+      </div>
+      <div class="grid-nav" id="gridNav"></div>
+    </div>
+  </div>
+
+  <!-- Result modal -->
+  <div class="modal" id="modalOver">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="kicker">Your Result</div>
+        <div class="score" id="scoreDisp">0.0<span> / 476</span></div>
+      </div>
+      <div class="stat-grid">
+        <div><div class="num" id="corrStat" style="color:var(--correct)">0</div><div class="lbl">Correct</div></div>
+        <div><div class="num" id="incStat" style="color:var(--wrong)">0</div><div class="lbl">Incorrect</div></div>
+        <div><div class="num" id="unaStat">0</div><div class="lbl">Unattempted</div></div>
+        <div><div class="num" id="timeStat">0</div><div class="lbl">Minutes</div></div>
+      </div>
+      <button class="m-print" id="printBtn"><i class="fas fa-print"></i> Print Full Review</button>
+      <div class="modal-actions">
+        <button class="m-close" id="closeModal">Close</button>
+        <button class="m-review" id="revBtn">Review</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Daily Practice: <a href="https://t.me/Sampuran_English" target="_blank">t.me/Sampuran_English</a>
+    &nbsp;&middot;&nbsp; Doubts: <a href="https://t.me/sampuranenglish" target="_blank">t.me/sampuranenglish</a>
+  </footer>
+</div>
+
+<script>
+const questions = [
+{"id": 1, "section": "SSC CGL 12/09/2025 (Shift 1)", "text": "Neither the students nor the teacher were ready for the sudden fire drill, leading to a moment of confusion before everyone evacuated.", "options": {"a": "Neither the students nor the teacher", "b": "were ready for the sudden fire drill,", "c": "leading to a moment of confusion", "d": "before everyone evacuated."}, "answer": "b", "exp": "<b>Correction:</b> were → was The correlative conjunction Neither...nor follows the Rule of Proximity. The verb agrees with the noun nearest to it. Here, the nearest subject is the teacher (singular), so the verb must be was. <b>Rule:</b> Neither...nor / Either...or / Not only...but also → Verb agrees with the nearest subject."},
+{"id": 2, "section": "SSC CGL 12/09/2025 (Shift 2)", "text": "The myriad challenges confronting modern urban planners, ranging from sustainable infrastructure to social equity, often demands an interdisciplinary approach to yield effective solutions.", "options": {"a": "The myriad challenges confronting modern urban planners", "b": ", ranging from sustainable infrastructure to social equity, often demands", "c": "an interdisciplinary approach", "d": "to yield effective solutions."}, "answer": "b", "exp": "<b>Correction:</b> demands → demand The subject 'The myriad challenges' is plural. Hence, the verb must also be plural. <b>Rule:</b> Plural subject → Plural verb."},
+{"id": 3, "section": "SSC CGL 12/09/2025 (Shift 2)", "text": "The manager, along with her entire team, expects that the project will be completed before the deadline, and they shall submits the final report on Friday.", "options": {"a": "The manager, along with her entire team,", "b": "expects that the project will be completed", "c": "before the deadline, and they shall submits", "d": "the final report on Friday."}, "answer": "c", "exp": "<b>Correction:</b> submits → submit After the modal 'shall', the base form (V1) of the verb is used. <b>Rule:</b> Modal Verb (shall, will, can, may, must, should, etc.) + V1."},
+{"id": 4, "section": "SSC CGL 12/09/2025 (Shift 3)", "text": "The committee's objectives included increasing membership, improving communication channels, and to foster a sense of community among its diverse members.", "options": {"a": "The committee's objectives included", "b": "increasing membership, improving communication channels, and", "c": "to foster a sense of community", "d": "among its diverse members."}, "answer": "c", "exp": "<b>Correction:</b> to foster → fostering Items in a series must have parallel structure. <b>Rule:</b> Maintain the same grammatical form in a series."},
+{"id": 5, "section": "SSC CGL 12/09/2025 (Shift 3)", "text": "The unique challenges of the project, including its remote location and the unpredictable weather patterns, makes its successful completion a testament to the team's resilience.", "options": {"a": "The unique challenges of the project, including its remote location", "b": "and the unpredictable weather patterns,", "c": "makes its successful completion", "d": "a testament to the team's resilience."}, "answer": "c", "exp": "<b>Correction:</b> makes → make The subject 'The unique challenges' is plural. Therefore, the verb should be make. <b>Rule:</b> Plural subject → Plural verb."},
+{"id": 6, "section": "SSC CGL 13/09/2025 (Shift 1)", "text": "The venerable institution aims to both preserve ancient texts and promoting critical scholarship among its burgeoning community of young researchers.", "options": {"a": "The venerable institution aims to both preserve ancient texts", "b": "and promoting critical scholarship", "c": "among its burgeoning community", "d": "of young researchers."}, "answer": "b", "exp": "<b>Correction:</b> promoting → promote After 'both', parallel structure is required: to preserve ... and (to) promote. <b>Rule:</b> Both...and joins words or phrases of the same grammatical form."},
+{"id": 7, "section": "SSC CGL 13/09/2025 (Shift 1)", "text": "The profound impact of digital technology on societal norms, a phenomenon universally acknowledged by sociologists, are increasingly becoming a topic of interdisciplinary academic debate.", "options": {"a": "The profound impact of digital technology on societal norms", "b": ", a phenomenon universally acknowledged by sociologists,", "c": "are increasingly becoming a topic", "d": "of interdisciplinary academic debate."}, "answer": "c", "exp": "<b>Correction:</b> are → is The subject is 'The profound impact' (singular). Hence, the singular verb 'is' should be used. <b>Rule:</b> The main subject determines the verb, not the modifying phrase."},
+{"id": 8, "section": "SSC CGL 13/09/2025 (Shift 2)", "text": "She was confident that her plan would succeed, for it was not only innovative but also it was thoroughly tested by an independent team.", "options": {"a": "She was confident that her plan would succeed,", "b": "for it was not only innovative", "c": "but also it was thoroughly tested", "d": "by an independent team."}, "answer": "c", "exp": "<b>Correction:</b> but also it was thoroughly tested → but also thoroughly tested The sentence violates parallelism. After not only...but also, the two parts should have the same grammatical structure. <b>Rule:</b> Not only...but also requires parallel construction."},
+{"id": 9, "section": "SSC CGL 13/09/2025 (Shift 2)", "text": "What the ancient philosophers believed about the nature of reality and the purpose of human existence remain a subject of intense debate among contemporary thinkers.", "options": {"a": "What the ancient philosophers believed about the nature of reality", "b": "and the purpose of human existence", "c": "remain a subject of intense debate", "d": "among contemporary thinkers."}, "answer": "c", "exp": "<b>Correction:</b> remain → remains The subject is the noun clause 'What the ancient philosophers believed...', which functions as a singular subject. Hence, the singular verb 'remains' is required. <b>Rule:</b> A noun clause acting as the subject takes a singular verb."},
+{"id": 10, "section": "SSC CGL 13/09/2025 (Shift 3)", "text": "The increase in the number of unresolved cases and the lack of clear guidelines from the authorities has contributed significantly to the confusion surrounding the recent procedural changes.", "options": {"a": "The increase in the number of unresolved cases", "b": "and the lack of clear guidelines from the authorities", "c": "has contributed significantly to the confusion", "d": "surrounding the recent procedural changes."}, "answer": "d", "exp": "<b>Correction:</b> has contributed → have contributed The compound subject 'The increase... and the lack...' is plural, so we need the plural verb 'have contributed'. <b>Rule:</b> Compound subject joined by 'and' → Plural verb."},
+{"id": 11, "section": "SSC CGL 13/09/2025 (Shift 3)", "text": "The list of recommended candidates for various regional posts were prepared in haste without proper background checks, which resulted in several administrative complications during the initial phase of deployment.", "options": {"a": "The list of recommended candidates for various regional posts", "b": "were prepared in haste without proper background checks,", "c": "which resulted in several administrative complications", "d": "during the initial phase of deployment."}, "answer": "b", "exp": "<b>Correction:</b> were → was The subject is 'The list' (singular). The phrase 'of recommended candidates' is only a modifier. <b>Rule:</b> The verb agrees with the main subject, not the noun in the modifying phrase."},
+{"id": 12, "section": "SSC CGL 14/09/2025 (Shift 1)", "text": "The principal emphasized that it was not only a lack of funding for extracurricular activities that disheartened students, but the inconsistent support from parents and faculty which, despite being crucial for success, contribute to a decline in overall participation rates.", "options": {"a": "The principal emphasized that it was not only a lack of funding for extracurricular activities", "b": "that disheartened students, but the inconsistent support from parents and faculty", "c": "which, despite being crucial for success,", "d": "contribute to a decline in overall participation rates."}, "answer": "d", "exp": "<b>Correction:</b> contribute → contributed The sentence reports a past fact after 'emphasized'. Parallel structure requires 'that disheartened students' and 'that contributed to a decline...'. <b>Rule:</b> Maintain tense consistency in reported statements."},
+{"id": 13, "section": "SSC CGL 14/09/2025 (Shift 2)", "text": "The committee, which oversee multiple departments, has been granted additional funds to implement the new sustainability policies across all regional offices.", "options": {"a": "The committee, which oversee multiple departments,", "b": "has been granted additional funds", "c": "to implement the new sustainability policies", "d": "across all regional offices."}, "answer": "a", "exp": "<b>Correction:</b> oversee → oversees The relative pronoun 'which' refers to 'committee' (singular). <b>Rule:</b> The verb in a relative clause agrees with its antecedent."},
+{"id": 14, "section": "SSC CGL 14/09/2025 (Shift 2)", "text": "The emergence of new infectious variants amid inconsistent global vaccination efforts have reignited debates on public health preparedness and international cooperation.", "options": {"a": "The emergence of new infectious variants", "b": "amid inconsistent global vaccination efforts", "c": "have reignited debates on public health preparedness", "d": "and international cooperation."}, "answer": "c", "exp": "<b>Correction:</b> have → has The subject 'The emergence' is singular. Ignore modifying phrases while identifying the subject. <b>Rule:</b> Ignore modifying phrases while identifying the subject."},
+{"id": 15, "section": "SSC CGL 14/09/2025 (Shift 3)", "text": "That the experimental results contradict prior findings and challenges established theories suggests the need for further investigation into the novel methodology.", "options": {"a": "That the experimental results contradict prior findings", "b": "and challenges established theories", "c": "suggests the need for further investigation", "d": "into the novel methodology."}, "answer": "b", "exp": "<b>Correction:</b> challenges → challenge The compound predicate should remain parallel: 'contradict' should balance 'challenge' — ...contradict prior findings and challenge established theories. <b>Rule:</b> Maintain parallel verb forms joined by 'and'."},
+{"id": 16, "section": "SSC CGL 14/09/2025 (Shift 3)", "text": "She had barely finished writing her essay then the power went out, leaving her work unsaved and her progress lost.", "options": {"a": "She had barely finished writing her essay", "b": "then the power went out,", "c": "leaving her work unsaved", "d": "and her progress lost."}, "answer": "b", "exp": "<b>Correction:</b> then → when The correct correlative structure is: Hardly/Barely/Scarcely...when. <b>Rule:</b> Hardly/Barely/Scarcely + when; No sooner + than."},
+{"id": 17, "section": "SSC CGL 15/09/2025 (Shift 1)", "text": "The professor postponed the discussion until the research would be published to maintain confidentiality of the findings.", "options": {"a": "The professor postponed the discussion", "b": "until the research would be published", "c": "to maintain confidentiality", "d": "of the findings."}, "answer": "b", "exp": "<b>Correction:</b> would be published → was published After 'until', we generally do not use will/would to refer to future time. <b>Rule:</b> After time conjunctions (when, until, before, after, as soon as), avoid will/would."},
+{"id": 18, "section": "SSC CGL 15/09/2025 (Shift 1)", "text": "Were she to have known about the danger she might have taken different precautions to ensure her safety and avoid the unfortunate incident.", "options": {"a": "Were she to have known about the danger", "b": "she might have taken", "c": "different precautions to ensure her safety", "d": "and avoid the unfortunate incident."}, "answer": "a", "exp": "<b>Correction:</b> Were she to have known → Had she known This sentence expresses an unreal past condition, so the correct inversion is Had + Subject + V3. <b>Rule:</b> Had + Subject + V3 → Unreal past condition."},
+{"id": 19, "section": "SSC CGL 15/09/2025 (Shift 2)", "text": "Neither the students nor the teachers were aware that the schedule for the annual function have been changed by the principal.", "options": {"a": "Neither the students nor the teachers", "b": "were aware that the schedule", "c": "for the annual function", "d": "have been changed by the principal."}, "answer": "d", "exp": "<b>Correction:</b> have → has The subject of the reported clause is 'the schedule' (singular). Therefore, the present perfect passive should be 'has been changed'. <b>Rule:</b> The verb agrees with the actual subject of its own clause."},
+{"id": 20, "section": "SSC CGL 15/09/2025 (Shift 3)", "text": "The new algorithm, designed to process vast amounts of data, promises to revolutionise our approach to analytics, but it also rises concerns about data privacy and ethical implications.", "options": {"a": "The new algorithm, designed to process vast amounts of data,", "b": "promises to revolutionise our approach to analytics,", "c": "but it also rises concerns", "d": "about data privacy and ethical implications."}, "answer": "c", "exp": "<b>Correction:</b> rises → raises Raise = to cause, bring up (transitive verb, उठाना); Rise = to go up (intransitive verb, उठना). <b>Rule:</b> Raise + Object; Rise takes no object."},
+{"id": 21, "section": "SSC CGL 15/09/2025 (Shift 3)", "text": "The consensus was, not that the data itself was flawed, but that its interpretation by the junior analysts were overly optimistic given the volatile market conditions and the inherent uncertainties.", "options": {"a": "The consensus was, not that the data itself was flawed, but that its interpretation by the junior analysts", "b": "were overly optimistic", "c": "given the volatile market conditions", "d": "and the inherent uncertainties."}, "answer": "b", "exp": "<b>Correction:</b> were → was The subject is 'its interpretation' (singular), not 'analysts'. Note: 'data' is itself plural, so the earlier clause should correctly read 'the data itself were flawed', but their interpretation by the junior analysts was overly optimistic. <b>Rule:</b> The verb agrees with the main subject, not with the noun in the prepositional phrase."},
+{"id": 22, "section": "SSC CGL 16/09/2025 (Shift 1)", "text": "The committee has postponed the announcement until further informations is received from the regional offices.", "options": {"a": "The committee has postponed", "b": "the announcement until", "c": "further informations is received", "d": "from the regional offices."}, "answer": "c", "exp": "<b>Correction:</b> informations → information Information is an uncountable noun and never takes -s. <b>Rule:</b> Uncountable nouns: information, advice, furniture, luggage, equipment, baggage, etc. always come in singular form."},
+{"id": 23, "section": "SSC CGL 16/09/2025 (Shift 1)", "text": "Neither the scientists nor the research team were willing to compromise on the accuracy of the findings despite external pressure.", "options": {"a": "Neither the scientists nor the research team", "b": "were willing to compromise", "c": "on the accuracy of the findings", "d": "despite external pressure."}, "answer": "b", "exp": "<b>Correction:</b> were → was In Neither...nor, the verb agrees with the nearest subject. Nearest subject = 'the research team' (singular). <b>Rule:</b> In case of 'Neither...nor'/'Either...or', the verb agrees with the nearest subject."},
+{"id": 24, "section": "SSC CGL 16/09/2025 (Shift 2)", "text": "The central bank's decision not only aimed to curve inflation but also intended to stimulate economic growth, a dual objective that proved challenging to balance effectively.", "options": {"a": "The central bank's decision not only aimed to curve inflation", "b": "but also intended to stimulate economic growth,", "c": "a dual objective that proved challenging", "d": "to balance effectively."}, "answer": "a", "exp": "<b>Correction:</b> curve → curb Curb = control, restrain (correct). Curve = bend (incorrect here). <b>Rule:</b> Remember: Curb inflation, Curb corruption, Curb pollution."},
+{"id": 25, "section": "SSC CGL 16/09/2025 (Shift 3)", "text": "Hardly did the manager knew that his decision would trigger such a massive protest among the employees.", "options": {"a": "Hardly did the manager knew", "b": "that his decision would", "c": "trigger such a massive protest", "d": "among the employees."}, "answer": "a", "exp": "<b>Correction:</b> knew → know After 'did', always use the first form (V1) of the verb. <b>Rule:</b> Did/Does/Do + V1."},
+{"id": 26, "section": "SSC CGL 16/09/2025 (Shift 3)", "text": "What we need right now are a strong leader who can unite the team and restore confidence.", "options": {"a": "What we need right now", "b": "are a strong leader", "c": "who can unite the team", "d": "and restore confidence."}, "answer": "b", "exp": "<b>Correction:</b> are → is A noun clause beginning with 'What' usually takes a singular verb. <b>Rule:</b> What + clause usually takes a singular verb."},
+{"id": 27, "section": "SSC CGL 17/09/2025 (Shift 1)", "text": "The new research facility is equipped with advanced instruments that allows scientists to conduct complex molecular experiments.", "options": {"a": "The new research facility", "b": "is equipped with advanced instruments", "c": "that allows scientists to conduct", "d": "complex molecular experiments."}, "answer": "c", "exp": "<b>Correction:</b> allows → allow The relative pronoun 'that' refers to 'advanced instruments' (plural). <b>Rule:</b> A relative clause verb agrees with its antecedent."},
+{"id": 28, "section": "SSC CGL 17/09/2025 (Shift 2)", "text": "The fishermen caught many fishes from the lake yesterday and sold them in the market at a good price.", "options": {"a": "The fishermen caught many fishes", "b": "from the lake yesterday", "c": "and sold them in the market", "d": "at a good price."}, "answer": "a", "exp": "<b>Correction:</b> fishes → fish When referring to more than one fish of the same kind, the plural is 'fish'. 'Fishes' is used only when referring to different species of fish. <b>Rule:</b> Fish = plural of fish (same species); Fishes = different species of fish."},
+{"id": 29, "section": "SSC CGL 17/09/2025 (Shift 2)", "text": "Seldom we realize how fortunate we are to have access to clean water and healthy food.", "options": {"a": "Seldom we realize", "b": "how fortunate we are", "c": "to have access to clean water", "d": "and healthy food."}, "answer": "a", "exp": "<b>Correction:</b> Seldom we realize → Seldom do we realize When a negative adverb (Seldom, Never, Rarely, Hardly, Little) comes at the beginning of a sentence, subject-auxiliary inversion is required. <b>Rule:</b> Negative adverb at the beginning → Auxiliary + Subject + Verb."},
+{"id": 30, "section": "SSC CGL 17/09/2025 (Shift 3)", "text": "The committee is committed for ensuring that all members have an equal opportunity to voice their opinions.", "options": {"a": "The committee is committed", "b": "for ensuring that all members", "c": "have an equal opportunity", "d": "to voice their opinions."}, "answer": "b", "exp": "<b>Correction:</b> for → to The correct collocation is 'committed to' + V-ing/Noun. <b>Rule:</b> Committed to; Dedicated to; Accustomed to."},
+{"id": 31, "section": "SSC CGL 17/09/2025 (Shift 3)", "text": "It was not until she finished her degree and gained some experience did she feel confident enough to start her own business.", "options": {"a": "It was not until she finished her degree", "b": "and gained some experience", "c": "did she feel confident enough", "d": "to start her own business."}, "answer": "c", "exp": "<b>Correction:</b> did she feel → that she felt The pattern 'It was not until...that...' is a cleft sentence. It does not require inversion. Do not mix 'Not until + clause, did + subject + V1' with 'It was not until...that + subject + verb'. <b>Rule:</b> It was not until...that + subject + verb (no inversion)."},
+{"id": 32, "section": "SSC CGL 18/09/2025 (Shift 1)", "text": "After years of hard work he finally decided to call off from his struggling business and start anew in a different field.", "options": {"a": "After years of hard work", "b": "he finally decided to call off from", "c": "his struggling business and start anew", "d": "in a different field."}, "answer": "b", "exp": "<b>Correction:</b> call off from → move on from / give up Call off means 'cancel' and is not used with 'from' in this context. The intended meaning is to leave or give up the business. <b>Rule:</b> Call off = cancel; Give up = quit/leave."},
+{"id": 33, "section": "SSC CGL 18/09/2025 (Shift 1)", "text": "The museum, which located near the river, attracts thousands of visitors every year for its rare collection of ancient manuscripts.", "options": {"a": "The museum, which located near the river,", "b": "attracts thousands of visitors", "c": "every year for its rare collection", "d": "of ancient manuscripts."}, "answer": "a", "exp": "<b>Correction:</b> which located → which is located 'Situated' and 'taken aback' come in the passive voice only. Here 'located' means 'situated'. <b>Rule:</b> Use the passive voice: 'is located', not 'located'."},
+{"id": 34, "section": "SSC CGL 18/09/2025 (Shift 2)", "text": "The main actor, as well as the supporting cast, were praised for their outstanding performance in the play.", "options": {"a": "The main actor, as well as the supporting cast,", "b": "were praised", "c": "for their outstanding performance", "d": "in the play."}, "answer": "b", "exp": "<b>Correction:</b> were → was The verb agrees with the first subject when the conjunction is 'as well as'. <b>Rule:</b> Subject 1 + as well as + Subject 2 → Verb agrees with Subject 1."},
+{"id": 35, "section": "SSC CGL 18/09/2025 (Shift 2)", "text": "The minister assured that all possible measures were being taken to address the crisis effectively.", "options": {"a": "The minister assured that", "b": "all possible measures", "c": "were being taken to address", "d": "the crisis effectively."}, "answer": "a", "exp": "<b>Correction:</b> assured → assured us/assured everyone (or 'said') Assure takes a person as its object. It is a transitive verb. <b>Rule:</b> Assure + person + that-clause; Say + that-clause."},
+{"id": 36, "section": "SSC CGL 18/09/2025 (Shift 3)", "text": "He seldom if never visits his family, even though they live in the same town.", "options": {"a": "He seldom if never", "b": "visits his family,", "c": "even though they live", "d": "in the same town."}, "answer": "a", "exp": "<b>Correction:</b> if → ever The correct idiomatic expression is 'seldom if ever', meaning very rarely. <b>Rule:</b> Fixed idiom: Seldom if ever."},
+{"id": 37, "section": "SSC CGL 18/09/2025 (Shift 3)", "text": "The committee recommended that the proposal is reviewed by an independent expert to ensure impartiality before final approval.", "options": {"a": "The committee recommended that the proposal", "b": "is reviewed by an independent expert", "c": "to ensure impartiality", "d": "before final approval."}, "answer": "b", "exp": "<b>Correction:</b> is reviewed → be reviewed After verbs such as recommend, suggest, insist, demand, propose, use the mandative subjunctive mood: that + Subject + be + V3. <b>Rule:</b> Recommend/Suggest/Insist/Demand + that + Subject + be + V3."},
+{"id": 38, "section": "SSC CGL 19/09/2025 (Shift 1)", "text": "He drives very reckless on the highway, ignoring all traffic rules.", "options": {"a": "He drives", "b": "very reckless", "c": "on the highway, ignoring", "d": "all traffic rules."}, "answer": "b", "exp": "<b>Correction:</b> reckless → recklessly The verb 'drives' should be modified by an adverb, not an adjective. <b>Rule:</b> Verb is qualified by an adverb; adjective qualifies noun/pronoun."},
+{"id": 39, "section": "SSC CGL 19/09/2025 (Shift 1)", "text": "So profound was the impact of the new policy that it not only changed recruitment standards but also reduced with overall efficiency across departments.", "options": {"a": "So profound was the impact", "b": "of the new policy that it not only changed recruitment standards", "c": "but also reduced with overall efficiency", "d": "across departments."}, "answer": "c", "exp": "<b>Correction:</b> reduced with → reduced The verb 'reduce' does not take the preposition 'with'. <b>Rule:</b> Reduce something (not 'reduce with something')."},
+{"id": 40, "section": "SSC CGL 19/09/2025 (Shift 2)", "text": "The committee, comprising experts from various fields, have submitted its report to the governing body for review and approval.", "options": {"a": "The committee, comprising", "b": "experts from various fields,", "c": "have submitted its report to the governing", "d": "body for review and approval."}, "answer": "c", "exp": "<b>Correction:</b> have → has The subject is 'The committee' (singular). The participial phrase 'comprising experts...' does not affect subject-verb agreement. <b>Rule:</b> Collective noun (acting as one unit) → Singular verb."},
+{"id": 41, "section": "SSC CGL 19/09/2025 (Shift 2)", "text": "The number of participants in the advanced workshop were surprisingly low given the extensive promotion.", "options": {"a": "The number of participants", "b": "in the advanced workshop", "c": "were surprisingly low", "d": "given the extensive promotion."}, "answer": "c", "exp": "<b>Correction:</b> were → was The subject is 'The number', which is singular. <b>Rule:</b> 'The number of' + plural noun → singular verb; 'A number of' + plural noun → plural verb."},
+{"id": 42, "section": "SSC CGL 19/09/2025 (Shift 3)", "text": "She emphasized on the need for regular practice to improve performance.", "options": {"a": "She emphasized on", "b": "the need for", "c": "regular practice", "d": "to improve performance."}, "answer": "a", "exp": "<b>Correction:</b> emphasized on → emphasized 'Emphasize' does not take 'on' before its object. <b>Rule:</b> Emphasize something; Lay emphasis on something."},
+{"id": 43, "section": "SSC CGL 19/09/2025 (Shift 3)", "text": "Neither of the applicants have submitted the required documents to the office yet.", "options": {"a": "Neither of the applicants", "b": "have submitted", "c": "the required documents", "d": "to the office yet."}, "answer": "b", "exp": "<b>Correction:</b> have → has 'Neither of' + plural noun takes a singular verb. <b>Rule:</b> Neither of; Either of; Each of; Every one of → Singular verb."},
+{"id": 44, "section": "SSC CGL 20/09/2025 (Shift 1)", "text": "The newly discovered species was quite unique, possessing characteristics that set it apart from all its known relatives.", "options": {"a": "The newly discovered species was", "b": "quite unique, possessing characteristics", "c": "that set it apart from", "d": "all its known relatives."}, "answer": "a", "exp": "<b>Correction:</b> quite unique → unique 'Unique' means one of a kind and is considered a non-gradable adjective in standard exam grammar. It should not be modified by quite, very, or more. <b>Rule:</b> Avoid: very unique; quite unique; most unique."},
+{"id": 45, "section": "SSC CGL 20/09/2025 (Shift 2)", "text": "The committee insisted that each member provides a written report before the final presentation scheduled next week.", "options": {"a": "The committee insisted that", "b": "each member provides a written report", "c": "before the final presentation", "d": "scheduled next week."}, "answer": "b", "exp": "<b>Correction:</b> provides → provide After 'insist that', use the subjunctive mood: that + Subject + base verb. <b>Rule:</b> After insist, recommend, suggest, demand, propose → that + Subject + base verb / be + V3."},
+{"id": 46, "section": "SSC CGL 20/09/2025 (Shift 2)", "text": "The director explained that the report was delayed because the data was not yet collected.", "options": {"a": "The director explained that", "b": "the report was delayed", "c": "because the data", "d": "was not yet collected."}, "answer": "d", "exp": "<b>Correction:</b> was not yet collected → had not yet been collected 'Data' is plural, so it takes 'have/had', not 'was'. 'Yet' usually occurs with the perfect tenses. <b>Rule:</b> Data (plural) → have/had been + past participle."},
+{"id": 47, "section": "SSC CGL 20/09/2025 (Shift 3)", "text": "The company plans to hire new group of interns to assist with the upcoming marketing campaign this summer.", "options": {"a": "The company plans to hire", "b": "new group of interns", "c": "to assist with the upcoming", "d": "marketing campaign this summer."}, "answer": "b", "exp": "<b>Correction:</b> new group → a new group The singular countable noun 'group' requires the article 'a'. <b>Rule:</b> A singular countable noun must have an article (a/an) or another determiner."},
+{"id": 48, "section": "SSC CGL 21/09/2025 (Shift 1)", "text": "That the expedition faced unforeseen challenges in the treacherous mountain terrain were evident from their delayed return and exhausted appearance.", "options": {"a": "That the expedition faced unforeseen challenges", "b": "in the treacherous mountain terrain", "c": "were evident from their delayed return", "d": "and exhausted appearance."}, "answer": "c", "exp": "<b>Correction:</b> were → was The subject is the noun clause 'That the expedition faced unforeseen challenges', which is treated as a singular idea. Hence, singular verb 'was' should be used. <b>Rule:</b> A noun clause acting as the subject takes a singular verb."},
+{"id": 49, "section": "SSC CGL 21/09/2025 (Shift 1)", "text": "The sudden influx of tourists, attracted by the newly opened resort, have caused significant strain on the local infrastructure.", "options": {"a": "The sudden influx of tourists,", "b": "attracted by the newly opened resort,", "c": "have caused significant strain", "d": "on the local infrastructure."}, "answer": "c", "exp": "<b>Correction:</b> have → has The subject is 'The sudden influx' (singular) of tourists; the participial phrase 'attracted by...' is only a modifier. <b>Rule:</b> Ignore prepositional and participial phrases while identifying the subject."},
+{"id": 50, "section": "SSC CGL 21/09/2025 (Shift 2)", "text": "The new decorative pillows perfectly compliment the colors of the sofa and the curtains, tying the whole room together.", "options": {"a": "The new decorative pillows", "b": "perfectly compliment the colors", "c": "of the sofa and the curtains,", "d": "tying the whole room together."}, "answer": "b", "exp": "<b>Correction:</b> compliment → complement Complement = to complete or enhance something; Compliment = to praise someone. Here, the pillows enhance the colors of the sofa and curtains. <b>Rule:</b> Complement (enhance) vs Compliment (praise)."},
+{"id": 51, "section": "SSC CGL 21/09/2025 (Shift 3)", "text": "The research team concluded that each participant must submit their reports before the deadline on Monday.", "options": {"a": "The research team concluded that", "b": "each participant must submit", "c": "their reports before", "d": "the deadline on Monday."}, "answer": "c", "exp": "<b>Correction:</b> their reports → his or her report 'Each participant' is singular. Therefore, the possessive adjective and the noun should also be singular. <b>Rule:</b> Each, Every, Either, Neither → Singular noun, singular verb, and singular possessive adjective."},
+{"id": 52, "section": "SSC CGL 21/09/2025 (Shift 3)", "text": "The players in the national team works tirelessly to improve their performance before every major tournament.", "options": {"a": "The players in the national team", "b": "works tirelessly", "c": "to improve their performance", "d": "before every major tournament."}, "answer": "b", "exp": "<b>Correction:</b> works → work The subject 'The players' is plural. <b>Rule:</b> Plural subject → Plural verb."},
+{"id": 53, "section": "SSC CGL 22/09/2025 (Shift 1)", "text": "The CEO, along with his senior advisors, are traveling to the international conference to announce the company's latest technological breakthrough.", "options": {"a": "The CEO, along with his senior advisors,", "b": "are traveling to the international conference", "c": "to announce the company's", "d": "latest technological breakthrough."}, "answer": "b", "exp": "<b>Correction:</b> are → is The phrase 'along with his senior advisors' does not affect the verb. The main subject is 'The CEO' (singular). <b>Rule:</b> Along with / As well as / Together with → Verb agrees with the first subject."},
+{"id": 54, "section": "SSC CGL 22/09/2025 (Shift 2)", "text": "The strict rules of the library don't let students to take more than two books out at a time, which is often inconvenient for researchers.", "options": {"a": "The strict rules of the library don't let students", "b": "to take more than two books", "c": "out at a time, which is often", "d": "inconvenient for researchers."}, "answer": "b", "exp": "<b>Correction:</b> to take → take After 'let', we use the bare infinitive (base verb) without 'to'. <b>Rule:</b> Let + Object + base verb."},
+{"id": 55, "section": "SSC CGL 22/09/2025 (Shift 2)", "text": "My neighbour constantly complains for the noise coming from the children playing in the park.", "options": {"a": "coming from", "b": "in the park", "c": "My neighbor", "d": "complains for"}, "answer": "d", "exp": "<b>Correction:</b> complains for → complains about The correct expression is 'complain about something' / 'complain to someone'. <b>Rule:</b> Complain about something; Complain to someone."},
+{"id": 56, "section": "SSC CGL 22/09/2025 (Shift 3)", "text": "The manager appreciated not only her dedication but also for her innovative ideas. Everyone was motivated by her example.", "options": {"a": "The manager appreciated", "b": "not only her dedication", "c": "but also for her innovative ideas.", "d": "Everyone was motivated by her example."}, "answer": "c", "exp": "<b>Correction:</b> Remove 'for' After 'appreciated', both objects should be parallel. <b>Rule:</b> Not only...but also requires parallel grammatical structure."},
+{"id": 57, "section": "SSC CGL 23/09/2025 (Shift 1)", "text": "He seldom if never agrees to attend public events without thorough preparation.", "options": {"a": "seldom", "b": "never", "c": "attend", "d": "without"}, "answer": "b", "exp": "<b>Correction:</b> never → ever The correct idiomatic expression is 'seldom if ever', meaning very rarely. <b>Rule:</b> Fixed pair: Seldom if ever."},
+{"id": 58, "section": "SSC CGL 23/09/2025 (Shift 1)", "text": "They are planning to build a research centre near the river where will scientists conduct environmental studies in the coming years.", "options": {"a": "They are planning to build", "b": "a research centre near the river", "c": "where will scientists conduct", "d": "environmental studies in the coming years."}, "answer": "c", "exp": "<b>Correction:</b> where will scientists conduct → where scientists will conduct After the relative adverb 'where', we use an assertive sentence, not an interrogative sentence. <b>Rule:</b> A relative clause follows Subject + Verb, not Verb + Subject."},
+{"id": 59, "section": "SSC CGL 23/09/2025 (Shift 2)", "text": "A large number of equipments were delivered to the warehouse last week to support the upcoming production schedule without any delay.", "options": {"a": "A large number of equipments were delivered to the warehouse", "b": "last week", "c": "to support the upcoming production schedule", "d": "without any delay."}, "answer": "a", "exp": "<b>Correction:</b> equipments → equipment Equipment is an uncountable noun and never takes -s. <b>Rule:</b> Uncountable nouns: equipment, furniture, luggage, information, advice."},
+{"id": 60, "section": "SSC CGL 23/09/2025 (Shift 3)", "text": "The cybersecurity team is proficient for detecting vulnerabilities in legacy systems that often evade conventional monitoring tools and protocols during routine audits.", "options": {"a": "The cybersecurity team is proficient for detecting", "b": "vulnerabilities in legacy systems that often evade", "c": "conventional monitoring tools and protocols", "d": "during routine audits."}, "answer": "a", "exp": "<b>Correction:</b> proficient for → proficient in The correct preposition with 'proficient' is 'in'. <b>Rule:</b> Proficient in; Skilled at/in; Good at."},
+{"id": 61, "section": "SSC CGL 23/09/2025 (Shift 3)", "text": "Had she not postponed the meeting several times, the committee would have had a greater opportunity to discussing the budget allocations in detail before the quarterly report was finalized.", "options": {"a": "Had she not postponed the meeting several times,", "b": "the committee would have had a greater opportunity", "c": "to discussing the budget allocations in detail", "d": "before the quarterly report was finalized."}, "answer": "c", "exp": "<b>Correction:</b> to discussing → to discuss After 'opportunity', we use the infinitive (to + base verb), not a gerund. <b>Rule:</b> Opportunity + to + base verb."},
+{"id": 62, "section": "SSC CGL 24/09/2025 (Shift 1)", "text": "She enjoys reading novels, listening to music and to paint landscapes during her free time.", "options": {"a": "She enjoys reading novels", "b": ", listening to music", "c": "and to paint landscapes", "d": "during her free time."}, "answer": "c", "exp": "<b>Correction:</b> to paint → painting The sentence requires parallel structure. <b>Rule:</b> Items in a series should have the same grammatical form."},
+{"id": 63, "section": "SSC CGL 24/09/2025 (Shift 2)", "text": "The ancient tree is famous for it's beautiful, sprawling branches which provide shade for the entire park during the hot summer months.", "options": {"a": "The ancient tree is famous for", "b": "it's beautiful, sprawling branches", "c": "which provide shade for the entire park", "d": "during the hot summer months."}, "answer": "b", "exp": "<b>Correction:</b> it's → its Its = possessive adjective; It's = it is/it has. <b>Rule:</b> Its = possession; It's = It is/It has."},
+{"id": 64, "section": "SSC CGL 24/09/2025 (Shift 2)", "text": "The volunteers served sandwiches to all the hungry children at the shelter on paper plates decorated with colorful patterns.", "options": {"a": "The volunteers served sandwiches", "b": "to all the hungry children", "c": "at the shelter on paper plates", "d": "decorated with colorful patterns."}, "answer": "c", "exp": "<b>Correction:</b> Ambiguous modifier — should be: '...to all the hungry children at the shelter, on paper plates decorated with colorful patterns.' The phrase 'decorated with colorful patterns' incorrectly appears to modify 'children' or 'shelter'. It should clearly modify 'paper plates'. <b>Rule:</b> Place modifiers next to the words they describe."},
+{"id": 65, "section": "SSC CGL 24/09/2025 (Shift 3)", "text": "The volunteers, while collecting supplies for the flood victims, the storage facility was inspected for safety compliance.", "options": {"a": "The volunteers,", "b": "while collecting supplies for the flood victims,", "c": "the storage facility was inspected", "d": "for safety compliance."}, "answer": "c", "exp": "<b>Correction:</b> the storage facility was inspected → inspected the storage facility The dangling clause needs an active-voice main verb whose subject is 'The volunteers'. <b>Rule:</b> Subject + Verb (Active Voice), not a passive construction that leaves the subject dangling."},
+{"id": 66, "section": "SSC CGL 25/09/2025 (Shift 1)", "text": "She apologised of the delay and promised to submit the report soon.", "options": {"a": "She apologised", "b": "of the delay and", "c": "promised to submit", "d": "the report soon."}, "answer": "b", "exp": "<b>Correction:</b> of → for The correct expression is 'apologise for something'. <b>Rule:</b> Apologise for something; Apologise to someone."},
+{"id": 67, "section": "SSC CGL 25/09/2025 (Shift 1)", "text": "Hardly had the preliminary review been completed when the auditors noticed that several financial projections was calculated using outdated parameters.", "options": {"a": "Hardly had the preliminary review been completed", "b": "when the auditors noticed", "c": "that several financial projections", "d": "was calculated using outdated parameters."}, "answer": "d", "exp": "<b>Correction:</b> was → were The subject is 'several financial projections' (plural), so the passive verb must also be plural. <b>Rule:</b> Plural subject takes a plural verb, even in the passive voice."},
+{"id": 68, "section": "SSC CGL 25/09/2025 (Shift 2)", "text": "If the guidelines is enforced strictly every participating institution will be required to update its database before the annual review begins.", "options": {"a": "If the guidelines is enforced strictly", "b": "every participating institution", "c": "will be required to update its database", "d": "before the annual review begins."}, "answer": "a", "exp": "<b>Correction:</b> is → are The subject 'guidelines' is plural, so the verb must also be plural. <b>Rule:</b> Plural subject → Plural verb."},
+{"id": 69, "section": "SSC CGL 25/09/2025 (Shift 3)", "text": "The coordinator carefully explained about the revised procedures to all the participants during the orientation session so that everyone could follow the updated guidelines without any confusion or delay.", "options": {"a": "The coordinator carefully explained about the revised procedures", "b": "to all the participants during the orientation session", "c": "so that everyone could follow the updated guidelines", "d": "without any confusion or delay."}, "answer": "a", "exp": "<b>Correction:</b> explained about → explained 'Explain' does not take the preposition 'about'. <b>Rule:</b> Explain something; Discuss something; Describe something (no 'about' after these verbs)."},
+{"id": 70, "section": "SSC CGL 25/09/2025 (Shift 3)", "text": "The novice programmer made a blunder mistake in the coding, which crashed the entire system.", "options": {"a": "The novice programmer made", "b": "a blunder mistake", "c": "in the coding, which", "d": "crashed the entire system."}, "answer": "b", "exp": "<b>Correction:</b> blunder mistake → blunder This is a redundant expression because 'blunder' itself means a serious mistake. <b>Rule:</b> Avoid redundant word pairs such as: blunder mistake, return back, repeat again."},
+{"id": 71, "section": "SSC CGL 26/09/2025 (Shift 1)", "text": "Had the manager explained the policy clearly to the staff members, they would not have made so many confusions.", "options": {"a": "Had the manager explained the policy clearly", "b": "to the staff members,", "c": "they would not have made", "d": "so many confusions."}, "answer": "d", "exp": "<b>Correction:</b> confusions → mistakes 'Confusion' is generally an uncountable noun and has no plural form. <b>Rule:</b> Confusion is uncountable."},
+{"id": 72, "section": "SSC CGL 26/09/2025 (Shift 2)", "text": "The manager distributed many important informations during the morning briefing, causing some confusion.", "options": {"a": "The manager distributed", "b": "many important informations", "c": "during the morning briefing,", "d": "causing some confusion."}, "answer": "b", "exp": "<b>Correction:</b> informations → information Information is an uncountable noun. <b>Rule:</b> Never use: informations, advices, furnitures."},
+{"id": 73, "section": "SSC CGL 26/09/2025 (Shift 3)", "text": "The company has decided to implement new strategies in order to boost its sale and improve customer satisfaction.", "options": {"a": "The company has decided", "b": "to implement new strategies", "c": "in order to boost its sale", "d": "and improve customer satisfaction."}, "answer": "c", "exp": "<b>Correction:</b> sale → sales The idiomatic expression is 'boost sales'. <b>Rule:</b> Common business collocations: increase sales; boost sales; improve sales."},
+{"id": 74, "section": "SSC CGL 14/10/2025 (Shift 1)", "text": "The manager appreciated not only her dedication but also for her innovative ideas. Everyone was motivated by her example.", "options": {"a": "The manager appreciated", "b": "not only her dedication", "c": "but also for her innovative ideas.", "d": "Everyone was motivated by her example."}, "answer": "c", "exp": "<b>Correction:</b> Remove 'for' After 'appreciated', both objects must be parallel. <b>Rule:</b> Not only...but also → Maintain parallel structure."},
+{"id": 75, "section": "SSC CGL 14/10/2025 (Shift 1)", "text": "He seldom if never visits his family, even though they live in the same town.", "options": {"a": "He seldom if never", "b": "visits his family,", "c": "even though they live", "d": "in the same town."}, "answer": "a", "exp": "<b>Correction:</b> never → ever The correct idiomatic expression is 'seldom if ever'. <b>Rule:</b> Fixed idiom: Seldom if ever."},
+{"id": 76, "section": "SSC CGL 14/10/2025 (Shift 1)", "text": "Neither of the applicants have submitted the required documents to the office yet.", "options": {"a": "Neither of the applicants", "b": "have submitted", "c": "the required documents", "d": "to the office yet."}, "answer": "b", "exp": "<b>Correction:</b> have → has 'Neither of' + plural noun takes a singular verb. <b>Rule:</b> Neither of / Either of / Each of → Singular verb."},
+{"id": 77, "section": "SSC CGL 14/10/2025 (Shift 2)", "text": "The training programme of the new coach was more effective than the previous coach, as it offered better structure and helped participants stay focused for a greater portion of the day.", "options": {"a": "The training programme of the new coach was", "b": "more effective than the previous coach,", "c": "as it offered better structure and helped", "d": "participants stay focused for a greater portion of the day."}, "answer": "b", "exp": "<b>Correction:</b> than the previous coach → than that of the previous coach The comparison should be between training programmes, not between a programme and a coach. <b>Rule:</b> In comparisons, compare like with like (the equals)."},
+{"id": 78, "section": "Matriculation Level 24/07/2025 (Shift-1)", "text": "The suspect was charged of murder after the police found the weapon in his car.", "options": {"a": "The suspect was charged", "b": "of murder after", "c": "the police found", "d": "the weapon in his car."}, "answer": "b", "exp": "<b>Correction:</b> of murder → with murder The correct collocation is 'charged with a crime'. <b>Rule:</b> Charged with a crime; Accused of a crime."},
+{"id": 79, "section": "Matriculation Level 24/07/2025 (Shift-1)", "text": "We walked across the riverbank and rested under the old bridge.", "options": {"a": "We walked", "b": "across the riverbank", "c": "and rested", "d": "under the old bridge."}, "answer": "b", "exp": "<b>Correction:</b> across the riverbank → along the riverbank 'Across' means from one side to the other, whereas 'along' means beside or following the length of something. <b>Rule:</b> Across = cross from one side to another; Along = beside/following."},
+{"id": 80, "section": "Matriculation Level 24/07/2025 (Shift-1)", "text": "The victim went to the police station to lodge a FIR.", "options": {"a": "The victim went", "b": "to the police station", "c": "to lodge", "d": "a FIR."}, "answer": "d", "exp": "<b>Correction:</b> a FIR → an FIR FIR begins with the vowel sound 'ए', so the article should be 'an'. <b>Rule:</b> Use 'an' before words beginning with a vowel sound, not just a vowel letter."},
+{"id": 81, "section": "Matriculation Level 24/07/2025 (Shift-1)", "text": "They gave me a furniture that matched perfectly with the room.", "options": {"a": "They gave me", "b": "a furniture", "c": "that matched perfectly", "d": "with the room."}, "answer": "b", "exp": "<b>Correction:</b> a furniture → a piece of furniture Furniture is an uncountable noun. <b>Rule:</b> Furniture, luggage, advice, information, equipment → Uncountable nouns."},
+{"id": 82, "section": "Matriculation Level 24/07/2025 (Shift-1)", "text": "The information are very important and should be checked carefully.", "options": {"a": "The information are", "b": "very important", "c": "and should be", "d": "checked carefully."}, "answer": "a", "exp": "<b>Correction:</b> are → is Information is an uncountable singular noun. <b>Rule:</b> Uncountable nouns take a singular verb."},
+{"id": 83, "section": "Matriculation Level 25/07/2025 (Shift-1)", "text": "Everyone in the class were excited to see the results of the competition.", "options": {"a": "Everyone in the class", "b": "were excited", "c": "to see the results", "d": "of the competition."}, "answer": "b", "exp": "<b>Correction:</b> were → was Everyone is a singular indefinite pronoun. <b>Rule:</b> Everyone, Everybody, Someone, Anybody, Nobody → Singular verb."},
+{"id": 84, "section": "Matriculation Level 25/07/2025 (Shift-1)", "text": "She speaks very soft when she is in the library with her friends.", "options": {"a": "She speaks very soft", "b": "when she is in", "c": "the library", "d": "with her friends."}, "answer": "a", "exp": "<b>Correction:</b> soft → softly The verb 'speaks' should be modified by an adverb. <b>Rule:</b> Verb → Adverb."},
+{"id": 85, "section": "Matriculation Level 25/07/2025 (Shift-1)", "text": "He saw an eagle a sparrow and a owl flying above the trees.", "options": {"a": "He saw an eagle", "b": "a sparrow", "c": "and a owl", "d": "flying above the trees."}, "answer": "c", "exp": "<b>Correction:</b> a owl → an owl 'Owl' begins with a vowel sound, so 'an' is used. <b>Rule:</b> Use 'an' before words beginning with a vowel sound."},
+{"id": 86, "section": "Matriculation Level 25/07/2025 (Shift-1)", "text": "She gave a strongly reply to the accusations made against her.", "options": {"a": "She gave a", "b": "strongly reply", "c": "to the accusations", "d": "made against her."}, "answer": "b", "exp": "<b>Correction:</b> strongly reply → strong reply The noun 'reply' should be modified by the adjective 'strong', not the adverb 'strongly'. <b>Rule:</b> Adjective + Noun."},
+{"id": 87, "section": "Matriculation Level 25/07/2025 (Shift-1)", "text": "He repeated again the instructions so everyone could understand clearly.", "options": {"a": "He repeated again", "b": "the instructions", "c": "so everyone could", "d": "understand clearly."}, "answer": "a", "exp": "<b>Correction:</b> repeated again → repeated 'Repeat' already means say or do again, so 'again' is redundant. <b>Rule:</b> Avoid redundant expressions: repeat again, return back, revert back."},
+{"id": 88, "section": "Matriculation Level 26/07/2025 (Shift-1)", "text": "The manager asked her to come up with to a new solution for the recurring problem.", "options": {"a": "The manager asked her", "b": "to come up with", "c": "to a new solution", "d": "for the recurring problem."}, "answer": "c", "exp": "<b>Correction:</b> to a new solution → a new solution The phrasal verb 'come up with' is directly followed by its object. <b>Rule:</b> Come up with + Object."},
+{"id": 89, "section": "Matriculation Level 26/07/2025 (Shift-1)", "text": "The manager pointed out the mistake out during the meeting yesterday.", "options": {"a": "The manager pointed out", "b": "the mistake out", "c": "during the meeting", "d": "yesterday."}, "answer": "b", "exp": "<b>Correction:</b> the mistake out → the mistake 'Point out' is a phrasal verb; 'out' should not be repeated. <b>Rule:</b> Do not repeat particles in phrasal verbs."},
+{"id": 90, "section": "Matriculation Level 26/07/2025 (Shift-1)", "text": "He writes poems and recite them at school events.", "options": {"a": "He writes", "b": "poems and recite", "c": "them", "d": "at school events."}, "answer": "b", "exp": "<b>Correction:</b> recite → recites The subject 'He' is singular, so both verbs should be in the singular form. <b>Rule:</b> Maintain parallel verb forms with the same subject."},
+{"id": 91, "section": "Matriculation Level 26/07/2025 (Shift-1)", "text": "She is a talented singer and a great dance in the group.", "options": {"a": "She is a", "b": "talented singer and", "c": "a great dance", "d": "in the group."}, "answer": "c", "exp": "<b>Correction:</b> a dance → a dancer After the article 'a', a noun for the person is required, not the activity noun 'dance'. <b>Rule:</b> Use the correct person noun: Teach→Teacher; Sing→Singer; Dance→Dancer."},
+{"id": 92, "section": "Matriculation Level 26/07/2025 (Shift-1)", "text": "She described the incident in much details to the police.", "options": {"a": "She described", "b": "the incident", "c": "in much details", "d": "to the police."}, "answer": "c", "exp": "<b>Correction:</b> much details → much detail 'Detail' is uncountable in the expression 'in much detail'. <b>Rule:</b> In detail/In much detail; Many details; not 'Much details'."},
+{"id": 93, "section": "Matriculation Level 28/07/2025 (Shift-1)", "text": "The dog bark loudly at night when it heard a strange noise.", "options": {"a": "The dog bark", "b": "loudly at night", "c": "when it heard", "d": "a strange noise."}, "answer": "a", "exp": "<b>Correction:</b> bark → barked The sentence describes a past event, so the verb should be in the past tense. <b>Rule:</b> Maintain tense consistency in a sentence."},
+{"id": 94, "section": "Matriculation Level 28/07/2025 (Shift-1)", "text": "To ensure fairness during the competition, the judges carefully examined every entries before making their final decision on the winners.", "options": {"a": "To ensure fairness during the", "b": "competition, the judges carefully", "c": "examined every entries before making", "d": "their final decision on the winners."}, "answer": "c", "exp": "<b>Correction:</b> every entries → every entry 'Every' is followed by a singular countable noun. <b>Rule:</b> Every + Singular Noun; Each + Singular Noun."},
+{"id": 95, "section": "Matriculation Level 28/07/2025 (Shift-1)", "text": "She has been working as a officer in this department for years.", "options": {"a": "She has been", "b": "working as", "c": "a officer in this", "d": "department for years."}, "answer": "c", "exp": "<b>Correction:</b> a officer → an officer 'Officer' begins with a vowel sound, so 'an' should be used. <b>Rule:</b> Use 'an' before words beginning with a vowel sound."},
+{"id": 96, "section": "Matriculation Level 28/07/2025 (Shift-1)", "text": "This phone is expensiver than the model I used before for work.", "options": {"a": "This phone is", "b": "expensiver than", "c": "the model I used before", "d": "for work."}, "answer": "b", "exp": "<b>Correction:</b> expensiver → more expensive Long adjectives (of three or more syllables) form the comparative with 'more', not '-er'. <b>Rule:</b> Tall→Taller; Big→Bigger; Expensive→More expensive."},
+{"id": 97, "section": "Matriculation Level 28/07/2025 (Shift-1)", "text": "She glanced at the papers and saw some lines of poetry.", "options": {"a": "She glanced", "b": "at the papers", "c": "and saw some", "d": "lines of poetry."}, "answer": "b", "exp": "<b>Correction:</b> papers → paper 'Papers' (documents) should be 'paper' (writing material) in this context. <b>Rule:</b> Note: the original option (d) 'lines of poetries' is also incorrect since 'poetry' is uncountable; it should read 'the poem'."},
+{"id": 98, "section": "Matriculation Level 29/07/2025 (Shift-1)", "text": "During the heated press conference, the mayor steadfastly refused to comment in the unfolding scandal.", "options": {"a": "During the heated press", "b": "conference, the mayor steadfastly", "c": "refused to comment", "d": "in the unfolding scandal."}, "answer": "d", "exp": "<b>Correction:</b> in → on The correct collocation is 'comment on something'. <b>Rule:</b> Comment on; Depend on; Concentrate on."},
+{"id": 99, "section": "Matriculation Level 29/07/2025 (Shift-1)", "text": "The train will be reached the station before sunrise tomorrow.", "options": {"a": "The train will be reached", "b": "the station", "c": "before sunrise", "d": "tomorrow."}, "answer": "a", "exp": "<b>Correction:</b> will be reached → will reach 'Reach' is a transitive verb and is normally used in the active voice when the subject performs the action. <b>Rule:</b> Reach a place; Arrive at/in a place (not 'be reached' in this context)."},
+{"id": 100, "section": "Matriculation Level 29/07/2025 (Shift-1)", "text": "Between the two singers, Anita's style is more simple than that of Meena according to the judges.", "options": {"a": "Between the two singers,", "b": "Anita's style is more simple", "c": "than that of Meena", "d": "according to the judges."}, "answer": "b", "exp": "<b>Correction:</b> more simple → simpler 'Simple' is a short adjective and forms its comparative by adding '-er'. <b>Rule:</b> Short adjectives → -er (Simple → Simpler)."},
+{"id": 101, "section": "Matriculation Level 29/07/2025 (Shift-1)", "text": "I found the most simplest method to solve the equation.", "options": {"a": "I found the", "b": "most simplest method", "c": "to solve", "d": "the equation."}, "answer": "b", "exp": "<b>Correction:</b> most simplest → simplest Do not use 'most' with the superlative form (-est). Use 'simplest'. <b>Rule:</b> Avoid double comparatives/superlatives: most simplest, more better → use simplest."},
+{"id": 102, "section": "Matriculation Level 29/07/2025 (Shift-1)", "text": "Of all the athletes she was the faster in the 100m race this year.", "options": {"a": "Of all the athletes", "b": "she was the faster", "c": "in the 100m race", "d": "this year."}, "answer": "b", "exp": "<b>Correction:</b> the faster → the fastest The phrase 'of all' requires the superlative degree. <b>Rule:</b> Between two → Comparative; Among/Of all → Superlative."},
+{"id": 103, "section": "Matriculation Level 30/07/2025 (Shift-1)", "text": "I have known him since ten years and we still meet regularly.", "options": {"a": "I have known him", "b": "since ten years", "c": "and we still", "d": "meet regularly."}, "answer": "b", "exp": "<b>Correction:</b> since ten years → for ten years 'Since' is used with a starting point; 'for' is used with a period of time. <b>Rule:</b> Since 2015/Since Monday; For ten years/For two months."},
+{"id": 104, "section": "Matriculation Level 30/07/2025 (Shift-1)", "text": "She woke up early finished her work and go out for a walk.", "options": {"a": "She woke up early", "b": "finished her work", "c": "and go out", "d": "for a walk."}, "answer": "c", "exp": "<b>Correction:</b> go → went The sentence describes completed actions in the past. All verbs should be in the simple past tense. <b>Rule:</b> Maintain parallel tense in a series of actions."},
+{"id": 105, "section": "Matriculation Level 30/07/2025 (Shift-1)", "text": "A umbrella was left behind in the classroom after the lecture.", "options": {"a": "A umbrella", "b": "was left behind", "c": "in the classroom", "d": "after the lecture."}, "answer": "a", "exp": "<b>Correction:</b> A umbrella → An umbrella 'Umbrella' begins with a vowel sound, so 'an' should be used. <b>Rule:</b> Use 'an' before words beginning with a vowel sound."},
+{"id": 106, "section": "Matriculation Level 30/07/2025 (Shift-1)", "text": "They have lived in this village since many years happily.", "options": {"a": "They have lived", "b": "in this village", "c": "since many years", "d": "happily."}, "answer": "c", "exp": "<b>Correction:</b> since many years → for many years 'Many years' expresses a duration, so 'for' should be used. <b>Rule:</b> Since + point of time; For + period of time."},
+{"id": 107, "section": "Matriculation Level 31/07/2025 (Shift-1)", "text": "When we arrived at the station, the train already leaves for its destination.", "options": {"a": "When we arrived", "b": "at the station, the train", "c": "already leaves", "d": "for its destination."}, "answer": "c", "exp": "<b>Correction:</b> already leaves → had already left The train left before we arrived, so the Past Perfect is required. <b>Rule:</b> Earlier past action → Past Perfect; Later past action → Simple Past."},
+{"id": 108, "section": "Matriculation Level 31/07/2025 (Shift-1)", "text": "The technician will look down the issue to find out what went wrong.", "options": {"a": "The technician", "b": "will look down", "c": "the issue to find out", "d": "what went wrong."}, "answer": "b", "exp": "<b>Correction:</b> look down → look into The correct phrasal verb is 'look into' (= investigate). <b>Rule:</b> Look into = investigate; Look down on = disrespect."},
+{"id": 109, "section": "Matriculation Level 01/08/2025 (Shift-1)", "text": "The children were playing in the garden happily when they are startled by an eerie sound.", "options": {"a": "The children were playing", "b": "in the garden happily", "c": "when they are startled", "d": "by an eerie sound."}, "answer": "c", "exp": "<b>Correction:</b> are startled → were startled The sentence narrates a past event, so the verb should be in the simple past passive. <b>Rule:</b> Maintain tense consistency."},
+{"id": 110, "section": "Matriculation Level 01/08/2025 (Shift-1)", "text": "The driver stop the bus suddenly to let a herd of cows cross the road.", "options": {"a": "The driver stop", "b": "the bus suddenly", "c": "to let a herd of cows", "d": "cross the road."}, "answer": "a", "exp": "<b>Correction:</b> stop → stopped The sentence describes a completed action in the past, so 'stopped' is required. <b>Rule:</b> Use the past tense when narrating completed past events."},
+{"id": 111, "section": "Higher Secondary 24/07/2025 (Shift-2)", "text": "He must have been very busy last week because he is not answering his phone now.", "options": {"a": "He must have been", "b": "very busy last week", "c": "because he is not answering his phone now.", "d": "No error"}, "answer": "c", "exp": "<b>Correction:</b> is not answering his phone now → was not answering his phone The sentence mixes past time ('last week') with present continuous ('is not answering now'), creating a tense inconsistency. <b>Rule:</b> Maintain tense consistency throughout the sentence."},
+{"id": 112, "section": "Higher Secondary 24/07/2025 (Shift-2)", "text": "The painting that had been stolen long ago was recovered and were displayed in the museum yesterday.", "options": {"a": "The painting that had been stolen long ago", "b": "was recovered", "c": "and were displayed in the museum", "d": "yesterday."}, "answer": "c", "exp": "<b>Correction:</b> were displayed → was displayed The subject 'painting' is singular, so the verb must also be singular. <b>Rule:</b> Singular subject → Singular verb."},
+{"id": 113, "section": "Higher Secondary 25/07/2025 (Shift-2)", "text": "The samples which were collected from the site and sealed for testing is now ready for analysis in the laboratory.", "options": {"a": "The samples which were collected from the site", "b": "and sealed for testing", "c": "is now ready for analysis", "d": "in the laboratory."}, "answer": "c", "exp": "<b>Correction:</b> is now ready → are now ready The subject 'samples' is plural. <b>Rule:</b> Plural subject → Plural verb."},
+{"id": 114, "section": "Higher Secondary 25/07/2025 (Shift-2)", "text": "She dived on the lake during summer vacation.", "options": {"a": "dived", "b": "on", "c": "lake", "d": "during"}, "answer": "b", "exp": "<b>Correction:</b> on The correct preposition is 'into' when referring to entering water. <b>Rule:</b> Dive into water (not 'on water')."},
+{"id": 115, "section": "Higher Secondary 26/07/2025 (Shift-2)", "text": "Each students in the science club participated in the workshop conducted by the visiting professor last weekend.", "options": {"a": "Each students in the science club", "b": "participated in the workshop", "c": "conducted by the visiting professor", "d": "last weekend."}, "answer": "a", "exp": "<b>Correction:</b> Each students → Each student 'Each' is followed by a singular noun. <b>Rule:</b> Each + Singular Noun + Singular Verb."},
+{"id": 116, "section": "Higher Secondary 26/07/2025 (Shift-2)", "text": "The artist who created the mural and inspired many young painters were praised by the cultural association at the annual festival.", "options": {"a": "The artist who created the mural", "b": "and inspired many young painters", "c": "were praised by the cultural association", "d": "at the annual festival."}, "answer": "c", "exp": "<b>Correction:</b> were praised → was praised The subject 'artist' is singular. <b>Rule:</b> Ignore the relative clause while identifying the main subject."},
+{"id": 117, "section": "Higher Secondary 28/07/2025 (Shift-2)", "text": "The speaker explained the concept clearly so that everyone understand the topic without difficulty during the workshop.", "options": {"a": "The speaker explained the concept clearly", "b": "so that everyone", "c": "understand the topic without difficulty", "d": "during the workshop."}, "answer": "c", "exp": "<b>Correction:</b> understand → understood/could understand After a past-tense main clause ('explained'), the subordinate clause should also be in the past. <b>Rule:</b> Maintain tense consistency in purpose clauses."},
+{"id": 118, "section": "Higher Secondary 28/07/2025 (Shift-2)", "text": "She looked on the document to verify the final instructions.", "options": {"a": "looked", "b": "on", "c": "verify", "d": "document"}, "answer": "b", "exp": "<b>Correction:</b> on The correct phrasal verb is 'looked at', not 'looked on'. <b>Rule:</b> Look at = see."},
+{"id": 119, "section": "Higher Secondary 29/07/2025 (Shift-2)", "text": "We are looking forward to hear from you regarding the interview scheduled for tomorrow.", "options": {"a": "We are looking forward", "b": "to hear from you", "c": "regarding the interview", "d": "scheduled for tomorrow."}, "answer": "b", "exp": "<b>Correction:</b> to hear → to hearing 'Look forward to' is followed by a gerund (V-ing). <b>Rule:</b> Look forward to + Verb-ing."},
+{"id": 120, "section": "Higher Secondary 29/07/2025 (Shift-2)", "text": "They was preparing for the event when the chief guest arrived.", "options": {"a": "preparing", "b": "arrived", "c": "event", "d": "was"}, "answer": "d", "exp": "<b>Correction:</b> was → were The subject 'They' is plural, so the verb should be 'were'. <b>Rule:</b> Plural subject → Plural verb (were)."},
+{"id": 121, "section": "Higher Secondary 30/07/2025 (Shift-2)", "text": "The revised instructions for the examination circulated to all centers yesterday is still unclear to many candidates according to the supervisors.", "options": {"a": "The revised instructions for the examination", "b": "circulated to all centers yesterday", "c": "is still unclear to many candidates", "d": "according to the supervisors."}, "answer": "c", "exp": "<b>Correction:</b> is → are The subject 'instructions' is plural, so the verb must also be plural. <b>Rule:</b> Plural subject → Plural verb."},
+{"id": 122, "section": "Higher Secondary 30/07/2025 (Shift-2)", "text": "He walked into the instructions to check if the steps were clear.", "options": {"a": "walked", "b": "into", "c": "instructions", "d": "clear"}, "answer": "a", "exp": "<b>Correction:</b> walked (into) → looked (into) The correct verb is 'looked into' or 'went through', not 'walked into'. <b>Rule:</b> Walk into = enter physically; Look into = examine/investigate."},
+{"id": 123, "section": "Higher Secondary 31/07/2025 (Shift-2)", "text": "The meeting minutes recorded by the assistant contains several inaccuracies that could cause confusion during future reviews.", "options": {"a": "The meeting minutes recorded by the assistant", "b": "contains several inaccuracies", "c": "that could cause confusion", "d": "during future reviews."}, "answer": "b", "exp": "<b>Correction:</b> contains → contain 'Minutes' (record of a meeting) is treated as a plural noun. <b>Rule:</b> Meeting minutes → Plural verb."},
+{"id": 124, "section": "Higher Secondary 31/07/2025 (Shift-2)", "text": "She usually is forgetting her keys at home.", "options": {"a": "usually", "b": "is forgetting", "c": "her keys", "d": "at home"}, "answer": "b", "exp": "<b>Correction:</b> is forgetting → forgets 'Usually' indicates a habitual action, so use the Simple Present. <b>Rule:</b> Habitual actions → Simple Present."},
+{"id": 125, "section": "Higher Secondary 02/08/2025 (Shift-2)", "text": "He attended an unique workshop on digital marketing.", "options": {"a": "attended", "b": "unique", "c": "an", "d": "workshop"}, "answer": "c", "exp": "<b>Correction:</b> an → a 'Unique' begins with the consonant sound /ju:/ ('yoo'), so 'a' is used. <b>Rule:</b> Article depends on sound, not spelling."},
+{"id": 126, "section": "Higher Secondary 02/08/2025 (Shift-2)", "text": "She submitted her application to Wednesday afternoon.", "options": {"a": "submitted", "b": "application", "c": "to", "d": "Wednesday"}, "answer": "c", "exp": "<b>Correction:</b> to → on Use 'on' before days and dates. <b>Rule:</b> On Monday; On Wednesday afternoon."},
+{"id": 127, "section": "Higher Secondary 29/08/2025 (Shift-2)", "text": "His argument, shaped by historical analogies and subtle philosophical undertones, lend support to a broader cultural reading.", "options": {"a": "His argument, shaped by historical analogies", "b": "and subtle philosophical undertones", "c": ", lend support", "d": "to a broader cultural reading."}, "answer": "c", "exp": "<b>Correction:</b> lend → lends The subject 'argument' is singular. <b>Rule:</b> Singular subject → Singular verb."},
+{"id": 128, "section": "Higher Secondary 29/08/2025 (Shift-2)", "text": "Neither the project manager nor the team leads was available for the discussion.", "options": {"a": "Neither the project manager", "b": "nor the team leads", "c": "was available", "d": "for the discussion."}, "answer": "c", "exp": "<b>Correction:</b> was → were With Neither...nor, the verb agrees with the nearest subject (team leads = plural). <b>Rule:</b> Neither...nor → Verb agrees with the nearest subject."},
+{"id": 129, "section": "Graduate Level 24/07/2025 (Shift-3)", "text": "By the time the committee reviews the proposal, the final draft will be sent to all members.", "options": {"a": "By the time the committee", "b": "reviews the proposal,", "c": "the final draft", "d": "will be sent to all members.", "e": "No error"}, "answer": "e", "exp": "The sentence correctly expresses a Future Conditional. After 'By the time', we use the Simple Present to refer to the future, while the main clause takes the Future Indefinite Tense. <b>Rule:</b> By the time + Simple Present, ...will + base verb."},
+{"id": 130, "section": "Graduate Level 24/07/2025 (Shift-3)", "text": "The teacher recommended that each student submits the assignment by the end of the week.", "options": {"a": "The teacher recommended that", "b": "each student submits", "c": "the assignment", "d": "by the end of the week."}, "answer": "b", "exp": "<b>Correction:</b> submits → submit After verbs like recommend, suggest, insist, use the subjunctive mood (base form of the verb). <b>Rule:</b> Recommend/Suggest/Insist + that + Base Verb."},
+{"id": 131, "section": "Graduate Level 25/07/2025 (Shift-3)", "text": "The committee turned down the proposal without stating the concerns out.", "options": {"a": "The committee", "b": "turned down", "c": "the proposal", "d": "without stating the concerns out."}, "answer": "d", "exp": "<b>Correction:</b> stating the concerns out → stating the concerns 'State' itself means express, so 'out' is unnecessary. <b>Rule:</b> Avoid unnecessary particles."},
+{"id": 132, "section": "Graduate Level 25/07/2025 (Shift-3)", "text": "The HR officer followed up on the complaints but could not draw on the main issues raised by employees.", "options": {"a": "The HR officer followed up", "b": "on the complaints", "c": "but could not draw on", "d": "the main issues raised by employees."}, "answer": "c", "exp": "<b>Correction:</b> draw on → identify/pinpoint 'Draw on' means use as a source, not identify. <b>Rule:</b> Use the correct phrasal verb according to meaning."},
+{"id": 133, "section": "Graduate Level 26/07/2025 (Shift-3)", "text": "The supervisor carried out the inspection without pointing any issue out.", "options": {"a": "The supervisor", "b": "carried out", "c": "the inspection", "d": "without pointing any issue out."}, "answer": "d", "exp": "<b>Correction:</b> pointing any issue out → pointing out any issue When the object is placed naturally (not a pronoun), the phrasal verb should be 'pointing out'. <b>Rule:</b> Point out + object."},
+{"id": 134, "section": "Graduate Level 26/07/2025 (Shift-3)", "text": "The supervisor reached out to the staff members but could not figure up the exact cause of the conflict.", "options": {"a": "The supervisor reached out", "b": "to the staff members", "c": "but could not figure up", "d": "the exact cause of the conflict."}, "answer": "c", "exp": "<b>Correction:</b> figure up → figure out The correct phrasal verb is 'figure out' (= understand/discover). <b>Rule:</b> Figure out = understand or solve."},
+{"id": 135, "section": "Graduate Level 28/07/2025 (Shift-3)", "text": "The scientist explained that the experiment was unsuccessful because the equipment malfunctions during the final stage.", "options": {"a": "The scientist explained", "b": "that the experiment", "c": "was unsuccessful because the equipment", "d": "malfunctions during the final stage."}, "answer": "d", "exp": "<b>Correction:</b> malfunctions → malfunctioned The sentence refers to a past event, so use the Past Indefinite Tense. <b>Rule:</b> Maintain tense consistency."},
+{"id": 136, "section": "Graduate Level 28/07/2025 (Shift-3)", "text": "The document was replete by errors despite several rounds of proofreading by the editorial team.", "options": {"a": "The document was replete by errors", "b": "despite several rounds", "c": "of proofreading", "d": "by the editorial team."}, "answer": "a", "exp": "<b>Correction:</b> replete by → replete with 'Replete with' means full of. <b>Rule:</b> Replete with = full of."},
+{"id": 137, "section": "Graduate Level 29/07/2025 (Shift-3)", "text": "The agreement remained effective since three years despite multiple challenges from stakeholders.", "options": {"a": "The agreement", "b": "remained effective since three years", "c": "despite multiple challenges", "d": "from stakeholders."}, "answer": "b", "exp": "<b>Correction:</b> since three years → for three years Duration takes 'for', not 'since'. <b>Rule:</b> For = period of time; Since = point of time."},
+{"id": 138, "section": "Graduate Level 29/07/2025 (Shift-3)", "text": "The committee's revised proposal aimed at improving transparency unexpectedly creating new layers of administrative delay.", "options": {"a": "The committee's revised proposal", "b": "aimed at improving transparency", "c": "unexpectedly creating", "d": "new layers of administrative delay."}, "answer": "c", "exp": "<b>Correction:</b> creating → created The sentence needs a finite verb to complete the idea. <b>Rule:</b> Avoid dangling participles where a finite verb is required."},
+{"id": 139, "section": "Graduate Level 31/07/2025 (Shift-3)", "text": "She is one of the best dancer who perform flawlessly on stage.", "options": {"a": "She is one of the best", "b": "dancer who", "c": "perform flawlessly", "d": "on stage."}, "answer": "b", "exp": "<b>Correction:</b> dancer → dancers The expression is 'one of the best' + plural noun. <b>Rule:</b> One of the + Superlative + Plural Noun."},
+{"id": 140, "section": "Graduate Level 31/07/2025 (Shift-3)", "text": "Had they been understanding the financial risks involved, they would not have invested so aggressively.", "options": {"a": "Had they been understanding", "b": "the financial risks involved,", "c": "they would not have", "d": "invested so aggressively."}, "answer": "a", "exp": "<b>Correction:</b> been understanding → understood In third-conditional inversion, use: Had + Subject + V3. <b>Rule:</b> Had + Subject + V3 (third conditional)."},
+{"id": 141, "section": "Graduate Level 02/08/2025 (Shift-3)", "text": "Her presentation displayed strong arguments yet it missed structure and coherent.", "options": {"a": "Her presentation displayed", "b": "strong arguments", "c": "yet it missed", "d": "structure and coherent."}, "answer": "d", "exp": "<b>Correction:</b> coherent → coherence After the verb 'missed', two nouns should be used in parallel: 'structure' and 'coherence'. Here, 'coherent' is an adjective, which breaks parallelism. <b>Rule:</b> Maintain parallel structure: Noun + Noun."},
+{"id": 142, "section": "Graduate Level 02/08/2025 (Shift-3)", "text": "The company tried to bring over fresh ideas to improve customer engagement strategies.", "options": {"a": "The company tried to bring over", "b": "fresh ideas", "c": "to improve customer", "d": "engagement strategies."}, "answer": "a", "exp": "<b>Correction:</b> bring over → bring in The phrasal verb 'bring in' means to introduce something new (ideas, policies, technology). 'Bring over' means to bring someone/something to a place, which is incorrect here. <b>Rule:</b> Bring in = introduce; Bring over = bring to a place."},
+{"id": 143, "section": "Graduate Level 29/08/2025 (Shift-1)", "text": "Of all the applicants, she was the smarter.", "options": {"a": "applicants", "b": "smarter", "c": "was", "d": "all"}, "answer": "b", "exp": "<b>Correction:</b> smarter → smartest The phrase 'of all' requires the superlative degree, not the comparative. <b>Rule:</b> Between two → Comparative (smarter); Of all → Superlative (smartest)."},
+{"id": 144, "section": "SSC Stenographer 06/08/2025 (Shift 1)", "text": "By the time they arrive, the concert had ended.", "options": {"a": "time", "b": "arrive", "c": "concert", "d": "ended"}, "answer": "b", "exp": "<b>Correction:</b> arrive → arrived The sentence mixes Present Simple ('arrive') with Past Perfect ('had ended'), which is incorrect. Since 'the concert had ended' is in the past, the other clause should also refer to the past. <b>Rule:</b> By the time + Simple Past + Past Perfect."},
+{"id": 145, "section": "SSC Stenographer 06/08/2025 (Shift 1)", "text": "He was senior than me in college.", "options": {"a": "senior than", "b": "No error", "c": "me in college", "d": "He was"}, "answer": "a", "exp": "<b>Correction:</b> senior than → senior to The adjective 'senior' is followed by 'to', not 'than'. <b>Rule:</b> Senior to; Junior to; Superior to; Inferior to."},
+{"id": 146, "section": "SSC Stenographer 06/08/2025 (Shift 1)", "text": "She has been teaching in this school since five years.", "options": {"a": "No error", "b": "She has been teaching", "c": "in this school", "d": "since five years"}, "answer": "d", "exp": "<b>Correction:</b> since five years → for five years 'Since' is used for a point of time, whereas 'for' is used for a period of time. <b>Rule:</b> Since 2020/Since Monday; For five years/For two months."},
+{"id": 147, "section": "SSC Stenographer 06/08/2025 (Shift 1)", "text": "Select the sentence with correct use of article 'the'.", "options": {"a": "Dr. Johnson met the Shakespeare in England.", "b": "Kalidas is the Shakespeare of India.", "c": "Dr. Johnson saw the Shakespeare acting in King Lear.", "d": "Dr. Johnson had instructed the Shakespeare to write The Tempest."}, "answer": "b", "exp": "<b>Correction:</b> Option (b) is correct as given. When a famous person is used as a symbol of excellence, 'the' is used before the name. <b>Rule:</b> The Shakespeare of India; The Einstein of Physics."},
+{"id": 148, "section": "SSC Stenographer 06/08/2025 (Shift 1)", "text": "The teacher who had conducted the workshop earlier, along with his assistants, have submitted the final report to the board before the deadline last week.", "options": {"a": "The teacher who had conducted the workshop earlier,", "b": "along with his assistants,", "c": "have submitted the final report to the board", "d": "before the deadline last week."}, "answer": "c", "exp": "<b>Correction:</b> have submitted → has submitted The main subject is 'The teacher' (singular). The phrase 'along with his assistants' does not affect the verb. <b>Rule:</b> First Subject + along with + 2nd Subject → Verb agrees with the first subject."},
+{"id": 149, "section": "SSC Stenographer 06/08/2025 (Shift 1)", "text": "Each participant who registered online for the event were given a welcome kit along with the program schedule and map at the helpdesk near the entrance.", "options": {"a": "Each participant who registered online for the event", "b": "were given a welcome kit", "c": "along with the program schedule and map", "d": "at the helpdesk near the entrance."}, "answer": "b", "exp": "<b>Correction:</b> were given → was given 'Each participant' is singular, so the verb must also be singular. <b>Rule:</b> Each + Singular Noun + Singular Verb."},
+{"id": 150, "section": "SSC Stenographer 06/08/2025 (Shift 1)", "text": "One of the guest speakers who addressed the seminar and interacted with students were praised widely for their clarity and enthusiasm during the closing ceremony.", "options": {"a": "One of the guest speakers who addressed the seminar", "b": "and interacted with students", "c": "were praised widely for their clarity and enthusiasm", "d": "during the closing ceremony."}, "answer": "c", "exp": "<b>Correction:</b> were praised → was praised The subject is 'One', which is singular. <b>Rule:</b> One of + Plural Noun → Singular Verb."},
+{"id": 151, "section": "SSC Stenographer 06/08/2025 (Shift 1)", "text": "Neither the Principal nor the teachers was present.", "options": {"a": "No error", "b": "nor the teachers", "c": "was present", "d": "Neither the Principal"}, "answer": "c", "exp": "<b>Correction:</b> was present → were present With Neither...nor, the verb agrees with the nearest subject (teachers = plural). <b>Rule:</b> Neither...nor → Verb agrees with the nearest subject."},
+{"id": 152, "section": "SSC Stenographer 06/08/2025 (Shift 1)", "text": "He prevented me from get lost when we drove back from the airport.", "options": {"a": "He prevented", "b": "get lost when we drove back", "c": "from the airport", "d": "me from"}, "answer": "b", "exp": "<b>Correction:</b> get → getting After 'prevent someone from', the verb must be in the -ing form. <b>Rule:</b> Prevent + Object + From + Verb-ing."},
+{"id": 153, "section": "SSC Stenographer 06/08/2025 (Shift 2)", "text": "One must keep his promises.", "options": {"a": "One", "b": "No error", "c": "must keep", "d": "his promises"}, "answer": "d", "exp": "<b>Correction:</b> his promises → one's promises The subject 'one' takes 'one's' as its possessive form. <b>Rule:</b> One...one's (not 'his') in formal usage."},
+{"id": 154, "section": "SSC Stenographer 06/08/2025 (Shift 2)", "text": "The behaviour of these students leave much to be desired.", "options": {"a": "leave much", "b": "The behaviour", "c": "of these students", "d": "to be desired"}, "answer": "a", "exp": "<b>Correction:</b> leave → leaves The subject is 'The behaviour' (singular), so the verb should be singular. <b>Rule:</b> The verb agrees with the main subject, not with the noun in the prepositional phrase."},
+{"id": 155, "section": "SSC Stenographer 06/08/2025 (Shift 2)", "text": "Neither Ram nor his brothers is reliable.", "options": {"a": "Neither Ram", "b": "is reliable", "c": "No error", "d": "nor his brothers"}, "answer": "b", "exp": "<b>Correction:</b> is reliable → are reliable With Neither...nor, the verb agrees with the nearest subject. Since 'his brothers' is plural, the verb should be 'are'. <b>Rule:</b> Neither...nor → Verb agrees with the nearest subject."},
+{"id": 156, "section": "SSC Stenographer 06/08/2025 (Shift 2)", "text": "He has saw the movie three times already.", "options": {"a": "movie", "b": "three", "c": "already", "d": "saw"}, "answer": "d", "exp": "<b>Correction:</b> saw → seen After has/have/had, V3 is used. The V3 of 'see' is 'seen'. <b>Rule:</b> Have/Has/Had + V3."},
+{"id": 157, "section": "SSC Stenographer 06/08/2025 (Shift 2)", "text": "She is junior than me.", "options": {"a": "She is", "b": "junior than", "c": "No error", "d": "me"}, "answer": "b", "exp": "<b>Correction:</b> junior than → junior to The adjective 'junior' is always followed by 'to', not 'than'. <b>Rule:</b> Senior/Junior/Superior/Inferior + to."},
+{"id": 158, "section": "SSC Stenographer 06/08/2025 (Shift 2)", "text": "She is more smarter than her sister.", "options": {"a": "No error", "b": "more smarter", "c": "She is", "d": "than her sister"}, "answer": "b", "exp": "<b>Correction:</b> more smarter → smarter A comparative adjective should not be used with 'more'. <b>Rule:</b> Never use more + comparative adjective (superfluous)."},
+{"id": 159, "section": "SSC Stenographer 06/08/2025 (Shift 2)", "text": "She arrived to the office early this morning.", "options": {"a": "to", "b": "morning", "c": "arrived", "d": "office"}, "answer": "a", "exp": "<b>Correction:</b> to → at The verb 'arrive' takes 'at' (small places) or 'in' (cities/countries). <b>Rule:</b> Arrive at the station/office; Arrive in Delhi/India."},
+{"id": 160, "section": "SSC Stenographer 06/08/2025 (Shift 2)", "text": "It is high time you start studying seriously.", "options": {"a": "studying seriously", "b": "It is high time", "c": "No error", "d": "you start"}, "answer": "d", "exp": "<b>Correction:</b> you start → you started After 'It's high time', we use V2 (past tense) to express a present necessity. <b>Rule:</b> It's high time + Subject + V2."},
+{"id": 161, "section": "SSC Stenographer 06/08/2025 (Shift 3)", "text": "Neither Ramesh nor his friends is willing to join.", "options": {"a": "is willing to join", "b": "No error", "c": "nor his friends", "d": "Neither Ramesh"}, "answer": "a", "exp": "<b>Correction:</b> is willing → are willing The nearest subject is 'his friends' (plural), so the verb should be plural. <b>Rule:</b> Neither...nor → Verb agrees with the nearest subject."},
+{"id": 162, "section": "SSC Stenographer 06/08/2025 (Shift 3)", "text": "He could not cope up with the pressure.", "options": {"a": "cope up with", "b": "the pressure", "c": "No error", "d": "He could not"}, "answer": "a", "exp": "<b>Correction:</b> cope up with → cope with The correct phrasal verb is 'cope with', meaning manage or deal with. <b>Rule:</b> Cope with = deal with."},
+{"id": 163, "section": "SSC Stenographer 06/08/2025 (Shift 3)", "text": "This route is most safer than the highway.", "options": {"a": "safer", "b": "highway", "c": "most", "d": "route"}, "answer": "c", "exp": "<b>Correction:</b> Remove 'most' 'Safer' is already a comparative adjective. It should not be used with 'most'. <b>Rule:</b> Comparative adjective = no more/most before it."},
+{"id": 164, "section": "SSC Stenographer 06/08/2025 (Shift 3)", "text": "The police has arrested the culprit.", "options": {"a": "has arrested", "b": "The police", "c": "the culprit", "d": "No error"}, "answer": "a", "exp": "<b>Correction:</b> has arrested → have arrested 'Police' is a plural noun and takes a plural verb. <b>Rule:</b> Police, people, cattle, personnel → Plural verb."},
+{"id": 165, "section": "SSC Stenographer 06/08/2025 (Shift 3)", "text": "She gave me a good advice.", "options": {"a": "good", "b": "She gave me", "c": "a good advice", "d": "No error"}, "answer": "a", "exp": "<b>Correction:</b> a good advice → good advice/a piece of good advice 'Advice' is an uncountable noun, so it cannot be used with a/an. <b>Rule:</b> Uncountable nouns (advice, information, furniture, luggage) do not take a/an."},
+{"id": 166, "section": "SSC Stenographer 06/08/2025 (Shift 3)", "text": "Neither the teacher nor the students was present.", "options": {"a": "No error", "b": "was present", "c": "Neither the teacher", "d": "nor the students"}, "answer": "b", "exp": "<b>Correction:</b> was present → were present With Neither...nor, the verb agrees with the nearest subject. Here, 'students' is plural. <b>Rule:</b> Neither...nor → Verb agrees with the nearest subject."},
+{"id": 167, "section": "SSC Stenographer 07/08/2025 (Shift 1)", "text": "She is angry upon me.", "options": {"a": "me", "b": "No error", "c": "angry upon", "d": "She is"}, "answer": "c", "exp": "<b>Correction:</b> angry upon → angry with The correct preposition after 'angry' (for a person) is 'with'. <b>Rule:</b> Angry with a person; Angry at/about a thing or situation."},
+{"id": 168, "section": "SSC Stenographer 07/08/2025 (Shift 1)", "text": "I returned back from Mumbai last week.", "options": {"a": "last week", "b": "from Mumbai", "c": "No error", "d": "I returned back"}, "answer": "d", "exp": "<b>Correction:</b> returned back → returned 'Return' itself means come back, so 'back' is redundant. <b>Rule:</b> Avoid redundancy: return back, repeat again."},
+{"id": 169, "section": "SSC Stenographer 07/08/2025 (Shift 1)", "text": "Which among the following sentences uses the article (if required) before the word 'honour' correctly?", "options": {"a": "It is the honour to be here.", "b": "It is an honour to be here.", "c": "It is honour to be here.", "d": "It is a honour to be here."}, "answer": "b", "exp": "<b>Correction:</b> Option (b) is correct as given. 'Honour' begins with a silent 'h', so it takes 'an'. <b>Rule:</b> Use 'an' before words with a vowel sound: an honour, an honest man, an hour."},
+{"id": 170, "section": "SSC Stenographer 07/08/2025 (Shift 1)", "text": "She congratulated him for his success.", "options": {"a": "No error", "b": "him for", "c": "his success", "d": "She congratulated"}, "answer": "b", "exp": "<b>Correction:</b> for → on The correct expression is 'congratulate someone on something'. <b>Rule:</b> Congratulate + Person + on + Achievement."},
+{"id": 171, "section": "SSC Stenographer 07/08/2025 (Shift 1)", "text": "No sooner he had arrived than the meeting started.", "options": {"a": "he had arrived", "b": "No error", "c": "No sooner", "d": "than the meeting started"}, "answer": "a", "exp": "<b>Correction:</b> he had arrived → had he arrived After 'No sooner', the sentence takes inversion. <b>Rule:</b> No sooner + Had + Subject + V3 + than; Hardly + Had + Subject + V3 + when."},
+{"id": 172, "section": "SSC Stenographer 07/08/2025 (Shift 1)", "text": "The officer has issued an order to arrest him immediately.", "options": {"a": "The officer", "b": "No error", "c": "has issued", "d": "an order to arrest him immediately"}, "answer": "b", "exp": "The sentence is grammatically correct."},
+{"id": 173, "section": "SSC Stenographer 07/08/2025 (Shift 1)", "text": "He made a quick shower before heading to the office.", "options": {"a": "quick", "b": "shower", "c": "before", "d": "made"}, "answer": "d", "exp": "<b>Correction:</b> made → took The correct collocation is 'take a shower', not 'make a shower'. <b>Rule:</b> Take a shower; Take a bath; Take a nap."},
+{"id": 174, "section": "SSC Stenographer 07/08/2025 (Shift 1)", "text": "Mount Everest is more highest peak in the world.", "options": {"a": "world", "b": "more", "c": "highest", "d": "everest"}, "answer": "b", "exp": "<b>Correction:</b> more → the 'Highest' is already a superlative adjective, so 'more' cannot be used before it. <b>Rule:</b> Do not use more/most with comparative or superlative forms."},
+{"id": 175, "section": "SSC Stenographer 07/08/2025 (Shift 1)", "text": "The teacher advised to listen attentively.", "options": {"a": "to listen attentively", "b": "No error", "c": "The teacher", "d": "advised"}, "answer": "a", "exp": "<b>Correction:</b> advised to listen → advised him/her/them to listen The verb 'advise' needs an object before the infinitive. <b>Rule:</b> Advise + Object + to + Verb."},
+{"id": 176, "section": "SSC Stenographer 07/08/2025 (Shift 1)", "text": "She danced graceful on stage during the annual show.", "options": {"a": "graceful", "b": "stage", "c": "show", "d": "during"}, "answer": "a", "exp": "<b>Correction:</b> graceful → gracefully The verb 'danced' must be modified by an adverb, not an adjective. <b>Rule:</b> Verb + Adverb (Sing beautifully, Drive carefully, Dance gracefully)."},
+{"id": 177, "section": "SSC Stenographer 07/08/2025 (Shift 2)", "text": "She is one of the best singer in the city.", "options": {"a": "singer in the city", "b": "She is one", "c": "of the best", "d": "No error"}, "answer": "a", "exp": "<b>Correction:</b> singer → singers After 'one of the + superlative + plural noun', the noun must be plural. <b>Rule:</b> One of the + best + Plural Noun."},
+{"id": 178, "section": "SSC Stenographer 07/08/2025 (Shift 2)", "text": "She delivered a speech in the prize distribution function.", "options": {"a": "She delivered", "b": "in the prize distribution function", "c": "No error", "d": "a speech"}, "answer": "c", "exp": "The sentence is grammatically correct."},
+{"id": 179, "section": "SSC Stenographer 07/08/2025 (Shift 2)", "text": "He succeeded to win the prize.", "options": {"a": "the prize", "b": "to win", "c": "No error", "d": "He succeeded"}, "answer": "b", "exp": "<b>Correction:</b> to win → in winning The verb 'succeed' is followed by 'in' + Verb-ing. <b>Rule:</b> Succeed in + Verb-ing."},
+{"id": 180, "section": "SSC Stenographer 07/08/2025 (Shift 2)", "text": "He is a fastly growing leader in the organization.", "options": {"a": "leader", "b": "growing", "c": "fastly", "d": "organization"}, "answer": "c", "exp": "<b>Correction:</b> fastly → fast 'Fast' functions as both an adjective and an adverb. 'Fastly' is incorrect. <b>Rule:</b> Use 'fast', not 'fastly'."},
+{"id": 181, "section": "SSC Stenographer 07/08/2025 (Shift 2)", "text": "You should not laugh on others.", "options": {"a": "laugh on", "b": "No error", "c": "You should not", "d": "others"}, "answer": "a", "exp": "<b>Correction:</b> laugh on → laugh at The correct expression is 'laugh at someone'. <b>Rule:</b> Laugh at = make fun of."},
+{"id": 182, "section": "SSC Stenographer 07/08/2025 (Shift 2)", "text": "The manager together with his staff have gone for lunch.", "options": {"a": "together with his staff", "b": "No error", "c": "The manager", "d": "have gone for lunch"}, "answer": "d", "exp": "<b>Correction:</b> have gone → has gone The phrase 'together with his staff' does not change the main subject ('manager'), which is singular. <b>Rule:</b> Together with/Along with/As well as → Verb agrees with the first subject."},
+{"id": 183, "section": "SSC Stenographer 07/08/2025 (Shift 2)", "text": "One of the questions were very difficult.", "options": {"a": "very difficult", "b": "were", "c": "One of the questions", "d": "No error"}, "answer": "b", "exp": "<b>Correction:</b> were → was The subject 'One' is singular. <b>Rule:</b> One of + Plural Noun + Singular Verb."},
+{"id": 184, "section": "SSC Stenographer 07/08/2025 (Shift 2)", "text": "She adopted a honest approach to resolving the issue.", "options": {"a": "honest", "b": "issue", "c": "resolving", "d": "a"}, "answer": "d", "exp": "<b>Correction:</b> a → an 'Honest' begins with a silent 'h', so it takes 'an'. <b>Rule:</b> Use 'an' before words beginning with a vowel sound: an honest person, an honour, an hour."},
+{"id": 185, "section": "SSC Stenographer 07/08/2025 (Shift 2)", "text": "This book comprises of five chapters.", "options": {"a": "No error", "b": "comprises of", "c": "This book", "d": "five chapters"}, "answer": "b", "exp": "<b>Correction:</b> comprises of → comprises The verb 'comprise' itself means 'consist of', so 'of' is unnecessary. <b>Rule:</b> Comprise = include/consist of; do not say 'comprises of'."},
+{"id": 186, "section": "SSC Stenographer 07/08/2025 (Shift 3)", "text": "He divided the sweets between his five friends.", "options": {"a": "He divided", "b": "between his five friends", "c": "No error", "d": "the sweets"}, "answer": "b", "exp": "<b>Correction:</b> between → among 'Between' is generally used for two persons or things, whereas 'among' is used for more than two. <b>Rule:</b> Between → Two; Among → More than two."},
+{"id": 187, "section": "SSC Stenographer 07/08/2025 (Shift 3)", "text": "Neither of the two brothers are trustworthy.", "options": {"a": "Neither of the two brothers", "b": "are", "c": "trustworthy", "d": "No error"}, "answer": "b", "exp": "<b>Correction:</b> are → is 'Neither' is singular, so it takes a singular verb. <b>Rule:</b> Neither/Either/Each/Everyone → Singular verb."},
+{"id": 188, "section": "SSC Stenographer 07/08/2025 (Shift 3)", "text": "The child is afraid from the dark.", "options": {"a": "The child is", "b": "the dark", "c": "No error", "d": "afraid from"}, "answer": "d", "exp": "<b>Correction:</b> afraid from → afraid of The correct expression is 'afraid of'. <b>Rule:</b> Afraid of something/someone."},
+{"id": 189, "section": "SSC Stenographer 07/08/2025 (Shift 3)", "text": "You should avail of every opportunity.", "options": {"a": "every opportunity", "b": "No error", "c": "avail of", "d": "You should"}, "answer": "c", "exp": "<b>Correction:</b> avail of → avail yourself of Add 'yourself' after 'avail' in standard usage. <b>Rule:</b> Avail oneself of an opportunity."},
+{"id": 190, "section": "SSC Stenographer 07/08/2025 (Shift 3)", "text": "The father with his sons are arriving soon.", "options": {"a": "with his sons", "b": "No error", "c": "The father", "d": "are arriving soon"}, "answer": "d", "exp": "<b>Correction:</b> are arriving → is arriving The phrase 'with his sons' does not affect the main subject 'father', which is singular. <b>Rule:</b> With/Along with/Together with → Verb agrees with the first subject."},
+{"id": 191, "section": "SSC Stenographer 07/08/2025 (Shift 3)", "text": "The judge ordered the prisoner to hung till death.", "options": {"a": "to hung till death", "b": "No error", "c": "The judge ordered", "d": "the prisoner"}, "answer": "a", "exp": "<b>Correction:</b> to hung → to be hanged After 'order + object + to', the passive form is required since the prisoner receives the action. Also, for execution, the correct form is 'hanged', not 'hung'. <b>Rule:</b> Hang (फाँसी पर चढ़ाना) → Hanged (V2, V3); Hang (टांगना) → Hung (V2, V3)."},
+{"id": 192, "section": "SSC Stenographer 08/08/2025 (Shift 1)", "text": "My elder sister is married with a doctor.", "options": {"a": "a doctor", "b": "No error", "c": "is married with", "d": "My elder sister"}, "answer": "c", "exp": "<b>Correction:</b> married with → married to The correct preposition is 'to'. <b>Rule:</b> Married to someone."},
+{"id": 193, "section": "SSC Stenographer 08/08/2025 (Shift 1)", "text": "The ship drowned in the sea.", "options": {"a": "in the sea", "b": "drowned", "c": "No error", "d": "The ship"}, "answer": "b", "exp": "<b>Correction:</b> drowned → sank A ship 'sinks'; a person or animal 'drowns'. <b>Rule:</b> Ship → Sinks; Person → Drowns."},
+{"id": 194, "section": "SSC Stenographer 08/08/2025 (Shift 1)", "text": "She insisted to accompany me.", "options": {"a": "to accompany", "b": "me", "c": "No error", "d": "She insisted"}, "answer": "a", "exp": "<b>Correction:</b> to accompany → on accompanying The verb 'insist' is followed by 'on' + Verb-ing. <b>Rule:</b> Insist on + Verb-ing."},
+{"id": 195, "section": "SSC Stenographer 08/08/2025 (Shift 1)", "text": "Which of the following sentences is grammatically correct?", "options": {"a": "When we reached the station, the train have already left.", "b": "When we reached the station, the train has already left.", "c": "When we reached the station, the train had already left.", "d": "When we reached the station, the train already left."}, "answer": "c", "exp": "<b>Correction:</b> Option (c) is correct as given. When two actions happened in the past, the earlier action is in the Past Perfect Tense (had + V3) and the later action is in the Simple Past Tense. <b>Rule:</b> Earlier past action → Past Perfect; Later past action → Simple Past."},
+{"id": 196, "section": "SSC Stenographer 08/08/2025 (Shift 1)", "text": "The jury was divided in their opinions.", "options": {"a": "No error", "b": "The jury", "c": "was divided", "d": "in their opinions"}, "answer": "c", "exp": "<b>Correction:</b> was → were When a collective noun is 'divided' (acting as individual members), a plural verb is used. <b>Rule:</b> Collective noun functioning as individuals → Plural verb."},
+{"id": 197, "section": "SSC Stenographer 08/08/2025 (Shift 1)", "text": "He has come yesterday.", "options": {"a": "yesterday", "b": "No error", "c": "come", "d": "He has come"}, "answer": "c", "exp": "<b>Correction:</b> has come → came Present Perfect cannot be used with a finished past-time expression like 'yesterday'. <b>Rule:</b> Yesterday/Last week/Ago → Simple Past."},
+{"id": 198, "section": "SSC Stenographer 08/08/2025 (Shift 1)", "text": "He has been living in Chennai since five years.", "options": {"a": "No error", "b": "He is living", "c": "since five years", "d": "in Chennai"}, "answer": "c", "exp": "<b>Correction:</b> since five years → for five years 'Since' is used for a point of time, whereas 'for' is used for a period of time. <b>Rule:</b> Since + Point of Time; For + Period of Time."},
+{"id": 199, "section": "SSC Stenographer 08/08/2025 (Shift 1)", "text": "Hardly had he left the room when the guests have arrived.", "options": {"a": "Hardly had he", "b": "No error", "c": "left the room", "d": "when the guests have arrived"}, "answer": "d", "exp": "<b>Correction:</b> have arrived → arrived The structure Hardly...when requires Past Perfect + Simple Past. <b>Rule:</b> Hardly + Past Perfect + when + Simple Past."},
+{"id": 200, "section": "SSC Stenographer 08/08/2025 (Shift 1)", "text": "Which of the following sentences is grammatically correct?", "options": {"a": "He went to college in train.", "b": "He went to college with train.", "c": "He went to college by train.", "d": "He went to college on train."}, "answer": "c", "exp": "<b>Correction:</b> Option (c) is correct as given. 'By + vehicle' is used to show mode of transport (without an article). <b>Rule:</b> By + vehicle (bus, train, car, etc.) to show mode of transport."},
+{"id": 201, "section": "SSC Stenographer 08/08/2025 (Shift 1)", "text": "No less than fifty students were absent.", "options": {"a": "No error", "b": "were absent", "c": "fifty students", "d": "No less than"}, "answer": "d", "exp": "<b>Correction:</b> No less than → No fewer than 'Fewer' is used with plural countable nouns (students), not 'less'. <b>Rule:</b> Fewer + Countable Noun; Less + Uncountable Noun."},
+{"id": 202, "section": "SSC Stenographer 08/08/2025 (Shift 1)", "text": "The old man fell down from the stairs.", "options": {"a": "fell down", "b": "No error", "c": "from the stairs", "d": "The old man"}, "answer": "c", "exp": "<b>Correction:</b> from the stairs → down the stairs The correct expression is 'fell down the stairs'. <b>Rule:</b> Fell down the stairs (no 'from')."},
+{"id": 203, "section": "SSC Stenographer 08/08/2025 (Shift 2)", "text": "I have visited Agra last month.", "options": {"a": "have visited", "b": "No error", "c": "last month", "d": "Agra"}, "answer": "a", "exp": "<b>Correction:</b> have visited → visited Present Perfect is not used with a definite past time expression like 'last month'. <b>Rule:</b> Definite Past Time → Simple Past."},
+{"id": 204, "section": "SSC Stenographer 08/08/2025 (Shift 2)", "text": "She does not know to swim.", "options": {"a": "She does not", "b": "know to swim", "c": "swim", "d": "No error"}, "answer": "b", "exp": "<b>Correction:</b> know to swim → know how to swim After 'know', use 'how to' + verb (base form) when referring to a skill. <b>Rule:</b> Know how to + Verb (base form)."},
+{"id": 205, "section": "SSC Stenographer 08/08/2025 (Shift 2)", "text": "She is better in mathematics than English.", "options": {"a": "than English", "b": "No error", "c": "She is", "d": "better in mathematics"}, "answer": "d", "exp": "<b>Correction:</b> better in → better at After 'better' (comparative of 'good'), the correct preposition is 'at', not 'in', when referring to skill or ability. <b>Rule:</b> Good/Better/Best + at + subject/activity."},
+{"id": 206, "section": "SSC Stenographer 08/08/2025 (Shift 2)", "text": "I prefer tea than coffee.", "options": {"a": "coffee", "b": "No error", "c": "I prefer", "d": "tea than"}, "answer": "d", "exp": "<b>Correction:</b> tea than → tea to The verb 'prefer' is followed by 'to', not 'than'. <b>Rule:</b> Prefer A to B."},
+{"id": 207, "section": "SSC Stenographer 08/08/2025 (Shift 2)", "text": "The news are too good to be true.", "options": {"a": "No error", "b": "are too good", "c": "The news", "d": "to be true"}, "answer": "b", "exp": "<b>Correction:</b> 'are' → 'is' 'News' is singular in form and takes a singular verb. <b>Rule:</b> News, Furniture, Advice, Information → Singular Verb."},
+{"id": 208, "section": "SSC Stenographer 08/08/2025 (Shift 2)", "text": "The sceneries of Ooty was wonderful.", "options": {"a": "of Ooty", "b": "The sceneries", "c": "No error", "d": "were wonderful"}, "answer": "b", "exp": "<b>Correction:</b> The sceneries → The scenery 'Scenery' is an uncountable noun and has no plural form. <b>Rule:</b> Scenery, Furniture, Luggage, Information → Uncountable nouns (no plural form)."},
+{"id": 209, "section": "SSC Stenographer 08/08/2025 (Shift 2)", "text": "She resembles with her mother.", "options": {"a": "mother", "b": "with her mother", "c": "She resembles", "d": "No error"}, "answer": "a", "exp": "<b>Correction:</b> resembles with her mother → resembles her mother The verb 'resemble' does not take the preposition 'with'. <b>Rule:</b> Resemble + Object (no preposition)."},
+{"id": 210, "section": "SSC Stenographer 08/08/2025 (Shift 2)", "text": "He asked me that where I was going.", "options": {"a": "I was going", "b": "He asked me", "c": "No error", "d": "that where"}, "answer": "d", "exp": "<b>Correction:</b> that where → where A conjunction ('that') is not needed in the indirect speech of interrogative sentences starting with a 'wh' word. <b>Rule:</b> Do not use 'that' with 'wh' word clauses in reported speech."},
+{"id": 211, "section": "SSC Stenographer 08/08/2025 (Shift 2)", "text": "She married with a doctor.", "options": {"a": "a doctor", "b": "with", "c": "She married", "d": "No error"}, "answer": "b", "exp": "<b>Correction:</b> Remove 'with' The verb 'marry' does not take the preposition 'with'. <b>Rule:</b> Marry + Person (Active Voice); Be married to + Person (Passive Voice)."},
+{"id": 212, "section": "SSC Stenographer 08/08/2025 (Shift 3)", "text": "He as well as his brothers were present.", "options": {"a": "He as well as", "b": "his brothers", "c": "were present", "d": "No error"}, "answer": "c", "exp": "<b>Correction:</b> were present → was present With 'as well as', the verb agrees with the first subject. <b>Rule:</b> Subject + as well as + Noun → Verb agrees with the first subject."},
+{"id": 213, "section": "SSC Stenographer 08/08/2025 (Shift 3)", "text": "The number of applicants have increased this year.", "options": {"a": "The number of applicants", "b": "No error", "c": "this year", "d": "have increased"}, "answer": "d", "exp": "<b>Correction:</b> have increased → has increased 'The number of' is singular, so it takes a singular verb. <b>Rule:</b> The number of + Plural Noun → Singular Verb; A number of + Plural Noun → Plural Verb."},
+{"id": 214, "section": "SSC Stenographer 08/08/2025 (Shift 3)", "text": "She prevented me to enter the hall.", "options": {"a": "me to enter", "b": "the hall", "c": "She prevented", "d": "No error"}, "answer": "a", "exp": "<b>Correction:</b> me to enter → me from entering After 'prevent', we use 'from' + V-ing, not 'to' + base verb. <b>Rule:</b> Prevent + Object + from + V-ing."},
+{"id": 215, "section": "SSC Stenographer 08/08/2025 (Shift 3)", "text": "The team were playing well.", "options": {"a": "No error", "b": "were playing", "c": "The team", "d": "well"}, "answer": "b", "exp": "<b>Correction:</b> were playing → was playing A collective noun acting as one unit takes a singular verb. <b>Rule:</b> Collective noun (as one unit) → Singular Verb."},
+{"id": 216, "section": "SSC Stenographer 08/08/2025 (Shift 3)", "text": "The thief was hung for his crimes.", "options": {"a": "hung", "b": "No error", "c": "The thief was", "d": "for his crimes"}, "answer": "a", "exp": "<b>Correction:</b> hung → hanged For execution by rope, the correct past participle is 'hanged', not 'hung'. <b>Rule:</b> Hanged = executed by hanging; Hung = suspended (picture, clothes, etc.)."},
+{"id": 217, "section": "SSC Stenographer 08/08/2025 (Shift 3)", "text": "The committee have given its decision.", "options": {"a": "have given", "b": "No error", "c": "its decision", "d": "The committee"}, "answer": "a", "exp": "<b>Correction:</b> have given → has made The pronoun 'its' shows that 'committee' is treated as a single unit, so the verb should also be singular. Also, we say 'make a decision', not 'give a decision'. <b>Rule:</b> Collective noun + its → Singular verb (has); use 'make a decision'."},
+{"id": 218, "section": "SSC CPO TIER I 09/12/2025 (Shift 1)", "text": "The report lacks a clear justification for the measures undertaken and overlooks the impact on a environment.", "options": {"a": "The report lacks a clear justification", "b": "for the measures undertaken", "c": "and overlooks the impact", "d": "on a environment."}, "answer": "d", "exp": "<b>Correction:</b> a environment → the environment 'Atmosphere/environment/ecosystem' take the definite article 'the'. <b>Rule:</b> Use 'the' before environment, atmosphere, ecosystem."},
+{"id": 219, "section": "SSC CPO TIER I 09/12/2025 (Shift 1)", "text": "The report, which the internal auditor had insisted should have been submitted before the board meeting, were eventually uploaded two hours after the deadline.", "options": {"a": "The report, which the internal auditor had insisted", "b": "should have been submitted before the board meeting,", "c": "were eventually uploaded", "d": "two hours after the deadline."}, "answer": "c", "exp": "<b>Correction:</b> were → was The subject 'The report' is singular, so the verb must also be singular, regardless of the intervening clause. <b>Rule:</b> A singular subject takes a singular verb, regardless of any intervening clause."},
+{"id": 220, "section": "SSC CPO TIER I 09/12/2025 (Shift 1)", "text": "If she be found guilty of any misconduct during her tenure, the disciplinary committee reserves the right to withhold her pending dues or initiate further legal action.", "options": {"a": "If she be found guilty of any misconduct during her tenure,", "b": "the disciplinary committee reserves the right", "c": "to withhold her pending dues", "d": "or initiate further legal action."}, "answer": "a", "exp": "<b>Correction:</b> If she be found → If she is found In a simple real conditional (First Conditional), use 'If + Subject + is/are/am', not the archaic subjunctive 'be'. <b>Rule:</b> First Conditional: If + Present Simple, ...will/can + base verb."},
+{"id": 221, "section": "SSC CPO TIER I 2025 09/12/2025 (Shift 2)", "text": "The manager asked the interns to compile the data accurately and quick for tomorrow's presentation before the end of the day.", "options": {"a": "The manager asked the interns", "b": "to compile the data accurately and quick", "c": "for tomorrow's presentation", "d": "before the end of the day."}, "answer": "b", "exp": "<b>Correction:</b> quick → quickly The verb 'compile' is modified by two adverbs, 'accurately' and 'quickly'. The adjective 'quick' is incorrect and should be replaced with the adverb 'quickly'. <b>Rule:</b> Use an adverb (not an adjective) to modify a verb."},
+{"id": 222, "section": "SSC CPO TIER I 2025 09/12/2025 (Shift 2)", "text": "What the council could not anticipate was that the regulatory changes, sudden as they seemed, were in fact a culmination of several years of there being dissatisfaction within the sector.", "options": {"a": "What the council could not anticipate", "b": "was that the regulatory changes, sudden as they seemed,", "c": "were in fact a culmination of several years", "d": "of there being dissatisfaction within the sector."}, "answer": "d", "exp": "<b>Correction:</b> of there being dissatisfaction → of dissatisfaction The phrase 'of there being dissatisfaction' is awkward and unidiomatic. After 'culmination of several years', the noun 'dissatisfaction' should be used directly. <b>Rule:</b> After expressions like 'years of', use a noun directly rather than the construction 'there being + noun'."},
+{"id": 223, "section": "SSC CPO TIER I 2025 10/12/2025 (Shift 1)", "text": "The consultant suggested that the firm discontinues the outdated product line so as to focus more resources on innovation.", "options": {"a": "The consultant suggested that the firm", "b": "discontinues the outdated product line", "c": "so as to focus more resources", "d": "on innovation."}, "answer": "b", "exp": "<b>Correction:</b> discontinues → discontinue After verbs like suggest, recommend, insist, propose, demand, the Present Subjunctive mood is used — the verb should be in its base form without -s. <b>Rule:</b> Suggest/Recommend/Insist/Demand + that + Subject + Base Verb."},
+{"id": 224, "section": "SSC CPO TIER I 2025 10/12/2025 (Shift 2)", "text": "The economist's analysis was replete with insights yet lacked the adequate context for policy formulation.", "options": {"a": "The economist's analysis", "b": "was replete with insights", "c": "yet lacked the adequate context", "d": "for policy formulation."}, "answer": "c", "exp": "<b>Correction:</b> the adequate context → adequate context The definite article 'the' is unnecessary before 'adequate context', since 'adequate' already qualifies the noun in a general sense. <b>Rule:</b> Do not use 'the' before a noun when referring to it in a general sense."},
+{"id": 225, "section": "SSC CPO TIER I 2025 10/12/2025 (Shift 2)", "text": "In response to an alarming spike in fraudulent transactions, the bank introduced mechanism to verify customer identities using two-factor authentication, biometric checks, and behavioural patterns.", "options": {"a": "In response to an alarming spike in fraudulent transactions,", "b": "the bank introduced mechanism", "c": "to verify customer identities using two-factor authentication,", "d": "biometric checks, and behavioural patterns."}, "answer": "b", "exp": "<b>Correction:</b> mechanism → a mechanism The singular countable noun 'mechanism' requires an article. <b>Rule:</b> A singular countable noun must have an article (a/an) or another determiner."},
+{"id": 226, "section": "SSC CPO TIER I 2025 10/12/2025 (Shift 2)", "text": "Among all the diplomatic envoys stationed in the conflict zone, she is undoubtedly more trusted and relied upon by both factions of the civil war than any other ambassador.", "options": {"a": "Among all the diplomatic envoys stationed in the conflict zone,", "b": "she is undoubtedly more trusted and relied upon", "c": "by both factions of the civil war", "d": "than any other ambassador."}, "answer": "b", "exp": "<b>Correction:</b> more trusted → the most trusted After 'Among all', the comparison should be in the superlative degree, not the comparative. <b>Rule:</b> Among all + plural noun → use the superlative degree."},
+{"id": 227, "section": "SSC CPO TIER I 2025 11/12/2025 (Shift 1)", "text": "Entire in my life one of the best gift I have received is the car.", "options": {"a": "one of the best gift", "b": "Entire in my life", "c": "I have received", "d": "is the car"}, "answer": "a", "exp": "<b>Correction:</b> one of the best gift → one of the best gifts After 'one of the + superlative adjective', the noun must be plural. Hence, 'gift' should be 'gifts'. <b>Rule:</b> One of the + Superlative + Plural Noun."},
+{"id": 228, "section": "SSC CPO TIER I 2025 11/12/2025 (Shift 1)", "text": "Rahul is taller than any boy in his office.", "options": {"a": "than any boy", "b": "in his office", "c": "Rahul is", "d": "taller"}, "answer": "a", "exp": "<b>Correction:</b> than any boy → than any other boy Rahul is included in the group 'boys in his office'. Therefore, use 'any other boy' to exclude Rahul from the comparison. <b>Rule:</b> Comparative + than any other + singular noun, when comparing a person with others in the same group."},
+{"id": 229, "section": "SSC CPO TIER I 2025 11/12/2025 (Shift 1)", "text": "God did not create any form in life without a purpose.", "options": {"a": "form in life", "b": "without a purpose", "c": "God did not", "d": "create any"}, "answer": "a", "exp": "<b>Correction:</b> form in life → form of life The phrase 'form in life' is incorrect. The correct expression is 'form of life'. <b>Rule:</b> Fixed expression: form of life."},
+{"id": 230, "section": "SSC CPO TIER I 2025 11/12/2025 (Shift 2)", "text": "We look forward to meet you at the orientation session scheduled for next Tuesday in the seminar hall.", "options": {"a": "We look forward to meet", "b": "you at the orientation session", "c": "scheduled for next Tuesday", "d": "in the seminar hall."}, "answer": "a", "exp": "<b>Correction:</b> to meet → to meeting The expression 'look forward to' is followed by a noun, pronoun, or gerund (V-ing), not an infinitive. <b>Rule:</b> Look forward to + Noun/Pronoun/Gerund (V-ing)."},
+{"id": 231, "section": "SSC CPO TIER I 2025 11/12/2025 (Shift 2)", "text": "She speaks more persuasively than she writes, which, according to her critics, makes her a better orator rather than an accomplished communicator.", "options": {"a": "She speaks more persuasively than she writes,", "b": "which, according to her critics,", "c": "makes her a better orator rather than", "d": "an accomplished communicator."}, "answer": "c", "exp": "<b>Correction:</b> rather than → than The expression 'better...than...' is the correct comparative structure. 'Rather than' is not needed after the comparative adjective 'better'. <b>Rule:</b> Use 'better + than' for comparison."},
+{"id": 232, "section": "SSC CPO TIER I 2025 12/12/2025 (Shift 1)", "text": "Pushpa is knows all the facts about the incident.", "options": {"a": "knows all", "b": "Pushpa is", "c": "the facts about", "d": "the incident"}, "answer": "a", "exp": "<b>Correction:</b> is knows all → knows all The sentence incorrectly uses 'is' and 'knows' together. A main verb does not take another finite verb with it unless it is in the -ing form. Simply use 'knows'. <b>Rule:</b> A finite verb cannot be directly followed by another finite verb; remove the auxiliary 'is'."},
+{"id": 233, "section": "SSC CPO TIER I 2025 12/12/2025 (Shift 2)", "text": "Milk products was provide protein for a nutritionally balanced diet to everyone.", "options": {"a": "was provide protein", "b": "Milk products", "c": "balanced diet to everyone", "d": "for a nutritionally"}, "answer": "a", "exp": "<b>Correction:</b> was provide protein → provide protein Remove 'was' — 'Milk products provide' is sufficient and grammatically correct. <b>Rule:</b> Do not combine 'was' with a base-form verb; use the plain present-tense verb."},
+{"id": 234, "section": "SSC CPO TIER I 2025 12/12/2025 (Shift 2)", "text": "The old man died for a heart attack today.", "options": {"a": "died for", "b": "The old man", "c": "a heart attack", "d": "today"}, "answer": "a", "exp": "<b>Correction:</b> died for → died of/from The correct preposition with 'die' to indicate the cause of death is 'of' or 'from'. <b>Rule:</b> Die of/from a disease/cause."},
+{"id": 235, "section": "SSC CPO TIER I 2025 12/12/2025 (Shift 2)", "text": "It seems the I am the most beautiful plant in this forest.", "options": {"a": "the I am the most", "b": "It seems", "c": "in this forest", "d": "beautiful plant"}, "answer": "a", "exp": "<b>Correction:</b> the I am the most → that I am the The segment 'the I am the most' is grammatically incorrect. After 'It seems', use a that-clause. Also, the superlative should be written as 'the most', two separate words, not 'themost'. <b>Rule:</b> After 'It seems', use: It seems that + clause."},
+{"id": 236, "section": "SSC CGL TIER II 2025 19/01/2026 (Shift 1)", "text": "The company will invest more six hundred crores in the next five years to expand its operations in Britain.", "options": {"a": "six hundred crores", "b": "in the next five years to expand", "c": "its operations in Britain", "d": "The company will invest more"}, "answer": "d", "exp": "<b>Correction:</b> more → more than The comparative 'more' must be followed by 'than' before a number or quantity. <b>Rule:</b> Use 'more than' + number/quantity."},
+{"id": 237, "section": "SSC CGL TIER II 2025 19/01/2026 (Shift 1)", "text": "The whole family would burst into peals for laughter.", "options": {"a": "would burst into", "b": "The whole family", "c": "No Error", "d": "peals for laughter."}, "answer": "d", "exp": "<b>Correction:</b> peals for laughter → peals of laughter The correct idiomatic expression is 'burst into peals of laughter', not 'peals for laughter'. <b>Rule:</b> Burst into + peals/fits + of + laughter."},
+{"id": 238, "section": "SSC CHSL TIER II 2025 10/04/2026 (Shift 1)", "text": "The vibrant colors of the Holi festival were dispersed on the air.", "options": {"a": "The vibrant colors", "b": "of the Holi festival", "c": "were dispersed on the air.", "d": "No error"}, "answer": "c", "exp": "<b>Correction:</b> on the air → in the air The preposition 'on' is incorrect. The correct expression is 'in the air', meaning something is spread or floating through the atmosphere. <b>Rule:</b> Use 'in the air' for things that are floating, spread, or present in the atmosphere."}
+];
+
+
+class TestApp {
+  constructor(){
+    this.qs = questions;
+    this.cur = 0;
+    this.ans = new Array(this.qs.length).fill(null);
+    this.reviewed = new Array(this.qs.length).fill(false);
+    this.sub = false;
+    this.dark = false;
+    this.duration = 40 * 60;
+    this.timeLeft = this.duration;
+    this.timer = null;
+    this.startT = null;
+
+    this.els = {
+      qInfo: document.getElementById('qInfo'),
+      subjectTag: document.getElementById('subjectTag'),
+      qNumTxt: document.getElementById('qNumTxt'),
+      statusTag: document.getElementById('statusTag'),
+      passageBox: document.getElementById('passageBox'),
+      qTxt: document.getElementById('qTxt'),
+      opts: document.getElementById('opts'),
+      explanation: document.getElementById('explanation'),
+      qcard: document.getElementById('qcard'),
+      progTxt: document.getElementById('progTxt'),
+      ansCnt: document.getElementById('ansCnt'),
+      timer: document.getElementById('timer'),
+      gridNav: document.getElementById('gridNav'),
+      panel: document.getElementById('panel'),
+      modalOver: document.getElementById('modalOver'),
+      scoreDisp: document.getElementById('scoreDisp'),
+      corrStat: document.getElementById('corrStat'),
+      incStat: document.getElementById('incStat'),
+      unaStat: document.getElementById('unaStat'),
+      timeStat: document.getElementById('timeStat'),
+      printBtn: document.getElementById('printBtn')
+    };
+
+    this.bindStaticEvents();
+  }
+
+  bindStaticEvents(){
+    document.getElementById('startTestBtn').addEventListener('click', () => this.startTest());
+    document.getElementById('prevBtn').addEventListener('click', () => this.go(-1));
+    document.getElementById('nextBtn').addEventListener('click', () => this.go(1));
+    document.getElementById('reviewBtn').addEventListener('click', () => this.toggleReview());
+    document.getElementById('subBtn').addEventListener('click', () => this.confirmSubmit());
+    document.getElementById('menuBtn').addEventListener('click', () => this.openPanel());
+    document.getElementById('panelClose').addEventListener('click', () => this.closePanel());
+    document.getElementById('themeToggle').addEventListener('click', () => this.toggleDark());
+    document.getElementById('closeModal').addEventListener('click', () => this.closeModal());
+    document.getElementById('revBtn').addEventListener('click', () => { this.closeModal(); this.loadQ(0); });
+    document.getElementById('printBtn').addEventListener('click', () => this.printReview());
+
+    window.addEventListener('beforeunload', (e) => {
+      if(!this.sub){
+        e.preventDefault();
+        e.returnValue = 'Are you sure you want to leave? Your test progress will be lost.';
+        return e.returnValue;
+      }
+    });
+  }
+
+  startTest(){
+    document.getElementById('welcomeScreen').classList.add('hidden');
+    document.getElementById('mainTestInterface').style.display = '';
+    this.startT = Date.now();
+    this.buildGrid();
+    this.loadQ(0);
+    this.startTimer();
+  }
+
+  startTimer(){
+    this.timer = setInterval(() => {
+      this.timeLeft--;
+      this.renderTimer();
+      if(this.timeLeft <= 0){
+        clearInterval(this.timer);
+        this.submitTest();
+      }
+    }, 1000);
+  }
+
+  renderTimer(){
+    const m = Math.floor(this.timeLeft / 60);
+    const s = this.timeLeft % 60;
+    this.els.timer.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    this.els.timer.classList.toggle('low', this.timeLeft <= 60);
+  }
+
+  buildGrid(){
+    this.els.gridNav.innerHTML = '';
+    this.qs.forEach((q, i) => {
+      const b = document.createElement('button');
+      b.className = 'g-btn';
+      b.id = 'g-' + i;
+      b.textContent = i + 1;
+      b.addEventListener('click', () => { this.closePanel(); this.loadQ(i); });
+      this.els.gridNav.appendChild(b);
+    });
+  }
+
+  updateGrid(){
+    this.qs.forEach((q, i) => {
+      const b = document.getElementById('g-' + i);
+      b.className = 'g-btn';
+      if(this.ans[i] !== null) b.classList.add('answered');
+      if(this.reviewed[i]) b.classList.add('review');
+      if(i === this.cur) b.classList.add('current');
+    });
+  }
+
+  openPanel(){ this.els.panel.classList.add('open'); }
+  closePanel(){ this.els.panel.classList.remove('open'); }
+
+  toggleDark(){
+    this.dark = !this.dark;
+    document.body.classList.toggle('dark-mode', this.dark);
+    document.getElementById('themeToggle').innerHTML = this.dark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  }
+
+  loadQ(idx){
+    this.cur = idx;
+    const q = this.qs[idx];
+
+    this.els.qInfo.textContent = `Q ${idx+1} / ${this.qs.length}`;
+    this.els.progTxt.textContent = `${idx+1} of ${this.qs.length}`;
+    this.els.subjectTag.textContent = q.section;
+    this.els.qNumTxt.textContent = idx + 1;
+
+    if(q.passage){
+      this.els.passageBox.style.display = '';
+      this.els.passageBox.innerHTML = q.passage;
+    } else {
+      this.els.passageBox.style.display = 'none';
+      this.els.passageBox.innerHTML = '';
+    }
+
+    this.els.qTxt.innerHTML = q.text;
+
+    this.els.opts.innerHTML = '';
+    Object.entries(q.options).forEach(([key, val]) => {
+      const label = document.createElement('label');
+      label.className = 'opt';
+      label.id = `opt-${idx}-${key}`;
+      label.dataset.key = key;
+      if(this.ans[idx] === key) label.classList.add('selected');
+      label.innerHTML = `<span class="opt-letter">(${key})</span> <span>${val}</span>`;
+      label.addEventListener('click', () => this.selectOpt(idx, key));
+      this.els.opts.appendChild(label);
+    });
+
+    this.els.qcard.classList.toggle('locked', this.sub);
+
+    const tag = this.els.statusTag;
+    if(this.sub){
+      const chosen = this.ans[idx];
+      if(chosen === null){
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Unattempted';
+        tag.className = 'status-tag skipped';
+      } else if(chosen === q.answer){
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Correct';
+        tag.className = 'status-tag correct';
+      } else {
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Incorrect';
+        tag.className = 'status-tag wrong';
+      }
+      if(chosen && chosen !== q.answer){
+        const wrongEl = document.getElementById(`opt-${idx}-${chosen}`);
+        if(wrongEl) wrongEl.classList.add('wrong-answer');
+      }
+      const correctEl = document.getElementById(`opt-${idx}-${q.answer}`);
+      if(correctEl) correctEl.classList.add('correct-answer');
+
+      this.els.explanation.innerHTML = `<b>Correct answer: (${q.answer}) ${q.options[q.answer]}.</b><br>${q.exp}`;
+    } else {
+      tag.style.display = 'none';
+      this.els.explanation.innerHTML = '';
+    }
+
+    document.getElementById('prevBtn').disabled = idx === 0;
+    document.getElementById('nextBtn').disabled = idx === this.qs.length - 1;
+
+    const revBtn = document.getElementById('reviewBtn');
+    revBtn.classList.toggle('active', this.reviewed[idx]);
+
+    this.updateGrid();
+    this.updateAnsCount();
+  }
+
+  selectOpt(idx, key){
+    if(this.sub) return;
+    this.ans[idx] = key;
+    document.querySelectorAll(`#opts .opt`).forEach(o => o.classList.remove('selected'));
+    document.getElementById(`opt-${idx}-${key}`).classList.add('selected');
+    this.updateGrid();
+    this.updateAnsCount();
+  }
+
+  toggleReview(){
+    this.reviewed[this.cur] = !this.reviewed[this.cur];
+    document.getElementById('reviewBtn').classList.toggle('active', this.reviewed[this.cur]);
+    this.updateGrid();
+  }
+
+  updateAnsCount(){
+    const answered = this.ans.filter(a => a !== null).length;
+    this.els.ansCnt.textContent = answered;
+  }
+
+  go(dir){
+    const next = this.cur + dir;
+    if(next >= 0 && next < this.qs.length) this.loadQ(next);
+  }
+
+  confirmSubmit(){
+    if(this.sub) return;
+    const btn = document.getElementById('subBtn');
+    if(!this.confirmPending){
+      const unanswered = this.ans.filter(a => a === null).length;
+      this.confirmPending = true;
+      this._origSubText = btn.textContent;
+      btn.textContent = unanswered > 0 ? `${unanswered} left! Tap again` : 'Tap again to confirm';
+      this._confirmTimeout = setTimeout(() => {
+        this.confirmPending = false;
+        btn.textContent = this._origSubText;
+      }, 3000);
+      return;
+    }
+    clearTimeout(this._confirmTimeout);
+    this.confirmPending = false;
+    this.submitTest();
+  }
+
+  submitTest(){
+    if(this.sub) return;
+    this.sub = true;
+    clearInterval(this.timer);
+    document.getElementById('subBtn').disabled = true;
+    document.getElementById('subBtn').textContent = 'Submitted';
+
+    const results = this.calcResults();
+    this.showModal(results);
+    this.loadQ(this.cur);
+  }
+
+  calcResults(){
+    let correct = 0, incorrect = 0, unattempted = 0, score = 0;
+    this.qs.forEach((q, i) => {
+      const chosen = this.ans[i];
+      if(chosen === null){
+        unattempted++;
+      } else if(chosen === q.answer){
+        correct++; score += 2;
+      } else {
+        incorrect++; score -= 0.5;
+      }
+    });
+    const timeTaken = Math.max(1, Math.round((Date.now() - this.startT) / 60000));
+    return { score: Math.max(0, score), correct, incorrect, unattempted, timeTaken };
+  }
+
+  showModal(r){
+    this.els.scoreDisp.innerHTML = `${r.score.toFixed(1)}<span> / 476</span>`;
+    this.els.corrStat.textContent = r.correct;
+    this.els.incStat.textContent = r.incorrect;
+    this.els.unaStat.textContent = r.unattempted;
+    this.els.timeStat.textContent = r.timeTaken;
+    this.els.printBtn.classList.add('show');
+    this.els.modalOver.classList.add('show');
+  }
+
+  closeModal(){ this.els.modalOver.classList.remove('show'); }
+
+  printReview(){
+    const w = window.open('', '_blank');
+    const rows = this.qs.map((q, i) => {
+      const chosen = this.ans[i];
+      const isCorrect = chosen === q.answer;
+      return `
+        <div style="page-break-inside:avoid;margin-bottom:26px;border-bottom:1px solid #eee;padding-bottom:16px">
+          <h3 style="color:#163a5f;margin-bottom:4px">Question ${i+1} <span style="font-size:12px;color:#7a6f57">(${q.section})</span></h3>
+          ${q.passage ? `<div style="font-style:italic;background:#f1ece0;padding:8px 12px;margin-bottom:8px">${q.passage}</div>` : ''}
+          <div style="margin-bottom:10px">${q.text}</div>
+          ${Object.entries(q.options).map(([key,val]) => `
+            <div style="margin:4px 0;padding:6px 10px;border-left:3px solid ${
+              key === q.answer ? '#1f7a4d' : (key === chosen ? '#a8321f' : '#c9bfa4')
+            }">(${key}) ${val}</div>
+          `).join('')}
+          <div style="margin-top:10px;font-size:13px;color:#555">
+            <b>Your answer:</b> ${chosen ? `(${chosen}) ${q.options[chosen]}` : 'Not attempted'}
+            ${chosen ? ` — <span style="color:${isCorrect ? '#1f7a4d' : '#a8321f'}">${isCorrect ? 'Correct' : 'Incorrect'}</span>` : ''}
+          </div>
+          <div style="margin-top:10px;background:#f0fdf4;padding:10px;border-radius:6px">
+            <b style="color:#1f7a4d">Explanation</b><br>${q.exp}
+          </div>
+        </div>`;
+    }).join('');
+
+    w.document.write(`
+      <!DOCTYPE html><html><head><title>Sampuran English — SSC English Practice - Common Error (Review)</title>
+      <style>body{font-family:Georgia,serif;padding:20px;color:#1c2b3a}
+      h2{border-bottom:2px solid #a8321f;padding-bottom:10px}</style></head>
+      <body>
+        <h2>Sampuran English — 2025 SSC CGL Ediquity Common Errors (All Shifts) (Review)</h2>
+        <p><b>Score:</b> ${this.els.scoreDisp.textContent.replace(/<[^>]+>/g,' ')} &nbsp;|&nbsp;
+        <b>Correct:</b> ${this.els.corrStat.textContent} &nbsp;|&nbsp;
+        <b>Incorrect:</b> ${this.els.incStat.textContent} &nbsp;|&nbsp;
+        <b>Unattempted:</b> ${this.els.unaStat.textContent} &nbsp;|&nbsp;
+        <b>Time:</b> ${this.els.timeStat.textContent} min</p>
+        ${rows}
+        <script>setTimeout(()=>window.print(),400);<\/script>
+      </body></html>
+    `);
+    w.document.close();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => new TestApp());
+</script>
+
+</body>
+</html>
