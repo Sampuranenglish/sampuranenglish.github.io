@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampuran English — SSC English Practice, 10-9-2026</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  :root{
+    --ink:#1c2b3a;
+    --paper:#f6f3ea;
+    --rule:#c9bfa4;
+    --navy:#163a5f;
+    --brick:#a8321f;
+    --brick-deep:#7e2417;
+    --gold:#b8862c;
+    --correct:#1f7a4d;
+    --correct-bg:#e5f3ea;
+    --wrong:#a8321f;
+    --wrong-bg:#fbe9e5;
+    --unattempted:#7a6f57;
+    --card:#fffdf8;
+    --shadow:0 4px 10px rgba(0,0,0,.08);
+    --radius:10px;
+    --trans:all .2s ease;
+
+    --d-bg:#141b24;
+    --d-card:#1e2733;
+    --d-ink:#e8e3d3;
+    --d-rule:#33404c;
+    --d-paper:#10161d;
+  }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0)),
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 34px);
+    color: var(--ink);
+    font-family: "Georgia", "Iowan Old Style", "Palatino Linotype", serif;
+    line-height: 1.5;
+    transition: var(--trans);
+  }
+  body.dark-mode{
+    background: var(--d-bg);
+    background-image:none;
+    color: var(--d-ink);
+  }
+
+  img{ max-width:100%; height:auto; }
+
+  /* ---------- Welcome screen ---------- */
+  .welcome-screen{
+    position:fixed; inset:0;
+    background: var(--paper);
+    z-index:1000;
+    display:flex; flex-direction:column; align-items:center;
+    padding: 24px 20px 40px;
+    text-align:center;
+    transition: var(--trans);
+    overflow-y:auto;
+  }
+  body.dark-mode .welcome-screen{ background:var(--d-bg); }
+  .welcome-screen.hidden{ display:none; }
+
+  .brand-box{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    background: linear-gradient(135deg, var(--navy) 0%, #1e4d7b 100%);
+    border: 2px solid var(--gold);
+    border-radius: 14px;
+    box-shadow: 0 6px 0 var(--brick-deep), var(--shadow);
+    padding: 16px 26px;
+    margin-bottom: 18px;
+  }
+  .brand-box i{
+    font-size: clamp(20px, 5vw, 28px);
+    color: #FFD86B;
+  }
+  .welcome-kicker{
+    font-family:"Trebuchet MS", sans-serif;
+    letter-spacing:2px;
+    font-size: clamp(22px, 6.5vw, 34px);
+    text-transform:uppercase;
+    color: #FFD86B;
+    font-weight:800;
+    line-height:1.15;
+    text-shadow: 0 2px 3px rgba(0,0,0,0.25);
+    margin:0;
+  }
+  .welcome-title{
+    font-size:15px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color: var(--navy);
+    margin-bottom:6px;
+  }
+  body.dark-mode .welcome-title{ color:#9fc1e6; }
+  .welcome-sub{
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13.5px;
+    color: var(--unattempted);
+    margin-bottom:26px;
+  }
+
+  .welcome-card{
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--brick);
+    box-shadow: var(--shadow);
+    width:100%; max-width:420px;
+    padding: 22px 24px;
+    margin-bottom:26px;
+    text-align:left;
+  }
+  body.dark-mode .welcome-card{ background:var(--d-card); border-color:var(--d-rule); }
+  .welcome-card .head{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color: var(--navy);
+    border-bottom:1px solid var(--rule);
+    padding-bottom:10px;
+    margin-bottom:12px;
+  }
+  body.dark-mode .welcome-card .head{ color:#9fc1e6; border-color:var(--d-rule); }
+  .w-row{
+    display:flex; justify-content:space-between;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:14px;
+    padding:7px 0;
+  }
+  .w-row b{ color:var(--brick); }
+  body.dark-mode .w-row b{ color:#e08a72; }
+
+  .welcome-button{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:800;
+    font-size:21px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    background: var(--brick);
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    padding:16px 52px;
+    cursor:pointer;
+    box-shadow: 0 4px 0 var(--brick-deep);
+    transition: transform .1s;
+    margin-bottom:16px;
+  }
+  .welcome-button:active{ transform:translateY(3px); box-shadow:none; }
+
+  /* ---------- Daily content: Rule / Word of the Day ---------- */
+  .daily-content{
+    width:100%; max-width:420px;
+    text-align:left;
+    margin-bottom:26px;
+  }
+  .cat-row{
+    display:flex; gap:10px; justify-content:center;
+    margin-bottom:20px; flex-wrap:wrap;
+  }
+  .cat-pill{
+    flex:1; min-width:96px;
+    background: var(--card);
+    border:2px solid var(--navy);
+    color: var(--navy);
+    border-radius:50px;
+    text-align:center;
+    padding:14px 6px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:12.5px;
+    line-height:1.3;
+  }
+  body.dark-mode .cat-pill{ background:var(--d-card); border-color:#9fc1e6; color:#9fc1e6; }
+  .cat-pill:nth-child(2){ border-color: var(--correct); color: var(--correct); }
+  body.dark-mode .cat-pill:nth-child(2){ border-color:#5fd28d; color:#5fd28d; }
+  .cat-pill:nth-child(3){ border-color: var(--brick); color: var(--brick); }
+  body.dark-mode .cat-pill:nth-child(3){ border-color:#e08a72; color:#e08a72; }
+
+  .dc-banner{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    background: var(--brick);
+    color:#FFD86B;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:800; font-size:14px; letter-spacing:1px; text-transform:uppercase;
+    padding:9px 12px;
+    margin:18px 0 10px;
+  }
+  .dc-banner i{ font-size:12px; color:#fff; }
+
+  .rule-box{
+    background: var(--navy);
+    color:#FFD86B;
+    padding:14px 16px;
+    font-size:13.5px;
+    font-weight:700;
+    line-height:1.55;
+    margin-bottom:8px;
+    border-left:3px solid var(--gold);
+  }
+  body.dark-mode .rule-box{ border-left-color:#ffd86b; }
+  .rule-box .eg{ margin-top:10px; font-size:12.5px; font-weight:400; color:#f2ede0; display:block; }
+  .rule-box .eg .wrong{ color:#ffb0a3; }
+  .rule-box .eg .right{ color:#a7f0b0; }
+
+  .word-box{
+    background: var(--card);
+    border:1px solid var(--rule);
+    padding:16px 18px;
+    text-align:center;
+  }
+  body.dark-mode .word-box{ background:var(--d-card); border-color:var(--d-rule); }
+  .word-title{
+    font-size:22px; font-weight:700;
+    color: var(--navy);
+    text-decoration:underline;
+    margin-bottom:8px;
+  }
+  body.dark-mode .word-title{ color:#9fc1e6; }
+  .word-meta{
+    text-align:left; font-size:13px; margin-top:8px; line-height:1.5;
+  }
+  .word-meta u{ font-weight:700; color:var(--navy); }
+  body.dark-mode .word-meta u{ color:#9fc1e6; }
+  .word-trick{
+    text-align:left; font-size:12.5px; font-style:italic; font-weight:700;
+    color: var(--brick); margin-top:10px;
+    background:#fde2e2; padding:8px 10px; border-radius:4px;
+    border-left:3px solid var(--brick);
+  }
+  body.dark-mode .word-trick{ color:#ffb0a3; background:#3a2320; border-left-color:#e08a72; }
+  .syn-anto{ text-align:left; font-size:13px; margin-top:8px; }
+  .syn-anto b{ text-decoration:underline; color:var(--navy); }
+  body.dark-mode .syn-anto b{ color:#9fc1e6; }
+  .syn-anto .hl{ color: var(--brick); font-weight:700; }
+  body.dark-mode .syn-anto .hl{ color:#e08a72; }
+
+  .join-channel{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13px; font-weight:600;
+    color: var(--navy);
+    text-decoration:none;
+    padding:9px 16px;
+    border:1px solid var(--navy);
+    border-radius: 20px;
+    transition: var(--trans);
+  }
+  .join-channel:hover{ background:var(--navy); color:#fff; }
+  body.dark-mode .join-channel{ color:#9fc1e6; border-color:#9fc1e6; }
+
+  /* ---------- Header ---------- */
+  .hdr{
+    background: var(--navy);
+    color:#f2ede0;
+    padding:10px 14px;
+    display:grid;
+    grid-template-columns: auto 1fr auto;
+    align-items:center;
+    gap:10px;
+    position:sticky; top:0; z-index:100;
+    border-bottom:4px solid var(--brick);
+  }
+  .hdr-l{ font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:14px; }
+  .hdr-l small{ display:block; font-weight:400; font-size:10.5px; color:#cfd8e3; letter-spacing:0.5px; }
+  .hdr-c{ text-align:center; font-family:"Trebuchet MS", sans-serif; font-size:13px; font-weight:600; }
+  .hdr-r{ display:flex; align-items:center; gap:8px; justify-content:flex-end; flex-wrap:wrap; }
+  .timer{
+    background:#FEF3C7; color:#78350F;
+    padding:6px 12px; border-radius:16px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13px; font-weight:700;
+  }
+  .timer.low{ background:#fde2e2; color:#7e2417; }
+  .icon-btn{
+    border:1px solid rgba(255,255,255,0.4);
+    background:transparent; color:#fff;
+    width:34px; height:34px; border-radius:8px;
+    cursor:pointer; font-size:14px;
+    display:flex; align-items:center; justify-content:center;
+    transition: var(--trans);
+  }
+  .icon-btn:hover{ background:rgba(255,255,255,0.15); }
+  .btn-submit-top{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; font-size:12.5px;
+    background: var(--brick); color:#fff;
+    border:none; padding:9px 14px; border-radius:8px;
+    cursor:pointer;
+  }
+  .btn-submit-top:disabled{ background:#8a8377; cursor:not-allowed; }
+
+  .subject-tag{
+    background:#f1ece0;
+    border-bottom:1px solid var(--rule);
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color: var(--navy);
+    font-weight:700;
+    padding:9px 16px;
+  }
+  body.dark-mode .subject-tag{ background:#1a2330; border-color:var(--d-rule); color:#9fc1e6; }
+
+  /* ---------- Question area ---------- */
+  .cont{ max-width:720px; margin:0 auto; padding:18px 16px 110px; }
+
+  .qcard{
+    background: var(--card);
+    border:1px solid var(--rule);
+    border-left:4px solid var(--navy);
+    padding:18px 20px 20px;
+    box-shadow: var(--shadow);
+  }
+  body.dark-mode .qcard{ background:var(--d-card); border-color:var(--d-rule); border-left-color:#9fc1e6; }
+
+  .qnum{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; color: var(--brick);
+    font-size:13px; margin-bottom:8px; letter-spacing:0.5px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .status-tag{
+    display:inline-block;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:10.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+    padding:3px 9px; border-radius:2px; color:#fff;
+  }
+  .status-tag.correct{ background:var(--correct); }
+  .status-tag.wrong{ background:var(--wrong); }
+  .status-tag.skipped{ background:var(--unattempted); }
+
+  .passage{
+    font-size:15px;
+    background:#f1ece0;
+    border-left:3px solid var(--gold);
+    padding:10px 14px;
+    margin-bottom:14px;
+    font-style:italic;
+    color:#40372a;
+  }
+  body.dark-mode .passage{ background:#1a2330; color:#c9c2ab; }
+
+  .qtext{ font-size:17px; margin-bottom:16px; color:var(--ink); }
+  body.dark-mode .qtext{ color:var(--d-ink); }
+
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:12px 14px;
+    border:1px solid var(--rule);
+    background:#fff;
+    cursor:pointer;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:14.5px;
+    transition: border-color .15s, background .15s;
+  }
+  body.dark-mode .opt{ background:#232d3a; border-color:var(--d-rule); color:var(--d-ink); }
+  .opt:hover{ border-color:var(--navy); background:#f3f6fa; }
+  body.dark-mode .opt:hover{ background:#2b3646; }
+  .opt.selected{ border-color:var(--navy); background:#e9eff6; font-weight:700; }
+  body.dark-mode .opt.selected{ background:#28405e; }
+  .opt-letter{ font-weight:700; color:var(--brick); flex-shrink:0; }
+  .opt.correct-answer{ background:var(--correct-bg); border-color:var(--correct); }
+  body.dark-mode .opt.correct-answer{ background:#164a34; border-color:var(--correct); }
+  .opt.wrong-answer{ background:var(--wrong-bg); border-color:var(--wrong); }
+  body.dark-mode .opt.wrong-answer{ background:#5c2018; border-color:var(--wrong); }
+  .qcard.locked .opt{ cursor:default; pointer-events:none; }
+
+  .explanation{
+    margin-top:16px; padding:12px 14px;
+    background:#fbf7ec;
+    border:1px dashed var(--gold);
+    font-size:14px;
+    display:none;
+  }
+  body.dark-mode .explanation{ background:#241f14; }
+  .explanation b{ color:var(--navy); }
+  body.dark-mode .explanation b{ color:#9fc1e6; }
+  .qcard.locked .explanation{ display:block; }
+
+  /* ---------- Bottom nav ---------- */
+  .navbar{
+    position:fixed; left:0; right:0; bottom:0;
+    background: var(--card);
+    border-top:1px solid var(--rule);
+    padding:10px 14px;
+    display:flex; justify-content:space-between; align-items:center;
+    box-shadow:0 -2px 10px rgba(0,0,0,.06);
+    z-index:100;
+  }
+  body.dark-mode .navbar{ background:var(--d-card); border-color:var(--d-rule); }
+  .nav-btn{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; font-size:12.5px;
+    padding:10px 14px; border-radius:8px; border:none; cursor:pointer;
+    display:flex; align-items:center; gap:6px;
+    min-width:64px; justify-content:center;
+  }
+  .nav-btn:disabled{ opacity:.45; cursor:not-allowed; }
+  .nav-btn.prev{ background:transparent; border:1px solid var(--rule); color:var(--ink); }
+  body.dark-mode .nav-btn.prev{ border-color:var(--d-rule); color:var(--d-ink); }
+  .nav-btn.review{ background:#f6dfa0; color:#5a4008; }
+  .nav-btn.review.active{ background:var(--gold); color:#fff; }
+  .nav-btn.next{ background:var(--navy); color:#fff; }
+  .nav-mid{ text-align:center; font-family:"Trebuchet MS", sans-serif; font-size:11.5px; color:var(--unattempted); }
+  body.dark-mode .nav-mid{ color:#a49a80; }
+
+  /* ---------- Grid panel ---------- */
+  .panel{
+    position:fixed; inset:0;
+    background: var(--paper);
+    z-index:200;
+    transform: translateY(100%);
+    transition: transform .3s ease;
+    overflow-y:auto;
+    display:none;
+  }
+  body.dark-mode .panel{ background:var(--d-bg); }
+  .panel.open{ display:block; transform:translateY(0); }
+  .panel-hdr{
+    background: var(--navy); color:#fff;
+    padding:16px; display:flex; justify-content:space-between; align-items:center;
+    position:sticky; top:0;
+  }
+  .panel-close{ background:none; border:none; color:#fff; font-size:20px; cursor:pointer; }
+  .panel-body{ padding:18px; }
+  .legend{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:18px; font-family:"Trebuchet MS", sans-serif; font-size:12px; }
+  .legend span{ display:flex; align-items:center; gap:6px; }
+  .legend i{ width:14px; height:14px; border-radius:3px; display:inline-block; }
+  .grid-nav{ display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; }
+  @media (min-width:480px){ .grid-nav{ grid-template-columns:repeat(6, 1fr); } }
+  .g-btn{
+    aspect-ratio:1; border-radius:8px; border:2px solid var(--rule);
+    background:#fff; font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:14px;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  body.dark-mode .g-btn{ background:var(--d-card); border-color:var(--d-rule); color:var(--d-ink); }
+  .g-btn.answered{ background:var(--correct); color:#fff; border-color:var(--correct); }
+  .g-btn.review{ background:var(--gold); color:#fff; border-color:var(--gold); }
+  .g-btn.current{ outline:3px solid var(--brick); outline-offset:1px; }
+
+  /* ---------- Modal ---------- */
+  .modal{
+    position:fixed; inset:0; background:rgba(0,0,0,.55);
+    display:none; align-items:center; justify-content:center; z-index:300; padding:16px;
+  }
+  .modal.show{ display:flex; }
+  .modal-box{
+    background: var(--card);
+    max-width:400px; width:100%;
+    border:1px solid var(--rule);
+    border-top:5px solid var(--brick);
+    box-shadow: var(--shadow);
+  }
+  body.dark-mode .modal-box{ background:var(--d-card); border-color:var(--d-rule); }
+  .modal-head{ text-align:center; padding:22px 20px 14px; }
+  .modal-head .kicker{ font-family:"Trebuchet MS", sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--unattempted); }
+  .modal-head .score{ font-size:38px; font-weight:700; color:var(--navy); margin-top:6px; }
+  body.dark-mode .modal-head .score{ color:#9fc1e6; }
+  .modal-head .score span{ font-size:18px; color:var(--unattempted); }
+  .stat-grid{ display:grid; grid-template-columns:repeat(4,1fr); text-align:center; font-family:"Trebuchet MS", sans-serif; border-top:1px solid var(--rule); }
+  body.dark-mode .stat-grid{ border-color:var(--d-rule); }
+  .stat-grid div{ padding:12px 4px; border-right:1px solid var(--rule); }
+  body.dark-mode .stat-grid div{ border-color:var(--d-rule); }
+  .stat-grid div:last-child{ border-right:none; }
+  .stat-grid .num{ font-size:19px; font-weight:700; }
+  .stat-grid .lbl{ font-size:10px; text-transform:uppercase; color:var(--unattempted); margin-top:2px; }
+  .modal-actions{ display:flex; gap:8px; padding:16px 20px; }
+  .modal-actions button{
+    flex:1; padding:11px; border-radius:6px; border:none; cursor:pointer;
+    font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:13px;
+  }
+  .m-close{ background:transparent; border:1px solid var(--rule) !important; color:var(--ink); }
+  body.dark-mode .m-close{ border-color:var(--d-rule) !important; color:var(--d-ink); }
+  .m-review{ background:var(--navy); color:#fff; }
+  .m-print{ background:var(--brick); color:#fff; margin:0 20px 18px; padding:11px; border:none; border-radius:6px; font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:13px; cursor:pointer; width:calc(100% - 40px); display:none; }
+  .m-print.show{ display:block; }
+
+  footer{
+    text-align:center; padding:16px; background:var(--brick); color:#fff;
+    font-family:"Trebuchet MS", sans-serif; font-size:12.5px;
+  }
+  footer a{ color:#ffe9c7; }
+</style>
+</head>
+<body>
+
+<!-- ============ WELCOME SCREEN ============ -->
+<div class="welcome-screen" id="welcomeScreen">
+  <div class="brand-box"><i class="fa-solid fa-graduation-cap"></i><div class="welcome-kicker">Sampuran English</div></div>
+  <a class="join-channel" href="https://t.me/Sampuran_English" target="_blank">
+    <i class="fa-brands fa-telegram"></i> Official Telegram Channel
+  </a>
+  <div class="welcome-sub" style="color:#000;font-weight:700;margin-top:14px">SSC English Practice — 10 · 9 · 2026</div>
+
+  <div class="welcome-card">
+    <div class="head" style="text-align:center;font-weight:900;font-size:14px">Mock Test No: 65</div>
+    <div class="w-row"><span>Total Questions</span><b>25</b></div>
+    <div class="w-row"><span>Total Marks</span><b>50</b></div>
+    <div class="w-row"><span>Duration</span><b>15 minutes</b></div>
+    <div class="w-row"><span>Marking</span><b>+2.0 / −0.5</b></div>
+  </div>
+
+  <button class="welcome-button" id="startTestBtn">Start Test</button>
+
+  <div class="daily-content">
+    <div class="cat-row">
+      <div class="cat-pill">Grammar<br>Practice</div>
+      <div class="cat-pill">Vocab<br>Practice</div>
+      <div class="cat-pill">Reading<br>Practice</div>
+    </div>
+
+    <div class="dc-banner"><i class="fas fa-arrow-left"></i> Rule of the Day <i class="fas fa-arrow-right"></i></div>
+    <div class="rule-box">
+      (Chapter: Preposition) — "Between" is used when referring to exactly two people, things, or groups. "Among" is used when referring to more than two.
+      <span class="eg">Ex – The prize money was divided <span class="wrong">between</span> the five winners. <i>(Incorrect)</i></span>
+      <span class="eg">Ex – The prize money was divided <span class="right">among</span> the five winners. <i>(Correct)</i></span>
+      <span class="eg">Ex – A friendly rivalry exists between the two neighbouring villages. <i>(Correct)</i></span>
+    </div>
+
+    <div class="dc-banner"><i class="fas fa-arrow-left"></i> Word of the Day <i class="fas fa-arrow-right"></i></div>
+    <div class="word-box">
+      <div class="word-title">Ostentatious (Adjective)</div>
+      <div class="word-meta">
+        <u>Meaning</u>: characterized by vulgar or pretentious display; designed to impress others<br>
+        Ex – The billionaire's ostentatious mansion, complete with gold-plated fixtures, drew criticism from his more modest neighbours.
+      </div>
+      <div class="syn-anto">
+        <b>Synonyms</b>: showy, <span class="hl">flashy</span>, pretentious
+      </div>
+      <div class="syn-anto">
+        <b>Antonyms</b>: modest, <span class="hl">understated</span>, unassuming
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MAIN TEST INTERFACE ============ -->
+<div id="mainTestInterface" style="display:none">
+
+  <div class="hdr">
+    <div class="hdr-l">Sampuran English<small>Daily Practice</small></div>
+    <div class="hdr-c" id="qInfo">Q 1 / 25</div>
+    <div class="hdr-r">
+      <div class="timer" id="timer">15:00</div>
+      <button class="icon-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="icon-btn" id="menuBtn" title="Question palette"><i class="fas fa-th"></i></button>
+      <button class="btn-submit-top" id="subBtn">Submit</button>
+    </div>
+  </div>
+  <div class="subject-tag" id="subjectTag"></div>
+
+  <div class="cont">
+    <div class="qcard" id="qcard">
+      <div class="qnum">Question <span id="qNumTxt">1</span> <span class="status-tag" id="statusTag" style="display:none"></span></div>
+      <div class="passage" id="passageBox" style="display:none"></div>
+      <div class="qtext" id="qTxt"></div>
+      <div class="options" id="opts"></div>
+      <div class="explanation" id="explanation"></div>
+    </div>
+  </div>
+
+  <div class="navbar">
+    <button class="nav-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i> Prev</button>
+    <div class="nav-mid">
+      <div id="progTxt">1 of 25</div>
+      <div>Answered: <span id="ansCnt">0</span></div>
+    </div>
+    <button class="nav-btn review" id="reviewBtn"><i class="fas fa-flag"></i></button>
+    <button class="nav-btn next" id="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
+  </div>
+
+  <!-- Question palette panel -->
+  <div class="panel" id="panel">
+    <div class="panel-hdr">
+      <span style="font-family:'Trebuchet MS',sans-serif;font-weight:700">Question Palette</span>
+      <button class="panel-close" id="panelClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="panel-body">
+      <div class="legend">
+        <span><i style="background:var(--correct)"></i> Answered</span>
+        <span><i style="background:var(--gold)"></i> Marked for Review</span>
+        <span><i style="background:#fff;border:2px solid var(--rule)"></i> Not Answered</span>
+      </div>
+      <div class="grid-nav" id="gridNav"></div>
+    </div>
+  </div>
+
+  <!-- Result modal -->
+  <div class="modal" id="modalOver">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="kicker">Your Result</div>
+        <div class="score" id="scoreDisp">0.0<span> / 50</span></div>
+      </div>
+      <div class="stat-grid">
+        <div><div class="num" id="corrStat" style="color:var(--correct)">0</div><div class="lbl">Correct</div></div>
+        <div><div class="num" id="incStat" style="color:var(--wrong)">0</div><div class="lbl">Incorrect</div></div>
+        <div><div class="num" id="unaStat">0</div><div class="lbl">Unattempted</div></div>
+        <div><div class="num" id="timeStat">0</div><div class="lbl">Minutes</div></div>
+      </div>
+      <button class="m-print" id="printBtn"><i class="fas fa-print"></i> Print Full Review</button>
+      <div class="modal-actions">
+        <button class="m-close" id="closeModal">Close</button>
+        <button class="m-review" id="revBtn">Review</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Daily Practice: <a href="https://t.me/Sampuran_English" target="_blank">t.me/Sampuran_English</a>
+    &nbsp;&middot;&nbsp; Doubts: <a href="https://t.me/sampuranenglish" target="_blank">t.me/sampuranenglish</a>
+  </footer>
+</div>
+
+<script>
+const questions = [
+  {
+    id:1, section:"Grammar Practice — Fill in the Blanks",
+    text:"She ______ for this multinational company ever since she completed her MBA five years ago.",
+    options:{a:"has been working", b:"had been working", c:"was working", d:"will be working"},
+    answer:"a",
+    exp:"Use the Present Perfect Continuous Tense (has/have + been + V-ing) for an action that began in the past and is still continuing, especially with 'since/ever since'. As the working is still ongoing, 'has been working' is correct.<br><br>'Had been working' (past perfect continuous) would need another past event as a reference point; 'was working' (past continuous) does not show continuity up to the present; 'will be working' wrongly shifts the sentence into the future."
+  },
+  {
+    id:2, section:"Vocab Practice — Fill in the Blanks",
+    text:"The internal audit eventually ______ the junior accountant, proving that the missing funds had actually been misappropriated by someone else.",
+    options:{a:"implicated", b:"exonerated", c:"chastised", d:"coerced"},
+    answer:"b",
+    exp:"'Exonerated' means officially cleared of blame or wrongdoing. Since the audit proved the accountant was NOT responsible, 'exonerated' fits.<br><br>'Implicated' means the exact opposite — to show that someone is involved in wrongdoing. 'Chastised' means scolded or reprimanded, and 'coerced' means forced or pressured — neither fits a context of being cleared of blame."
+  },
+  {
+    id:3, section:"Grammar Practice — Common Error",
+    text:"She enjoys reading novels (a)/, listening to music (b)/ and to paint landscapes (c)/ during her free time. (d)",
+    options:{a:"reading novels", b:", listening to music", c:"and to paint landscapes", d:"during her free time."},
+    answer:"c",
+    exp:"Use 'painting landscapes' in place of 'to paint landscapes'. When several activities are listed together (here, after 'enjoys'), all of them must be grammatically parallel in form. Since the first two items are gerunds ('reading', 'listening'), the third item must also be a gerund — 'painting' — not the infinitive 'to paint'."
+  },
+  {
+    id:4, section:"Grammar Practice — Common Error",
+    text:"He repeated again (a)/ the instructions (b)/ so everyone could (c)/ understand clearly. (d)",
+    options:{a:"He repeated again", b:"the instructions", c:"so everyone could", d:"understand clearly."},
+    answer:"a",
+    exp:"'Repeated' already carries the sense of 'doing something again', so adding the word 'again' after it is redundant. The correct phrasing is simply 'He repeated the instructions...', without this needless repetition of meaning."
+  },
+  {
+    id:5, section:"Grammar Practice — Sentence Completion",
+    text:"In response to British requests for direct negotiations to avoid war, Germany made demands on Poland, which only ________ relations.",
+    options:{a:"serving to be pretext to worse", b:"served to be pretext to worsen", c:"serving as a pretext to worse", d:"served as a pretext to worsen"},
+    answer:"d",
+    exp:"The sentence is in the simple past ('made demands'), so the verb in the relative clause must also be simple past: 'served', not the non-finite 'serving'. Also, the fixed expression is 'serve as a pretext' (not 'serve to be a pretext'), and after 'to' we need the base verb 'worsen', not the adjective 'worse'. Only option (d) gets all three points correct.<br><br>Options (a) and (c) wrongly use the gerund 'serving' where a finite past-tense verb is needed; options (a), (b), and (c) each also misuse either 'to be pretext' instead of 'as a pretext', or 'worse' instead of 'worsen'."
+  },
+  {
+    id:6, section:"Grammar Practice — Sentence Completion",
+    text:"YES Bank __________ the most challenging period in its history.",
+    options:{a:"is traversing through", b:"has to have been", c:"is traversed through", d:"has being traversed through"},
+    answer:"a",
+    exp:"'Traverse' is used actively here to mean 'to go through/pass through', and since the bank itself is the one experiencing this period, the active present continuous — 'is traversing through' — correctly conveys an ongoing situation.<br><br>Option (b) is not a valid, meaningful verb form. Option (c) wrongly uses the passive voice ('is traversed'), which would mean something else is putting the bank through this period, rather than the bank going through it itself. Option (d) is doubly flawed: 'has being' is an ungrammatical auxiliary combination (it should be 'has been'), and the passive sense is again wrong here."
+  },
+  {
+    id:7, section:"Vocab Practice — Synonyms",
+    text:"Inadvertent",
+    options:{a:"Deliberate", b:"Unintentional", c:"Meticulous", d:"Premeditated"},
+    answer:"b",
+    exp:"'Inadvertent' means not resulting from careful planning; accidental. Its closest synonym is 'Unintentional'.<br><br>'Deliberate' and 'premeditated' both mean the exact opposite — done on purpose, with prior planning; 'meticulous' means showing great attention to detail, which is unrelated in meaning."
+  },
+  {
+    id:8, section:"Vocab Practice — Synonyms",
+    text:"Perilous",
+    options:{a:"Impeccable", b:"Auspicious", c:"Hazardous", d:"Placid"},
+    answer:"c",
+    exp:"'Perilous' means full of danger or risk. Its closest synonym is 'Hazardous'.<br><br>'Impeccable' means flawless, 'auspicious' means favourable or promising, and 'placid' means calm and peaceful — none of these carry any sense of danger."
+  },
+  {
+    id:9, section:"Vocab Practice — Antonyms",
+    text:"Affluence",
+    options:{a:"Opulence", b:"Prosperity", c:"Abundance", d:"Destitution"},
+    answer:"d",
+    exp:"'Affluence' means the state of having a great deal of money; wealth. Its correct antonym is 'Destitution', meaning extreme poverty; the state of having no resources.<br><br>'Opulence', 'prosperity', and 'abundance' are all near-synonyms of affluence, not opposites."
+  },
+  {
+    id:10, section:"Vocab Practice — Antonyms",
+    text:"Paucity",
+    options:{a:"Scarcity", b:"Abundance", c:"Dearth", d:"Shortage"},
+    answer:"b",
+    exp:"'Paucity' means the presence of something in only small or insufficient quantities; a scarcity. Its correct antonym is 'Abundance', meaning a very large quantity of something.<br><br>'Scarcity', 'dearth', and 'shortage' are all near-synonyms of paucity, not opposites."
+  },
+  {
+    id:11, section:"Vocab Practice — One Word Substitution",
+    text:"A short inscription on a tombstone in memory of the person buried there",
+    options:{a:"Eulogy", b:"Elegy", c:"Epitaph", d:"Epigram"},
+    answer:"c",
+    exp:"Epitaph - a short inscription on a tombstone in memory of the person who is buried there<br>Eulogy - a speech or piece of writing that praises someone highly, typically someone who has just died<br>Elegy - a mournful poem, especially one lamenting the dead<br>Epigram - a short, witty, and often paradoxical saying or poem"
+  },
+  {
+    id:12, section:"Vocab Practice — One Word Substitution",
+    text:"One who is unable to pay off his debts",
+    options:{a:"Insolvent", b:"Bankrupt", c:"Indigent", d:"Impecunious"},
+    answer:"a",
+    exp:"Insolvent - unable to pay one's debts, as they fall due, out of one's own resources<br>Bankrupt - a person who has been legally declared insolvent by a court, a stricter legal outcome, not merely the inability to pay<br>Indigent - extremely poor; needy<br>Impecunious - having little or no money; habitually poor"
+  },
+  {
+    id:13, section:"Vocab Practice — Idioms & Phrases",
+    text:"Ruffle somebody's feathers",
+    options:{a:"To upset or annoy someone", b:"Become very frightened", c:"Hesitating which side to take", d:"Pay no attention"},
+    answer:"a",
+    exp:"Ruffle somebody's feathers – to upset, annoy, or irritate someone, often unintentionally.<br>Ex- His blunt remarks at the meeting ruffled quite a few feathers among the senior staff."
+  },
+  {
+    id:14, section:"Vocab Practice — Idioms & Phrases",
+    text:"Spill your guts",
+    options:{a:"Get out of control", b:"To use something recklessly", c:"To tell someone all about yourself", d:"Become bitterly hostile"},
+    answer:"c",
+    exp:"Spill your guts – to tell someone everything about yourself or a situation, often revealing private or sensitive information.<br>Ex- After hours of gentle questioning, the witness finally spilled her guts to the investigating officer."
+  },
+  {
+    id:15, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:"A. As a result, city planners are now prioritising green spaces and efficient public transport in new development projects.<br>B. Rapid urbanization across developing nations has placed immense pressure on existing civic infrastructure.<br>C. Roads, water supply, and waste management systems, in particular, are struggling to keep pace with the influx of migrants.<br>D. This growing strain has prompted several governments to rethink traditional models of urban planning.",
+    text:"Arrange A, B, C, D in the correct logical sequence.",
+    options:{a:"BDCA", b:"BCDA", c:"CBDA", d:"BCAD"},
+    answer:"b",
+    exp:"B introduces the central topic — rapid urbanization straining civic infrastructure. C elaborates with 'in particular', naming roads, water supply, and waste management as the specific systems affected. D refers back to this 'growing strain', showing governments rethinking urban planning as a consequence. A concludes with 'As a result', describing the resulting shift towards green spaces and public transport. Hence, the correct sequence is B-C-D-A."
+  },
+  {
+    id:16, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:"P. Consequently, several hospitals have begun piloting AI-assisted diagnostic tools in radiology departments.<br>Q. Artificial intelligence is increasingly being explored as a tool to support, rather than replace, medical professionals.<br>R. Early trials suggest that such tools can flag anomalies in scans faster than the human eye alone.<br>S. However, experts caution that these systems still require careful human oversight to avoid misdiagnosis.",
+    text:"Arrange P, Q, R, S in the correct logical sequence.",
+    options:{a:"QRPS", b:"PQRS", c:"QPSR", d:"QPRS"},
+    answer:"d",
+    exp:"Q opens the passage by introducing AI's role of supporting, not replacing, doctors. P follows with 'Consequently', describing hospitals piloting AI diagnostic tools as a result. R elaborates on this pilot, noting what early trials suggest about speed and accuracy. S closes with 'However', introducing the necessary caution about human oversight. Therefore, the correct order is Q-P-R-S."
+  },
+  {
+    id:17, section:"Reading Practice — Cloze Test",
+    group:true,
+    passage:"Several small businesses in the region have struggled to recover after last year's floods, with local trade bodies reporting that footfall in the main market has ____(17)____ considerably since the disaster. Officials admit that the initial relief package, though well-intentioned, proved ____(18)____ to address the scale of the damage. A revised compensation scheme, traders were told, ____(19)____ within the next fiscal quarter. Until then, many shopkeepers say their businesses ____(20)____ on credit merely to stay afloat.",
+    text:"Blank (17): footfall in the main market has ____(17)____ considerably since the disaster.",
+    options:{a:"soared", b:"plummeted", c:"flourished", d:"proliferated"},
+    answer:"b",
+    exp:"Use 'plummeted' (fell sharply) in the given blank. Since businesses are struggling to recover after the floods, footfall must have dropped drastically rather than increased.<br><br>'Soared', 'flourished', and 'proliferated' all describe growth or increase — the opposite of what a struggling post-disaster market would show."
+  },
+  {
+    id:18, section:"Reading Practice — Cloze Test",
+    group:true,
+    passage:"Several small businesses in the region have struggled to recover after last year's floods, with local trade bodies reporting that footfall in the main market has ____(17)____ considerably since the disaster. Officials admit that the initial relief package, though well-intentioned, proved ____(18)____ to address the scale of the damage. A revised compensation scheme, traders were told, ____(19)____ within the next fiscal quarter. Until then, many shopkeepers say their businesses ____(20)____ on credit merely to stay afloat.",
+    text:"Blank (18): the initial relief package, though well-intentioned, proved ____(18)____ to address the scale of the damage.",
+    options:{a:"redundant", b:"adequate", c:"inadequate", d:"superfluous"},
+    answer:"c",
+    exp:"Use 'inadequate' (not enough; insufficient) in the given blank. The phrase 'though well-intentioned' signals a contrast — the package meant well but fell short of what was actually needed.<br><br>'Adequate' means sufficient, the opposite of what fits here; 'redundant' and 'superfluous' both mean 'more than necessary, unneeded excess' — the wrong direction entirely for a package that failed to cover the damage."
+  },
+  {
+    id:19, section:"Reading Practice — Cloze Test",
+    group:true,
+    passage:"Several small businesses in the region have struggled to recover after last year's floods, with local trade bodies reporting that footfall in the main market has ____(17)____ considerably since the disaster. Officials admit that the initial relief package, though well-intentioned, proved ____(18)____ to address the scale of the damage. A revised compensation scheme, traders were told, ____(19)____ within the next fiscal quarter. Until then, many shopkeepers say their businesses ____(20)____ on credit merely to stay afloat.",
+    text:"Blank (19) — Grammar: a revised compensation scheme, traders were told, ____(19)____ within the next fiscal quarter.",
+    options:{a:"will be rolled out", b:"would roll out", c:"was rolling out", d:"would be rolled out"},
+    answer:"d",
+    exp:"Since the reporting clause 'traders were told' is in the past tense, the future 'will' inside the reported clause must backshift to 'would'. Also, the scheme is the receiver of the action (it cannot roll itself out), so a passive form is needed: 'would be rolled out'.<br><br>Option (a) fails to backshift 'will' to 'would'; option (b) correctly backshifts the modal but wrongly stays active, making the scheme the doer of the action; option (c), the past continuous, doesn't convey the reported future intention at all."
+  },
+  {
+    id:20, section:"Reading Practice — Cloze Test",
+    group:true,
+    passage:"Several small businesses in the region have struggled to recover after last year's floods, with local trade bodies reporting that footfall in the main market has ____(17)____ considerably since the disaster. Officials admit that the initial relief package, though well-intentioned, proved ____(18)____ to address the scale of the damage. A revised compensation scheme, traders were told, ____(19)____ within the next fiscal quarter. Until then, many shopkeepers say their businesses ____(20)____ on credit merely to stay afloat.",
+    text:"Blank (20) — Grammar: many shopkeepers say their businesses ____(20)____ on credit merely to stay afloat.",
+    options:{a:"have been running", b:"has been running", c:"had run", d:"are ran"},
+    answer:"a",
+    exp:"The subject 'businesses' is plural, so the verb must also be plural: 'have been running' (Present Perfect Continuous), showing an action that started in the past and is still ongoing.<br><br>Option (b) wrongly uses the singular auxiliary 'has'; option (c), the past perfect, wrongly implies the action ended before another past event, which isn't indicated here; option (d), 'are ran', is simply ungrammatical — 'ran' cannot follow 'are'."
+  },
+  {
+    id:21, section:"Grammar Practice — Voice Change",
+    text:"The auditors should have flagged the discrepancy earlier. <i>(Change into Passive Voice)</i>",
+    options:{a:"The discrepancy should be flagged by the auditors earlier.", b:"The discrepancy should have been flagged by the auditors earlier.", c:"The discrepancy should have flagged by the auditors earlier.", d:"The discrepancy would have been flagged by the auditors earlier."},
+    answer:"b",
+    exp:"A modal-perfect active form (should + have + V3) becomes passive as: Object + should + have + been + V3 + (by + subject). So 'should have flagged' becomes 'should have been flagged'.<br><br>Option (a) drops the perfect aspect, changing 'should have' to just 'should be', which loses the sense that this was a missed obligation in the past. Option (c) omits 'been', which is required after 'have' in a passive construction. Option (d) swaps the modal 'should' for 'would', changing the meaning from an unfulfilled obligation to a mere hypothetical."
+  },
+  {
+    id:22, section:"Grammar Practice — Voice Change",
+    text:"The committee will have finalized the report by Friday. <i>(Change into Passive Voice)</i>",
+    options:{a:"The report will have been finalized by the committee by Friday.", b:"The report will be finalized by the committee by Friday.", c:"The report will have finalized by the committee by Friday.", d:"The report had been finalized by the committee by Friday."},
+    answer:"a",
+    exp:"The Future Perfect Tense (will have + V3) forms its passive as: Object + will have been + V3 + (by + subject). So 'will have finalized' becomes 'will have been finalized'.<br><br>Option (b) drops the perfect aspect, wrongly implying a simple future action rather than one completed by a deadline; option (c) omits 'been', which is ungrammatical after 'have' in a passive construction; option (d) wrongly shifts to the past perfect, losing the future time-frame set by 'by Friday'."
+  },
+  {
+    id:23, section:"Grammar Practice — Narration",
+    text:"The manager said, “Let's postpone the meeting until the client confirms.” <i>(Change into Indirect Speech)</i>",
+    options:{a:"The manager suggested that they postpone the meeting until the client confirms.", b:"The manager proposed that they should postpone the meeting until the client confirmed.", c:"The manager told them to postpone the meeting until the client confirmed.", d:"The manager said that they should postpone the meeting until the client confirms."},
+    answer:"b",
+    exp:"A sentence beginning with 'Let's' (a suggestion) is reported using 'proposed/suggested that + subject + should + V1', with the reporting verb changing from 'said' to 'proposed'/'suggested', and the embedded clause's tense also backshifted where needed ('confirms' becomes 'confirmed'). Option (b) applies all of this correctly.<br><br>Option (a) fails to backshift 'confirms' to 'confirmed'. Option (c), using 'told...to', is the pattern for a direct command, not a 'Let's' suggestion. Option (d) keeps the reporting verb as 'said' instead of 'proposed/suggested', and also fails to backshift 'confirms'."
+  },
+  {
+    id:24, section:"Grammar Practice — Narration",
+    text:"She exclaimed, “What a wonderful performance this is!” <i>(Change into Indirect Speech)</i>",
+    options:{a:"She exclaimed that it was a wonderful performance.", b:"She exclaimed with wonder that this was a wonderful performance.", c:"She exclaimed that what a wonderful performance it was.", d:"She exclaimed with wonder that that was a wonderful performance."},
+    answer:"d",
+    exp:"An exclamatory sentence beginning with 'What a...!' is reported as: 'exclaimed with joy/sorrow/wonder that + subject + was + a + adjective + noun', and the demonstrative 'this' shifts to 'that', just as it does with other place/time markers. Option (d) applies every one of these changes correctly — including the seemingly awkward but grammatically correct double 'that' (the conjunction 'that' followed by the demonstrative 'that').<br><br>Option (a) drops 'with wonder', losing the required exclamatory marker altogether. Option (b) keeps 'with wonder' correctly but fails to shift 'this' to 'that'. Option (c) wrongly retains the direct exclamatory structure ('what a wonderful performance it was'), which is not valid in indirect speech."
+  },
+  {
+    id:25, section:"Vocab Practice — Spelling",
+    text:"Choose the correctly spelt word.",
+    options:{a:"Ocurrence", b:"Occurence", c:"Occurrence", d:"Occurrance"},
+    answer:"c",
+    exp:"The correct spelling is 'Occurrence' (double 'c', double 'r', ending in '-ence'), meaning an incident or event.<br><br>Option (a) wrongly uses a single 'c'; option (b) wrongly uses a single 'r'; option (d) wrongly ends with '-ance' instead of '-ence'."
+  }
+];
+
+
+class TestApp {
+  constructor(){
+    this.qs = questions;
+    this.cur = 0;
+    this.ans = new Array(this.qs.length).fill(null);
+    this.reviewed = new Array(this.qs.length).fill(false);
+    this.sub = false;
+    this.dark = false;
+    this.duration = 15 * 60;
+    this.timeLeft = this.duration;
+    this.timer = null;
+    this.startT = null;
+
+    this.els = {
+      qInfo: document.getElementById('qInfo'),
+      subjectTag: document.getElementById('subjectTag'),
+      qNumTxt: document.getElementById('qNumTxt'),
+      statusTag: document.getElementById('statusTag'),
+      passageBox: document.getElementById('passageBox'),
+      qTxt: document.getElementById('qTxt'),
+      opts: document.getElementById('opts'),
+      explanation: document.getElementById('explanation'),
+      qcard: document.getElementById('qcard'),
+      progTxt: document.getElementById('progTxt'),
+      ansCnt: document.getElementById('ansCnt'),
+      timer: document.getElementById('timer'),
+      gridNav: document.getElementById('gridNav'),
+      panel: document.getElementById('panel'),
+      modalOver: document.getElementById('modalOver'),
+      scoreDisp: document.getElementById('scoreDisp'),
+      corrStat: document.getElementById('corrStat'),
+      incStat: document.getElementById('incStat'),
+      unaStat: document.getElementById('unaStat'),
+      timeStat: document.getElementById('timeStat'),
+      printBtn: document.getElementById('printBtn')
+    };
+
+    this.bindStaticEvents();
+  }
+
+  bindStaticEvents(){
+    document.getElementById('startTestBtn').addEventListener('click', () => this.startTest());
+    document.getElementById('prevBtn').addEventListener('click', () => this.go(-1));
+    document.getElementById('nextBtn').addEventListener('click', () => this.go(1));
+    document.getElementById('reviewBtn').addEventListener('click', () => this.toggleReview());
+    document.getElementById('subBtn').addEventListener('click', () => this.confirmSubmit());
+    document.getElementById('menuBtn').addEventListener('click', () => this.openPanel());
+    document.getElementById('panelClose').addEventListener('click', () => this.closePanel());
+    document.getElementById('themeToggle').addEventListener('click', () => this.toggleDark());
+    document.getElementById('closeModal').addEventListener('click', () => this.closeModal());
+    document.getElementById('revBtn').addEventListener('click', () => { this.closeModal(); this.loadQ(0); });
+    document.getElementById('printBtn').addEventListener('click', () => this.printReview());
+
+    window.addEventListener('beforeunload', (e) => {
+      if(!this.sub){
+        e.preventDefault();
+        e.returnValue = 'Are you sure you want to leave? Your test progress will be lost.';
+        return e.returnValue;
+      }
+    });
+  }
+
+  startTest(){
+    document.getElementById('welcomeScreen').classList.add('hidden');
+    document.getElementById('mainTestInterface').style.display = '';
+    this.startT = Date.now();
+    this.buildGrid();
+    this.loadQ(0);
+    this.startTimer();
+  }
+
+  startTimer(){
+    this.timer = setInterval(() => {
+      this.timeLeft--;
+      this.renderTimer();
+      if(this.timeLeft <= 0){
+        clearInterval(this.timer);
+        this.submitTest();
+      }
+    }, 1000);
+  }
+
+  renderTimer(){
+    const m = Math.floor(this.timeLeft / 60);
+    const s = this.timeLeft % 60;
+    this.els.timer.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    this.els.timer.classList.toggle('low', this.timeLeft <= 60);
+  }
+
+  buildGrid(){
+    this.els.gridNav.innerHTML = '';
+    this.qs.forEach((q, i) => {
+      const b = document.createElement('button');
+      b.className = 'g-btn';
+      b.id = 'g-' + i;
+      b.textContent = i + 1;
+      b.addEventListener('click', () => { this.closePanel(); this.loadQ(i); });
+      this.els.gridNav.appendChild(b);
+    });
+  }
+
+  updateGrid(){
+    this.qs.forEach((q, i) => {
+      const b = document.getElementById('g-' + i);
+      b.className = 'g-btn';
+      if(this.ans[i] !== null) b.classList.add('answered');
+      if(this.reviewed[i]) b.classList.add('review');
+      if(i === this.cur) b.classList.add('current');
+    });
+  }
+
+  openPanel(){ this.els.panel.classList.add('open'); }
+  closePanel(){ this.els.panel.classList.remove('open'); }
+
+  toggleDark(){
+    this.dark = !this.dark;
+    document.body.classList.toggle('dark-mode', this.dark);
+    document.getElementById('themeToggle').innerHTML = this.dark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  }
+
+  loadQ(idx){
+    this.cur = idx;
+    const q = this.qs[idx];
+
+    this.els.qInfo.textContent = `Q ${idx+1} / ${this.qs.length}`;
+    this.els.progTxt.textContent = `${idx+1} of ${this.qs.length}`;
+    this.els.subjectTag.textContent = q.section;
+    this.els.qNumTxt.textContent = idx + 1;
+
+    if(q.passage){
+      this.els.passageBox.style.display = '';
+      this.els.passageBox.innerHTML = q.passage;
+    } else {
+      this.els.passageBox.style.display = 'none';
+      this.els.passageBox.innerHTML = '';
+    }
+
+    this.els.qTxt.innerHTML = q.text;
+
+    this.els.opts.innerHTML = '';
+    Object.entries(q.options).forEach(([key, val]) => {
+      const label = document.createElement('label');
+      label.className = 'opt';
+      label.id = `opt-${idx}-${key}`;
+      label.dataset.key = key;
+      if(this.ans[idx] === key) label.classList.add('selected');
+      label.innerHTML = `<span class="opt-letter">(${key})</span> <span>${val}</span>`;
+      label.addEventListener('click', () => this.selectOpt(idx, key));
+      this.els.opts.appendChild(label);
+    });
+
+    this.els.qcard.classList.toggle('locked', this.sub);
+
+    const tag = this.els.statusTag;
+    if(this.sub){
+      const chosen = this.ans[idx];
+      if(chosen === null){
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Unattempted';
+        tag.className = 'status-tag skipped';
+      } else if(chosen === q.answer){
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Correct';
+        tag.className = 'status-tag correct';
+      } else {
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Incorrect';
+        tag.className = 'status-tag wrong';
+      }
+      if(chosen && chosen !== q.answer){
+        const wrongEl = document.getElementById(`opt-${idx}-${chosen}`);
+        if(wrongEl) wrongEl.classList.add('wrong-answer');
+      }
+      const correctEl = document.getElementById(`opt-${idx}-${q.answer}`);
+      if(correctEl) correctEl.classList.add('correct-answer');
+
+      this.els.explanation.innerHTML = `<b>Correct answer: (${q.answer}) ${q.options[q.answer]}.</b><br>${q.exp}`;
+    } else {
+      tag.style.display = 'none';
+      this.els.explanation.innerHTML = '';
+    }
+
+    document.getElementById('prevBtn').disabled = idx === 0;
+    document.getElementById('nextBtn').disabled = idx === this.qs.length - 1;
+
+    const revBtn = document.getElementById('reviewBtn');
+    revBtn.classList.toggle('active', this.reviewed[idx]);
+
+    this.updateGrid();
+    this.updateAnsCount();
+  }
+
+  selectOpt(idx, key){
+    if(this.sub) return;
+    this.ans[idx] = key;
+    document.querySelectorAll(`#opts .opt`).forEach(o => o.classList.remove('selected'));
+    document.getElementById(`opt-${idx}-${key}`).classList.add('selected');
+    this.updateGrid();
+    this.updateAnsCount();
+  }
+
+  toggleReview(){
+    this.reviewed[this.cur] = !this.reviewed[this.cur];
+    document.getElementById('reviewBtn').classList.toggle('active', this.reviewed[this.cur]);
+    this.updateGrid();
+  }
+
+  updateAnsCount(){
+    const answered = this.ans.filter(a => a !== null).length;
+    this.els.ansCnt.textContent = answered;
+  }
+
+  go(dir){
+    const next = this.cur + dir;
+    if(next >= 0 && next < this.qs.length) this.loadQ(next);
+  }
+
+  confirmSubmit(){
+    if(this.sub) return;
+    const btn = document.getElementById('subBtn');
+    if(!this.confirmPending){
+      const unanswered = this.ans.filter(a => a === null).length;
+      this.confirmPending = true;
+      this._origSubText = btn.textContent;
+      btn.textContent = unanswered > 0 ? `${unanswered} left! Tap again` : 'Tap again to confirm';
+      this._confirmTimeout = setTimeout(() => {
+        this.confirmPending = false;
+        btn.textContent = this._origSubText;
+      }, 3000);
+      return;
+    }
+    clearTimeout(this._confirmTimeout);
+    this.confirmPending = false;
+    this.submitTest();
+  }
+
+  submitTest(){
+    if(this.sub) return;
+    this.sub = true;
+    clearInterval(this.timer);
+    document.getElementById('subBtn').disabled = true;
+    document.getElementById('subBtn').textContent = 'Submitted';
+
+    const results = this.calcResults();
+    this.showModal(results);
+    this.loadQ(this.cur);
+  }
+
+  calcResults(){
+    let correct = 0, incorrect = 0, unattempted = 0, score = 0;
+    this.qs.forEach((q, i) => {
+      const chosen = this.ans[i];
+      if(chosen === null){
+        unattempted++;
+      } else if(chosen === q.answer){
+        correct++; score += 2;
+      } else {
+        incorrect++; score -= 0.5;
+      }
+    });
+    const timeTaken = Math.max(1, Math.round((Date.now() - this.startT) / 60000));
+    return { score: Math.max(0, score), correct, incorrect, unattempted, timeTaken };
+  }
+
+  showModal(r){
+    this.els.scoreDisp.innerHTML = `${r.score.toFixed(1)}<span> / 50</span>`;
+    this.els.corrStat.textContent = r.correct;
+    this.els.incStat.textContent = r.incorrect;
+    this.els.unaStat.textContent = r.unattempted;
+    this.els.timeStat.textContent = r.timeTaken;
+    this.els.printBtn.classList.add('show');
+    this.els.modalOver.classList.add('show');
+  }
+
+  closeModal(){ this.els.modalOver.classList.remove('show'); }
+
+  printReview(){
+    const w = window.open('', '_blank');
+    const rows = this.qs.map((q, i) => {
+      const chosen = this.ans[i];
+      const isCorrect = chosen === q.answer;
+      return `
+        <div style="page-break-inside:avoid;margin-bottom:26px;border-bottom:1px solid #eee;padding-bottom:16px">
+          <h3 style="color:#163a5f;margin-bottom:4px">Question ${i+1} <span style="font-size:12px;color:#7a6f57">(${q.section})</span></h3>
+          ${q.passage ? `<div style="font-style:italic;background:#f1ece0;padding:8px 12px;margin-bottom:8px">${q.passage}</div>` : ''}
+          <div style="margin-bottom:10px">${q.text}</div>
+          ${Object.entries(q.options).map(([key,val]) => `
+            <div style="margin:4px 0;padding:6px 10px;border-left:3px solid ${
+              key === q.answer ? '#1f7a4d' : (key === chosen ? '#a8321f' : '#c9bfa4')
+            }">(${key}) ${val}</div>
+          `).join('')}
+          <div style="margin-top:10px;font-size:13px;color:#555">
+            <b>Your answer:</b> ${chosen ? `(${chosen}) ${q.options[chosen]}` : 'Not attempted'}
+            ${chosen ? ` — <span style="color:${isCorrect ? '#1f7a4d' : '#a8321f'}">${isCorrect ? 'Correct' : 'Incorrect'}</span>` : ''}
+          </div>
+          <div style="margin-top:10px;background:#f0fdf4;padding:10px;border-radius:6px">
+            <b style="color:#1f7a4d">Explanation</b><br>${q.exp}
+          </div>
+        </div>`;
+    }).join('');
+
+    w.document.write(`
+      <!DOCTYPE html><html><head><title>Sampuran English — Full Review</title>
+      <style>body{font-family:Georgia,serif;padding:20px;color:#1c2b3a}
+      h2{border-bottom:2px solid #a8321f;padding-bottom:10px}</style></head>
+      <body>
+        <h2>Sampuran English — Mock Test No. 65 Review (10-9-2026)</h2>
+        <p><b>Score:</b> ${this.els.scoreDisp.textContent.replace(/<[^>]+>/g,' ')} &nbsp;|&nbsp;
+        <b>Correct:</b> ${this.els.corrStat.textContent} &nbsp;|&nbsp;
+        <b>Incorrect:</b> ${this.els.incStat.textContent} &nbsp;|&nbsp;
+        <b>Unattempted:</b> ${this.els.unaStat.textContent} &nbsp;|&nbsp;
+        <b>Time:</b> ${this.els.timeStat.textContent} min</p>
+        ${rows}
+        <script>setTimeout(()=>window.print(),400);<\/script>
+      </body></html>
+    `);
+    w.document.close();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => new TestApp());
+</script>
+
+</body>
+</html>
