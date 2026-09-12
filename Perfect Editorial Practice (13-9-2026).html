@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampuran English — More Heft: On India and the 18th BRICS Summit Editorial Practice (13 Sep 2026)</title>
+<style>
+  :root{
+    --paper:#f6f2e9;
+    --ink:#20201d;
+    --rule:#c9bfa8;
+    --accent:#8a3324;
+    --accent-soft:#e7d9c6;
+    --green:#3f5d3a;
+    --blue:#385170;
+    --telegram:#229ed9;
+    --serif: 'Georgia', 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: 'Helvetica Neue', Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    line-height:1.65;
+  }
+
+  .page-header{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 20px 0;
+  }
+  .title-box{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:8px;
+    padding:14px 20px;
+    display:grid;
+    grid-template-columns:56px 1fr;
+    align-items:center;
+    gap:12px;
+    margin-bottom:12px;
+  }
+  .title-box .logo{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#fff;
+    justify-self:start;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .title-box .logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .title-box .brand{
+    font-family:var(--sans);
+    font-weight:800;
+    font-size:clamp(18px,6.5vw,28px);
+    letter-spacing:0.5px;
+    text-align:left;
+  }
+  .title-box .brand span{ color:#e2483c; }
+
+  .telegram-box{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--telegram);
+    color:#fff;
+    text-decoration:none;
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:14.5px;
+    letter-spacing:0.3px;
+    border-radius:8px;
+    padding:12px 16px;
+    margin-bottom:14px;
+    transition:filter .15s;
+  }
+  .telegram-box:hover{ filter:brightness(1.08); }
+  .telegram-box svg{ width:20px; height:20px; flex-shrink:0; }
+
+  .nav-pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:8px;
+  }
+  .nav-pill{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.3px;
+    background:#fffdf8;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+    border-radius:20px;
+    padding:8px 18px;
+    cursor:pointer;
+    transition:background .15s, color .15s;
+  }
+  .nav-pill:hover{ background:var(--accent-soft); }
+  .nav-pill.active{
+    background:var(--ink);
+    color:var(--paper);
+  }
+
+  .page{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 20px 10px;
+    display:none;
+  }
+  .page.active-page{ display:block; }
+
+  section{ margin-bottom:36px; }
+  .section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:8px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  h2.section-title{
+    font-family:var(--sans);
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0;
+  }
+  .pub-date{
+    font-family:var(--sans);
+    font-size:12px;
+    color:#7a7264;
+    letter-spacing:0.5px;
+  }
+
+  .editorial h3{
+    font-size:23px;
+    margin:0 0 4px;
+  }
+  .editorial .byline{
+    font-family:var(--sans);
+    font-size:12px;
+    color:#7a7264;
+    margin-bottom:20px;
+    font-style:italic;
+  }
+  .editorial p{
+    font-size:17px;
+    margin:0 0 16px;
+    text-align:justify;
+  }
+  .editorial p:first-of-type::first-letter{
+    font-size:44px;
+    float:left;
+    line-height:0.8;
+    padding-right:8px;
+    padding-top:4px;
+    color:var(--accent);
+    font-weight:bold;
+  }
+  .vocab{
+    background:linear-gradient(transparent 60%, var(--accent-soft) 60%);
+    cursor:pointer;
+    font-weight:600;
+    border-bottom:1.5px dotted var(--accent);
+    position:relative;
+    scroll-margin-top:90px;
+  }
+  .vocab:hover{ background:linear-gradient(transparent 55%, #dcc9a8 55%); }
+  .vocab.flash{
+    background:#f6c453;
+    box-shadow:0 0 0 4px rgba(246,196,83,0.55);
+    border-radius:2px;
+  }
+
+  .sv-subj{
+    font-weight:700;
+    color:#c0392b;
+    text-decoration:underline;
+    text-decoration-color:#c0392b;
+    text-decoration-thickness:2px;
+    text-underline-offset:2px;
+    padding:0 1px;
+  }
+  .sv-verb{
+    font-weight:700;
+    color:var(--blue);
+    text-decoration:underline;
+    text-decoration-color:var(--blue);
+    text-decoration-thickness:2px;
+    text-underline-offset:2px;
+    padding:0 1px;
+  }
+  .sv-note{
+    background:#eef2f4;
+    border:1px solid var(--rule);
+    border-left:4px solid var(--blue);
+    border-radius:4px;
+    padding:8px 16px;
+    margin:-6px 0 18px;
+    font-family:var(--sans);
+    font-size:13px;
+    line-height:1.55;
+    color:#3a362f;
+  }
+  .sv-note .sv-tag{
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size:11px;
+    color:var(--blue);
+    margin-right:6px;
+  }
+  .sv-note b.s{ color:#c0392b; }
+  .sv-note b.v{ color:var(--blue); }
+
+  .tooltip{
+    position:fixed;
+    max-width:280px;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sans);
+    font-size:13.5px;
+    line-height:1.5;
+    padding:12px 14px;
+    border-radius:6px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
+    z-index:1000;
+    display:none;
+  }
+  .tooltip::after{
+    content:"";
+    position:absolute;
+    bottom:-7px;
+    left:20px;
+    border-width:7px 7px 0 7px;
+    border-style:solid;
+    border-color:var(--ink) transparent transparent transparent;
+  }
+  .tooltip .tt-word{
+    display:block;
+    font-weight:700;
+    color:#f0d9a8;
+    margin-bottom:4px;
+    font-size:14px;
+  }
+
+  .analysis-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .a-card{
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:16px 20px;
+    border-left:5px solid var(--blue);
+  }
+  .a-card.core{ border-left-color:var(--accent); }
+  .a-card.inference{ border-left-color:var(--blue); }
+  .a-card.purpose{ border-left-color:#6a4c93; }
+  .a-card.tone{ border-left-color:#b5533c; }
+  .a-card.signals{ border-left-color:#3a726b; }
+  .a-card h4{
+    margin:0 0 8px;
+    font-family:var(--sans);
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:var(--ink);
+  }
+  .a-card p, .a-card li{
+    font-family:var(--sans);
+    font-size:14px;
+    color:#3a362f;
+    margin:0 0 6px;
+  }
+  .a-card ul{ margin:0; padding-left:18px; }
+  .signal-word{
+    display:inline-block;
+    background:var(--accent-soft);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:3px 9px;
+    font-weight:700;
+    color:var(--accent);
+    font-size:13px;
+    margin:0 4px 6px 0;
+    font-family:var(--sans);
+    cursor:pointer;
+    transition:background 0.15s, transform 0.15s;
+  }
+  .signal-word:hover{
+    background:var(--accent);
+    color:#fff;
+    transform:translateY(-1px);
+  }
+  .signal-highlight{
+    background:#fdeecb;
+    border-bottom:2px solid #c8922f;
+    padding:0 1px;
+    border-radius:2px;
+    scroll-margin-top:90px;
+    transition:background 0.4s, box-shadow 0.4s;
+  }
+  .signal-highlight.flash{
+    background:#f6c453;
+    box-shadow:0 0 0 4px rgba(246,196,83,0.55);
+  }
+
+  .qcard{
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:18px 20px;
+    margin-bottom:16px;
+  }
+  .qcard .qnum{
+    font-family:var(--sans);
+    font-weight:700;
+    color:var(--accent);
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .qcard .qtext{
+    font-size:16.5px;
+    margin-bottom:14px;
+  }
+  .options{
+    display:grid;
+    gap:8px;
+  }
+  .option{
+    font-family:var(--sans);
+    font-size:14.5px;
+    background:var(--paper);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:10px 14px;
+    cursor:pointer;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    transition:background 0.15s, border-color .15s;
+  }
+  .option:hover{ background:var(--accent-soft); }
+  .option .tag{ font-weight:700; color:var(--accent); }
+  .option.correct{ background:#dcebd8; border-color:var(--green); }
+  .option.incorrect{ background:#f3d9d4; border-color:var(--accent); }
+  .option.locked{ cursor:default; pointer-events:none; opacity:0.95; }
+
+  .feedback{
+    margin-top:10px;
+    font-family:var(--sans);
+    font-size:13px;
+    display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback.right{color:var(--green);}
+  .feedback.wrong{color:var(--accent);}
+
+  .score-bar{
+    font-family:var(--sans);
+    background:var(--ink);
+    color:var(--paper);
+    text-align:center;
+    padding:10px;
+    border-radius:4px;
+    font-size:14px;
+    letter-spacing:0.5px;
+    margin-bottom:20px;
+  }
+
+  .answer-block{
+    border-left:4px solid var(--green);
+    background:#fffdf8;
+    padding:14px 18px;
+    margin-bottom:14px;
+    border-radius:0 4px 4px 0;
+  }
+  .answer-block .qnum{
+    font-family:var(--sans);
+    font-weight:700;
+    color:var(--accent);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+  .answer-block .ans-line{
+    font-family:var(--sans);
+    font-weight:700;
+    margin:6px 0 4px;
+    color:var(--green);
+  }
+  .answer-block .expl{
+    font-family:var(--sans);
+    font-size:14px;
+    color:#3a362f;
+  }
+
+  .vocab-list{
+    display:flex;
+    flex-direction:column;
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .vocab-card{
+    padding:14px 16px;
+    border-bottom:1px solid var(--rule);
+    font-family:var(--sans);
+    font-size:14px;
+    line-height:1.5;
+  }
+  .vocab-card:last-child{ border-bottom:none; }
+  .vocab-card:nth-child(even){ background:#f1ead9; }
+  .vocab-card .vc-num{
+    display:inline-block;
+    font-weight:700;
+    color:#7a7264;
+    margin-right:4px;
+  }
+  .vocab-card .vc-word{
+    font-weight:700;
+    color:var(--accent);
+    font-size:15px;
+    margin-bottom:5px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:underline;
+    text-decoration-style:dotted;
+    text-decoration-color:var(--accent);
+    text-underline-offset:3px;
+    transition:color 0.15s;
+  }
+  .vocab-card .vc-word:hover{ color:var(--ink); }
+  .vocab-card .vc-word::after{
+    content:"↗";
+    display:inline-block;
+    margin-left:5px;
+    font-size:12px;
+    color:var(--blue);
+    font-weight:400;
+  }
+  .vocab-card .vc-hindi{
+    color:var(--blue);
+    font-weight:600;
+    font-size:14px;
+    display:inline;
+    margin-left:8px;
+    margin-bottom:6px;
+    font-family:'Noto Sans Devanagari', 'Nirmala UI', var(--sans);
+  }
+  .vocab-card .vc-meaning{ color:#20201d; margin-bottom:6px; }
+  .vocab-card .vc-meaning-label{
+    font-weight:700;
+    color:#3a362f;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-right:5px;
+  }
+  .vocab-card .vc-row{ margin-bottom:2px; }
+  .vocab-card .vc-row:last-child{ margin-bottom:0; }
+  .vocab-card .vc-label{
+    font-weight:700;
+    color:#3a362f;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-right:6px;
+  }
+  .syn{ color:#8a3324; }
+  .ant{ color:var(--green); }
+
+  .nav-pills-bottom{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    padding-top:22px;
+    margin-top:10px;
+    border-top:1px solid var(--rule);
+  }
+
+  .page-number{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:700;
+    color:#7a7264;
+    letter-spacing:0.5px;
+    padding:18px 0 30px;
+    border-top:1px solid var(--rule);
+    margin-top:10px;
+  }
+
+  footer.site-footer{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:11px;
+    color:#8a8272;
+    padding:20px;
+  }
+
+  @media (max-width:480px){
+    .editorial p{ font-size:16px; }
+    .tooltip{ max-width:230px; }
+    .section-header{ flex-wrap:wrap; }
+    .title-box{ grid-template-columns:40px 1fr; padding:12px 14px; gap:8px; }
+    .title-box .logo{ width:36px; height:36px; }
+    .title-box .brand{ font-size:clamp(16px,7vw,22px); letter-spacing:0.2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="title-box">
+    <div class="logo">
+      <img src="data:image/jpeg;base64,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" alt="logo">
+    </div>
+    <div class="brand"><span>SAMPURAN</span> ENGLISH</div>
+  </div>
+
+  <a class="telegram-box" href="https://t.me/Sampuran_English" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 4L3 11.5L10 13.5M21 4L18 20L10 13.5M21 4L10 13.5M10 13.5V19L13.2 15.8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Official Telegram Channel
+  </a>
+
+  <div class="nav-pills">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+</div>
+
+<!-- ================= PAGE 1: EDITORIAL ================= -->
+<div class="page active-page" id="page-editorial">
+
+  <section class="editorial">
+    <div class="section-header">
+      <h2 class="section-title">The Editorial</h2>
+      <span class="pub-date">13 Sep 2026</span>
+    </div>
+    <h3>More <span class="vocab" data-word="heft">heft</span>: On India and the 18th BRICS Summit</h3>
+    <div class="byline">Editorial &middot; for exam practice</div>
+
+    <p><span class="signal-highlight" data-signal="opening-frame"><span class="sv-subj"><span class="vocab" data-word="forging">Forging</span> a joint statement</span> at a major <span class="vocab" data-word="multilateral">multilateral</span> conference, in the midst of global conflicts where members are involved <span class="sv-verb">is</span> never easy</span> — for India, hosting the BRICS Summit in Delhi is the second time in recent years, since the G-20 Summit in 2023, that it has had to <span class="vocab" data-word="shoulder">shoulder</span> such a responsibility. That, however, is not the only reason India&rsquo;s BRICS presidency comes at a difficult time. The past few occasions India has hosted the <span class="vocab" data-word="coalition">coalition</span> of emerging economies &mdash; in 2012, 2016 and virtually in 2021 &mdash; it was a smaller grouping of just five major powers, where managing <span class="vocab" data-word="consensus">consensus</span> was easier.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9312; <b class="s">Forging a joint statement</b> (at a major multilateral conference, in the midst of global conflicts where members are involved) &mdash; <b class="v">is</b> (never easy).</div>
+    </div>
+
+    <p>Since the expansion in 2024 &mdash; adding Egypt, Ethiopia, Iran, Saudi Arabia, and the UAE &mdash; and Indonesia&rsquo;s <span class="vocab" data-word="induction">induction</span> in 2025, BRICS&rsquo; identity has evolved, but a common focus remains <span class="vocab" data-word="elusive">elusive</span>. In addition, <span class="sv-subj">global conflicts</span> involving BRICS members <span class="sv-verb">have grown</span>. <span class="sv-subj">The war</span> involving Iran <span class="sv-verb">has <span class="vocab" data-word="heightened">heightened</span></span> this impact, as <span class="sv-subj">Iran</span>, a victim of the U.S.-Israel strikes, <span class="sv-subj">as well as the UAE</span> that was attacked by Iran in <span class="vocab" data-word="retaliation">retaliation</span>, <span class="sv-verb">are</span> members that have been unwilling to agree to a common narrative on the problem. India&rsquo;s position on Israel also came into conflict with other members earlier this year, as the grouping has traditionally taken a much more critical line on Israel&rsquo;s actions. <span class="sv-subj">The largest share</span> of New Delhi&rsquo;s problems as host <span class="sv-verb">comes</span> however from the United States, where President Donald Trump has accused it of <span class="vocab" data-word="plotting">plotting</span> to <span class="vocab" data-word="overthrow">overthrow</span> the U.S. dollar&rsquo;s domination of the global economy, and has been threatening <span class="vocab" data-word="tariffs">tariffs</span> on all members for planning to increase intra-BRICS payments and trade. As the Modi government <span class="vocab" data-word="seeks">seeks</span> to restore ties with the Trump administration, on trade and its Indo-Pacific strategy, hosting BRICS also risks <span class="vocab" data-word="invoking">invoking</span> America&rsquo;s <span class="vocab" data-word="ire">ire</span>, however <span class="vocab" data-word="irrational">irrational</span>.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9313; <b class="s">global conflicts</b> (involving BRICS members) &mdash; <b class="v">have grown</b>.</div>
+    </div>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9314; <b class="s">The war</b> (involving Iran) &mdash; <b class="v">has heightened</b> (this impact).</div>
+    </div>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9315; <b class="s">Iran</b> (a victim of the U.S.-Israel strikes), <b class="s">as well as the UAE</b> (that was attacked by Iran in retaliation) &mdash; <b class="v">are</b> members (that have been unwilling to agree to a common narrative on the problem)<br><br>Note: In grammar, when we say: subject A as well as subject B + Verb.... we use the verb according to the subject A. Newspapers are used only to convey the meaning, not the grammar.</div>
+    </div>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9316; <b class="s">The largest share</b> (of New Delhi&rsquo;s problems as host) &mdash; <b class="v">comes</b> (however from the United States, where President Trump has accused it of plotting against the dollar).</div>
+    </div>
+
+    <p>As a result, <span class="sv-subj">a success in <span class="vocab" data-word="reconciling">reconciling</span></span> all these different <span class="vocab" data-word="strands">strands</span> at this time <span class="sv-verb">would&hellip;be</span> a <span class="vocab" data-word="shot-across-the-bow">shot across the bow</span> for the grouping and a big win for Indian diplomacy. Since it was first <span class="vocab" data-word="conceptualised">conceptualised</span> 25 years ago, and a summit <span class="vocab" data-word="convened">convened</span> in 2009, the BRICS countries have risen in global <span class="vocab" data-word="stature">stature</span> and economic <span class="vocab" data-word="heft">heft</span>, benefitting intra-BRICS trade.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9317; <b class="s">a success in reconciling</b> (all these different strands at this time) &mdash; <b class="v">would&hellip;be</b> a shot across the bow for the grouping and a big win for Indian diplomacy.</div>
+    </div>
+
+    <p>Today, BRICS <span class="vocab" data-word="accounts-for">accounts for</span> half the world&rsquo;s population, two fifths of the global economy and a fourth of global trade; it also includes many of the world&rsquo;s top energy producers and biggest consumers. While the grouping prefers not to be called anti-western it is certainly a powerful <span class="vocab" data-word="counter">counter</span> to the G-7, and western-led thinking. <span class="signal-highlight" data-signal="closing-verdict">Being part of BRICS gives India more <span class="vocab" data-word="heft">heft</span> in advancing its ambitions on the global high table, and its presidency has ensured it <span class="vocab" data-word="prominence">prominence</span> on the world stage, as leaders and representatives of 11 BRICS countries including Xi Jinping, Vladimir Putin and Masoud Pezeshkian begin <span class="vocab" data-word="deliberations">deliberations</span> on Saturday at the Bharat Mandapam to discuss the future of global governance.</span></p>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 1 of 5</div>
+</div>
+
+<!-- ================= PAGE 2: QUESTIONS ================= -->
+<div class="page" id="page-questions">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Practice Questions</h2>
+      <span class="pub-date">13 Sep 2026</span>
+    </div>
+    <div class="score-bar" id="scoreBar">Score: 0 / 5</div>
+
+    <div class="qcard" data-qid="1">
+      <div class="qnum">Question 1 &mdash; Main Idea</div>
+      <div class="qtext">Which of the following best captures the overall argument of the editorial on India&rsquo;s presidency of the 18th BRICS Summit?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> BRICS has already replaced the U.S. dollar as the preferred currency for intra-member trade and global settlements.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> India's economic downturn has forced it to abandon its long-standing commitment to hosting multilateral summits like BRICS.</div>
+        <div class="option" data-correct="true"><span class="tag">C.</span> Reconciling the grouping's internal divisions amid an expanded membership and global conflicts would mark a major diplomatic success for India.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Western nations have unanimously endorsed BRICS' expansion as a stabilising force in global governance and international trade.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="2">
+      <div class="qnum">Question 2 &mdash; Inference</div>
+      <div class="qtext">What can be inferred from the editorial&rsquo;s description of President Trump&rsquo;s tariff threats over intra-BRICS payments?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Trump's tariff threats indicate strong bipartisan U.S. support for expanding trade cooperation with BRICS economies.</div>
+        <div class="option" data-correct="true"><span class="tag">B.</span> India's hosting of BRICS risks complicating its efforts to rebuild trade and strategic ties with the Trump administration.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> The tariff threats prove that BRICS members have unanimously agreed to abandon dollar-based international trade altogether.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Trump's remarks suggest Washington views BRICS' expansion as entirely unrelated to America's own economic interests.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="3">
+      <div class="qnum">Question 3 &mdash; Vocabulary in Context</div>
+      <div class="qtext">In the sentence &ldquo;hosting BRICS also risks invoking America&rsquo;s <em>ire</em>, however irrational&rdquo;, the word <em>ire</em> most nearly means:</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Diplomatic praise and warm approval extended publicly by a foreign government toward its allies.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> A formal trade agreement negotiated privately between two or more sovereign nations over time.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> Financial assistance offered generously as part of a broader international cooperation package or fund.</div>
+        <div class="option" data-correct="true"><span class="tag">D.</span> Intense anger or displeasure directed at someone's actions, decisions, or perceived intentions.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="4">
+      <div class="qnum">Question 4 &mdash; Tone</div>
+      <div class="qtext">What tone does the editorial primarily adopt while discussing the challenges India faces as BRICS host this year?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Triumphant, celebrating India's total dominance over every other BRICS member nation at the summit.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> Dismissive, treating the grouping's internal disagreements as entirely trivial and of no real consequence.</div>
+        <div class="option" data-correct="true"><span class="tag">C.</span> Measured, acknowledging real diplomatic difficulties while remaining hopeful about a successful summit outcome.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Alarmist, warning readers that BRICS as a coalition is on the verge of complete collapse.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="5">
+      <div class="qnum">Question 5 &mdash; Fact-Based Detail</div>
+      <div class="qtext">According to the editorial, which of the following is <strong>NOT</strong> stated as part of the current BRICS scenario?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Egypt, Ethiopia, Iran, Saudi Arabia, and the UAE joined BRICS as part of its 2024 expansion.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> BRICS today accounts for roughly half the world's population and two-fifths of the global economy.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> Iran and the UAE have both remained unwilling to agree on a shared narrative regarding their conflict.</div>
+        <div class="option" data-correct="true"><span class="tag">D.</span> BRICS has formally established a joint reserve currency to replace the U.S. dollar in global trade.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 2 of 5</div>
+</div>
+
+<!-- ================= PAGE 3: ANSWERS ================= -->
+<div class="page" id="page-answers">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Answers &amp; Explanations</h2>
+      <span class="pub-date">13 Sep 2026</span>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 1</div>
+      <div class="ans-line">Correct Answer: C</div>
+      <div class="expl">The editorial's central point is that reconciling BRICS' expanded, conflict-ridden membership would be a major win for India. A overstates a settled fact; B and D invent claims the passage never makes.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 2</div>
+      <div class="ans-line">Correct Answer: B</div>
+      <div class="expl">The passage notes Modi's government is trying to restore U.S. ties even as hosting BRICS risks provoking Trump's ire. A, C, and D misread the threat as support, unanimity, or irrelevance.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 3</div>
+      <div class="ans-line">Correct Answer: D</div>
+      <div class="expl">"Ire" means intense anger or displeasure, fitting the risk of provoking an angry U.S. reaction. A, B, and C describe unrelated diplomatic or financial concepts, not an emotional reaction.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 4</div>
+      <div class="ans-line">Correct Answer: C</div>
+      <div class="expl">The editorial candidly lists real obstacles — expansion, conflicts, Trump's tariffs — yet still frames a successful summit as an achievable "big win," a measured, cautiously hopeful stance. A, B, and D misread this balance.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 5</div>
+      <div class="ans-line">Correct Answer: D</div>
+      <div class="expl">The editorial mentions Trump's accusation that BRICS is "plotting" against the dollar, not that a replacement currency has actually been established. A, B, and C are all directly stated in the passage.</div>
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 3 of 5</div>
+</div>
+
+<!-- ================= PAGE 4: VOCABULARY ================= -->
+<div class="page" id="page-vocab">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Vocabulary Builder</h2>
+      <span class="pub-date">13 Sep 2026</span>
+    </div>
+    <div class="vocab-list" id="vocabTableBody"></div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 4 of 5</div>
+</div>
+
+<!-- ================= PAGE 5: EDITORIAL ANALYSIS ================= -->
+<div class="page" id="page-analysis">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Analysis</h2>
+      <span class="pub-date">13 Sep 2026</span>
+    </div>
+    <div class="analysis-grid">
+
+      <div class="a-card core">
+        <h4>Core Message</h4>
+        <ul>
+          <li>India is hosting the 18th BRICS Summit at a difficult moment: the grouping expanded in 2024 and 2025, making consensus harder than in earlier, smaller summits.</li>
+          <li>Global conflicts involving members — the Iran-Israel-U.S. crisis and the UAE's retaliation from Iran — have left BRICS members unable to agree on a common narrative.</li>
+          <li>President Trump's accusations that BRICS is plotting against the dollar, along with his tariff threats, add pressure on India as it tries to rebuild U.S. ties.</li>
+          <li>Despite these strains, BRICS has grown to represent half the world's population and two-fifths of the global economy, giving India real diplomatic heft as host.</li>
+        </ul>
+      </div>
+
+      <div class="a-card inference">
+        <h4>Inference</h4>
+        <ul>
+          <li>The shift from a five-member grouping to a larger, more diverse coalition implies that India's diplomatic balancing act has become structurally harder, not just circumstantially harder.</li>
+          <li>Trump's threat of tariffs over intra-BRICS payments suggests Washington perceives even routine trade cooperation among members as a challenge to U.S. financial dominance.</li>
+          <li>India's differing position on Israel compared to other BRICS members hints at the limits of the grouping's claimed unity on foreign policy issues.</li>
+          <li>The editorial's framing of a successful summit as a "shot across the bow" implies that BRICS' credibility as a counterweight to Western-led institutions is itself at stake this year.</li>
+        </ul>
+      </div>
+
+      <div class="a-card purpose">
+        <h4>Purpose</h4>
+        <p>To highlight the unusual difficulty of India's 2026 BRICS presidency — an expanded, conflict-riven membership and U.S. pressure over de-dollarisation — while arguing that a successful summit would nonetheless be a significant win for both the grouping's credibility and Indian diplomacy on the global stage.</p>
+      </div>
+
+      <div class="a-card tone">
+        <h4>Tone</h4>
+        <p>The editorial opens by candidly naming the difficulty of India's task, moves through a clear-eyed catalogue of the expansion, the Iran-Israel-UAE tensions, and Trump's tariff threats, and closes on an assured, almost celebratory note about BRICS' growing global heft and India's enhanced standing as host.</p>
+      </div>
+
+      <div class="a-card signals">
+        <h4>Signals</h4>
+        <p>Words and phrases that reveal the author&rsquo;s stance or mark a shift in the argument. Tap any phrase below to find it highlighted in the passage:</p>
+        <p>
+          <button type="button" class="signal-word" data-signal="opening-frame">Forging a joint statement&hellip; in the midst of global conflicts where members are involved is never easy</button>
+          <button type="button" class="signal-word" data-signal="closing-verdict">Being part of BRICS gives India more heft&hellip; as leaders&hellip; begin deliberations&hellip; to discuss the future of global governance</button>
+        </p>
+        <ul>
+          <li><strong>is never easy</strong> &mdash; the opening line sets a frank, difficulty-acknowledging register before the editorial catalogues exactly why 2026 is harder than past Indian BRICS presidencies.</li>
+          <li><strong>gives India more heft&hellip; discuss the future of global governance</strong> &mdash; the closing sentence pivots from listing obstacles to affirming India's enhanced global standing, ending on a note of quiet confidence.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 5 of 5</div>
+</div>
+
+<div class="tooltip" id="tooltip">
+  <span class="tt-word" id="ttWord"></span>
+  <span id="ttMeaning"></span>
+</div>
+
+<footer class="site-footer">Editorial text as provided, for personal exam-practice use only &middot; Questions, vocabulary, and analysis are original content</footer>
+
+<script>
+  const vocabData = {
+    "heft": {
+      hindi: "अहमियत/वज़न",
+      meaning: "Weight or importance, especially in terms of influence, standing, or significance.",
+      synonyms: ["Weight", "Influence", "Significance", "Clout"],
+      antonyms: ["Insignificance", "Weakness", "Powerlessness", "Triviality"]
+    },
+    "forging": {
+      hindi: "गढ़ना/तैयार करना",
+      display: "Forging",
+      meaning: "(here) Creating or shaping something carefully, often through negotiation or effort.",
+      synonyms: ["Crafting", "Building", "Hammering out", "Shaping"],
+      antonyms: ["Dismantling", "Breaking", "Abandoning", "Dissolving"]
+    },
+    "multilateral": {
+      hindi: "बहुपक्षीय",
+      meaning: "Involving several parties or nations, especially in negotiations or agreements.",
+      synonyms: ["Multi-party", "International", "Collective", "Multi-nation"],
+      antonyms: ["Bilateral", "Unilateral", "One-sided", "Solo"]
+    },
+    "shoulder": {
+      hindi: "ज़िम्मेदारी उठाना",
+      display: "Shoulder",
+      meaning: "(here) To take on or bear a responsibility or burden.",
+      synonyms: ["Bear", "Undertake", "Assume", "Carry"],
+      antonyms: ["Avoid", "Shirk", "Decline", "Evade"]
+    },
+    "coalition": {
+      hindi: "गठबंधन",
+      meaning: "An alliance or grouping formed by combining different parties or forces for a common purpose.",
+      synonyms: ["Alliance", "Bloc", "Grouping", "Union"],
+      antonyms: ["Division", "Split", "Fragmentation", "Rivalry"]
+    },
+    "consensus": {
+      hindi: "सर्वसम्मति",
+      meaning: "General agreement among a group of people on a particular matter.",
+      synonyms: ["Agreement", "Unanimity", "Accord", "Harmony"],
+      antonyms: ["Disagreement", "Discord", "Dissent", "Division"]
+    },
+    "induction": {
+      hindi: "समावेशन",
+      meaning: "The formal admission or introduction of someone or something into a group or organisation.",
+      synonyms: ["Admission", "Inclusion", "Initiation", "Enrolment"],
+      antonyms: ["Exclusion", "Expulsion", "Rejection", "Removal"]
+    },
+    "elusive": {
+      hindi: "मायावी/दुर्लभ",
+      meaning: "Difficult to find, achieve, or grasp, despite effort.",
+      synonyms: ["Hard to achieve", "Intangible", "Slippery", "Evasive"],
+      antonyms: ["Attainable", "Clear", "Obvious", "Straightforward"]
+    },
+    "heightened": {
+      hindi: "तीव्र किया गया",
+      display: "Heightened",
+      meaning: "Made more intense, severe, or pronounced than before.",
+      synonyms: ["Intensified", "Amplified", "Increased", "Sharpened"],
+      antonyms: ["Diminished", "Lessened", "Reduced", "Eased"]
+    },
+    "retaliation": {
+      hindi: "प्रतिशोध",
+      meaning: "An act of returning an attack or injury done by another, typically to seek revenge.",
+      synonyms: ["Reprisal", "Revenge", "Counterattack", "Payback"],
+      antonyms: ["Forgiveness", "Reconciliation", "Restraint", "Pardon"]
+    },
+    "plotting": {
+      hindi: "षड्यंत्र रचना",
+      display: "Plotting",
+      meaning: "Secretly planning to carry out an unlawful or harmful act.",
+      synonyms: ["Scheming", "Conspiring", "Maneuvering", "Colluding"],
+      antonyms: ["Disclosing", "Cooperating openly", "Collaborating transparently"]
+    },
+    "overthrow": {
+      hindi: "उखाड़ फेंकना",
+      meaning: "To remove forcibly from power or position; to bring down a system or authority.",
+      synonyms: ["Topple", "Unseat", "Depose", "Displace"],
+      antonyms: ["Uphold", "Sustain", "Reinforce", "Preserve"]
+    },
+    "tariffs": {
+      hindi: "शुल्क",
+      meaning: "Taxes imposed by a government on imported or exported goods.",
+      synonyms: ["Duties", "Levies", "Import taxes", "Customs charges"],
+      antonyms: ["Subsidies", "Exemptions", "Waivers"]
+    },
+    "invoking": {
+      hindi: "आह्वान करना",
+      display: "Invoking",
+      meaning: "(here) Bringing about or provoking a reaction or response through one's actions.",
+      synonyms: ["Provoking", "Triggering", "Summoning", "Prompting"],
+      antonyms: ["Averting", "Preventing", "Soothing", "Calming"]
+    },
+    "ire": {
+      hindi: "क्रोध",
+      meaning: "Intense anger or wrath, especially directed at a particular action or decision.",
+      synonyms: ["Anger", "Wrath", "Fury", "Displeasure"],
+      antonyms: ["Calm", "Approval", "Contentment", "Goodwill"]
+    },
+    "irrational": {
+      hindi: "अतार्किक",
+      meaning: "Not logical or reasonable; not based on clear or sound reasoning.",
+      synonyms: ["Illogical", "Unreasonable", "Baseless", "Unfounded"],
+      antonyms: ["Rational", "Logical", "Reasonable", "Sound"]
+    },
+    "reconciling": {
+      hindi: "सामंजस्य बिठाना",
+      display: "Reconciling",
+      meaning: "Making differing or conflicting views, interests, or elements consistent with one another.",
+      synonyms: ["Harmonising", "Resolving", "Bridging", "Aligning"],
+      antonyms: ["Dividing", "Polarising", "Estranging", "Widening"]
+    },
+    "strands": {
+      hindi: "सूत्र/धागे",
+      meaning: "Separate elements, themes, or threads that together make up a complex situation.",
+      synonyms: ["Threads", "Elements", "Components", "Themes"],
+      antonyms: ["Whole", "Unity", "Single strand"]
+    },
+    "conceptualised": {
+      hindi: "अवधारणा बनाई गई",
+      display: "Conceptualised",
+      meaning: "Formed as an idea or concept, especially in its early or founding stage.",
+      synonyms: ["Devised", "Envisioned", "Formulated", "Originated"],
+      antonyms: ["Abandoned", "Discarded", "Realised", "Executed"]
+    },
+    "convened": {
+      hindi: "बुलाई गई (बैठक)",
+      display: "Convened",
+      meaning: "Called together or assembled for a formal meeting or gathering.",
+      synonyms: ["Assembled", "Gathered", "Called together", "Organised"],
+      antonyms: ["Dispersed", "Disbanded", "Adjourned", "Cancelled"]
+    },
+    "stature": {
+      hindi: "प्रतिष्ठा",
+      meaning: "The level of respect, importance, or reputation someone or something has achieved.",
+      synonyms: ["Standing", "Reputation", "Prestige", "Status"],
+      antonyms: ["Insignificance", "Obscurity", "Disrepute", "Anonymity"]
+    },
+    "counter": {
+      hindi: "प्रतिकार",
+      display: "Counter",
+      meaning: "(here) An opposing force or alternative that pushes back against another power or idea.",
+      synonyms: ["Counterweight", "Opposing force", "Rival", "Check"],
+      antonyms: ["Ally", "Supporter", "Reinforcement", "Complement"]
+    },
+    "prominence": {
+      hindi: "प्रमुखता",
+      meaning: "The state of being important, well-known, or noticeable.",
+      synonyms: ["Eminence", "Visibility", "Distinction", "Standing"],
+      antonyms: ["Obscurity", "Insignificance", "Anonymity", "Invisibility"]
+    },
+    "deliberations": {
+      hindi: "विचार-विमर्श",
+      meaning: "Careful and thorough discussions or considerations before reaching a decision.",
+      synonyms: ["Discussions", "Debates", "Consultations", "Negotiations"],
+      antonyms: ["Impulsiveness", "Haste", "Silence", "Inaction"]
+    },
+    "seeks": {
+      hindi: "प्रयास करना",
+      display: "Seeks",
+      meaning: "(here) Tries or attempts to achieve or obtain something, such as a goal or an improved relationship.",
+      synonyms: ["Attempts", "Pursues", "Strives for", "Aims for"],
+      antonyms: ["Abandons", "Neglects", "Forgoes", "Relinquishes"]
+    },
+    "shot-across-the-bow": {
+      hindi: "चेतावनी संकेत",
+      display: "Shot Across The Bow",
+      meaning: "An action or statement intended as a strong warning or assertive signal of one's position or strength.",
+      synonyms: ["Warning signal", "Show of force", "Cautionary move", "Bold statement"],
+      antonyms: ["Concession", "Retreat", "Appeasement", "Submission"]
+    },
+    "accounts-for": {
+      hindi: "हिस्सा होना",
+      display: "Accounts For",
+      meaning: "(here) Makes up or constitutes a specified share or proportion of a total.",
+      synonyms: ["Constitutes", "Comprises", "Represents", "Makes up"],
+      antonyms: ["Excludes", "Omits", "Disregards", "Falls outside"]
+    }
+  };
+
+  const tbody = document.getElementById('vocabTableBody');
+  Object.keys(vocabData).forEach((word, i) => {
+    const d = vocabData[word];
+    const label = d.display || (word.charAt(0).toUpperCase() + word.slice(1));
+    const card = document.createElement('div');
+    card.className = 'vocab-card';
+    card.innerHTML = `
+      <div>
+        <span class="vc-num">${i + 1}.</span><span class="vc-word jump" data-word="${word}" title="Find this word in the editorial">${label}</span><span class="vc-hindi">${d.hindi}</span>
+      </div>
+      <div class="vc-meaning"><span class="vc-meaning-label">MEANING:</span>${d.meaning}</div>
+      <div class="vc-row"><span class="vc-label">SYNONYMS:</span> <span class="syn">${d.synonyms.join(', ')}</span></div>
+      <div class="vc-row"><span class="vc-label">ANTONYMS:</span> <span class="ant">${d.antonyms.join(', ')}</span></div>
+    `;
+    tbody.appendChild(card);
+  });
+
+  document.querySelectorAll('.vc-word.jump').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const key = cell.getAttribute('data-word');
+      showPage('page-editorial');
+      setTimeout(() => {
+        const target = document.querySelector('.editorial .vocab[data-word="' + key + '"]');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1800);
+      }, 150);
+    });
+  });
+
+  const tooltip = document.getElementById('tooltip');
+  const ttWord = document.getElementById('ttWord');
+  const ttMeaning = document.getElementById('ttMeaning');
+
+  document.querySelectorAll('.vocab').forEach(span => {
+    span.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const key = span.getAttribute('data-word');
+      const data = vocabData[key];
+      if (!data) return;
+
+      const label = data.display || (key.charAt(0).toUpperCase() + key.slice(1));
+      ttWord.textContent = label;
+      ttMeaning.textContent = data.meaning;
+
+      const rect = span.getBoundingClientRect();
+      tooltip.style.display = 'block';
+      const ttRect = tooltip.getBoundingClientRect();
+
+      let left = rect.left;
+      let top = rect.bottom + 10;
+
+      if (left + ttRect.width > window.innerWidth - 10) {
+        left = window.innerWidth - ttRect.width - 10;
+      }
+      if (top + ttRect.height > window.innerHeight - 10) {
+        top = rect.top - ttRect.height - 10;
+      }
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+    });
+  });
+
+  document.addEventListener('click', () => {
+    tooltip.style.display = 'none';
+  });
+  tooltip.addEventListener('click', (e) => e.stopPropagation());
+
+  const navPills = document.querySelectorAll('.nav-pill');
+  const pages = document.querySelectorAll('.page');
+
+  function showPage(pageId) {
+    pages.forEach(p => p.classList.toggle('active-page', p.id === pageId));
+    navPills.forEach(p => p.classList.toggle('active', p.getAttribute('data-page') === pageId));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  navPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      showPage(pill.getAttribute('data-page'));
+    });
+  });
+
+  showPage('page-editorial');
+
+  document.querySelectorAll('.signal-word[data-signal]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-signal');
+      showPage('page-editorial');
+      setTimeout(() => {
+        const target = document.querySelector('.signal-highlight[data-signal="' + key + '"]');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1800);
+      }, 150);
+    });
+  });
+
+  let score = 0;
+  const answered = {};
+  const scoreBar = document.getElementById('scoreBar');
+  const totalQuestions = document.querySelectorAll('.qcard').length;
+
+  let audioCtx = null;
+  function playTickSound() {
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1046.5, now);
+      osc.frequency.setValueAtTime(1568, now + 0.08);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.18, now + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.24);
+    } catch (err) { /* audio not supported, fail silently */ }
+  }
+
+  document.querySelectorAll('.qcard').forEach(card => {
+    const qid = card.getAttribute('data-qid');
+    const feedback = card.querySelector('.feedback');
+    const options = card.querySelectorAll('.option');
+
+    options.forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (answered[qid]) return;
+
+        answered[qid] = true;
+        const isCorrect = opt.getAttribute('data-correct') === 'true';
+
+        options.forEach(o => {
+          o.classList.add('locked');
+          if (o.getAttribute('data-correct') === 'true') {
+            o.classList.add('correct');
+          } else if (o === opt) {
+            o.classList.add('incorrect');
+          }
+        });
+
+        feedback.classList.add('show');
+        if (isCorrect) {
+          score++;
+          playTickSound();
+          feedback.textContent = '✓ Correct!';
+          feedback.classList.add('right');
+        } else {
+          feedback.textContent = '✗ Not quite — the correct answer is highlighted in green.';
+          feedback.classList.add('wrong');
+        }
+
+        scoreBar.textContent = `Score: ${score} / ${totalQuestions}`;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
