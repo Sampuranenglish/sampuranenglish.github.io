@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampuran English — AI Cooperation: On Artificial Intelligence at a Crossroads Editorial Practice (17 Sep 2026)</title>
+<style>
+  :root{
+    --paper:#f6f2e9;
+    --ink:#20201d;
+    --rule:#c9bfa8;
+    --accent:#8a3324;
+    --accent-soft:#e7d9c6;
+    --green:#3f5d3a;
+    --blue:#385170;
+    --telegram:#229ed9;
+    --serif: 'Georgia', 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: 'Helvetica Neue', Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    line-height:1.65;
+  }
+
+  .page-header{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 20px 0;
+  }
+  .title-box{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:8px;
+    padding:14px 20px;
+    display:grid;
+    grid-template-columns:56px 1fr;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .title-box .logo{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#fff;
+    justify-self:start;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--sans);
+    font-weight:800;
+    color:var(--accent);
+    font-size:17px;
+    letter-spacing:0.5px;
+  }
+  .title-box .brand{
+    font-family:var(--sans);
+    font-weight:800;
+    font-size:clamp(18px,6.5vw,30px);
+    letter-spacing:0.5px;
+    text-align:center;
+    white-space:nowrap;
+  }
+
+  .telegram-box{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--telegram);
+    color:#fff;
+    text-decoration:none;
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:14.5px;
+    letter-spacing:0.3px;
+    border-radius:8px;
+    padding:12px 16px;
+    margin-bottom:14px;
+    transition:filter .15s;
+  }
+  .telegram-box:hover{ filter:brightness(1.08); }
+  .telegram-box svg{ width:20px; height:20px; flex-shrink:0; }
+
+  .nav-pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:8px;
+  }
+  .nav-pill{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.3px;
+    background:#fffdf8;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+    border-radius:20px;
+    padding:8px 18px;
+    cursor:pointer;
+    transition:background .15s, color .15s;
+  }
+  .nav-pill:hover{ background:var(--accent-soft); }
+  .nav-pill.active{
+    background:var(--ink);
+    color:var(--paper);
+  }
+
+  .page{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 20px 10px;
+    display:none;
+  }
+  .page.active-page{ display:block; }
+
+  section{ margin-bottom:36px; }
+  .section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:8px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  h2.section-title{
+    font-family:var(--sans);
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0;
+  }
+  .pub-date{
+    font-family:var(--sans);
+    font-size:12px;
+    color:#7a7264;
+    letter-spacing:0.5px;
+  }
+
+  .editorial h3{
+    font-size:24px;
+    margin:0 0 4px;
+  }
+  .editorial .byline{
+    font-family:var(--sans);
+    font-size:12px;
+    color:#7a7264;
+    margin-bottom:20px;
+    font-style:italic;
+  }
+  .editorial p{
+    font-size:17px;
+    margin:0 0 16px;
+    text-align:justify;
+  }
+  .editorial p:first-of-type::first-letter{
+    font-size:44px;
+    float:left;
+    line-height:0.8;
+    padding-right:8px;
+    padding-top:4px;
+    color:var(--accent);
+    font-weight:bold;
+  }
+  .vocab{
+    background:linear-gradient(transparent 60%, var(--accent-soft) 60%);
+    cursor:pointer;
+    font-weight:600;
+    border-bottom:1.5px dotted var(--accent);
+    position:relative;
+    scroll-margin-top:90px;
+  }
+  .vocab:hover{ background:linear-gradient(transparent 55%, #dcc9a8 55%); }
+  .vocab.flash{
+    background:#f6c453;
+    box-shadow:0 0 0 4px rgba(246,196,83,0.55);
+    border-radius:2px;
+  }
+
+  .hl-mark{
+    background:#f6c453;
+    padding:0 2px;
+    border-radius:2px;
+    font-weight:700;
+  }
+
+  .sv-subj{
+    font-weight:700;
+    color:#c0392b;
+    text-decoration:underline;
+    text-decoration-color:#c0392b;
+    text-decoration-thickness:2px;
+    text-underline-offset:2px;
+    padding:0 1px;
+  }
+  .sv-verb{
+    font-weight:700;
+    color:var(--blue);
+    text-decoration:underline;
+    text-decoration-color:var(--blue);
+    text-decoration-thickness:2px;
+    text-underline-offset:2px;
+    padding:0 1px;
+  }
+  .sv-note{
+    background:#eef2f4;
+    border:1px solid var(--rule);
+    border-left:4px solid var(--blue);
+    border-radius:4px;
+    padding:8px 16px;
+    margin:-6px 0 18px;
+    font-family:var(--sans);
+    font-size:13px;
+    line-height:1.55;
+    color:#3a362f;
+  }
+  .sv-note .sv-tag{
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size:11px;
+    color:var(--blue);
+    margin-right:6px;
+  }
+  .sv-note b.s{ color:#c0392b; }
+  .sv-note b.v{ color:var(--blue); }
+
+  .tooltip{
+    position:fixed;
+    max-width:280px;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sans);
+    font-size:13.5px;
+    line-height:1.5;
+    padding:12px 14px;
+    border-radius:6px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
+    z-index:1000;
+    display:none;
+  }
+  .tooltip::after{
+    content:"";
+    position:absolute;
+    bottom:-7px;
+    left:20px;
+    border-width:7px 7px 0 7px;
+    border-style:solid;
+    border-color:var(--ink) transparent transparent transparent;
+  }
+  .tooltip .tt-word{
+    display:block;
+    font-weight:700;
+    color:#f0d9a8;
+    margin-bottom:4px;
+    font-size:14px;
+  }
+
+  .analysis-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .a-card{
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:16px 20px;
+    border-left:5px solid var(--blue);
+  }
+  .a-card.core{ border-left-color:var(--accent); }
+  .a-card.inference{ border-left-color:var(--blue); }
+  .a-card.purpose{ border-left-color:#6a4c93; }
+  .a-card.tone{ border-left-color:#b5533c; }
+  .a-card.signals{ border-left-color:#3a726b; }
+  .a-card h4{
+    margin:0 0 8px;
+    font-family:var(--sans);
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:var(--ink);
+  }
+  .a-card p, .a-card li{
+    font-family:var(--sans);
+    font-size:14px;
+    color:#3a362f;
+    margin:0 0 6px;
+  }
+  .a-card ul{ margin:0; padding-left:18px; }
+  .signal-word{
+    display:inline-block;
+    background:var(--accent-soft);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:3px 9px;
+    font-weight:700;
+    color:var(--accent);
+    font-size:13px;
+    margin:0 4px 6px 0;
+    font-family:var(--sans);
+    cursor:pointer;
+    transition:background 0.15s, transform 0.15s;
+  }
+  .signal-word:hover{
+    background:var(--accent);
+    color:#fff;
+    transform:translateY(-1px);
+  }
+  .signal-highlight{
+    background:#fdeecb;
+    border-bottom:2px solid #c8922f;
+    padding:0 1px;
+    border-radius:2px;
+    scroll-margin-top:90px;
+    transition:background 0.4s, box-shadow 0.4s;
+  }
+  .signal-highlight.flash{
+    background:#f6c453;
+    box-shadow:0 0 0 4px rgba(246,196,83,0.55);
+  }
+
+  .qcard{
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:18px 20px;
+    margin-bottom:16px;
+  }
+  .qcard .qnum{
+    font-family:var(--sans);
+    font-weight:700;
+    color:var(--accent);
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .qcard .qtext{
+    font-size:16.5px;
+    margin-bottom:14px;
+  }
+  .options{
+    display:grid;
+    gap:8px;
+  }
+  .option{
+    font-family:var(--sans);
+    font-size:14.5px;
+    background:var(--paper);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:10px 14px;
+    cursor:pointer;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    transition:background 0.15s, border-color .15s;
+  }
+  .option:hover{ background:var(--accent-soft); }
+  .option .tag{ font-weight:700; color:var(--accent); }
+  .option.correct{ background:#dcebd8; border-color:var(--green); }
+  .option.incorrect{ background:#f3d9d4; border-color:var(--accent); }
+  .option.locked{ cursor:default; pointer-events:none; opacity:0.95; }
+
+  .feedback{
+    margin-top:10px;
+    font-family:var(--sans);
+    font-size:13px;
+    display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback.right{color:var(--green);}
+  .feedback.wrong{color:var(--accent);}
+
+  .score-bar{
+    font-family:var(--sans);
+    background:var(--ink);
+    color:var(--paper);
+    text-align:center;
+    padding:10px;
+    border-radius:4px;
+    font-size:14px;
+    letter-spacing:0.5px;
+    margin-bottom:20px;
+  }
+
+  .answer-block{
+    border-left:4px solid var(--green);
+    background:#fffdf8;
+    padding:14px 18px;
+    margin-bottom:14px;
+    border-radius:0 4px 4px 0;
+  }
+  .answer-block .qnum{
+    font-family:var(--sans);
+    font-weight:700;
+    color:var(--accent);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+  .answer-block .ans-line{
+    font-family:var(--sans);
+    font-weight:700;
+    margin:6px 0 4px;
+    color:var(--green);
+  }
+  .answer-block .expl{
+    font-family:var(--sans);
+    font-size:14px;
+    color:#3a362f;
+  }
+
+  .vocab-list{
+    display:flex;
+    flex-direction:column;
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .vocab-card{
+    padding:14px 16px;
+    border-bottom:1px solid var(--rule);
+    font-family:var(--sans);
+    font-size:14px;
+    line-height:1.5;
+  }
+  .vocab-card:last-child{ border-bottom:none; }
+  .vocab-card:nth-child(even){ background:#f1ead9; }
+  .vocab-card .vc-num{
+    display:inline-block;
+    font-weight:700;
+    color:#7a7264;
+    margin-right:4px;
+  }
+  .vocab-card .vc-word{
+    font-weight:700;
+    color:var(--accent);
+    font-size:15px;
+    margin-bottom:5px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:underline;
+    text-decoration-style:dotted;
+    text-decoration-color:var(--accent);
+    text-underline-offset:3px;
+    transition:color 0.15s;
+  }
+  .vocab-card .vc-word:hover{ color:var(--ink); }
+  .vocab-card .vc-word::after{
+    content:"↗";
+    display:inline-block;
+    margin-left:5px;
+    font-size:12px;
+    color:var(--blue);
+    font-weight:400;
+  }
+  .vocab-card .vc-hindi{
+    color:var(--blue);
+    font-weight:600;
+    font-size:14px;
+    display:inline;
+    margin-left:8px;
+    margin-bottom:6px;
+    font-family:'Noto Sans Devanagari', 'Nirmala UI', var(--sans);
+  }
+  .vocab-card .vc-meaning{ color:#20201d; margin-bottom:6px; }
+  .vocab-card .vc-meaning-label{
+    font-weight:700;
+    color:#3a362f;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-right:5px;
+  }
+  .vocab-card .vc-row{ margin-bottom:2px; }
+  .vocab-card .vc-row:last-child{ margin-bottom:0; }
+  .vocab-card .vc-label{
+    font-weight:700;
+    color:#3a362f;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-right:6px;
+  }
+  .syn{ color:#8a3324; }
+  .ant{ color:var(--green); }
+
+  .nav-pills-bottom{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    padding-top:22px;
+    margin-top:10px;
+    border-top:1px solid var(--rule);
+  }
+
+  .page-number{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:700;
+    color:#7a7264;
+    letter-spacing:0.5px;
+    padding:18px 0 30px;
+    border-top:1px solid var(--rule);
+    margin-top:10px;
+  }
+
+  footer.site-footer{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:11px;
+    color:#8a8272;
+    padding:20px;
+  }
+
+  @media (max-width:480px){
+    .editorial p{ font-size:16px; }
+    .tooltip{ max-width:230px; }
+    .section-header{ flex-wrap:wrap; }
+    .title-box{ grid-template-columns:40px 1fr; padding:12px 14px; gap:8px; }
+    .title-box .logo{ width:36px; height:36px; font-size:14px; }
+    .title-box .brand{ font-size:clamp(16px,7vw,24px); letter-spacing:0.2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="title-box">
+    <div class="logo">
+      <img src="data:image/jpeg;base64,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" alt="logo" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="brand"><span style="color:#e2483c;">SAMPURAN</span> ENGLISH</div>
+  </div>
+
+  <a class="telegram-box" href="https://t.me/Sampuran_English" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 4L3 11.5L10 13.5M21 4L18 20L10 13.5M21 4L10 13.5M10 13.5V19L13.2 15.8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Official Telegram Channel
+  </a>
+
+  <div class="nav-pills">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+</div>
+<!-- ================= PAGE 1: EDITORIAL ================= -->
+<div class="page active-page" id="page-editorial">
+
+  <section class="editorial">
+    <div class="section-header">
+      <h2 class="section-title">The Editorial</h2>
+      <span class="pub-date">17 Sep 2026</span>
+    </div>
+    <h3>AI cooperation: On Artificial Intelligence at a crossroads</h3>
+    <div class="byline">Editorial &middot; for exam practice</div>
+
+<p><span class="signal-highlight" data-signal="opening-frame">Artificial Intelligence is at a strange <span class="vocab" data-word="crossroads">crossroads</span>, with the United States government <span class="vocab" data-word="disregarding">disregarding</span> <span class="vocab" data-word="frontier">frontier</span> AI developers&rsquo; own call for a global development slowdown of models due to hacking risks and <span class="vocab" data-word="misalignment">misalignment</span> and the BRICS Summit offering an alternative view of how <span class="vocab" data-word="geopolitics">geopolitics</span> should respond to this rapidly <span class="vocab" data-word="evolving">evolving</span> situation.</span> The AI firms and the U.S. government have long framed the <span class="vocab" data-word="astronomical">astronomical</span> sums being <span class="vocab" data-word="funnelled">funnelled</span> into data centres and other associated investments as key to <span class="vocab" data-word="holding-their-ground">holding their ground</span> in a U.S.-China competition. During the Summit, Prime Minister Narendra Modi warned against the &ldquo;<span class="vocab" data-word="weaponisation">weaponisation</span>&rdquo; of technology and minerals, while Chinese President Xi Jinping <span class="vocab" data-word="touted">touted</span> the potential of a &ldquo;BRICS AI open source community&rdquo; that would challenge any one country&rsquo;s <span class="vocab" data-word="dominance">dominance</span> in the sector. India has taken the middle path, not joining any protest against U.S.-led models, while <span class="vocab" data-word="underscoring">underscoring</span> the need to keep AI development <span class="vocab" data-word="insulated">insulated</span> from national <span class="vocab" data-word="rivalries">rivalries</span>.</p>
+
+    <p>While some of this approach is informed by the fact that India&rsquo;s AI ecosystem is relatively <span class="vocab" data-word="fledgling">fledgling</span>, it is also a <span class="vocab" data-word="nod">nod</span> to the reality that this is a technology that may radically reshape the global economy, and participating even in its deployment may have <span class="vocab" data-word="dividends">dividends</span> across time. And yet, the Global South finds itself <span class="vocab" data-word="wedged">wedged</span> occasionally in great power rivalry dynamics, for instance suffering from a global pull out of Anthropic&rsquo;s powerful Fable and Mythos models. <span class="sv-subj">A world of trade disputes</span> spilling into supply chains <span class="sv-verb">cannot and should not impact</span> the <span class="vocab" data-word="proliferation">proliferation</span> of AI capabilities, as timely and <span class="vocab" data-word="comprehensive">comprehensive</span> access to these technologies is key to national security.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9312; <b class="s">A world of trade disputes</b> &hellip; <b class="v">cannot and should not impact</b> &mdash; separated by the phrase &ldquo;spilling into supply chains&rdquo;, which describes the world being referred to.</div>
+    </div>
+
+    <p>It is encouraging that the BRICS Summit&rsquo;s joint initiatives on AI are building more avenues for cooperation among middle powers to combat this concentration. Open source and collaborative approaches can insulate nations from <span class="vocab" data-word="belligerent">belligerent</span> and unpredictable policymaking on AI from the U.S. While such models <span class="vocab" data-word="lag-behind">lag behind</span> in capabilities from the frontier <span class="vocab" data-word="proprietary">proprietary</span> ones, they continue to improve at a <span class="vocab" data-word="rapid-clip">rapid clip</span>, a <span class="vocab" data-word="heartening">heartening</span> prospect for <span class="vocab" data-word="deployment-heavy">deployment-heavy</span> economies where AI development is not at such an advanced stage.</p>
+
+    <p>This is especially true as AI systems show signs of <span class="vocab" data-word="defying">defying</span> instructions and going to great lengths &mdash; even hacking into <span class="vocab" data-word="vulnerable">vulnerable</span> systems &mdash; to achieve a given task. <span class="sv-subj">The weaponisation of such capabilities</span>, which can be <span class="vocab" data-word="supercharged">supercharged</span> or minimised depending on who is in control, <span class="sv-verb">raises</span> concerns for countries with weakened <span class="vocab" data-word="cyber-defences">cyber defences</span>. <span class="sv-subj">Proliferation of defensive capabilities</span> against such evolving risks <span class="sv-verb">is</span> only possible when nations collaborate on making them broadly and cheaply available. BRICS should be one such forum. <span class="signal-highlight" data-signal="closing-verdict">AI brings up the biggest known unknowns of history, and considering the dangers to humanity therein, it should not fall into the geopolitics and <span class="vocab" data-word="hierarchies">hierarchies</span> of <span class="vocab" data-word="haves-and-have-nots">haves and have-nots</span> that guide the thinking of the <span class="vocab" data-word="hawks">hawks</span> at the frontier.</span></p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9313; <b class="s">The weaponisation of such capabilities</b> &hellip; <b class="v">raises</b> &mdash; separated by the relative clause &ldquo;which can be supercharged or minimised depending on who is in control&rdquo;.</div>
+    </div>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9314; <b class="s">Proliferation of defensive capabilities</b> &hellip; <b class="v">is</b> &mdash; separated by the phrase &ldquo;against such evolving risks&rdquo;, naming exactly what is being guarded against.</div>
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 1 of 5</div>
+</div>
+<!-- ================= PAGE 2: QUESTIONS ================= -->
+<div class="page" id="page-questions">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Practice Questions</h2>
+      <span class="pub-date">17 Sep 2026</span>
+    </div>
+    <div class="score-bar" id="scoreBar">Score: 0 / 5</div>
+
+    <div class="qcard" data-qid="1">
+      <div class="qnum">Question 1 &mdash; Main Idea</div>
+      <div class="qtext">Which of the following best captures the overall argument of the editorial on the global response to Artificial Intelligence development?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> The BRICS Summit has now overtaken the United States in developing frontier proprietary AI models.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> India has abandoned its neutral stance and formally aligned itself with the BRICS position on AI.</div>
+        <div class="option" data-correct="true"><span class="tag">C.</span> Global cooperation on AI, rather than great-power rivalry, is essential given the technology's shared risks and potential.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> The United States government has fully accepted frontier AI developers' call for a global slowdown in AI development.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="2">
+      <div class="qnum">Question 2 &mdash; Inference</div>
+      <div class="qtext">What can be inferred from the editorial&rsquo;s reference to a global pull out of Anthropic&rsquo;s powerful Fable and Mythos models affecting the Global South?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Anthropic withdrew these models because they posed proven hacking risks to importing countries.</div>
+        <div class="option" data-correct="true"><span class="tag">B.</span> Great-power rivalry and policy decisions abroad can restrict Global South countries' access to advanced AI capabilities.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> The Global South has consistently refused to adopt any AI models developed by U.S.-based firms.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> BRICS nations jointly negotiated the withdrawal of Anthropic's models to protect their own AI industries.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="3">
+      <div class="qnum">Question 3 &mdash; Vocabulary in Context</div>
+      <div class="qtext">In the phrase describing the risk of &ldquo;<em>belligerent</em> and unpredictable policymaking on AI from the U.S.&rdquo;, the word <em>belligerent</em> most nearly means:</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Highly transparent and predictable, closely coordinated with allied nations.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> Focused mainly on scientific research rather than geopolitical strategy.</div>
+        <div class="option" data-correct="true"><span class="tag">C.</span> Aggressive and hostile in manner, prone to confrontation rather than cooperation.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Cautious and restrained, deliberately avoiding any international disputes.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="4">
+      <div class="qnum">Question 4 &mdash; Tone</div>
+      <div class="qtext">What tone does the editorial adopt when discussing the possibility that AI capabilities could be weaponised and folded into a geopolitics of haves and have-nots?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Approving, treating the hawkish approach as a necessary and justified strategy.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> Dismissive, suggesting the risks of weaponisation are exaggerated and unlikely.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> Neutral, presenting both possibilities as equally desirable for global stability.</div>
+        <div class="option" data-correct="true"><span class="tag">D.</span> Cautionary, warning that such an approach would deepen global inequality and endanger humanity.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="5">
+      <div class="qnum">Question 5 &mdash; Fact-Based Detail</div>
+      <div class="qtext">According to the editorial, which of the following is <strong>NOT</strong> stated as part of this issue?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Prime Minister Modi warned against the weaponisation of technology and minerals during the Summit.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> Chinese President Xi Jinping proposed a BRICS AI open source community during the Summit.</div>
+        <div class="option" data-correct="true"><span class="tag">C.</span> The editorial states that BRICS has already surpassed the U.S. in total AI-related investment.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> AI systems have shown signs of defying instructions and even hacking into vulnerable systems.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </section>
+
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 2 of 5</div>
+</div>
+<!-- ================= PAGE 3: ANSWERS ================= -->
+<div class="page" id="page-answers">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Answers &amp; Explanations</h2>
+      <span class="pub-date">17 Sep 2026</span>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 1</div>
+      <div class="ans-line">Correct Answer: C</div>
+      <div class="expl">The editorial argues throughout that AI's risks and potential are shared across nations and should not fall into rivalry or hierarchy. A and D overstate developments that have not occurred; B contradicts India's stated "middle path".</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 2</div>
+      <div class="ans-line">Correct Answer: B</div>
+      <div class="expl">The example shows the Global South being caught in great-power dynamics beyond its control, restricting its access to advanced models. A, C, and D invent motives and actions the passage never mentions.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 3</div>
+      <div class="ans-line">Correct Answer: C</div>
+      <div class="expl">"Belligerent" describes hostile, confrontational behaviour, paired here with "unpredictable" to describe risky U.S. policymaking the editorial warns against. A, B, and D describe the opposite of this meaning.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 4</div>
+      <div class="ans-line">Correct Answer: D</div>
+      <div class="expl">The editorial explicitly says AI "should not fall into the geopolitics and hierarchies of haves and have-nots" guiding "hawks", a clear warning against this outcome. A, B, and C misread this as approval, dismissal, or neutrality.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 5</div>
+      <div class="ans-line">Correct Answer: C</div>
+      <div class="expl">The editorial never claims BRICS has surpassed the U.S. in AI investment — it only describes efforts at cooperation and open-source development. All other options are directly stated in the passage.</div>
+    </div>
+  </section>
+
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 3 of 5</div>
+</div>
+<!-- ================= PAGE 4: VOCABULARY ================= -->
+<div class="page" id="page-vocab">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Vocabulary Builder</h2>
+      <span class="pub-date">17 Sep 2026</span>
+    </div>
+    <div class="vocab-list" id="vocabTableBody"></div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 4 of 5</div>
+</div>
+<!-- ================= PAGE 5: EDITORIAL ANALYSIS ================= -->
+<div class="page" id="page-analysis">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Analysis</h2>
+      <span class="pub-date">17 Sep 2026</span>
+    </div>
+    <div class="analysis-grid">
+
+      <div class="a-card core">
+        <h4>Core Message</h4>
+        <ul>
+          <li>The U.S. government has disregarded frontier AI developers' own call for a global development slowdown, even as the BRICS Summit offered an alternative, cooperation-focused view of AI governance.</li>
+          <li>India has taken a "middle path", neither joining protests against U.S.-led models nor abandoning the push to keep AI development insulated from national rivalries.</li>
+          <li>The editorial welcomes BRICS' open-source and collaborative AI initiatives as a way to build defensive capabilities and insulate nations from belligerent, unpredictable U.S. policymaking.</li>
+        </ul>
+      </div>
+
+      <div class="a-card inference">
+        <h4>Inference</h4>
+        <ul>
+          <li>India's neutral stance is shaped both by its still-developing AI ecosystem and by a long-term bet that participating in AI's deployment will yield dividends over time.</li>
+          <li>The withdrawal of Anthropic's models from certain markets suggests that access to frontier AI can be abruptly restricted by decisions made far from the countries actually affected.</li>
+          <li>By linking weaponisation directly to a geopolitics of "haves and have-nots", the editorial implies that unchecked concentration of AI power would replicate existing global inequalities in a new and more dangerous form.</li>
+        </ul>
+      </div>
+
+      <div class="a-card purpose">
+        <h4>Purpose</h4>
+        <p>To argue that Artificial Intelligence's risks and rewards are too consequential and too widely shared to be left to great-power rivalry, and to endorse BRICS-style open-source and collaborative initiatives as a practical way for middle powers and the Global South to build defensive capabilities and resist being sidelined by unpredictable, weaponised AI policymaking from dominant nations.</p>
+      </div>
+
+      <div class="a-card tone">
+        <h4>Tone</h4>
+        <p>The editorial opens analytically, framing AI's crossroads through competing U.S. and BRICS approaches.<br>It turns warmly supportive when praising BRICS' open-source cooperation as "encouraging" and "heartening".<br>It closes in a distinctly cautionary register, warning against AI falling into geopolitical hierarchies controlled by "hawks".</p>
+      </div>
+
+      <div class="a-card signals">
+        <h4>Signals</h4>
+        <p>Tap any phrase below to find it highlighted in the passage:</p>
+        <p>
+          <button type="button" class="signal-word" data-signal="opening-frame">Artificial Intelligence is at a strange crossroads, with the United States government disregarding frontier AI developers&rsquo; own call for a global development slowdown&hellip;</button>
+          <button type="button" class="signal-word" data-signal="closing-verdict">AI brings up the biggest known unknowns of history&hellip; it should not fall into the geopolitics and hierarchies of haves and have-nots that guide the thinking of the hawks at the frontier</button>
+        </p>
+        <ul>
+          <li>The opening frames the U.S. government's approach as a departure from expert caution, setting up the editorial's central tension.</li>
+          <li>The closing line delivers a direct normative verdict on how AI governance ought to proceed.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 5 of 5</div>
+</div>
+<div class="tooltip" id="tooltip">
+  <span class="tt-word" id="ttWord"></span>
+  <span id="ttMeaning"></span>
+</div>
+
+<footer class="site-footer">Editorial text as provided, for personal exam-practice use only &middot; Questions, vocabulary, and analysis are original content</footer>
+
+<script>
+  const vocabData = {
+    "crossroads": {
+      hindi: "दोराहा/निर्णायक मोड़",
+      meaning: "A point at which a crucial decision must be made, with significant consequences depending on the choice taken.",
+      synonyms: ["Turning point", "Junction", "Watershed", "Critical juncture"],
+      antonyms: ["Continuation", "Stability", "Certainty", "Settled path"]
+    },
+    "disregarding": {
+      hindi: "अनदेखा करना",
+      meaning: "Paying no attention to something or treating it as unworthy of consideration.",
+      synonyms: ["Ignoring", "Overlooking", "Dismissing", "Neglecting"],
+      antonyms: ["Heeding", "Considering", "Acknowledging", "Regarding"]
+    },
+    "frontier": {
+      hindi: "अग्रणी/सीमांत",
+      display: "Frontier",
+      meaning: "(here) The most advanced edge of a field of knowledge or technology, especially cutting-edge AI models.",
+      synonyms: ["Cutting-edge", "Leading-edge", "Forefront", "Vanguard"],
+      antonyms: ["Outdated", "Legacy", "Rudimentary", "Basic"]
+    },
+    "misalignment": {
+      hindi: "असंगति/बेमेलपन",
+      meaning: "A state in which something, especially an AI system's goals or behaviour, does not correctly match its intended purpose.",
+      synonyms: ["Mismatch", "Disconnect", "Incongruity", "Divergence"],
+      antonyms: ["Alignment", "Agreement", "Correspondence", "Consistency"]
+    },
+    "geopolitics": {
+      hindi: "भू-राजनीति",
+      meaning: "The relationship between politics and geography, especially in how nations compete for power and influence.",
+      synonyms: ["International politics", "Power politics", "World affairs", "Statecraft"],
+      antonyms: ["Domestic affairs", "Local politics", "Isolationism", "Neutrality"]
+    },
+    "evolving": {
+      hindi: "विकसित होता हुआ",
+      display: "Evolving",
+      meaning: "(here) Developing gradually or continuously, especially in a way that changes its nature over time.",
+      synonyms: ["Developing", "Changing", "Progressing", "Advancing"],
+      antonyms: ["Static", "Stagnant", "Fixed", "Unchanging"]
+    },
+    "astronomical": {
+      hindi: "अत्यधिक/खगोलीय",
+      meaning: "Extremely large in amount or scale, often used to describe very high costs or investments.",
+      synonyms: ["Enormous", "Massive", "Colossal", "Staggering"],
+      antonyms: ["Negligible", "Modest", "Minimal", "Trivial"]
+    },
+    "funnelled": {
+      hindi: "प्रवाहित/केंद्रित किया गया",
+      meaning: "Directed or channelled in a concentrated way toward a particular destination or purpose.",
+      synonyms: ["Channelled", "Directed", "Poured", "Routed"],
+      antonyms: ["Dispersed", "Scattered", "Diverted away", "Spread out"]
+    },
+    "holding-their-ground": {
+      hindi: "अपनी स्थिति बनाए रखना",
+      display: "Holding Their Ground",
+      meaning: "Maintaining one's position firmly, especially in the face of competition or opposition.",
+      synonyms: ["Standing firm", "Maintaining position", "Not yielding", "Staying resolute"],
+      antonyms: ["Retreating", "Conceding", "Yielding", "Falling behind"]
+    },
+    "weaponisation": {
+      hindi: "हथियारीकरण",
+      meaning: "The act of turning something, such as a technology or resource, into a tool for coercion, conflict, or strategic advantage.",
+      synonyms: ["Militarisation", "Armament", "Instrumentalisation", "Coercive use"],
+      antonyms: ["Demilitarisation", "Peaceful use", "Neutral application", "Disarmament"]
+    },
+    "touted": {
+      hindi: "प्रचारित किया",
+      meaning: "Publicly promoted or praised, often with enthusiasm, as being valuable or important.",
+      synonyms: ["Promoted", "Championed", "Advertised", "Hyped"],
+      antonyms: ["Downplayed", "Dismissed", "Disparaged", "Understated"]
+    },
+    "dominance": {
+      hindi: "प्रभुत्व",
+      meaning: "The state of having power, influence, or control over others in a particular field or sector.",
+      synonyms: ["Supremacy", "Control", "Predominance", "Ascendancy"],
+      antonyms: ["Subordination", "Weakness", "Inferiority", "Dependence"]
+    },
+    "underscoring": {
+      hindi: "रेखांकित करना",
+      display: "Underscoring",
+      meaning: "(here) Emphasising or drawing particular attention to the importance of something.",
+      synonyms: ["Emphasising", "Highlighting", "Stressing", "Reinforcing"],
+      antonyms: ["Downplaying", "Minimising", "Obscuring", "Ignoring"]
+    },
+    "insulated": {
+      hindi: "अलग/सुरक्षित रखा गया",
+      meaning: "Protected or shielded from external influence, interference, or harm.",
+      synonyms: ["Shielded", "Protected", "Isolated", "Buffered"],
+      antonyms: ["Exposed", "Vulnerable", "Unprotected", "Entangled"]
+    },
+    "rivalries": {
+      hindi: "प्रतिद्वंद्विता",
+      meaning: "States of competition or conflict between two or more parties, especially nations or organisations.",
+      synonyms: ["Competitions", "Contests", "Feuds", "Antagonisms"],
+      antonyms: ["Alliances", "Cooperation", "Partnerships", "Harmony"]
+    },
+    "fledgling": {
+      hindi: "नवोदित/अल्पविकसित",
+      meaning: "New and inexperienced, still in an early or developing stage.",
+      synonyms: ["Nascent", "Emerging", "Budding", "Immature"],
+      antonyms: ["Established", "Mature", "Developed", "Advanced"]
+    },
+    "nod": {
+      hindi: "स्वीकृति/संकेत",
+      display: "Nod",
+      meaning: "(here) An acknowledgement or gesture of recognition toward a particular fact or reality.",
+      synonyms: ["Acknowledgement", "Recognition", "Gesture", "Concession"],
+      antonyms: ["Denial", "Rejection", "Disregard", "Refusal"]
+    },
+    "dividends": {
+      hindi: "लाभ/प्रतिफल",
+      display: "Dividends",
+      meaning: "(here) Benefits or rewards gained from an action or investment over time.",
+      synonyms: ["Benefits", "Rewards", "Returns", "Payoffs"],
+      antonyms: ["Losses", "Costs", "Drawbacks", "Setbacks"]
+    },
+    "wedged": {
+      hindi: "फंसा हुआ",
+      meaning: "Forced or squeezed into a tight or difficult position, often between two opposing forces.",
+      synonyms: ["Squeezed", "Trapped", "Jammed", "Caught"],
+      antonyms: ["Freed", "Released", "Liberated", "Unrestricted"]
+    },
+    "proliferation": {
+      hindi: "प्रसार/तीव्र वृद्धि",
+      meaning: "A rapid increase in the number or spread of something, often used for weapons or technologies.",
+      synonyms: ["Spread", "Multiplication", "Expansion", "Diffusion"],
+      antonyms: ["Containment", "Reduction", "Restriction", "Decline"]
+    },
+    "comprehensive": {
+      hindi: "व्यापक/समग्र",
+      display: "Comprehensive",
+      meaning: "Complete and including everything that is necessary; thorough in scope.",
+      synonyms: ["Thorough", "Extensive", "All-inclusive", "Exhaustive"],
+      antonyms: ["Partial", "Incomplete", "Limited", "Selective"]
+    },
+    "belligerent": {
+      hindi: "आक्रामक/युद्धप्रिय",
+      meaning: "Hostile and aggressive in manner, often ready to engage in conflict or confrontation.",
+      synonyms: ["Aggressive", "Hostile", "Combative", "Confrontational"],
+      antonyms: ["Peaceable", "Conciliatory", "Cooperative", "Amicable"]
+    },
+    "lag-behind": {
+      hindi: "पीछे रहना",
+      display: "Lag Behind",
+      meaning: "To fail to keep pace with something else, falling short in progress or development.",
+      synonyms: ["Fall behind", "Trail", "Underperform", "Fall short"],
+      antonyms: ["Lead", "Outpace", "Surpass", "Advance ahead"]
+    },
+    "proprietary": {
+      hindi: "स्वामित्व/मालिकाना",
+      meaning: "Owned and controlled exclusively by a particular company, with restricted access or licensing.",
+      synonyms: ["Exclusive", "Privately owned", "Patented", "Closed"],
+      antonyms: ["Open", "Public", "Shared", "Unrestricted"]
+    },
+    "rapid-clip": {
+      hindi: "तीव्र गति",
+      display: "Rapid Clip",
+      meaning: "A fast pace or speed of progress or change.",
+      synonyms: ["Fast pace", "Quick speed", "Swift rate", "Brisk pace"],
+      antonyms: ["Slow pace", "Sluggish rate", "Gradual speed", "Crawl"]
+    },
+    "heartening": {
+      hindi: "उत्साहजनक",
+      meaning: "Encouraging or giving cause for hope and confidence.",
+      synonyms: ["Encouraging", "Reassuring", "Uplifting", "Cheering"],
+      antonyms: ["Disheartening", "Discouraging", "Dispiriting", "Demoralising"]
+    },
+    "deployment-heavy": {
+      hindi: "क्रियान्वयन-प्रधान",
+      display: "Deployment-Heavy",
+      meaning: "Describing economies that focus more on using and applying existing technologies than on originally developing them.",
+      synonyms: ["Application-focused", "Adoption-driven", "Usage-oriented", "Implementation-focused"],
+      antonyms: ["Innovation-driven", "Research-focused", "Development-led", "Origination-centred"]
+    },
+    "defying": {
+      hindi: "अवहेलना करना",
+      display: "Defying",
+      meaning: "(here) Openly resisting or refusing to comply with instructions or authority.",
+      synonyms: ["Resisting", "Disobeying", "Flouting", "Rebelling against"],
+      antonyms: ["Complying", "Obeying", "Conforming", "Submitting"]
+    },
+    "vulnerable": {
+      hindi: "असुरक्षित/भेद्य",
+      meaning: "Susceptible to being attacked, harmed, or exploited due to weak defences.",
+      synonyms: ["Susceptible", "Exposed", "Defenceless", "At risk"],
+      antonyms: ["Secure", "Protected", "Resilient", "Fortified"]
+    },
+    "supercharged": {
+      hindi: "अत्यधिक शक्तिशाली बनाया गया",
+      meaning: "Given greatly increased power, intensity, or effectiveness.",
+      synonyms: ["Amplified", "Intensified", "Boosted", "Empowered"],
+      antonyms: ["Weakened", "Diminished", "Subdued", "Restrained"]
+    },
+    "cyber-defences": {
+      hindi: "साइबर सुरक्षा",
+      display: "Cyber Defences",
+      meaning: "Systems and measures put in place to protect digital infrastructure from hacking and cyberattacks.",
+      synonyms: ["Digital security", "Cybersecurity measures", "Network safeguards", "IT protection"],
+      antonyms: ["Cyber vulnerability", "Digital exposure", "Security gaps", "Unprotected systems"]
+    },
+    "hierarchies": {
+      hindi: "पदानुक्रम",
+      meaning: "Systems in which people, groups, or nations are ranked one above another according to power or status.",
+      synonyms: ["Rankings", "Orders", "Gradations", "Pecking orders"],
+      antonyms: ["Equality", "Parity", "Levelness", "Egalitarianism"]
+    },
+    "haves-and-have-nots": {
+      hindi: "संपन्न और वंचित",
+      display: "Haves and Have-Nots",
+      meaning: "A division between those who possess wealth, power, or resources, and those who lack them.",
+      synonyms: ["Rich and poor divide", "Privileged and deprived", "Wealthy and disadvantaged", "Powerful and powerless"],
+      antonyms: ["Equal access", "Shared prosperity", "Level playing field", "Universal opportunity"]
+    },
+    "hawks": {
+      hindi: "युद्धोन्मुख/आक्रामक नीति समर्थक",
+      display: "Hawks",
+      meaning: "People, especially policymakers, who favour an aggressive or confrontational approach over cooperation.",
+      synonyms: ["Aggressors", "Militarists", "Hardliners", "Confrontationists"],
+      antonyms: ["Doves", "Moderates", "Conciliators", "Peacemakers"]
+    }
+  };
+
+  const tbody = document.getElementById('vocabTableBody');
+  Object.keys(vocabData).forEach((word, i) => {
+    const d = vocabData[word];
+    const label = d.display || (word.charAt(0).toUpperCase() + word.slice(1));
+    const card = document.createElement('div');
+    card.className = 'vocab-card';
+    card.innerHTML = `
+      <div>
+        <span class="vc-num">${i + 1}.</span><span class="vc-word jump" data-word="${word}" title="Find this word in the editorial">${label}</span><span class="vc-hindi">${d.hindi}</span>
+      </div>
+      <div class="vc-meaning"><span class="vc-meaning-label">MEANING:</span>${d.meaning}</div>
+      <div class="vc-row"><span class="vc-label">SYNONYMS:</span> <span class="syn">${d.synonyms.join(', ')}</span></div>
+      <div class="vc-row"><span class="vc-label">ANTONYMS:</span> <span class="ant">${d.antonyms.join(', ')}</span></div>
+    `;
+    tbody.appendChild(card);
+  });
+
+  document.querySelectorAll('.vc-word.jump').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const key = cell.getAttribute('data-word');
+      showPage('page-editorial');
+      setTimeout(() => {
+        const target = document.querySelector('.editorial .vocab[data-word="' + key + '"]');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1800);
+      }, 150);
+    });
+  });
+
+  const tooltip = document.getElementById('tooltip');
+  const ttWord = document.getElementById('ttWord');
+  const ttMeaning = document.getElementById('ttMeaning');
+
+  document.querySelectorAll('.vocab').forEach(span => {
+    span.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const key = span.getAttribute('data-word');
+      const data = vocabData[key];
+      if (!data) return;
+
+      const label = data.display || (key.charAt(0).toUpperCase() + key.slice(1));
+      ttWord.textContent = label;
+      ttMeaning.textContent = data.meaning;
+
+      const rect = span.getBoundingClientRect();
+      tooltip.style.display = 'block';
+      const ttRect = tooltip.getBoundingClientRect();
+
+      let left = rect.left;
+      let top = rect.bottom + 10;
+
+      if (left + ttRect.width > window.innerWidth - 10) {
+        left = window.innerWidth - ttRect.width - 10;
+      }
+      if (top + ttRect.height > window.innerHeight - 10) {
+        top = rect.top - ttRect.height - 10;
+      }
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+    });
+  });
+
+  document.addEventListener('click', () => {
+    tooltip.style.display = 'none';
+  });
+  tooltip.addEventListener('click', (e) => e.stopPropagation());
+
+  const navPills = document.querySelectorAll('.nav-pill');
+  const pages = document.querySelectorAll('.page');
+
+  function showPage(pageId) {
+    pages.forEach(p => p.classList.toggle('active-page', p.id === pageId));
+    navPills.forEach(p => p.classList.toggle('active', p.getAttribute('data-page') === pageId));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  navPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      showPage(pill.getAttribute('data-page'));
+    });
+  });
+
+  showPage('page-editorial');
+
+  document.querySelectorAll('.signal-word[data-signal]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-signal');
+      showPage('page-editorial');
+      setTimeout(() => {
+        const target = document.querySelector('.signal-highlight[data-signal="' + key + '"]');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1800);
+      }, 150);
+    });
+  });
+
+  let score = 0;
+  const answered = {};
+  const scoreBar = document.getElementById('scoreBar');
+  const totalQuestions = document.querySelectorAll('.qcard').length;
+
+  let audioCtx = null;
+  function playTickSound() {
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1046.5, now);
+      osc.frequency.setValueAtTime(1568, now + 0.08);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.18, now + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.24);
+    } catch (err) { /* audio not supported, fail silently */ }
+  }
+
+  document.querySelectorAll('.qcard').forEach(card => {
+    const qid = card.getAttribute('data-qid');
+    const feedback = card.querySelector('.feedback');
+    const options = card.querySelectorAll('.option');
+
+    options.forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (answered[qid]) return;
+
+        answered[qid] = true;
+        const isCorrect = opt.getAttribute('data-correct') === 'true';
+
+        options.forEach(o => {
+          o.classList.add('locked');
+          if (o.getAttribute('data-correct') === 'true') {
+            o.classList.add('correct');
+          } else if (o === opt) {
+            o.classList.add('incorrect');
+          }
+        });
+
+        feedback.classList.add('show');
+        if (isCorrect) {
+          score++;
+          playTickSound();
+          feedback.textContent = '✓ Correct!';
+          feedback.classList.add('right');
+        } else {
+          feedback.textContent = '✗ Not quite — the correct answer is highlighted in green.';
+          feedback.classList.add('wrong');
+        }
+
+        scoreBar.textContent = `Score: ${score} / ${totalQuestions}`;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

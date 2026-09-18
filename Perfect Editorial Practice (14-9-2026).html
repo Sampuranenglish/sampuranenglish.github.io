@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampuran English — Rude Lessons: On the U.S.-Canada Trade Dispute Editorial Practice (14 Sep 2026)</title>
+<style>
+  :root{
+    --paper:#f6f2e9;
+    --ink:#20201d;
+    --rule:#c9bfa8;
+    --accent:#8a3324;
+    --accent-soft:#e7d9c6;
+    --green:#3f5d3a;
+    --blue:#385170;
+    --telegram:#229ed9;
+    --serif: 'Georgia', 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: 'Helvetica Neue', Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    line-height:1.65;
+  }
+
+  .page-header{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 20px 0;
+  }
+  .title-box{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:8px;
+    padding:14px 20px;
+    display:grid;
+    grid-template-columns:56px 1fr;
+    align-items:center;
+    gap:12px;
+    margin-bottom:12px;
+  }
+  .title-box .logo{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#fff;
+    justify-self:start;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .title-box .logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .title-box .brand{
+    font-family:var(--sans);
+    font-weight:800;
+    font-size:clamp(18px,6.5vw,28px);
+    letter-spacing:0.5px;
+    text-align:left;
+  }
+  .title-box .brand span{ color:#e2483c; }
+
+  .telegram-box{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--telegram);
+    color:#fff;
+    text-decoration:none;
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:14.5px;
+    letter-spacing:0.3px;
+    border-radius:8px;
+    padding:12px 16px;
+    margin-bottom:14px;
+    transition:filter .15s;
+  }
+  .telegram-box:hover{ filter:brightness(1.08); }
+  .telegram-box svg{ width:20px; height:20px; flex-shrink:0; }
+
+  .nav-pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:8px;
+  }
+  .nav-pill{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.3px;
+    background:#fffdf8;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+    border-radius:20px;
+    padding:8px 18px;
+    cursor:pointer;
+    transition:background .15s, color .15s;
+  }
+  .nav-pill:hover{ background:var(--accent-soft); }
+  .nav-pill.active{
+    background:var(--ink);
+    color:var(--paper);
+  }
+
+  .page{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 20px 10px;
+    display:none;
+  }
+  .page.active-page{ display:block; }
+
+  section{ margin-bottom:36px; }
+  .section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:8px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  h2.section-title{
+    font-family:var(--sans);
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0;
+  }
+  .pub-date{
+    font-family:var(--sans);
+    font-size:12px;
+    color:#7a7264;
+    letter-spacing:0.5px;
+  }
+
+  .editorial h3{
+    font-size:23px;
+    margin:0 0 4px;
+  }
+  .editorial .byline{
+    font-family:var(--sans);
+    font-size:12px;
+    color:#7a7264;
+    margin-bottom:20px;
+    font-style:italic;
+  }
+  .editorial p{
+    font-size:17px;
+    margin:0 0 16px;
+    text-align:justify;
+  }
+  .editorial p:first-of-type::first-letter{
+    font-size:44px;
+    float:left;
+    line-height:0.8;
+    padding-right:8px;
+    padding-top:4px;
+    color:var(--accent);
+    font-weight:bold;
+  }
+  .vocab{
+    background:linear-gradient(transparent 60%, var(--accent-soft) 60%);
+    cursor:pointer;
+    font-weight:600;
+    border-bottom:1.5px dotted var(--accent);
+    position:relative;
+    scroll-margin-top:90px;
+  }
+  .vocab:hover{ background:linear-gradient(transparent 55%, #dcc9a8 55%); }
+  .vocab.flash{
+    background:#f6c453;
+    box-shadow:0 0 0 4px rgba(246,196,83,0.55);
+    border-radius:2px;
+  }
+
+  .sv-subj{
+    font-weight:700;
+    color:#c0392b;
+    text-decoration:underline;
+    text-decoration-color:#c0392b;
+    text-decoration-thickness:2px;
+    text-underline-offset:2px;
+    padding:0 1px;
+  }
+  .sv-verb{
+    font-weight:700;
+    color:var(--blue);
+    text-decoration:underline;
+    text-decoration-color:var(--blue);
+    text-decoration-thickness:2px;
+    text-underline-offset:2px;
+    padding:0 1px;
+  }
+  .sv-note{
+    background:#eef2f4;
+    border:1px solid var(--rule);
+    border-left:4px solid var(--blue);
+    border-radius:4px;
+    padding:8px 16px;
+    margin:-6px 0 18px;
+    font-family:var(--sans);
+    font-size:13px;
+    line-height:1.55;
+    color:#3a362f;
+  }
+  .sv-note .sv-tag{
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size:11px;
+    color:var(--blue);
+    margin-right:6px;
+  }
+  .sv-note b.s{ color:#c0392b; }
+  .sv-note b.v{ color:var(--blue); }
+
+  .tooltip{
+    position:fixed;
+    max-width:280px;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sans);
+    font-size:13.5px;
+    line-height:1.5;
+    padding:12px 14px;
+    border-radius:6px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
+    z-index:1000;
+    display:none;
+  }
+  .tooltip::after{
+    content:"";
+    position:absolute;
+    bottom:-7px;
+    left:20px;
+    border-width:7px 7px 0 7px;
+    border-style:solid;
+    border-color:var(--ink) transparent transparent transparent;
+  }
+  .tooltip .tt-word{
+    display:block;
+    font-weight:700;
+    color:#f0d9a8;
+    margin-bottom:4px;
+    font-size:14px;
+  }
+
+  .analysis-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .a-card{
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:16px 20px;
+    border-left:5px solid var(--blue);
+  }
+  .a-card.core{ border-left-color:var(--accent); }
+  .a-card.inference{ border-left-color:var(--blue); }
+  .a-card.purpose{ border-left-color:#6a4c93; }
+  .a-card.tone{ border-left-color:#b5533c; }
+  .a-card.signals{ border-left-color:#3a726b; }
+  .a-card h4{
+    margin:0 0 8px;
+    font-family:var(--sans);
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:var(--ink);
+  }
+  .a-card p, .a-card li{
+    font-family:var(--sans);
+    font-size:14px;
+    color:#3a362f;
+    margin:0 0 6px;
+  }
+  .a-card ul{ margin:0; padding-left:18px; }
+  .signal-word{
+    display:inline-block;
+    background:var(--accent-soft);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:3px 9px;
+    font-weight:700;
+    color:var(--accent);
+    font-size:13px;
+    margin:0 4px 6px 0;
+    font-family:var(--sans);
+    cursor:pointer;
+    transition:background 0.15s, transform 0.15s;
+  }
+  .signal-word:hover{
+    background:var(--accent);
+    color:#fff;
+    transform:translateY(-1px);
+  }
+  .signal-highlight{
+    background:#fdeecb;
+    border-bottom:2px solid #c8922f;
+    padding:0 1px;
+    border-radius:2px;
+    scroll-margin-top:90px;
+    transition:background 0.4s, box-shadow 0.4s;
+  }
+  .signal-highlight.flash{
+    background:#f6c453;
+    box-shadow:0 0 0 4px rgba(246,196,83,0.55);
+  }
+
+  .qcard{
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:18px 20px;
+    margin-bottom:16px;
+  }
+  .qcard .qnum{
+    font-family:var(--sans);
+    font-weight:700;
+    color:var(--accent);
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .qcard .qtext{
+    font-size:16.5px;
+    margin-bottom:14px;
+  }
+  .options{
+    display:grid;
+    gap:8px;
+  }
+  .option{
+    font-family:var(--sans);
+    font-size:14.5px;
+    background:var(--paper);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:10px 14px;
+    cursor:pointer;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    transition:background 0.15s, border-color .15s;
+  }
+  .option:hover{ background:var(--accent-soft); }
+  .option .tag{ font-weight:700; color:var(--accent); }
+  .option.correct{ background:#dcebd8; border-color:var(--green); }
+  .option.incorrect{ background:#f3d9d4; border-color:var(--accent); }
+  .option.locked{ cursor:default; pointer-events:none; opacity:0.95; }
+
+  .feedback{
+    margin-top:10px;
+    font-family:var(--sans);
+    font-size:13px;
+    display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback.right{color:var(--green);}
+  .feedback.wrong{color:var(--accent);}
+
+  .score-bar{
+    font-family:var(--sans);
+    background:var(--ink);
+    color:var(--paper);
+    text-align:center;
+    padding:10px;
+    border-radius:4px;
+    font-size:14px;
+    letter-spacing:0.5px;
+    margin-bottom:20px;
+  }
+
+  .answer-block{
+    border-left:4px solid var(--green);
+    background:#fffdf8;
+    padding:14px 18px;
+    margin-bottom:14px;
+    border-radius:0 4px 4px 0;
+  }
+  .answer-block .qnum{
+    font-family:var(--sans);
+    font-weight:700;
+    color:var(--accent);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+  .answer-block .ans-line{
+    font-family:var(--sans);
+    font-weight:700;
+    margin:6px 0 4px;
+    color:var(--green);
+  }
+  .answer-block .expl{
+    font-family:var(--sans);
+    font-size:14px;
+    color:#3a362f;
+  }
+
+  .vocab-list{
+    display:flex;
+    flex-direction:column;
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .vocab-card{
+    padding:14px 16px;
+    border-bottom:1px solid var(--rule);
+    font-family:var(--sans);
+    font-size:14px;
+    line-height:1.5;
+  }
+  .vocab-card:last-child{ border-bottom:none; }
+  .vocab-card:nth-child(even){ background:#f1ead9; }
+  .vocab-card .vc-num{
+    display:inline-block;
+    font-weight:700;
+    color:#7a7264;
+    margin-right:4px;
+  }
+  .vocab-card .vc-word{
+    font-weight:700;
+    color:var(--accent);
+    font-size:15px;
+    margin-bottom:5px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:underline;
+    text-decoration-style:dotted;
+    text-decoration-color:var(--accent);
+    text-underline-offset:3px;
+    transition:color 0.15s;
+  }
+  .vocab-card .vc-word:hover{ color:var(--ink); }
+  .vocab-card .vc-word::after{
+    content:"↗";
+    display:inline-block;
+    margin-left:5px;
+    font-size:12px;
+    color:var(--blue);
+    font-weight:400;
+  }
+  .vocab-card .vc-hindi{
+    color:var(--blue);
+    font-weight:600;
+    font-size:14px;
+    display:inline;
+    margin-left:8px;
+    margin-bottom:6px;
+    font-family:'Noto Sans Devanagari', 'Nirmala UI', var(--sans);
+  }
+  .vocab-card .vc-meaning{ color:#20201d; margin-bottom:6px; }
+  .vocab-card .vc-meaning-label{
+    font-weight:700;
+    color:#3a362f;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-right:5px;
+  }
+  .vocab-card .vc-row{ margin-bottom:2px; }
+  .vocab-card .vc-row:last-child{ margin-bottom:0; }
+  .vocab-card .vc-label{
+    font-weight:700;
+    color:#3a362f;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-right:6px;
+  }
+  .syn{ color:#8a3324; }
+  .ant{ color:var(--green); }
+
+  .nav-pills-bottom{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    padding-top:22px;
+    margin-top:10px;
+    border-top:1px solid var(--rule);
+  }
+
+  .page-number{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:700;
+    color:#7a7264;
+    letter-spacing:0.5px;
+    padding:18px 0 30px;
+    border-top:1px solid var(--rule);
+    margin-top:10px;
+  }
+
+  footer.site-footer{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:11px;
+    color:#8a8272;
+    padding:20px;
+  }
+
+  @media (max-width:480px){
+    .editorial p{ font-size:16px; }
+    .tooltip{ max-width:230px; }
+    .section-header{ flex-wrap:wrap; }
+    .title-box{ grid-template-columns:40px 1fr; padding:12px 14px; gap:8px; }
+    .title-box .logo{ width:36px; height:36px; }
+    .title-box .brand{ font-size:clamp(16px,7vw,22px); letter-spacing:0.2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="title-box">
+    <div class="logo">
+      <img src="data:image/jpeg;base64,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" alt="logo">
+    </div>
+    <div class="brand"><span>SAMPURAN</span> ENGLISH</div>
+  </div>
+
+  <a class="telegram-box" href="https://t.me/Sampuran_English" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 4L3 11.5L10 13.5M21 4L18 20L10 13.5M21 4L10 13.5M10 13.5V19L13.2 15.8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Official Telegram Channel
+  </a>
+
+  <div class="nav-pills">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+</div>
+
+<!-- ================= PAGE 1: EDITORIAL ================= -->
+<div class="page active-page" id="page-editorial">
+
+  <section class="editorial">
+    <div class="section-header">
+      <h2 class="section-title">The Editorial</h2>
+      <span class="pub-date">14 Sep 2026</span>
+    </div>
+    <h3>Rude Lessons: On the U.S.-Canada Trade Dispute, Lessons for India</h3>
+    <div class="byline">Editorial &middot; for exam practice</div>
+
+    <p><span class="signal-highlight" data-signal="opening-frame">The U.S.-Canada trade <span class="vocab" data-word="dispute">dispute</span> has a few sharp lessons for India.</span> The two economies have been deeply <span class="vocab" data-word="integrated">integrated</span> since at least 1965, when they established free trade in automobiles and their parts. This then widened into a <span class="vocab" data-word="full-fledged">full-fledged</span> free trade agreement in 1989, which was expanded into the North American Free Trade Agreement (NAFTA) about five years later. <span class="sv-subj">The economic integration</span> between the U.S. and Canada <span class="sv-verb">has continued</span> steadily and, <span class="vocab" data-word="by-all-accounts">by all accounts</span>, <span class="sv-verb">has worked</span> well for both economies.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9312; <b class="s">The economic integration</b> (between the U.S. and Canada) &mdash; <b class="v">has continued</b> steadily and, by all accounts, <b class="v">has worked</b> well for both economies.</div>
+    </div>
+
+    <p><span class="sv-subj">The target</span> for the much smaller Canadian economy <span class="sv-verb">was</span> to achieve <span class="vocab" data-word="economies-of-scale">economies of scale</span> by producing vast amounts of a few products. According to Nobel <span class="vocab" data-word="laureate">laureate</span> Paul Krugman, Canada <span class="vocab" data-word="accounts-for">accounts for</span> 70% of the oil refined in the American Midwest, and supplies 60% of the nation&rsquo;s aluminium. It also supplies nearly all the types of <span class="vocab" data-word="lumber">lumber</span> used in U.S. residential construction. Yet, despite this long and <span class="vocab" data-word="fruitful">fruitful</span> trade partnership, their economic relationship has fallen to a new low. Canada <span class="vocab" data-word="pulled-out">pulled out</span> of negotiations over a new tariff deal <span class="vocab" data-word="citing">citing</span> last-minute <span class="vocab" data-word="insertions">insertions</span> by the U.S. side. The U.S. has made a similar <span class="vocab" data-word="allegation">allegation</span> against Canada. Canada recently <span class="vocab" data-word="levied">levied</span> <span class="vocab" data-word="reciprocal">reciprocal</span> tariffs on the U.S. of up to 50% as a reaction to the 50% tariffs that the U.S. has imposed on imports from Canada.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9313; <b class="s">The target</b> (for the much smaller Canadian economy) &mdash; <b class="v">was</b> (to achieve economies of scale by producing vast amounts of a few products).</div>
+    </div>
+
+    <p>From September 29, the U.S. will <span class="vocab" data-word="outright">outright</span> ban certain Canadian alcoholic spirits, some dairy goods, and motorcycles. Statements by U.S. President Donald Trump are hardly <span class="vocab" data-word="conciliatory">conciliatory</span> in nature. The first lesson for India lies here: if this is how the U.S. treats a next-door neighbour, <span class="vocab" data-word="alliance">alliance</span> member, and long-standing trade partner, India should not take for granted any favourable treatment that it might receive from the U.S. The second lesson is that <span class="vocab" data-word="barrelling-ahead">barrelling ahead</span> with trade deals might not always be the best plan. Before Canada, Malaysia also <span class="vocab" data-word="backed-out">backed out</span> of a deal it had signed with the U.S. It argued that once the U.S.&rsquo;s reciprocal tariff system was <span class="vocab" data-word="deemed">deemed</span> illegal, the benefit from a trade deal no longer <span class="vocab" data-word="outweighed">outweighed</span> the costs of opening up to the U.S.</p>
+
+    <p>Despite the success of its recent trade pacts, India should <span class="vocab" data-word="weigh">weigh</span> the same <span class="vocab" data-word="pros-and-cons">pros and cons</span> when it comes to the U.S., especially since a deal might not be the end of the tariff pressure. India has faced this before. Despite the February 2026 agreement of 18% tariffs on imports from India, the U.S. has <span class="vocab" data-word="forged-ahead">forged ahead</span> with its forced labour and excess capacity investigations that could see tariff levels exceed that limit. India has done well to insist that a deal will not be <span class="vocab" data-word="struck">struck</span> until <span class="sv-subj">its advantage</span> over its competitors <span class="sv-verb">is</span> clear. <span class="signal-highlight" data-signal="closing-verdict">The third lesson is that this advantage can <span class="vocab" data-word="vanish">vanish</span> even after a deal is <span class="vocab" data-word="struck">struck</span>.</span></p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9314; <b class="s">its advantage</b> (over its competitors) &mdash; <b class="v">is</b> (clear), the verb separated from its subject by the modifier &ldquo;over its competitors&rdquo;.</div>
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 1 of 5</div>
+</div>
+
+<!-- ================= PAGE 2: QUESTIONS ================= -->
+<div class="page" id="page-questions">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Practice Questions</h2>
+      <span class="pub-date">14 Sep 2026</span>
+    </div>
+    <div class="score-bar" id="scoreBar">Score: 0 / 5</div>
+
+    <div class="qcard" data-qid="1">
+      <div class="qnum">Question 1 &mdash; Main Idea</div>
+      <div class="qtext">Which of the following best captures the central argument of the editorial on the U.S.-Canada trade dispute?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> The U.S. and Canada must immediately restore NAFTA-era terms to prevent permanent damage to both economies.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> Canada&rsquo;s current economic troubles stem entirely from its excessive dependence on exporting raw materials such as oil and lumber.</div>
+        <div class="option" data-correct="true"><span class="tag">C.</span> Even a longstanding, deeply integrated trade relationship can deteriorate sharply, offering India cautionary lessons about trusting favourable U.S. treatment.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> India&rsquo;s recent trade agreement with the U.S. is structured in exactly the same flawed manner as the Canada-U.S. arrangement.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="2">
+      <div class="qnum">Question 2 &mdash; Inference</div>
+      <div class="qtext">What can be inferred from the editorial&rsquo;s reference to Malaysia backing out of its trade deal with the U.S.?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Malaysia and Canada coordinated their withdrawals from U.S. trade talks to form a joint bargaining bloc.</div>
+        <div class="option" data-correct="true"><span class="tag">B.</span> A trade deal&rsquo;s worth can diminish sharply if the legal or economic assumptions underlying it are later invalidated.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> The U.S.&rsquo;s reciprocal tariff system was created specifically to target Malaysia&rsquo;s manufacturing sector before Canada&rsquo;s.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Countries that sign U.S. trade deals are legally barred from renegotiating terms once a tariff system is ruled illegal.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="3">
+      <div class="qnum">Question 3 &mdash; Vocabulary in Context</div>
+      <div class="qtext">In the sentence &ldquo;the benefit from a trade deal no longer <em>outweighed</em> the costs of opening up to the U.S.&rdquo;, the word <em>outweighed</em> most nearly means:</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Was formally overruled through a binding legal or regulatory process.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> Was postponed indefinitely pending a fresh round of trade negotiations.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> Was reduced in physical scale following stricter import and export limits.</div>
+        <div class="option" data-correct="true"><span class="tag">D.</span> Was greater in importance or value than something else being compared to it.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="4">
+      <div class="qnum">Question 4 &mdash; Tone</div>
+      <div class="qtext">What tone does the editorial primarily adopt while drawing lessons for India from the U.S.-Canada dispute?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Alarmed, warning that India&rsquo;s trade relationship with the U.S. has already collapsed beyond repair.</div>
+        <div class="option" data-correct="true"><span class="tag">B.</span> Cautionary, urging India to stay wary and clear-eyed despite the relative success of its own trade negotiations.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> Dismissive, implying that the U.S.-Canada dispute holds little genuine relevance for India&rsquo;s trade policy.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Celebratory, praising India&rsquo;s trade strategy as clearly and permanently superior to Canada&rsquo;s and Malaysia&rsquo;s.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="5">
+      <div class="qnum">Question 5 &mdash; Fact-Based Detail</div>
+      <div class="qtext">According to the editorial, which of the following is <strong>NOT</strong> stated as part of the current U.S.-Canada trade situation?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Canada currently supplies about 60% of the aluminium used in the United States.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> The U.S. plans to ban certain Canadian alcoholic spirits, dairy goods, and motorcycles from September 29.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> Canada imposed reciprocal tariffs of up to 50% in response to similar U.S. tariffs on its own goods.</div>
+        <div class="option" data-correct="true"><span class="tag">D.</span> The U.S. and Canada have jointly agreed to renegotiate an updated version of NAFTA to resolve the dispute.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 2 of 5</div>
+</div>
+
+<!-- ================= PAGE 3: ANSWERS ================= -->
+<div class="page" id="page-answers">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Answers &amp; Explanations</h2>
+      <span class="pub-date">14 Sep 2026</span>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 1</div>
+      <div class="ans-line">Correct Answer: C</div>
+      <div class="expl">The editorial uses the collapse of a long, deeply integrated U.S.-Canada trade relationship as a cautionary tale for India. A, B, and D each invent claims the passage never actually makes.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 2</div>
+      <div class="ans-line">Correct Answer: B</div>
+      <div class="expl">Malaysia walked away once the reciprocal tariff system was ruled illegal, showing the calculated benefit of a deal can fall away when its underlying assumptions change. A, C, and D go beyond what is stated.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 3</div>
+      <div class="ans-line">Correct Answer: D</div>
+      <div class="expl">"Outweighed" means being greater in value or importance in a comparison, fitting the idea that benefits no longer exceeded costs. A, B, and C describe legal, procedural, or physical processes, not a comparison of value.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 4</div>
+      <div class="ans-line">Correct Answer: B</div>
+      <div class="expl">The editorial candidly lists real risks — unpredictable U.S. behaviour, vanishing advantages — while still crediting India's cautious approach to its own deal, a measured and wary stance. A, C, and D misread this balance.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 5</div>
+      <div class="ans-line">Correct Answer: D</div>
+      <div class="expl">The editorial describes an escalating dispute — bans, reciprocal tariffs, failed negotiations — with no mention of a joint move to renegotiate NAFTA. A, B, and C are all directly stated in the passage.</div>
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 3 of 5</div>
+</div>
+
+<!-- ================= PAGE 4: VOCABULARY ================= -->
+<div class="page" id="page-vocab">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Vocabulary Builder</h2>
+      <span class="pub-date">14 Sep 2026</span>
+    </div>
+    <div class="vocab-list" id="vocabTableBody"></div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 4 of 5</div>
+</div>
+
+<!-- ================= PAGE 5: EDITORIAL ANALYSIS ================= -->
+<div class="page" id="page-analysis">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Analysis</h2>
+      <span class="pub-date">14 Sep 2026</span>
+    </div>
+    <div class="analysis-grid">
+
+      <div class="a-card core">
+        <h4>Core Message</h4>
+        <ul>
+          <li>The U.S.-Canada trade relationship, deeply integrated since 1965 and formalised through NAFTA, has collapsed into reciprocal tariffs, bans, and failed negotiations.</li>
+          <li>Canada supplies vital inputs — oil, aluminium, and lumber — to the U.S. economy, yet this economic reliance did not prevent the relationship from souring.</li>
+          <li>Malaysia's earlier withdrawal from its own U.S. trade deal shows a similar pattern: once assumptions underlying a deal change, its value can evaporate.</li>
+          <li>India must draw three lessons: not to take favourable U.S. treatment for granted, to weigh costs and benefits before signing deals, and to recognise that any advantage can vanish even after a deal is struck.</li>
+        </ul>
+      </div>
+
+      <div class="a-card inference">
+        <h4>Inference</h4>
+        <ul>
+          <li>The fact that a close ally and neighbour like Canada faces steep U.S. tariffs implies that geographic proximity and alliance status offer little real protection in trade matters.</li>
+          <li>The continuation of U.S. forced labour and excess capacity investigations despite India's February 2026 tariff agreement suggests that signed deals do not fully insulate countries from further pressure.</li>
+          <li>India's insistence on clarity over its competitive advantage before finalising a deal hints at a deliberate strategy shaped by watching Canada's and Malaysia's experiences.</li>
+          <li>The editorial's closing point about vanishing advantage implies that trade deals should be treated as ongoing negotiations rather than permanent settlements.</li>
+        </ul>
+      </div>
+
+      <div class="a-card purpose">
+        <h4>Purpose</h4>
+        <p>To use the sudden breakdown of the long-integrated U.S.-Canada trade relationship, alongside Malaysia's withdrawal from its own deal, as a warning to India against complacency — urging it to weigh costs and benefits carefully and to stay alert even after a trade agreement is signed.</p>
+      </div>
+
+      <div class="a-card tone">
+        <h4>Tone</h4>
+        <p>The editorial opens with a brief, matter-of-fact account of decades of U.S.-Canada economic integration, moves through an increasingly stark catalogue of tariffs, bans, and failed talks, and closes on a wary, advisory note directed squarely at Indian policymakers.</p>
+      </div>
+
+      <div class="a-card signals">
+        <h4>Signals</h4>
+        <p>Words and phrases that reveal the author&rsquo;s stance or mark a shift in the argument. Tap any phrase below to find it highlighted in the passage:</p>
+        <p>
+          <button type="button" class="signal-word" data-signal="opening-frame">The U.S.-Canada trade dispute has a few sharp lessons for India</button>
+          <button type="button" class="signal-word" data-signal="closing-verdict">The third lesson is that this advantage can vanish even after a deal is struck</button>
+        </p>
+        <ul>
+          <li><strong>a few sharp lessons for India</strong> &mdash; the opening line immediately frames the entire editorial as a cautionary, lesson-drawing exercise rather than a neutral account of the dispute.</li>
+          <li><strong>this advantage can vanish even after a deal is struck</strong> &mdash; the closing sentence delivers the sharpest warning of the piece, undercutting any comfort India might take from having already signed a deal.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 5 of 5</div>
+</div>
+
+<div class="tooltip" id="tooltip">
+  <span class="tt-word" id="ttWord"></span>
+  <span id="ttMeaning"></span>
+</div>
+
+<footer class="site-footer">Editorial text as provided, for personal exam-practice use only &middot; Questions, vocabulary, and analysis are original content</footer>
+
+<script>
+  const vocabData = {
+    "dispute": {
+      hindi: "विवाद",
+      display: "Dispute",
+      meaning: "A disagreement or conflict between parties, often prolonged and difficult to resolve.",
+      synonyms: ["Conflict", "Disagreement", "Row", "Controversy"],
+      antonyms: ["Agreement", "Accord", "Consensus", "Harmony"]
+    },
+    "by-all-accounts": {
+      hindi: "सबके अनुसार",
+      display: "By All Accounts",
+      meaning: "According to what everyone says or reports; by general agreement.",
+      synonyms: ["Reportedly", "By common consent", "Apparently", "Evidently"],
+      antonyms: ["Unconfirmed", "Contested", "Disputed"]
+    },
+    "integrated": {
+      hindi: "एकीकृत",
+      display: "Integrated",
+      meaning: "Combined or joined together so closely as to form a coordinated, unified whole.",
+      synonyms: ["Combined", "Unified", "Merged", "Consolidated"],
+      antonyms: ["Separated", "Divided", "Segregated", "Isolated"]
+    },
+    "full-fledged": {
+      hindi: "पूर्ण विकसित",
+      display: "Full-Fledged",
+      meaning: "Fully developed or established; complete in every respect.",
+      synonyms: ["Complete", "Fully developed", "Mature", "Comprehensive"],
+      antonyms: ["Partial", "Incomplete", "Embryonic", "Rudimentary"]
+    },
+    "economies-of-scale": {
+      hindi: "बड़े पैमाने की मितव्ययिता",
+      display: "Economies Of Scale",
+      meaning: "Cost advantages a producer gains by manufacturing goods in very large quantities.",
+      synonyms: ["Scale advantages", "Bulk efficiency", "Cost efficiency", "Volume savings"],
+      antonyms: ["Diseconomies of scale", "Inefficiency", "Cost disadvantage"]
+    },
+    "laureate": {
+      hindi: "पुरस्कार विजेता",
+      display: "Laureate",
+      meaning: "A person honoured with a distinguished award for outstanding achievement, especially the Nobel Prize.",
+      synonyms: ["Award-winner", "Honoree", "Prizewinner", "Medallist"],
+      antonyms: ["Nobody", "Unknown", "Non-achiever"]
+    },
+    "accounts-for": {
+      hindi: "हिस्सा होना",
+      display: "Accounts For",
+      meaning: "(here) Makes up or constitutes a specified share or proportion of a total.",
+      synonyms: ["Constitutes", "Comprises", "Represents", "Makes up"],
+      antonyms: ["Excludes", "Omits", "Disregards", "Falls outside"]
+    },
+    "lumber": {
+      hindi: "इमारती लकड़ी",
+      display: "Lumber",
+      meaning: "Timber that has been sawn into planks or boards, used chiefly in construction.",
+      synonyms: ["Timber", "Wood", "Planks", "Boards"],
+      antonyms: ["Metal", "Stone", "Concrete"]
+    },
+    "fruitful": {
+      hindi: "फलदायी",
+      display: "Fruitful",
+      meaning: "Producing good, beneficial, or successful results.",
+      synonyms: ["Productive", "Beneficial", "Rewarding", "Profitable"],
+      antonyms: ["Fruitless", "Unproductive", "Futile", "Barren"]
+    },
+    "pulled-out": {
+      hindi: "पीछे हट जाना",
+      display: "Pulled Out",
+      meaning: "(here) Withdrew from an ongoing agreement, negotiation, or commitment.",
+      synonyms: ["Withdrew", "Retreated", "Backed out", "Quit"],
+      antonyms: ["Joined", "Committed", "Persisted", "Continued"]
+    },
+    "citing": {
+      hindi: "हवाला देना",
+      display: "Citing",
+      meaning: "Referring to or mentioning something as a reason or example for an action taken.",
+      synonyms: ["Quoting", "Referencing", "Mentioning", "Invoking"],
+      antonyms: ["Omitting", "Ignoring", "Withholding", "Concealing"]
+    },
+    "insertions": {
+      hindi: "सम्मिलन/जोड़",
+      display: "Insertions",
+      meaning: "Additions or clauses inserted into a document or agreement, often unexpectedly.",
+      synonyms: ["Additions", "Inclusions", "Clauses added", "Amendments"],
+      antonyms: ["Deletions", "Removals", "Omissions"]
+    },
+    "allegation": {
+      hindi: "आरोप",
+      display: "Allegation",
+      meaning: "A claim or assertion that someone has done something wrong, made without firm proof.",
+      synonyms: ["Accusation", "Claim", "Charge", "Assertion"],
+      antonyms: ["Denial", "Refutation", "Retraction", "Proof"]
+    },
+    "reciprocal": {
+      hindi: "पारस्परिक",
+      display: "Reciprocal",
+      meaning: "Given, felt, or done in return; mutually applied by both sides of a dispute or exchange.",
+      synonyms: ["Mutual", "Corresponding", "Return", "Two-way"],
+      antonyms: ["One-sided", "Unilateral", "Unreciprocated"]
+    },
+    "levied": {
+      hindi: "लगाया गया (शुल्क)",
+      display: "Levied",
+      meaning: "Imposed or collected a tax, tariff, or fee by official authority.",
+      synonyms: ["Imposed", "Charged", "Collected", "Exacted"],
+      antonyms: ["Waived", "Exempted", "Repealed", "Lifted"]
+    },
+    "alliance": {
+      hindi: "गठबंधन/मित्रता",
+      display: "Alliance",
+      meaning: "A formal agreement or union between countries or groups for mutual benefit.",
+      synonyms: ["Coalition", "Partnership", "Pact", "Union"],
+      antonyms: ["Rivalry", "Opposition", "Enmity", "Division"]
+    },
+    "outright": {
+      hindi: "पूर्णतः",
+      display: "Outright",
+      meaning: "(here) Complete and absolute, without any exception or qualification.",
+      synonyms: ["Complete", "Total", "Absolute", "Unconditional"],
+      antonyms: ["Partial", "Conditional", "Limited", "Qualified"]
+    },
+    "conciliatory": {
+      hindi: "समझौतापरक",
+      display: "Conciliatory",
+      meaning: "Intended to placate or pacify someone; showing a willingness to end a dispute peacefully.",
+      synonyms: ["Placatory", "Appeasing", "Peace-making", "Soothing"],
+      antonyms: ["Antagonistic", "Provocative", "Hostile", "Belligerent"]
+    },
+    "barrelling-ahead": {
+      hindi: "बिना सोचे आगे बढ़ना",
+      display: "Barrelling Ahead",
+      meaning: "Moving forward rapidly and forcefully, often without adequate caution or reflection.",
+      synonyms: ["Rushing forward", "Charging ahead", "Plunging on", "Speeding along"],
+      antonyms: ["Hesitating", "Pausing", "Proceeding cautiously", "Holding back"]
+    },
+    "backed-out": {
+      hindi: "पीछे हट गया",
+      display: "Backed Out",
+      meaning: "Withdrew from a promise, agreement, or commitment previously made.",
+      synonyms: ["Withdrew", "Retracted", "Pulled out", "Reneged"],
+      antonyms: ["Committed", "Followed through", "Honoured", "Upheld"]
+    },
+    "deemed": {
+      hindi: "माना गया",
+      display: "Deemed",
+      meaning: "Regarded, judged, or considered to be something, especially in a formal or legal sense.",
+      synonyms: ["Considered", "Judged", "Regarded", "Viewed"],
+      antonyms: ["Disregarded", "Ignored", "Dismissed"]
+    },
+    "outweighed": {
+      hindi: "अधिक महत्वपूर्ण साबित हुआ",
+      display: "Outweighed",
+      meaning: "(here) Was greater in importance, value, or significance than something else being compared.",
+      synonyms: ["Exceeded", "Surpassed", "Overshadowed", "Superseded"],
+      antonyms: ["Fell short of", "Lagged behind", "Underperformed"]
+    },
+    "forged-ahead": {
+      hindi: "आगे बढ़ता रहा",
+      display: "Forged Ahead",
+      meaning: "Continued determinedly with an activity or plan despite obstacles or opposition.",
+      synonyms: ["Pressed on", "Pushed forward", "Persisted", "Advanced"],
+      antonyms: ["Stalled", "Retreated", "Abandoned", "Halted"]
+    },
+    "weigh": {
+      hindi: "तौलना/विचार करना",
+      display: "Weigh",
+      meaning: "(here) To consider something carefully, especially by comparing the relative importance of factors.",
+      synonyms: ["Consider", "Evaluate", "Assess", "Ponder"],
+      antonyms: ["Disregard", "Ignore", "Overlook", "Dismiss"]
+    },
+    "pros-and-cons": {
+      hindi: "लाभ और हानि",
+      display: "Pros And Cons",
+      meaning: "The favourable and unfavourable factors or arguments relevant to a decision.",
+      synonyms: ["Advantages and disadvantages", "Merits and demerits", "Costs and benefits"],
+      antonyms: ["Certainty", "One-sided view"]
+    },
+    "struck": {
+      hindi: "संपन्न किया गया",
+      display: "Struck",
+      meaning: "(here) Formally agreed upon or finalised, especially referring to a deal or bargain.",
+      synonyms: ["Concluded", "Finalised", "Sealed", "Agreed upon"],
+      antonyms: ["Broken", "Abandoned", "Cancelled", "Rejected"]
+    },
+    "vanish": {
+      hindi: "गायब हो जाना",
+      display: "Vanish",
+      meaning: "To disappear suddenly and completely, often without warning or clear explanation.",
+      synonyms: ["Disappear", "Evaporate", "Dissolve", "Fade away"],
+      antonyms: ["Appear", "Materialise", "Emerge", "Persist"]
+    }
+  };
+
+  const tbody = document.getElementById('vocabTableBody');
+  Object.keys(vocabData).forEach((word, i) => {
+    const d = vocabData[word];
+    const label = d.display || (word.charAt(0).toUpperCase() + word.slice(1));
+    const card = document.createElement('div');
+    card.className = 'vocab-card';
+    card.innerHTML = `
+      <div>
+        <span class="vc-num">${i + 1}.</span><span class="vc-word jump" data-word="${word}" title="Find this word in the editorial">${label}</span><span class="vc-hindi">${d.hindi}</span>
+      </div>
+      <div class="vc-meaning"><span class="vc-meaning-label">MEANING:</span>${d.meaning}</div>
+      <div class="vc-row"><span class="vc-label">SYNONYMS:</span> <span class="syn">${d.synonyms.join(', ')}</span></div>
+      <div class="vc-row"><span class="vc-label">ANTONYMS:</span> <span class="ant">${d.antonyms.join(', ')}</span></div>
+    `;
+    tbody.appendChild(card);
+  });
+
+  document.querySelectorAll('.vc-word.jump').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const key = cell.getAttribute('data-word');
+      showPage('page-editorial');
+      setTimeout(() => {
+        const target = document.querySelector('.editorial .vocab[data-word="' + key + '"]');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1800);
+      }, 150);
+    });
+  });
+
+  const tooltip = document.getElementById('tooltip');
+  const ttWord = document.getElementById('ttWord');
+  const ttMeaning = document.getElementById('ttMeaning');
+
+  document.querySelectorAll('.vocab').forEach(span => {
+    span.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const key = span.getAttribute('data-word');
+      const data = vocabData[key];
+      if (!data) return;
+
+      const label = data.display || (key.charAt(0).toUpperCase() + key.slice(1));
+      ttWord.textContent = label;
+      ttMeaning.textContent = data.meaning;
+
+      const rect = span.getBoundingClientRect();
+      tooltip.style.display = 'block';
+      const ttRect = tooltip.getBoundingClientRect();
+
+      let left = rect.left;
+      let top = rect.bottom + 10;
+
+      if (left + ttRect.width > window.innerWidth - 10) {
+        left = window.innerWidth - ttRect.width - 10;
+      }
+      if (top + ttRect.height > window.innerHeight - 10) {
+        top = rect.top - ttRect.height - 10;
+      }
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+    });
+  });
+
+  document.addEventListener('click', () => {
+    tooltip.style.display = 'none';
+  });
+  tooltip.addEventListener('click', (e) => e.stopPropagation());
+
+  const navPills = document.querySelectorAll('.nav-pill');
+  const pages = document.querySelectorAll('.page');
+
+  function showPage(pageId) {
+    pages.forEach(p => p.classList.toggle('active-page', p.id === pageId));
+    navPills.forEach(p => p.classList.toggle('active', p.getAttribute('data-page') === pageId));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  navPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      showPage(pill.getAttribute('data-page'));
+    });
+  });
+
+  showPage('page-editorial');
+
+  document.querySelectorAll('.signal-word[data-signal]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-signal');
+      showPage('page-editorial');
+      setTimeout(() => {
+        const target = document.querySelector('.signal-highlight[data-signal="' + key + '"]');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1800);
+      }, 150);
+    });
+  });
+
+  let score = 0;
+  const answered = {};
+  const scoreBar = document.getElementById('scoreBar');
+  const totalQuestions = document.querySelectorAll('.qcard').length;
+
+  let audioCtx = null;
+  function playTickSound() {
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1046.5, now);
+      osc.frequency.setValueAtTime(1568, now + 0.08);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.18, now + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.24);
+    } catch (err) { /* audio not supported, fail silently */ }
+  }
+
+  document.querySelectorAll('.qcard').forEach(card => {
+    const qid = card.getAttribute('data-qid');
+    const feedback = card.querySelector('.feedback');
+    const options = card.querySelectorAll('.option');
+
+    options.forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (answered[qid]) return;
+
+        answered[qid] = true;
+        const isCorrect = opt.getAttribute('data-correct') === 'true';
+
+        options.forEach(o => {
+          o.classList.add('locked');
+          if (o.getAttribute('data-correct') === 'true') {
+            o.classList.add('correct');
+          } else if (o === opt) {
+            o.classList.add('incorrect');
+          }
+        });
+
+        feedback.classList.add('show');
+        if (isCorrect) {
+          score++;
+          playTickSound();
+          feedback.textContent = '✓ Correct!';
+          feedback.classList.add('right');
+        } else {
+          feedback.textContent = '✗ Not quite — the correct answer is highlighted in green.';
+          feedback.classList.add('wrong');
+        }
+
+        scoreBar.textContent = `Score: ${score} / ${totalQuestions}`;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

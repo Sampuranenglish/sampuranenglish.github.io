@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampuran English — A Rising Graph: On the Doping Culture in Indian Sports Editorial Practice (16 Sep 2026)</title>
+<style>
+  :root{
+    --paper:#f6f2e9;
+    --ink:#20201d;
+    --rule:#c9bfa8;
+    --accent:#8a3324;
+    --accent-soft:#e7d9c6;
+    --green:#3f5d3a;
+    --blue:#385170;
+    --telegram:#229ed9;
+    --serif: 'Georgia', 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: 'Helvetica Neue', Arial, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    line-height:1.65;
+  }
+
+  .page-header{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 20px 0;
+  }
+  .title-box{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:8px;
+    padding:14px 20px;
+    display:grid;
+    grid-template-columns:56px 1fr;
+    align-items:center;
+    gap:12px;
+    margin-bottom:12px;
+  }
+  .title-box .logo{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    overflow:hidden;
+    background:#fff;
+    justify-self:start;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .title-box .logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .title-box .brand{
+    font-family:var(--sans);
+    font-weight:800;
+    font-size:clamp(18px,6.5vw,28px);
+    letter-spacing:0.5px;
+    text-align:left;
+  }
+  .title-box .brand span{ color:#e2483c; }
+
+  .telegram-box{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:var(--telegram);
+    color:#fff;
+    text-decoration:none;
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:14.5px;
+    letter-spacing:0.3px;
+    border-radius:8px;
+    padding:12px 16px;
+    margin-bottom:14px;
+    transition:filter .15s;
+  }
+  .telegram-box:hover{ filter:brightness(1.08); }
+  .telegram-box svg{ width:20px; height:20px; flex-shrink:0; }
+
+  .nav-pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:8px;
+  }
+  .nav-pill{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.3px;
+    background:#fffdf8;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+    border-radius:20px;
+    padding:8px 18px;
+    cursor:pointer;
+    transition:background .15s, color .15s;
+  }
+  .nav-pill:hover{ background:var(--accent-soft); }
+  .nav-pill.active{
+    background:var(--ink);
+    color:var(--paper);
+  }
+
+  .page{
+    max-width:780px;
+    margin:0 auto;
+    padding:20px 20px 10px;
+    display:none;
+  }
+  .page.active-page{ display:block; }
+
+  section{ margin-bottom:36px; }
+  .section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:8px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  h2.section-title{
+    font-family:var(--sans);
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0;
+  }
+  .pub-date{
+    font-family:var(--sans);
+    font-size:12px;
+    color:#7a7264;
+    letter-spacing:0.5px;
+  }
+
+  .editorial h3{
+    font-size:23px;
+    margin:0 0 4px;
+  }
+  .editorial .byline{
+    font-family:var(--sans);
+    font-size:12px;
+    color:#7a7264;
+    margin-bottom:20px;
+    font-style:italic;
+  }
+  .editorial p{
+    font-size:17px;
+    margin:0 0 16px;
+    text-align:justify;
+  }
+  .editorial p:first-of-type::first-letter{
+    font-size:44px;
+    float:left;
+    line-height:0.8;
+    padding-right:8px;
+    padding-top:4px;
+    color:var(--accent);
+    font-weight:bold;
+  }
+  .vocab{
+    background:linear-gradient(transparent 60%, var(--accent-soft) 60%);
+    cursor:pointer;
+    font-weight:600;
+    border-bottom:1.5px dotted var(--accent);
+    position:relative;
+    scroll-margin-top:90px;
+  }
+  .vocab:hover{ background:linear-gradient(transparent 55%, #dcc9a8 55%); }
+  .vocab.flash{
+    background:#f6c453;
+    box-shadow:0 0 0 4px rgba(246,196,83,0.55);
+    border-radius:2px;
+  }
+
+  .sv-subj{
+    font-weight:700;
+    color:#c0392b;
+    text-decoration:underline;
+    text-decoration-color:#c0392b;
+    text-decoration-thickness:2px;
+    text-underline-offset:2px;
+    padding:0 1px;
+  }
+  .sv-verb{
+    font-weight:700;
+    color:var(--blue);
+    text-decoration:underline;
+    text-decoration-color:var(--blue);
+    text-decoration-thickness:2px;
+    text-underline-offset:2px;
+    padding:0 1px;
+  }
+  .sv-note{
+    background:#eef2f4;
+    border:1px solid var(--rule);
+    border-left:4px solid var(--blue);
+    border-radius:4px;
+    padding:8px 16px;
+    margin:-6px 0 18px;
+    font-family:var(--sans);
+    font-size:13px;
+    line-height:1.55;
+    color:#3a362f;
+  }
+  .sv-note .sv-tag{
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size:11px;
+    color:var(--blue);
+    margin-right:6px;
+  }
+  .sv-note b.s{ color:#c0392b; }
+  .sv-note b.v{ color:var(--blue); }
+
+  .tooltip{
+    position:fixed;
+    max-width:280px;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sans);
+    font-size:13.5px;
+    line-height:1.5;
+    padding:12px 14px;
+    border-radius:6px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
+    z-index:1000;
+    display:none;
+  }
+  .tooltip::after{
+    content:"";
+    position:absolute;
+    bottom:-7px;
+    left:20px;
+    border-width:7px 7px 0 7px;
+    border-style:solid;
+    border-color:var(--ink) transparent transparent transparent;
+  }
+  .tooltip .tt-word{
+    display:block;
+    font-weight:700;
+    color:#f0d9a8;
+    margin-bottom:4px;
+    font-size:14px;
+  }
+
+  .analysis-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .a-card{
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:16px 20px;
+    border-left:5px solid var(--blue);
+  }
+  .a-card.core{ border-left-color:var(--accent); }
+  .a-card.inference{ border-left-color:var(--blue); }
+  .a-card.purpose{ border-left-color:#6a4c93; }
+  .a-card.tone{ border-left-color:#b5533c; }
+  .a-card.signals{ border-left-color:#3a726b; }
+  .a-card h4{
+    margin:0 0 8px;
+    font-family:var(--sans);
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:var(--ink);
+  }
+  .a-card p, .a-card li{
+    font-family:var(--sans);
+    font-size:14px;
+    color:#3a362f;
+    margin:0 0 6px;
+  }
+  .a-card ul{ margin:0; padding-left:18px; }
+  .signal-word{
+    display:inline-block;
+    background:var(--accent-soft);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:3px 9px;
+    font-weight:700;
+    color:var(--accent);
+    font-size:13px;
+    margin:0 4px 6px 0;
+    font-family:var(--sans);
+    cursor:pointer;
+    transition:background 0.15s, transform 0.15s;
+  }
+  .signal-word:hover{
+    background:var(--accent);
+    color:#fff;
+    transform:translateY(-1px);
+  }
+  .signal-highlight{
+    background:#fdeecb;
+    border-bottom:2px solid #c8922f;
+    padding:0 1px;
+    border-radius:2px;
+    scroll-margin-top:90px;
+    transition:background 0.4s, box-shadow 0.4s;
+  }
+  .signal-highlight.flash{
+    background:#f6c453;
+    box-shadow:0 0 0 4px rgba(246,196,83,0.55);
+  }
+
+  .qcard{
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:18px 20px;
+    margin-bottom:16px;
+  }
+  .qcard .qnum{
+    font-family:var(--sans);
+    font-weight:700;
+    color:var(--accent);
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .qcard .qtext{
+    font-size:16.5px;
+    margin-bottom:14px;
+  }
+  .options{
+    display:grid;
+    gap:8px;
+  }
+  .option{
+    font-family:var(--sans);
+    font-size:14.5px;
+    background:var(--paper);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:10px 14px;
+    cursor:pointer;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    transition:background 0.15s, border-color .15s;
+  }
+  .option:hover{ background:var(--accent-soft); }
+  .option .tag{ font-weight:700; color:var(--accent); }
+  .option.correct{ background:#dcebd8; border-color:var(--green); }
+  .option.incorrect{ background:#f3d9d4; border-color:var(--accent); }
+  .option.locked{ cursor:default; pointer-events:none; opacity:0.95; }
+
+  .feedback{
+    margin-top:10px;
+    font-family:var(--sans);
+    font-size:13px;
+    display:none;
+  }
+  .feedback.show{display:block;}
+  .feedback.right{color:var(--green);}
+  .feedback.wrong{color:var(--accent);}
+
+  .score-bar{
+    font-family:var(--sans);
+    background:var(--ink);
+    color:var(--paper);
+    text-align:center;
+    padding:10px;
+    border-radius:4px;
+    font-size:14px;
+    letter-spacing:0.5px;
+    margin-bottom:20px;
+  }
+
+  .answer-block{
+    border-left:4px solid var(--green);
+    background:#fffdf8;
+    padding:14px 18px;
+    margin-bottom:14px;
+    border-radius:0 4px 4px 0;
+  }
+  .answer-block .qnum{
+    font-family:var(--sans);
+    font-weight:700;
+    color:var(--accent);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+  .answer-block .ans-line{
+    font-family:var(--sans);
+    font-weight:700;
+    margin:6px 0 4px;
+    color:var(--green);
+  }
+  .answer-block .expl{
+    font-family:var(--sans);
+    font-size:14px;
+    color:#3a362f;
+  }
+
+  .vocab-list{
+    display:flex;
+    flex-direction:column;
+    background:#fffdf8;
+    border:1px solid var(--rule);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .vocab-card{
+    padding:14px 16px;
+    border-bottom:1px solid var(--rule);
+    font-family:var(--sans);
+    font-size:14px;
+    line-height:1.5;
+  }
+  .vocab-card:last-child{ border-bottom:none; }
+  .vocab-card:nth-child(even){ background:#f1ead9; }
+  .vocab-card .vc-num{
+    display:inline-block;
+    font-weight:700;
+    color:#7a7264;
+    margin-right:4px;
+  }
+  .vocab-card .vc-word{
+    font-weight:700;
+    color:var(--accent);
+    font-size:15px;
+    margin-bottom:5px;
+    cursor:pointer;
+    display:inline-block;
+    text-decoration:underline;
+    text-decoration-style:dotted;
+    text-decoration-color:var(--accent);
+    text-underline-offset:3px;
+    transition:color 0.15s;
+  }
+  .vocab-card .vc-word:hover{ color:var(--ink); }
+  .vocab-card .vc-word::after{
+    content:"↗";
+    display:inline-block;
+    margin-left:5px;
+    font-size:12px;
+    color:var(--blue);
+    font-weight:400;
+  }
+  .vocab-card .vc-hindi{
+    color:var(--blue);
+    font-weight:600;
+    font-size:14px;
+    display:inline;
+    margin-left:8px;
+    margin-bottom:6px;
+    font-family:'Noto Sans Devanagari', 'Nirmala UI', var(--sans);
+  }
+  .vocab-card .vc-meaning{ color:#20201d; margin-bottom:6px; }
+  .vocab-card .vc-meaning-label{
+    font-weight:700;
+    color:#3a362f;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-right:5px;
+  }
+  .vocab-card .vc-row{ margin-bottom:2px; }
+  .vocab-card .vc-row:last-child{ margin-bottom:0; }
+  .vocab-card .vc-label{
+    font-weight:700;
+    color:#3a362f;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    margin-right:6px;
+  }
+  .syn{ color:#8a3324; }
+  .ant{ color:var(--green); }
+
+  .nav-pills-bottom{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    padding-top:22px;
+    margin-top:10px;
+    border-top:1px solid var(--rule);
+  }
+
+  .page-number{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:700;
+    color:#7a7264;
+    letter-spacing:0.5px;
+    padding:18px 0 30px;
+    border-top:1px solid var(--rule);
+    margin-top:10px;
+  }
+
+  footer.site-footer{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:11px;
+    color:#8a8272;
+    padding:20px;
+  }
+
+  @media (max-width:480px){
+    .editorial p{ font-size:16px; }
+    .tooltip{ max-width:230px; }
+    .section-header{ flex-wrap:wrap; }
+    .title-box{ grid-template-columns:40px 1fr; padding:12px 14px; gap:8px; }
+    .title-box .logo{ width:36px; height:36px; }
+    .title-box .brand{ font-size:clamp(16px,7vw,22px); letter-spacing:0.2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="title-box">
+    <div class="logo">
+      <img src="data:image/jpeg;base64,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" alt="logo">
+    </div>
+    <div class="brand"><span>SAMPURAN</span> ENGLISH</div>
+  </div>
+
+  <a class="telegram-box" href="https://t.me/Sampuran_English" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 4L3 11.5L10 13.5M21 4L18 20L10 13.5M21 4L10 13.5M10 13.5V19L13.2 15.8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Official Telegram Channel
+  </a>
+
+  <div class="nav-pills">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+</div>
+
+<!-- ================= PAGE 1: EDITORIAL ================= -->
+<div class="page active-page" id="page-editorial">
+
+  <section class="editorial">
+    <div class="section-header">
+      <h2 class="section-title">The Editorial</h2>
+      <span class="pub-date">16 Sep 2026</span>
+    </div>
+    <h3>A Rising Graph: On the Doping Culture in Indian Sports</h3>
+    <div class="byline">Editorial &middot; for exam practice</div>
+
+    <p><span class="signal-highlight" data-signal="opening-frame"><span class="sv-subj">At least 13 doping positives</span> in the run-up to the recent Commonwealth Games and the upcoming Asian Games <span class="sv-verb">have</span> again <span class="sv-verb">put</span> India in an <span class="vocab" data-word="embarrassing">embarrassing</span> spotlight.</span> For a country that has been <span class="vocab" data-word="notoriously">notoriously</span> leading the global doping charts for three <span class="vocab" data-word="consecutive">consecutive</span> years, <span class="sv-subj">the spate</span> of positive results across disciplines including athletics, weightlifting, wrestling, wushu and judo, <span class="sv-verb">has</span> not only <span class="sv-verb">brought</span> shame but has also <span class="sv-verb">robbed</span> India of some <span class="vocab" data-word="berths">berths</span> in these <span class="vocab" data-word="prestigious">prestigious</span> events. The <span class="vocab" data-word="tainted">dope-tainted</span> names have forced authorities to pull them out of the Aichi-Nagoya Asian Games squad. More such names are expected to <span class="vocab" data-word="trickle">trickle</span> out in the coming weeks. <span class="vocab" data-word="lucrative">Lucrative</span> cash <span class="vocab" data-word="incentives">incentives</span> for Asian Games medallists are a major factor driving athletes and coaches to take shortcuts, risking their health and reputation, as well as the country&rsquo;s pride.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9312; <b class="s">At least 13 doping positives</b> (in the run-up to the Games) &mdash; <b class="v">have put</b> India in an embarrassing spotlight.</div>
+      <div style="margin-top:6px;">&#9313; <b class="s">the spate</b> (of positive results across disciplines) &mdash; <b class="v">has brought</b> shame, <b class="v">has robbed</b> berths.</div>
+    </div>
+
+    <p>While <span class="sv-subj">the <span class="vocab" data-word="spike">spike</span></span> in dope-positive results ahead of major multi-sport events <span class="sv-verb">is</span> not new, the jump this time is a cause for concern. <span class="sv-subj">The matter</span> getting raised during the World Anti-Doping Agency (WADA) workshops in Delhi, the Athletics Integrity Unit (AIU) <span class="vocab" data-word="downgrading">downgrading</span> India due to an extremely high risk of doping, and an international agency recently conducting surprise tests in Bhubaneswar and Bengaluru <span class="sv-verb">indicate</span> the seriousness of the issue. Even though National Sports Federations have been expressing concern, it cannot be said that they are strict to the core to <span class="vocab" data-word="curb">curb</span> the <span class="vocab" data-word="menace">menace</span>.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9314; <b class="s">the spike</b> (in dope-positive results ahead of major multi-sport events) &mdash; <b class="v">is</b> not new.</div>
+      <div style="margin-top:6px;">&#9315; <b class="s">The matter</b> (getting raised at WADA workshops, the AIU downgrading India, and an agency&rsquo;s surprise tests &mdash; three linked subjects) &mdash; <b class="v">indicate</b> the seriousness of the issue.</div>
+    </div>
+
+    <p>Despite being seriously <span class="vocab" data-word="understaffed">understaffed</span>, <span class="sv-subj">the National Anti-Doping Agency (NADA)</span>, which <span class="vocab" data-word="shoulders">shoulders</span> the primary anti-doping responsibility in India, <span class="sv-verb">has</span> significantly <span class="sv-verb">increased</span> the number of tests and raids based on intelligence gathering. But it needs to do more in a <span class="vocab" data-word="vast">vast</span> and populous country to discourage doping. Besides, NADA needs to get out of the government&rsquo;s control to function truly independently in order to enhance its effectiveness. <span class="sv-subj">Proper implementation</span> of the National Anti-Doping (Amendment) Act, 2025, to give more powers to NADA and its <span class="vocab" data-word="allied">allied</span> bodies, <span class="sv-verb">is</span> another requirement.</p>
+
+    <div class="sv-note">
+      <span class="sv-tag">Subject&ndash;Verb</span>
+      <div style="margin-top:4px;">&#9316; <b class="s">the National Anti-Doping Agency (NADA)</b> (which shoulders the primary anti-doping responsibility) &mdash; <b class="v">has increased</b> the number of tests and raids.</div>
+      <div style="margin-top:6px;">&#9317; <b class="s">Proper implementation</b> (of the National Anti-Doping (Amendment) Act, 2025, to give more powers to NADA and its allied bodies) &mdash; <b class="v">is</b> another requirement.</div>
+    </div>
+
+    <p>With dope testing becoming costlier and NADA needing more staff, the government can <span class="vocab" data-word="bolster">bolster</span> the fight against doping by increasing the overall budget allocation, which was reduced in the current budget. The other challenge is to cut the supply line, as India has become a <span class="vocab" data-word="hub">hub</span> for the trade in banned substances sourced from different countries. An Indian serving a jail term in Kenya for illegally importing performance-enhancing drugs stands as proof of this. <span class="signal-highlight" data-signal="closing-verdict">As India prepares for the 2030 Commonwealth Games and hopes to host the Olympics in the future, it needs to act <span class="vocab" data-word="resolutely">resolutely</span> to <span class="vocab" data-word="weedout">weed out</span> a deep-rooted doping culture in Indian sports.</span></p>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 1 of 5</div>
+</div>
+
+<!-- ================= PAGE 2: QUESTIONS ================= -->
+<div class="page" id="page-questions">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Practice Questions</h2>
+      <span class="pub-date">16 Sep 2026</span>
+    </div>
+    <div class="score-bar" id="scoreBar">Score: 0 / 5</div>
+
+    <div class="qcard" data-qid="1">
+      <div class="qnum">Question 1 &mdash; Main Idea</div>
+      <div class="qtext">Which of the following best captures the central argument of the editorial on doping in Indian sports?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> NADA has already eliminated doping completely, leaving India free of any further international scrutiny or criticism.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> Foreign drug suppliers alone caused the crisis, leaving Indian federations and NADA with no responsibility whatsoever.</div>
+        <div class="option" data-correct="true"><span class="tag">C.</span> Rising doping cases reveal institutional gaps that demand a stronger, better-funded and more independent anti-doping system.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> India should withdraw from the Asian Games entirely until every federation eradicates doping without any exception.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="2">
+      <div class="qnum">Question 2 &mdash; Inference</div>
+      <div class="qtext">What can be inferred from the editorial&rsquo;s statement that lucrative cash incentives for Asian Games medallists are a major factor driving athletes and coaches to take shortcuts?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Cash incentives should be banned outright, since the editorial treats every reward scheme as fundamentally corrupt.</div>
+        <div class="option" data-correct="true"><span class="tag">B.</span> Reward structures can create pressures that push athletes and coaches toward banned substances despite serious risks.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> Every athlete who receives cash incentives is, according to the editorial, definitely doping without any exception.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Coaches bear no responsibility at all, with the editorial blaming shortcuts entirely on individual athletes alone.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="3">
+      <div class="qnum">Question 3 &mdash; Vocabulary in Context</div>
+      <div class="qtext">In the phrase &ldquo;a deep-rooted doping culture&rdquo;, the expression <em>deep-rooted</em> most nearly means:</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Recently introduced and still in an early, easily reversible stage of gradual change.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> Confined to just one single sport and therefore quite unlikely to spread further.</div>
+        <div class="option" data-correct="true"><span class="tag">C.</span> Firmly established over a long period and therefore quite difficult to remove entirely.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Openly acknowledged and formally approved without objection by every national sporting federation today.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="4">
+      <div class="qnum">Question 4 &mdash; Tone</div>
+      <div class="qtext">What tone does the editorial primarily adopt while assessing India&rsquo;s response to the doping crisis?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> Celebratory, praising NADA and every federation for already eliminating doping from Indian sports.</div>
+        <div class="option" data-correct="true"><span class="tag">B.</span> Critical yet constructive, acknowledging NADA&rsquo;s efforts while urging greater independence and stronger funding.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> Indifferent, treating the doping crisis as a minor administrative matter unworthy of attention.</div>
+        <div class="option" data-correct="false"><span class="tag">D.</span> Despairing, suggesting no institutional reform could ever meaningfully reduce doping in India today.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-qid="5">
+      <div class="qnum">Question 5 &mdash; Fact-Based Detail</div>
+      <div class="qtext">According to the editorial, which of the following is <strong>NOT</strong> stated as a reason for concern or a proposed remedy regarding doping in India?</div>
+      <div class="options">
+        <div class="option" data-correct="false"><span class="tag">A.</span> The Athletics Integrity Unit downgraded India owing to an extremely high risk of doping.</div>
+        <div class="option" data-correct="false"><span class="tag">B.</span> The government reduced the overall budget allocation for anti-doping efforts in the current budget.</div>
+        <div class="option" data-correct="false"><span class="tag">C.</span> NADA needs to function independently of government control in order to become more effective.</div>
+        <div class="option" data-correct="true"><span class="tag">D.</span> India has reportedly been upgraded to the lowest-risk doping category by international sporting bodies.</div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 2 of 5</div>
+</div>
+
+<!-- ================= PAGE 3: ANSWERS ================= -->
+<div class="page" id="page-answers">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Answers &amp; Explanations</h2>
+      <span class="pub-date">16 Sep 2026</span>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 1</div>
+      <div class="ans-line">Correct Answer: C</div>
+      <div class="expl">The editorial opens by highlighting the spike in doping positives, then moves through evidence of institutional weakness — an understaffed NADA, reduced budget, and government control — before calling for independence, funding and stronger enforcement. A wrongly claims the problem is solved; B shifts all blame abroad, ignoring the piece's focus on domestic federations and NADA; D proposes withdrawal, which the editorial never suggests.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 2</div>
+      <div class="ans-line">Correct Answer: B</div>
+      <div class="expl">The editorial directly links cash incentives to athletes and coaches "risking their health and reputation" by taking shortcuts — a cause-and-effect relationship, not a blanket condemnation of incentives (A), an absolute claim about every recipient (C), or a claim that coaches bear no blame (D), which contradicts the passage naming coaches alongside athletes.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 3</div>
+      <div class="ans-line">Correct Answer: C</div>
+      <div class="expl">"Deep-rooted" describes something long-established and hard to dislodge, matching the editorial's closing call to "weed out" the culture — itself an image of something with entrenched roots. A and B invert the meaning (recent, isolated), and D is unsupported; the editorial never suggests federations approve of doping.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 4</div>
+      <div class="ans-line">Correct Answer: B</div>
+      <div class="expl">The editorial credits NADA for increasing tests and raids "despite being seriously understaffed," while firmly arguing it "needs to do more" and requires independence and better funding — critical but constructive, not celebratory (A), dismissive (C), or hopeless (D), since concrete remedies are proposed throughout.</div>
+    </div>
+
+    <div class="answer-block">
+      <div class="qnum">Question 5</div>
+      <div class="ans-line">Correct Answer: D</div>
+      <div class="expl">The editorial reports the opposite: the AIU downgraded India due to an "extremely high risk of doping," which is a warning sign, not an upgrade to a low-risk category. A, B, and C are all directly stated as genuine concerns or remedies in the passage.</div>
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 3 of 5</div>
+</div>
+
+<!-- ================= PAGE 4: VOCABULARY ================= -->
+<div class="page" id="page-vocab">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Vocabulary Builder</h2>
+      <span class="pub-date">16 Sep 2026</span>
+    </div>
+    <div class="vocab-list" id="vocabTableBody"></div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 4 of 5</div>
+</div>
+
+<!-- ================= PAGE 5: EDITORIAL ANALYSIS ================= -->
+<div class="page" id="page-analysis">
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Analysis</h2>
+      <span class="pub-date">16 Sep 2026</span>
+    </div>
+    <div class="analysis-grid">
+
+      <div class="a-card core">
+        <h4>Core Message</h4>
+        <ul>
+          <li>At least 13 doping positives ahead of the Commonwealth Games and Asian Games have again exposed India's persistent doping problem, costing the country places in prestigious events.</li>
+          <li>Warning signs — WADA workshops, an AIU downgrade, and surprise international testing — show the issue is worsening, even as National Sports Federations remain insufficiently strict.</li>
+          <li>NADA, though understaffed and under government control, has increased tests and raids, but needs independence, stronger legal powers under the 2025 Amendment Act, and a larger budget to cut both demand and the cross-border supply of banned substances.</li>
+        </ul>
+      </div>
+
+      <div class="a-card inference">
+        <h4>Inference</h4>
+        <ul>
+          <li>The link drawn between cash incentives and doping implies that reward structures, if unaccompanied by stronger deterrents, can unintentionally encourage risky behaviour among athletes and coaches.</li>
+          <li>NADA's rising number of tests despite being understaffed suggests the true scale of doping in India may be larger than official figures currently reveal.</li>
+          <li>The mention of an Indian jailed in Kenya for importing performance-enhancing drugs implies that domestic enforcement alone cannot solve the problem without international cooperation to disrupt supply networks.</li>
+        </ul>
+      </div>
+
+      <div class="a-card purpose">
+        <h4>Purpose</h4>
+        <p>To alert readers to the scale and persistence of doping in Indian sports ahead of major events, and to press the government and sporting bodies to grant NADA genuine independence, adequate funding, and stronger legal powers to address both the demand for and supply of banned substances.</p>
+      </div>
+
+      <div class="a-card tone">
+        <h4>Tone</h4>
+        <p>The editorial opens with concern and mild alarm over the embarrassing spate of positive tests, moves through a measured, evidence-based account of institutional shortcomings and NADA's partial progress, and closes with a firm, forward-looking call for resolute action before the 2030 Commonwealth Games and a possible Olympic bid.</p>
+      </div>
+
+      <div class="a-card signals">
+        <h4>Signals</h4>
+        <p>Words and phrases that reveal the author&rsquo;s stance or mark a shift in the argument. Tap any phrase below to find it highlighted in the passage:</p>
+        <p>
+          <button type="button" class="signal-word" data-signal="opening-frame">At least 13 doping positives&hellip; have again put India in an embarrassing spotlight</button>
+          <button type="button" class="signal-word" data-signal="closing-verdict">it needs to act resolutely to weed out a deep-rooted doping culture</button>
+        </p>
+        <ul>
+          <li><strong>an embarrassing spotlight</strong> &mdash; the opening line frames the entire editorial around national shame and urgency, setting the critical register that follows.</li>
+          <li><strong>act resolutely to weed out&hellip;deep-rooted</strong> &mdash; the closing sentence delivers the editorial's final verdict, demanding firm, sustained action rather than incremental fixes.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="nav-pills-bottom">
+    <button class="nav-pill" data-page="page-editorial">Editorial</button>
+    <button class="nav-pill" data-page="page-vocab">Vocab</button>
+    <button class="nav-pill" data-page="page-questions">Questions</button>
+    <button class="nav-pill" data-page="page-answers">Answers</button>
+    <button class="nav-pill" data-page="page-analysis">Analysis</button>
+  </div>
+
+  <div class="page-number">Page 5 of 5</div>
+</div>
+
+<div class="tooltip" id="tooltip">
+  <span class="tt-word" id="ttWord"></span>
+  <span id="ttMeaning"></span>
+</div>
+
+<footer class="site-footer">Editorial text as provided, for personal exam-practice use only &middot; Questions, vocabulary, and analysis are original content</footer>
+
+<script>
+  const vocabData = {
+    "embarrassing": {
+      hindi: "शर्मनाक",
+      display: "Embarrassing",
+      meaning: "Causing feelings of awkwardness, shame, or discomfort.",
+      synonyms: ["Humiliating", "Awkward", "Shameful", "Mortifying"],
+      antonyms: ["Flattering", "Honourable", "Respectable"]
+    },
+    "notoriously": {
+      hindi: "कुख्यात रूप से",
+      display: "Notoriously",
+      meaning: "In a way that is famous or well-known for some bad quality or deed.",
+      synonyms: ["Infamously", "Disreputably", "Scandalously", "Shamefully"],
+      antonyms: ["Admirably", "Respectably", "Honourably"]
+    },
+    "consecutive": {
+      hindi: "लगातार",
+      display: "Consecutive",
+      meaning: "Following one after another without interruption.",
+      synonyms: ["Successive", "Sequential", "Continuous", "Uninterrupted"],
+      antonyms: ["Intermittent", "Sporadic", "Broken"]
+    },
+    "berths": {
+      hindi: "स्थान/सीटें",
+      display: "Berths",
+      meaning: "(here) Places or positions secured in a team or a competition.",
+      synonyms: ["Places", "Slots", "Positions", "Spots"],
+      antonyms: ["Exclusions", "Rejections", "Disqualifications"]
+    },
+    "tainted": {
+      hindi: "कलंकित/दूषित",
+      display: "Dope-tainted",
+      meaning: "Contaminated or corrupted by something damaging, here by the use of banned drugs.",
+      synonyms: ["Corrupted", "Contaminated", "Sullied", "Blemished"],
+      antonyms: ["Untainted", "Pure", "Unblemished"]
+    },
+    "trickle": {
+      hindi: "धीरे-धीरे आना",
+      display: "Trickle",
+      meaning: "(here) To emerge or become known gradually, in small numbers over time.",
+      synonyms: ["Dribble", "Seep out", "Emerge gradually", "Filter through"],
+      antonyms: ["Flood", "Gush", "Pour"]
+    },
+    "lucrative": {
+      hindi: "लाभदायक",
+      display: "Lucrative",
+      meaning: "Producing a great deal of profit or financial reward.",
+      synonyms: ["Profitable", "Rewarding", "Remunerative", "Gainful"],
+      antonyms: ["Unprofitable", "Worthless", "Unrewarding"]
+    },
+    "incentives": {
+      hindi: "प्रोत्साहन",
+      display: "Incentives",
+      meaning: "Things, especially rewards, that motivate or encourage a particular action.",
+      synonyms: ["Rewards", "Inducements", "Motivators", "Encouragements"],
+      antonyms: ["Deterrents", "Disincentives", "Discouragements"]
+    },
+    "spike": {
+      hindi: "अचानक वृद्धि",
+      display: "Spike",
+      meaning: "A sudden, sharp increase in the level or amount of something.",
+      synonyms: ["Surge", "Upsurge", "Jump", "Spurt"],
+      antonyms: ["Decline", "Drop", "Slump", "Dip"]
+    },
+    "downgrading": {
+      hindi: "दर्जा घटाना",
+      display: "Downgrading",
+      meaning: "Lowering the status, rank, or classification of something.",
+      synonyms: ["Demoting", "Lowering", "Relegating", "Reclassifying"],
+      antonyms: ["Upgrading", "Promoting", "Elevating"]
+    },
+    "menace": {
+      hindi: "खतरा/संकट",
+      display: "Menace",
+      meaning: "A person or thing that is likely to cause harm; a serious threat.",
+      synonyms: ["Threat", "Danger", "Hazard", "Peril"],
+      antonyms: ["Safeguard", "Protection", "Boon"]
+    },
+    "understaffed": {
+      hindi: "कर्मचारियों की कमी वाला",
+      display: "Understaffed",
+      meaning: "Having too few staff members to carry out the required work adequately.",
+      synonyms: ["Short-staffed", "Undermanned", "Under-resourced"],
+      antonyms: ["Fully staffed", "Well-resourced", "Overstaffed"]
+    },
+    "shoulders": {
+      hindi: "जिम्मेदारी उठाना",
+      display: "Shoulders",
+      meaning: "(here) Takes on or bears a responsibility or burden.",
+      synonyms: ["Bears", "Undertakes", "Carries", "Assumes"],
+      antonyms: ["Shirks", "Evades", "Abdicates"]
+    },
+    "allied": {
+      hindi: "संबद्ध/मित्र",
+      display: "Allied",
+      meaning: "Connected or associated with another body for a common purpose.",
+      synonyms: ["Associated", "Affiliated", "Connected", "Linked"],
+      antonyms: ["Unrelated", "Independent", "Separate"]
+    },
+    "bolster": {
+      hindi: "मजबूत करना",
+      display: "Bolster",
+      meaning: "To support, strengthen, or reinforce something that already exists.",
+      synonyms: ["Strengthen", "Reinforce", "Boost", "Support"],
+      antonyms: ["Weaken", "Undermine", "Erode"]
+    },
+    "hub": {
+      hindi: "केंद्र",
+      display: "Hub",
+      meaning: "A central point of activity or connection for a particular network or trade.",
+      synonyms: ["Centre", "Nucleus", "Focal point", "Nerve centre"],
+      antonyms: ["Periphery", "Outskirts", "Margin"]
+    },
+    "resolutely": {
+      hindi: "दृढ़तापूर्वक",
+      display: "Resolutely",
+      meaning: "In a determined and unwavering manner, without hesitation.",
+      synonyms: ["Firmly", "Determinedly", "Steadfastly", "Unwaveringly"],
+      antonyms: ["Hesitantly", "Half-heartedly", "Irresolutely"]
+    },
+    "weedout": {
+      hindi: "छाँटकर निकालना",
+      display: "Weed out",
+      meaning: "To identify and remove unwanted or harmful elements from a group.",
+      synonyms: ["Eliminate", "Root out", "Purge", "Eradicate"],
+      antonyms: ["Retain", "Preserve", "Incorporate"]
+    },
+    "prestigious": {
+      hindi: "प्रतिष्ठित",
+      display: "Prestigious",
+      meaning: "Inspiring respect and admiration; having a high status or reputation.",
+      synonyms: ["Esteemed", "Renowned", "Reputed", "Distinguished"],
+      antonyms: ["Undistinguished", "Disreputable", "Obscure"]
+    },
+    "curb": {
+      hindi: "अंकुश लगाना",
+      display: "Curb",
+      meaning: "To restrain, control, or keep something within limits.",
+      synonyms: ["Restrain", "Check", "Control", "Rein in"],
+      antonyms: ["Encourage", "Unleash", "Permit"]
+    },
+    "vast": {
+      hindi: "विशाल",
+      display: "Vast",
+      meaning: "Extremely large in area, size, extent, or amount.",
+      synonyms: ["Immense", "Huge", "Extensive", "Enormous"],
+      antonyms: ["Tiny", "Minuscule", "Limited"]
+    }
+  };
+
+  const tbody = document.getElementById('vocabTableBody');
+  Object.keys(vocabData).forEach((word, i) => {
+    const d = vocabData[word];
+    const label = d.display || (word.charAt(0).toUpperCase() + word.slice(1));
+    const card = document.createElement('div');
+    card.className = 'vocab-card';
+    card.innerHTML = `
+      <div>
+        <span class="vc-num">${i + 1}.</span><span class="vc-word jump" data-word="${word}" title="Find this word in the editorial">${label}</span><span class="vc-hindi">${d.hindi}</span>
+      </div>
+      <div class="vc-meaning"><span class="vc-meaning-label">MEANING:</span>${d.meaning}</div>
+      <div class="vc-row"><span class="vc-label">SYNONYMS:</span> <span class="syn">${d.synonyms.join(', ')}</span></div>
+      <div class="vc-row"><span class="vc-label">ANTONYMS:</span> <span class="ant">${d.antonyms.join(', ')}</span></div>
+    `;
+    tbody.appendChild(card);
+  });
+
+  document.querySelectorAll('.vc-word.jump').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const key = cell.getAttribute('data-word');
+      showPage('page-editorial');
+      setTimeout(() => {
+        const target = document.querySelector('.editorial .vocab[data-word="' + key + '"]');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1800);
+      }, 150);
+    });
+  });
+
+  const tooltip = document.getElementById('tooltip');
+  const ttWord = document.getElementById('ttWord');
+  const ttMeaning = document.getElementById('ttMeaning');
+
+  document.querySelectorAll('.vocab').forEach(span => {
+    span.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const key = span.getAttribute('data-word');
+      const data = vocabData[key];
+      if (!data) return;
+
+      const label = data.display || (key.charAt(0).toUpperCase() + key.slice(1));
+      ttWord.textContent = label;
+      ttMeaning.textContent = data.meaning;
+
+      const rect = span.getBoundingClientRect();
+      tooltip.style.display = 'block';
+      const ttRect = tooltip.getBoundingClientRect();
+
+      let left = rect.left;
+      let top = rect.bottom + 10;
+
+      if (left + ttRect.width > window.innerWidth - 10) {
+        left = window.innerWidth - ttRect.width - 10;
+      }
+      if (top + ttRect.height > window.innerHeight - 10) {
+        top = rect.top - ttRect.height - 10;
+      }
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+    });
+  });
+
+  document.addEventListener('click', () => {
+    tooltip.style.display = 'none';
+  });
+  tooltip.addEventListener('click', (e) => e.stopPropagation());
+
+  const navPills = document.querySelectorAll('.nav-pill');
+  const pages = document.querySelectorAll('.page');
+
+  function showPage(pageId) {
+    pages.forEach(p => p.classList.toggle('active-page', p.id === pageId));
+    navPills.forEach(p => p.classList.toggle('active', p.getAttribute('data-page') === pageId));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  navPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      showPage(pill.getAttribute('data-page'));
+    });
+  });
+
+  showPage('page-editorial');
+
+  document.querySelectorAll('.signal-word[data-signal]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-signal');
+      showPage('page-editorial');
+      setTimeout(() => {
+        const target = document.querySelector('.signal-highlight[data-signal="' + key + '"]');
+        if (!target) return;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('flash');
+        setTimeout(() => target.classList.remove('flash'), 1800);
+      }, 150);
+    });
+  });
+
+  let score = 0;
+  const answered = {};
+  const scoreBar = document.getElementById('scoreBar');
+  const totalQuestions = document.querySelectorAll('.qcard').length;
+
+  let audioCtx = null;
+  function playTickSound() {
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1046.5, now);
+      osc.frequency.setValueAtTime(1568, now + 0.08);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.18, now + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.24);
+    } catch (err) { /* audio not supported, fail silently */ }
+  }
+
+  document.querySelectorAll('.qcard').forEach(card => {
+    const qid = card.getAttribute('data-qid');
+    const feedback = card.querySelector('.feedback');
+    const options = card.querySelectorAll('.option');
+
+    options.forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (answered[qid]) return;
+
+        answered[qid] = true;
+        const isCorrect = opt.getAttribute('data-correct') === 'true';
+
+        options.forEach(o => {
+          o.classList.add('locked');
+          if (o.getAttribute('data-correct') === 'true') {
+            o.classList.add('correct');
+          } else if (o === opt) {
+            o.classList.add('incorrect');
+          }
+        });
+
+        feedback.classList.add('show');
+        if (isCorrect) {
+          score++;
+          playTickSound();
+          feedback.textContent = '✓ Correct!';
+          feedback.classList.add('right');
+        } else {
+          feedback.textContent = '✗ Not quite — the correct answer is highlighted in green.';
+          feedback.classList.add('wrong');
+        }
+
+        scoreBar.textContent = `Score: ${score} / ${totalQuestions}`;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
