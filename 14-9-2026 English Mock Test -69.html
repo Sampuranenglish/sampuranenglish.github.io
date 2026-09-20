@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sampuran English — SSC English Practice, 14-9-2026</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; }
+  :root{
+    --ink:#1c2b3a;
+    --paper:#f6f3ea;
+    --rule:#c9bfa4;
+    --navy:#163a5f;
+    --brick:#a8321f;
+    --brick-deep:#7e2417;
+    --gold:#b8862c;
+    --correct:#1f7a4d;
+    --correct-bg:#e5f3ea;
+    --wrong:#a8321f;
+    --wrong-bg:#fbe9e5;
+    --unattempted:#7a6f57;
+    --card:#fffdf8;
+    --shadow:0 4px 10px rgba(0,0,0,.08);
+    --radius:10px;
+    --trans:all .2s ease;
+
+    --d-bg:#141b24;
+    --d-card:#1e2733;
+    --d-ink:#e8e3d3;
+    --d-rule:#33404c;
+    --d-paper:#10161d;
+  }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0)),
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 34px);
+    color: var(--ink);
+    font-family: "Georgia", "Iowan Old Style", "Palatino Linotype", serif;
+    line-height: 1.5;
+    transition: var(--trans);
+  }
+  body.dark-mode{
+    background: var(--d-bg);
+    background-image:none;
+    color: var(--d-ink);
+  }
+
+  img{ max-width:100%; height:auto; }
+
+  /* ---------- Welcome screen ---------- */
+  .welcome-screen{
+    position:fixed; inset:0;
+    background: var(--paper);
+    z-index:1000;
+    display:flex; flex-direction:column; align-items:center;
+    padding: 24px 20px 40px;
+    text-align:center;
+    transition: var(--trans);
+    overflow-y:auto;
+  }
+  body.dark-mode .welcome-screen{ background:var(--d-bg); }
+  .welcome-screen.hidden{ display:none; }
+
+  .welcome-kicker{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    font-family:"Trebuchet MS", sans-serif;
+    letter-spacing:1.5px;
+    font-size: clamp(24px, 7vw, 38px);
+    text-transform:uppercase;
+    color: var(--brick);
+    font-weight:800;
+    line-height:1.15;
+    margin-bottom:10px;
+  }
+  .welcome-kicker .logo-badge{
+    flex-shrink:0;
+    width: clamp(34px, 8vw, 46px);
+    height: clamp(34px, 8vw, 46px);
+    border-radius:50%;
+    background: var(--brick);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: clamp(16px, 4vw, 22px);
+  }
+  .welcome-kicker .kicker-text{ line-height:1.15; }
+  .welcome-title{
+    font-size:15px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color: var(--navy);
+    margin-bottom:6px;
+  }
+  body.dark-mode .welcome-title{ color:#9fc1e6; }
+  .welcome-sub{
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13.5px;
+    color: var(--unattempted);
+    margin-bottom:26px;
+  }
+
+  .welcome-card{
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--brick);
+    box-shadow: var(--shadow);
+    width:100%; max-width:420px;
+    padding: 22px 24px;
+    margin-bottom:26px;
+    text-align:left;
+  }
+  body.dark-mode .welcome-card{ background:var(--d-card); border-color:var(--d-rule); }
+  .welcome-card .head{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color: var(--navy);
+    border-bottom:1px solid var(--rule);
+    padding-bottom:10px;
+    margin-bottom:12px;
+  }
+  body.dark-mode .welcome-card .head{ color:#9fc1e6; border-color:var(--d-rule); }
+  .w-row{
+    display:flex; justify-content:space-between;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:14px;
+    padding:7px 0;
+  }
+  .w-row b{ color:var(--brick); }
+  body.dark-mode .w-row b{ color:#e08a72; }
+
+  .welcome-button{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:800;
+    font-size:21px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    background: var(--brick);
+    color:#fff;
+    border:none;
+    padding:16px 46px;
+    cursor:pointer;
+    box-shadow: 0 3px 0 var(--brick-deep);
+    transition: transform .1s;
+    margin-bottom:16px;
+  }
+  .welcome-button:active{ transform:translateY(3px); box-shadow:none; }
+
+  /* ---------- Daily content: Rule / Word of the Day ---------- */
+  .daily-content{
+    width:100%; max-width:420px;
+    text-align:left;
+    margin-bottom:26px;
+  }
+  .cat-row{
+    display:flex; gap:10px; justify-content:center;
+    margin-bottom:20px; flex-wrap:wrap;
+  }
+  .cat-pill{
+    flex:1; min-width:96px;
+    background: var(--card);
+    border:2px solid var(--navy);
+    color: var(--navy);
+    border-radius:50px;
+    text-align:center;
+    padding:14px 6px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700;
+    font-size:12.5px;
+    line-height:1.3;
+  }
+  body.dark-mode .cat-pill{ background:var(--d-card); border-color:#9fc1e6; color:#9fc1e6; }
+  .cat-pill:nth-child(2){ border-color: var(--correct); color: var(--correct); }
+  body.dark-mode .cat-pill:nth-child(2){ border-color:#5fd28d; color:#5fd28d; }
+  .cat-pill:nth-child(3){ border-color: var(--brick); color: var(--brick); }
+  body.dark-mode .cat-pill:nth-child(3){ border-color:#e08a72; color:#e08a72; }
+
+  .dc-banner{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    background: var(--brick);
+    color:#FFD86B;
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:800; font-size:14px; letter-spacing:1px; text-transform:uppercase;
+    padding:9px 12px;
+    margin:18px 0 10px;
+  }
+  .dc-banner i{ font-size:12px; color:#fff; }
+
+  .rule-box{
+    background: var(--navy);
+    color:#FFD86B;
+    padding:14px 16px;
+    font-size:13.5px;
+    font-weight:700;
+    line-height:1.55;
+    margin-bottom:8px;
+    border-left:3px solid var(--gold);
+  }
+  body.dark-mode .rule-box{ border-left-color:#ffd86b; }
+  .rule-box .eg{ margin-top:10px; font-size:12.5px; font-weight:400; color:#f2ede0; display:block; }
+  .rule-box .eg .wrong{ color:#ffb0a3; }
+  .rule-box .eg .right{ color:#a7f0b0; }
+
+  .word-box{
+    background: var(--card);
+    border:1px solid var(--rule);
+    padding:16px 18px;
+    text-align:center;
+  }
+  body.dark-mode .word-box{ background:var(--d-card); border-color:var(--d-rule); }
+  .word-title{
+    font-size:22px; font-weight:700;
+    color: var(--navy);
+    text-decoration:underline;
+    margin-bottom:8px;
+  }
+  body.dark-mode .word-title{ color:#9fc1e6; }
+  .word-meta{
+    text-align:left; font-size:13px; margin-top:8px; line-height:1.5;
+  }
+  .word-meta u{ font-weight:700; color:var(--navy); }
+  body.dark-mode .word-meta u{ color:#9fc1e6; }
+  .word-trick{
+    text-align:left; font-size:12.5px; font-style:italic; font-weight:700;
+    color: var(--brick); margin-top:10px;
+    background:#fde2e2; padding:8px 10px; border-radius:4px;
+    border-left:3px solid var(--brick);
+  }
+  body.dark-mode .word-trick{ color:#ffb0a3; background:#3a2320; border-left-color:#e08a72; }
+  .syn-anto{ text-align:left; font-size:13px; margin-top:8px; }
+  .syn-anto b{ text-decoration:underline; color:var(--navy); }
+  body.dark-mode .syn-anto b{ color:#9fc1e6; }
+  .syn-anto .hl{ color: var(--brick); font-weight:700; }
+  body.dark-mode .syn-anto .hl{ color:#e08a72; }
+
+  .join-channel{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13px; font-weight:600;
+    color: var(--navy);
+    text-decoration:none;
+    padding:9px 16px;
+    border:1px solid var(--navy);
+    border-radius: 20px;
+    transition: var(--trans);
+  }
+  .join-channel:hover{ background:var(--navy); color:#fff; }
+  body.dark-mode .join-channel{ color:#9fc1e6; border-color:#9fc1e6; }
+
+  /* ---------- Header ---------- */
+  .hdr{
+    background: var(--navy);
+    color:#f2ede0;
+    padding:10px 14px;
+    display:grid;
+    grid-template-columns: auto 1fr auto;
+    align-items:center;
+    gap:10px;
+    position:sticky; top:0; z-index:100;
+    border-bottom:4px solid var(--brick);
+  }
+  .hdr-l{ font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:14px; }
+  .hdr-l small{ display:block; font-weight:400; font-size:10.5px; color:#cfd8e3; letter-spacing:0.5px; }
+  .hdr-c{ text-align:center; font-family:"Trebuchet MS", sans-serif; font-size:13px; font-weight:600; }
+  .hdr-r{ display:flex; align-items:center; gap:8px; justify-content:flex-end; flex-wrap:wrap; }
+  .timer{
+    background:#FEF3C7; color:#78350F;
+    padding:6px 12px; border-radius:16px;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:13px; font-weight:700;
+  }
+  .timer.low{ background:#fde2e2; color:#7e2417; }
+  .icon-btn{
+    border:1px solid rgba(255,255,255,0.4);
+    background:transparent; color:#fff;
+    width:34px; height:34px; border-radius:8px;
+    cursor:pointer; font-size:14px;
+    display:flex; align-items:center; justify-content:center;
+    transition: var(--trans);
+  }
+  .icon-btn:hover{ background:rgba(255,255,255,0.15); }
+  .btn-submit-top{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; font-size:12.5px;
+    background: var(--brick); color:#fff;
+    border:none; padding:9px 14px; border-radius:8px;
+    cursor:pointer;
+  }
+  .btn-submit-top:disabled{ background:#8a8377; cursor:not-allowed; }
+
+  .subject-tag{
+    background:#f1ece0;
+    border-bottom:1px solid var(--rule);
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color: var(--navy);
+    font-weight:700;
+    padding:9px 16px;
+  }
+  body.dark-mode .subject-tag{ background:#1a2330; border-color:var(--d-rule); color:#9fc1e6; }
+
+  /* ---------- Question area ---------- */
+  .cont{ max-width:720px; margin:0 auto; padding:18px 16px 110px; }
+
+  .qcard{
+    background: var(--card);
+    border:1px solid var(--rule);
+    border-left:4px solid var(--navy);
+    padding:18px 20px 20px;
+    box-shadow: var(--shadow);
+  }
+  body.dark-mode .qcard{ background:var(--d-card); border-color:var(--d-rule); border-left-color:#9fc1e6; }
+
+  .qnum{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; color: var(--brick);
+    font-size:13px; margin-bottom:8px; letter-spacing:0.5px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .status-tag{
+    display:inline-block;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:10.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+    padding:3px 9px; border-radius:2px; color:#fff;
+  }
+  .status-tag.correct{ background:var(--correct); }
+  .status-tag.wrong{ background:var(--wrong); }
+  .status-tag.skipped{ background:var(--unattempted); }
+
+  .passage{
+    font-size:15px;
+    background:#f1ece0;
+    border-left:3px solid var(--gold);
+    padding:10px 14px;
+    margin-bottom:14px;
+    font-style:italic;
+    color:#40372a;
+  }
+  body.dark-mode .passage{ background:#1a2330; color:#c9c2ab; }
+
+  .qtext{ font-size:17px; margin-bottom:16px; color:var(--ink); }
+  body.dark-mode .qtext{ color:var(--d-ink); }
+
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:12px 14px;
+    border:1px solid var(--rule);
+    background:#fff;
+    cursor:pointer;
+    font-family:"Trebuchet MS", sans-serif;
+    font-size:14.5px;
+    transition: border-color .15s, background .15s;
+  }
+  body.dark-mode .opt{ background:#232d3a; border-color:var(--d-rule); color:var(--d-ink); }
+  .opt:hover{ border-color:var(--navy); background:#f3f6fa; }
+  body.dark-mode .opt:hover{ background:#2b3646; }
+  .opt.selected{ border-color:var(--navy); background:#e9eff6; font-weight:700; }
+  body.dark-mode .opt.selected{ background:#28405e; }
+  .opt-letter{ font-weight:700; color:var(--brick); flex-shrink:0; }
+  .opt.correct-answer{ background:var(--correct-bg); border-color:var(--correct); }
+  body.dark-mode .opt.correct-answer{ background:#164a34; border-color:var(--correct); }
+  .opt.wrong-answer{ background:var(--wrong-bg); border-color:var(--wrong); }
+  body.dark-mode .opt.wrong-answer{ background:#5c2018; border-color:var(--wrong); }
+  .qcard.locked .opt{ cursor:default; pointer-events:none; }
+
+  .explanation{
+    margin-top:16px; padding:12px 14px;
+    background:#fbf7ec;
+    border:1px dashed var(--gold);
+    font-size:14px;
+    display:none;
+  }
+  body.dark-mode .explanation{ background:#241f14; }
+  .explanation b{ color:var(--navy); }
+  body.dark-mode .explanation b{ color:#9fc1e6; }
+  .qcard.locked .explanation{ display:block; }
+
+  /* ---------- Bottom nav ---------- */
+  .navbar{
+    position:fixed; left:0; right:0; bottom:0;
+    background: var(--card);
+    border-top:1px solid var(--rule);
+    padding:10px 14px;
+    display:flex; justify-content:space-between; align-items:center;
+    box-shadow:0 -2px 10px rgba(0,0,0,.06);
+    z-index:100;
+  }
+  body.dark-mode .navbar{ background:var(--d-card); border-color:var(--d-rule); }
+  .nav-btn{
+    font-family:"Trebuchet MS", sans-serif;
+    font-weight:700; font-size:12.5px;
+    padding:10px 14px; border-radius:8px; border:none; cursor:pointer;
+    display:flex; align-items:center; gap:6px;
+    min-width:64px; justify-content:center;
+  }
+  .nav-btn:disabled{ opacity:.45; cursor:not-allowed; }
+  .nav-btn.prev{ background:transparent; border:1px solid var(--rule); color:var(--ink); }
+  body.dark-mode .nav-btn.prev{ border-color:var(--d-rule); color:var(--d-ink); }
+  .nav-btn.review{ background:#f6dfa0; color:#5a4008; }
+  .nav-btn.review.active{ background:var(--gold); color:#fff; }
+  .nav-btn.next{ background:var(--navy); color:#fff; }
+  .nav-mid{ text-align:center; font-family:"Trebuchet MS", sans-serif; font-size:11.5px; color:var(--unattempted); }
+  body.dark-mode .nav-mid{ color:#a49a80; }
+
+  /* ---------- Grid panel ---------- */
+  .panel{
+    position:fixed; inset:0;
+    background: var(--paper);
+    z-index:200;
+    transform: translateY(100%);
+    transition: transform .3s ease;
+    overflow-y:auto;
+    display:none;
+  }
+  body.dark-mode .panel{ background:var(--d-bg); }
+  .panel.open{ display:block; transform:translateY(0); }
+  .panel-hdr{
+    background: var(--navy); color:#fff;
+    padding:16px; display:flex; justify-content:space-between; align-items:center;
+    position:sticky; top:0;
+  }
+  .panel-close{ background:none; border:none; color:#fff; font-size:20px; cursor:pointer; }
+  .panel-body{ padding:18px; }
+  .legend{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:18px; font-family:"Trebuchet MS", sans-serif; font-size:12px; }
+  .legend span{ display:flex; align-items:center; gap:6px; }
+  .legend i{ width:14px; height:14px; border-radius:3px; display:inline-block; }
+  .grid-nav{ display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; }
+  @media (min-width:480px){ .grid-nav{ grid-template-columns:repeat(6, 1fr); } }
+  .g-btn{
+    aspect-ratio:1; border-radius:8px; border:2px solid var(--rule);
+    background:#fff; font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:14px;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  body.dark-mode .g-btn{ background:var(--d-card); border-color:var(--d-rule); color:var(--d-ink); }
+  .g-btn.answered{ background:var(--correct); color:#fff; border-color:var(--correct); }
+  .g-btn.review{ background:var(--gold); color:#fff; border-color:var(--gold); }
+  .g-btn.current{ outline:3px solid var(--brick); outline-offset:1px; }
+
+  /* ---------- Modal ---------- */
+  .modal{
+    position:fixed; inset:0; background:rgba(0,0,0,.55);
+    display:none; align-items:center; justify-content:center; z-index:300; padding:16px;
+  }
+  .modal.show{ display:flex; }
+  .modal-box{
+    background: var(--card);
+    max-width:400px; width:100%;
+    border:1px solid var(--rule);
+    border-top:5px solid var(--brick);
+    box-shadow: var(--shadow);
+  }
+  body.dark-mode .modal-box{ background:var(--d-card); border-color:var(--d-rule); }
+  .modal-head{ text-align:center; padding:22px 20px 14px; }
+  .modal-head .kicker{ font-family:"Trebuchet MS", sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--unattempted); }
+  .modal-head .score{ font-size:38px; font-weight:700; color:var(--navy); margin-top:6px; }
+  body.dark-mode .modal-head .score{ color:#9fc1e6; }
+  .modal-head .score span{ font-size:18px; color:var(--unattempted); }
+  .stat-grid{ display:grid; grid-template-columns:repeat(4,1fr); text-align:center; font-family:"Trebuchet MS", sans-serif; border-top:1px solid var(--rule); }
+  body.dark-mode .stat-grid{ border-color:var(--d-rule); }
+  .stat-grid div{ padding:12px 4px; border-right:1px solid var(--rule); }
+  body.dark-mode .stat-grid div{ border-color:var(--d-rule); }
+  .stat-grid div:last-child{ border-right:none; }
+  .stat-grid .num{ font-size:19px; font-weight:700; }
+  .stat-grid .lbl{ font-size:10px; text-transform:uppercase; color:var(--unattempted); margin-top:2px; }
+  .modal-actions{ display:flex; gap:8px; padding:16px 20px; }
+  .modal-actions button{
+    flex:1; padding:11px; border-radius:6px; border:none; cursor:pointer;
+    font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:13px;
+  }
+  .m-close{ background:transparent; border:1px solid var(--rule) !important; color:var(--ink); }
+  body.dark-mode .m-close{ border-color:var(--d-rule) !important; color:var(--d-ink); }
+  .m-review{ background:var(--navy); color:#fff; }
+  .m-print{ background:var(--brick); color:#fff; margin:0 20px 18px; padding:11px; border:none; border-radius:6px; font-family:"Trebuchet MS", sans-serif; font-weight:700; font-size:13px; cursor:pointer; width:calc(100% - 40px); display:none; }
+  .m-print.show{ display:block; }
+
+  footer{
+    text-align:center; padding:16px; background:var(--brick); color:#fff;
+    font-family:"Trebuchet MS", sans-serif; font-size:12.5px;
+  }
+  footer a{ color:#ffe9c7; }
+</style>
+</head>
+<body>
+
+<!-- ============ WELCOME SCREEN ============ -->
+<div class="welcome-screen" id="welcomeScreen">
+  <div class="welcome-kicker">
+    <span class="logo-badge"><i class="fa-solid fa-feather-pointed"></i></span>
+    <span class="kicker-text">Sampuran English</span>
+  </div>
+  <a class="join-channel" href="https://t.me/Sampuran_English" target="_blank">
+    <i class="fa-brands fa-telegram"></i> Official Telegram Channel
+  </a>
+  <div class="welcome-sub" style="color:#000;font-weight:700;margin-top:14px">SSC English Practice — 14 · 9 · 2026</div>
+
+  <div class="welcome-card">
+    <div class="head" style="text-align:center;font-weight:900;font-size:14px">Mock Test No: 69</div>
+    <div class="w-row"><span>Total Questions</span><b>25</b></div>
+    <div class="w-row"><span>Total Marks</span><b>50</b></div>
+    <div class="w-row"><span>Duration</span><b>15 minutes</b></div>
+    <div class="w-row"><span>Marking</span><b>+2.0 / −0.5</b></div>
+  </div>
+
+  <button class="welcome-button" id="startTestBtn">Start Test</button>
+
+  <div class="daily-content">
+    <div class="cat-row">
+      <div class="cat-pill">Grammar<br>Practice</div>
+      <div class="cat-pill">Vocab<br>Practice</div>
+      <div class="cat-pill">Reading<br>Practice</div>
+    </div>
+
+    <div class="dc-banner"><i class="fas fa-arrow-left"></i> Rule of the Day <i class="fas fa-arrow-right"></i></div>
+    <div class="rule-box">
+      (Chapter: Adjective) — Certain adjectives are "absolute" or "non-gradable" (perfect, unique, complete, full, ideal, impossible, etc.) because they already express the highest possible degree of a quality. Such adjectives cannot be used in the comparative or superlative degree, and should never be preceded by intensifiers like "very," "more," or "most."
+      <span class="eg">Ex – <span class="wrong">This is the most unique idea I have ever heard.</span> <i>(Incorrect)</i></span>
+      <span class="eg">Ex – This is a <span class="right">unique</span> idea I have ever heard. <i>(Correct)</i></span>
+    </div>
+
+    <div class="dc-banner"><i class="fas fa-arrow-left"></i> Word of the Day <i class="fas fa-arrow-right"></i></div>
+    <div class="word-box">
+      <div class="word-title">Dearth (Noun)</div>
+      <div class="word-meta">
+        <u>Meaning</u>: a scarcity or lack of something; an insufficient supply<br>
+        Ex – There is a dearth of affordable housing in the city centre.
+      </div>
+      <div class="syn-anto">
+        <b>Synonyms</b>: scarcity, <span class="hl">shortage</span>, paucity
+      </div>
+      <div class="syn-anto">
+        <b>Antonyms</b>: abundance, <span class="hl">plenty</span>, surplus
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MAIN TEST INTERFACE ============ -->
+<div id="mainTestInterface" style="display:none">
+
+  <div class="hdr">
+    <div class="hdr-l">Sampuran English<small>Daily Practice</small></div>
+    <div class="hdr-c" id="qInfo">Q 1 / 25</div>
+    <div class="hdr-r">
+      <div class="timer" id="timer">15:00</div>
+      <button class="icon-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="icon-btn" id="menuBtn" title="Question palette"><i class="fas fa-th"></i></button>
+      <button class="btn-submit-top" id="subBtn">Submit</button>
+    </div>
+  </div>
+  <div class="subject-tag" id="subjectTag"></div>
+
+  <div class="cont">
+    <div class="qcard" id="qcard">
+      <div class="qnum">Question <span id="qNumTxt">1</span> <span class="status-tag" id="statusTag" style="display:none"></span></div>
+      <div class="passage" id="passageBox" style="display:none"></div>
+      <div class="qtext" id="qTxt"></div>
+      <div class="options" id="opts"></div>
+      <div class="explanation" id="explanation"></div>
+    </div>
+  </div>
+
+  <div class="navbar">
+    <button class="nav-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i> Prev</button>
+    <div class="nav-mid">
+      <div id="progTxt">1 of 25</div>
+      <div>Answered: <span id="ansCnt">0</span></div>
+    </div>
+    <button class="nav-btn review" id="reviewBtn"><i class="fas fa-flag"></i></button>
+    <button class="nav-btn next" id="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
+  </div>
+
+  <!-- Question palette panel -->
+  <div class="panel" id="panel">
+    <div class="panel-hdr">
+      <span style="font-family:'Trebuchet MS',sans-serif;font-weight:700">Question Palette</span>
+      <button class="panel-close" id="panelClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="panel-body">
+      <div class="legend">
+        <span><i style="background:var(--correct)"></i> Answered</span>
+        <span><i style="background:var(--gold)"></i> Marked for Review</span>
+        <span><i style="background:#fff;border:2px solid var(--rule)"></i> Not Answered</span>
+      </div>
+      <div class="grid-nav" id="gridNav"></div>
+    </div>
+  </div>
+
+  <!-- Result modal -->
+  <div class="modal" id="modalOver">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="kicker">Your Result</div>
+        <div class="score" id="scoreDisp">0.0<span> / 50</span></div>
+      </div>
+      <div class="stat-grid">
+        <div><div class="num" id="corrStat" style="color:var(--correct)">0</div><div class="lbl">Correct</div></div>
+        <div><div class="num" id="incStat" style="color:var(--wrong)">0</div><div class="lbl">Incorrect</div></div>
+        <div><div class="num" id="unaStat">0</div><div class="lbl">Unattempted</div></div>
+        <div><div class="num" id="timeStat">0</div><div class="lbl">Minutes</div></div>
+      </div>
+      <button class="m-print" id="printBtn"><i class="fas fa-print"></i> Print Full Review</button>
+      <div class="modal-actions">
+        <button class="m-close" id="closeModal">Close</button>
+        <button class="m-review" id="revBtn">Review</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Daily Practice: <a href="https://t.me/Sampuran_English" target="_blank">t.me/Sampuran_English</a>
+    &nbsp;&middot;&nbsp; Doubts: <a href="https://t.me/sampuranenglish" target="_blank">t.me/sampuranenglish</a>
+  </footer>
+</div>
+
+<script>
+const questions = [
+  {
+    id:1, section:"Grammar Practice — Fill in the Blanks",
+    text:"A good leader should be ready to __________ criticism.",
+    options:{a:"carry", b:"face", c:"settle", d:"meet"},
+    answer:"b",
+    exp:"The correct usage is: to face criticism. 'Face criticism' means to receive or accept criticism.<br>Ex- In this job you need to be able to take/face/accept criticism."
+  },
+  {
+    id:2, section:"Vocab Practice — Fill in the Blanks",
+    text:"He is __________ to do this task.",
+    options:{a:"not enough intelligent", b:"not intelligent enough", c:"intelligent enough not", d:"enough not intelligent"},
+    answer:"b",
+    exp:"Use 'not intelligent enough' in the given space. The correct usage are: 'Adjective + Enough' and 'Enough + Noun'.<br>Ex- He is smart enough to handle this. (smart = adjective)<br>Ex- He has enough money for this tour. (money = noun)"
+  },
+  {
+    id:3, section:"Grammar Practice — Common Error",
+    text:"We are looking forward to hear (a)/ from you regarding the interview (b)/ scheduled for tomorrow. (c)/ No error (d)",
+    options:{a:"We are looking forward to hear", b:"from you regarding the interview", c:"scheduled for tomorrow.", d:"No error"},
+    answer:"a",
+    exp:"Use 'look forward to hearing' in place of 'look forward to hear'. 'Look forward to' is followed by a gerund (V-ing). Rule: Look forward to + Verb-ing."
+  },
+  {
+    id:4, section:"Grammar Practice — Common Error",
+    text:"She usually (a)/ is forgetting her (b)/ keys at home. (c)/ No error (d)",
+    options:{a:"She usually", b:"is forgetting her keys", c:"keys at home", d:"No error"},
+    answer:"b",
+    exp:"Use 'forgets' in place of 'is forgetting'. 'Usually' indicates a habitual action, so use the Simple Present. Rule: Habitual actions → Simple Present."
+  },
+  {
+    id:5, section:"Grammar Practice — Sentence Improvement",
+    text:"Donald Trump escalated his threats over WHO’s handling of the situation and <u>(threatened to permanent halted)</u> funding to the WHO.",
+    options:{a:"threatened permanent halted", b:"threatened permanently halt", c:"threatened to permanently halt", d:"No improvement"},
+    answer:"c",
+    exp:"Use ‘threatened to permanently halt’ – in place of – ‘threatened to permanent halted’. In active voice sentences, after the preposition ‘to’ first form of the verb is used, so the first form of the verb ‘halt’ is the correct here and for that verb, we need an adverb, so ‘permanently’ is corect here. The word ‘permanent’ is an adjective and ‘permanently’ is an adverb."
+  },
+  {
+    id:6, section:"Grammar Practice — Sentence Improvement",
+    text:"China finally <u>(agreed to international investigation)</u> on the issue.",
+    options:{a:"agreed an international investigation", b:"agreed to an international investigation", c:"has agreed an international investigation", d:"No improvement"},
+    answer:"b",
+    exp:"Use ‘agreed to an international investigation’ – in place of – ‘agreed to international investigation’. Article ‘an’ should be used here before the adjective ‘international’ for the noun ‘investigation’."
+  },
+  {
+    id:7, section:"Vocab Practice — Synonyms",
+    text:"Deride",
+    options:{a:"Mock", b:"Bountiful", c:"Gullible", d:"Deface"},
+    answer:"a",
+    exp:"'Deride' means to say that somebody/something is ridiculous; to laugh at something in a cruel way. Therefore, its correct synonym is 'Mock', which means to laugh at somebody/something in an unkind way or to make other people laugh at them.<br><br>• 'Gullible' means easily persuaded to believe something; credulous.<br>• 'Bountiful' means large in quantity; generous and plentiful.<br>• 'Deface' means to spoil the surface or appearance of something."
+  },
+  {
+    id:8, section:"Vocab Practice — Synonyms",
+    text:"Din",
+    options:{a:"Uproar", b:"Unprecedented", c:"Compliant", d:"Gregarious"},
+    answer:"a",
+    exp:"'Din' means a loud, unpleasant and prolonged noise. Therefore, its correct synonym is 'Uproar', which means a lot of noise, confusion, anger, etc.; an angry discussion about something.<br><br>• 'Compliant' means disposed to agree with others or obey rules.<br>• 'Unprecedented' means never done or known before.<br>• 'Gregarious' means fond of company; sociable."
+  },
+  {
+    id:9, section:"Vocab Practice — Antonyms",
+    text:"Diminutive",
+    options:{a:"Gigantic", b:"Lucrative", c:"Grim", d:"Illicit"},
+    answer:"a",
+    exp:"'Diminutive' means extremely or unusually small. Its correct antonym is 'Gigantic', which means huge; of very great size or extent.<br><br>• 'Illicit' means forbidden by law, rules or custom.<br>• 'Grim' means very serious, not smiling; unpleasant or worrying.<br>• 'Lucrative' means producing a great deal of profit."
+  },
+  {
+    id:10, section:"Vocab Practice — Antonyms",
+    text:"Frivolous",
+    options:{a:"Unorthodox", b:"Ethical", c:"Vivid", d:"Serious"},
+    answer:"d",
+    exp:"'Frivolous' means not having any serious purpose. Its correct antonym is 'Serious', which means demanding careful consideration or application.<br><br>• 'Unorthodox' means contrary to accepted rules or standards.<br>• 'Ethical' means relating to moral principles; morally correct.<br>• 'Vivid' means producing powerful feelings or clear images; bright."
+  },
+  {
+    id:11, section:"Vocab Practice — One Word Substitution",
+    text:"A place where weapons and ammunition are stored",
+    options:{a:"Arsenal", b:"Hangar", c:"Granary", d:"Warehouse"},
+    answer:"a",
+    exp:"An arsenal is a place where weapons and military equipment are stored or manufactured - शस्त्रागार<br>Hangar = a large building where aircraft are kept — विमान रखने का स्थान<br>Granary = a place where grain is stored — अनाज का भंडार<br>Warehouse = a building where goods are stored"
+  },
+  {
+    id:12, section:"Vocab Practice — One Word Substitution",
+    text:"A person who deliberately sets fire to property",
+    options:{a:"Vandal", b:"Arsonist", c:"Saboteur", d:"Marauder"},
+    answer:"b",
+    exp:"An arsonist is someone who deliberately sets fire to buildings or property - आगजनी करने वाला<br>Vandal = a person who deliberately damages public or private property — तोड़फोड़ करने वाला<br>Saboteur = a person who deliberately damages or obstructs something — तोड़फोड़/बाधा डालने वाला<br>Marauder = a person who roams around attacking or stealing — लुटेरा"
+  },
+  {
+    id:13, section:"Vocab Practice — Idioms & Phrases",
+    text:"Be climbing the walls",
+    options:{a:"Feel frustrated and helpless", b:"To try every opportunity", c:"Ready to follow orders", d:"Be very careless"},
+    answer:"a",
+    exp:"Be climbing the walls – feel frustrated, helpless, and trapped; to suffer unpleasant feelings, such as worry, in an extreme way (to be climbing the walls with boredom/anger/frustration)<br>Ex- When Joely went missing, we were practically climbing the walls."
+  },
+  {
+    id:14, section:"Vocab Practice — Idioms & Phrases",
+    text:"Be a tall order",
+    options:{a:"The whole of everything", b:"Do or say the exact thing", c:"An unreasonable demand", d:"To be without any hope"},
+    answer:"c",
+    exp:"Be a tall order – to be something that is difficult to do; an unreasonable or difficult demand<br>Ex- Building the bridge in time for the Olympics will be a tall order."
+  },
+  {
+    id:15, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:"P. Congress leader Rahul Gandhi to join the farmers' protest<br>Q. Chief minister Captain Amarinder Singh announced that Punjab will challenge<br>R. The Centre's 'anti-farm laws' in the Supreme Court<br>S. Capt Amarinder Singh also said that he will request",
+    text:"Arrange P, Q, R, S in the correct logical sequence.",
+    options:{a:"PSRQ", b:"RPSQ", c:"SRQP", d:"QRSP"},
+    answer:"d",
+    exp:"The correct order is QRSP: Q introduces the CM’s announcement that Punjab will challenge the laws → R completes Q’s sentence, naming where (the Supreme Court) → S adds his further statement about a request → P closes with who he will request and for what."
+  },
+  {
+    id:16, section:"Reading Practice — Parajumbles",
+    group:true,
+    passage:"P. Which will also undergo a series of permanent overhauls<br>Q. President Donald Trump issued an executive order on Monday<br>R. To extend the suspension of green cards till the end of the year<br>S. And expand it to cover non-immigrant work visas such as H-1B",
+    text:"Arrange P, Q, R, S in the correct logical sequence.",
+    options:{a:"SQRP", b:"PQRS", c:"QRSP", d:"SRQP"},
+    answer:"c",
+    exp:"The correct order is QRSP: Q introduces the executive order → R states its first aim (extending the green card suspension) → S adds its second aim (expanding it to cover H-1B visas) → P closes with the further overhauls these visas will undergo."
+  },
+  {
+    id:17, section:"Reading Practice — Cloze Test",
+    group:true,
+    passage:"'While I thought that I was learning how to live, I have been learning how to die' — a line associated with Leonardo Da Vinci about the Renaissance. It was a period in European history marking the transition from the Middle Ages to Modernity and _____(17)_____ the 15th and 16th centuries. It _____(18)_____ after the Crisis of the Late Middle Ages. The traditional view focuses more on the early modern aspects of the Renaissance and _____(19)_____ that it _____(20)_____ a break from the past, but many historians today focus more on its medieval aspects and argue that it was an extension of the Middle Ages.",
+    text:"Blank (17): It was a period in European history marking the transition from the Middle Ages to Modernity and _____(17)_____ the 15th and 16th centuries.",
+    options:{a:"cover", b:"covers", c:"to cover", d:"covering"},
+    answer:"d",
+    exp:"The verb forms should be equal before and after the conjunction 'and'; since 'marking' is used before it, the same '-ing' form, 'covering', should be used after it."
+  },
+  {
+    id:18, section:"Reading Practice — Cloze Test",
+    group:true,
+    passage:"'While I thought that I was learning how to live, I have been learning how to die' — a line associated with Leonardo Da Vinci about the Renaissance. It was a period in European history marking the transition from the Middle Ages to Modernity and _____(17)_____ the 15th and 16th centuries. It _____(18)_____ after the Crisis of the Late Middle Ages. The traditional view focuses more on the early modern aspects of the Renaissance and _____(19)_____ that it _____(20)_____ a break from the past, but many historians today focus more on its medieval aspects and argue that it was an extension of the Middle Ages.",
+    text:"Blank (18): It _____(18)_____ after the Crisis of the Late Middle Ages.",
+    options:{a:"doomed", b:"meandered", c:"exalted", d:"occurred"},
+    answer:"d",
+    exp:"'Occurred' is correct — (especially of accidents and other unexpected events) to happen or take place. Ex- An accident has occurred in the east-bound lane. Exalt = to praise highly; Meander = to walk aimlessly; Doom = to make something bad certain to happen."
+  },
+  {
+    id:19, section:"Reading Practice — Cloze Test",
+    group:true,
+    passage:"'While I thought that I was learning how to live, I have been learning how to die' — a line associated with Leonardo Da Vinci about the Renaissance. It was a period in European history marking the transition from the Middle Ages to Modernity and _____(17)_____ the 15th and 16th centuries. It _____(18)_____ after the Crisis of the Late Middle Ages. The traditional view focuses more on the early modern aspects of the Renaissance and _____(19)_____ that it _____(20)_____ a break from the past, but many historians today focus more on its medieval aspects and argue that it was an extension of the Middle Ages.",
+    text:"Blank (19): The traditional view focuses more on the early modern aspects of the Renaissance and _____(19)_____ that",
+    options:{a:"argue", b:"argues", c:"to argue", d:"arguing"},
+    answer:"a",
+    exp:"Before the conjunction 'that', the sentence is in the present tense with a singular subject ('the traditional view'). It must take the same singular form as the earlier verb 'focuses' in the sentence, so 'argues' is the correct choice."
+  },
+  {
+    id:20, section:"Reading Practice — Cloze Test",
+    group:true,
+    passage:"'While I thought that I was learning how to live, I have been learning how to die' — a line associated with Leonardo Da Vinci about the Renaissance. It was a period in European history marking the transition from the Middle Ages to Modernity and _____(17)_____ the 15th and 16th centuries. It _____(18)_____ after the Crisis of the Late Middle Ages. The traditional view focuses more on the early modern aspects of the Renaissance and _____(19)_____ that it _____(20)_____ a break from the past, but many historians today focus more on its medieval aspects and argue that it was an extension of the Middle Ages.",
+    text:"Blank (20): that it _____(20)_____ a break from the past, but many historians today focus more on its medieval aspects and argue that it was an extension of the Middle Ages.",
+    options:{a:"is", b:"was", c:"will have", d:"would have"},
+    answer:"b",
+    exp:"'Was' is apt since the sentence refers to the past ('a break from the past'); 'would have' is used for an action that didn't actually happen, which doesn't fit here."
+  },
+  {
+    id:21, section:"Grammar Practice — Voice Change",
+    text:"They should have completed the survey before the funding deadline. <i>(Change into Passive Voice)</i>",
+    options:{a:"The survey should be completed before the funding deadline.", b:"The survey should have been completed before the funding deadline.", c:"The survey had been completed before the funding deadline.", d:"The survey should have being completed before the funding deadline."},
+    answer:"b",
+    exp:"The active sentence uses the modal perfect 'should have completed', so the passive must follow the structure 'modal + have been + V3', giving 'should have been completed'. Option (a) wrongly drops the perfect aspect, reducing it to a simple modal passive; option (c) wrongly abandons the modal 'should' altogether; option (d) inserts the non-existent form 'should have being', which is grammatically invalid ('being' cannot follow 'have')."
+  },
+  {
+    id:22, section:"Grammar Practice — Voice Change",
+    text:"The manager has awarded Rohan a bonus for his outstanding performance. <i>(Change into Passive Voice)</i>",
+    options:{a:"Rohan has been awarded a bonus for his outstanding performance by the manager.", b:"A bonus has been awarded Rohan for his outstanding performance by the manager.", c:"Rohan was awarded a bonus for his outstanding performance by the manager.", d:"A bonus was awarded to Rohan for his outstanding performance by the manager."},
+    answer:"a",
+    exp:"With ditransitive verbs like 'award', 'give' or 'teach', the indirect object (the person) is preferably made the subject of the passive sentence. Since the active verb 'has awarded' is in the present perfect, the passive must also stay in the present perfect: 'has been awarded'. Option (b) incorrectly retains 'Rohan' as an object without the preposition 'to'; options (c) and (d) wrongly shift the tense to simple past, losing the 'has/have' of the original."
+  },
+  {
+    id:23, section:"Grammar Practice — Narration",
+    text:"The doctor said to the patient, “Take this medicine twice a day and avoid oily food.” <i>(Change into Indirect Speech)</i>",
+    options:{a:"The doctor said to the patient that he should take that medicine twice a day and avoid oily food.", b:"The doctor advised the patient to take that medicine twice a day and avoid oily food.", c:"The doctor told the patient take that medicine twice a day and avoid oily food.", d:"The doctor advised the patient that he take that medicine twice a day and avoid oily food."},
+    answer:"b",
+    exp:"An imperative sentence giving advice is reported using a reporting verb such as 'advised' followed by the object and a to-infinitive: 'advised the patient to take...'. Also, 'this' changes to 'that' for remoteness. Option (a) wrongly keeps the direct-speech-style 'said to...that' construction; option (c) is missing the required 'to' before the infinitive; option (d) awkwardly uses 'advised...that he take', which is not the standard way of reporting a command."
+  },
+  {
+    id:24, section:"Grammar Practice — Narration",
+    text:"She asked me, “Will you be able to finish the project by tomorrow?” <i>(Change into Indirect Speech)</i>",
+    options:{a:"She asked me that if I would be able to finish the project by tomorrow.", b:"She asked me if I will be able to finish the project the next day.", c:"She asked me whether I would be able to finish the project the following day.", d:"She asked me would I be able to finish the project the next day."},
+    answer:"c",
+    exp:"A yes/no question (with no question word) is reported using 'if' or 'whether', and the sentence takes normal statement word order rather than question order. The modal 'will' backshifts to 'would', and the time expression 'tomorrow' changes to 'the next day' or 'the following day'. Option (a) redundantly uses both 'that' and 'if' together; option (b) fails to backshift 'will' to 'would' and keeps 'tomorrow' unchanged; option (d) wrongly retains the inverted question word order ('would I') instead of statement order."
+  },
+  {
+    id:25, section:"Vocab Practice — Spelling",
+    text:"Choose the correctly spelt word.",
+    options:{a:"Circuitious", b:"Circutous", c:"Circiutous", d:"Circuitous"},
+    answer:"d",
+    exp:"'Circuitous' (meaning longer and less direct than the most straightforward way; roundabout) is spelt correctly. 'Circuitious' wrongly inserts an extra 'i' before '-ous'; 'Circutous' wrongly drops the 'i' that follows 'u'; 'Circiutous' wrongly reverses the order of 'u' and 'i' in the root. Remembering the everyday word 'circuit' (c-i-r-c-u-i-t) makes it easy to retain the correct letter sequence before adding '-ous'."
+  }
+];
+
+
+
+class TestApp {
+  constructor(){
+    this.qs = questions;
+    this.cur = 0;
+    this.ans = new Array(this.qs.length).fill(null);
+    this.reviewed = new Array(this.qs.length).fill(false);
+    this.sub = false;
+    this.dark = false;
+    this.duration = 15 * 60;
+    this.timeLeft = this.duration;
+    this.timer = null;
+    this.startT = null;
+
+    this.els = {
+      qInfo: document.getElementById('qInfo'),
+      subjectTag: document.getElementById('subjectTag'),
+      qNumTxt: document.getElementById('qNumTxt'),
+      statusTag: document.getElementById('statusTag'),
+      passageBox: document.getElementById('passageBox'),
+      qTxt: document.getElementById('qTxt'),
+      opts: document.getElementById('opts'),
+      explanation: document.getElementById('explanation'),
+      qcard: document.getElementById('qcard'),
+      progTxt: document.getElementById('progTxt'),
+      ansCnt: document.getElementById('ansCnt'),
+      timer: document.getElementById('timer'),
+      gridNav: document.getElementById('gridNav'),
+      panel: document.getElementById('panel'),
+      modalOver: document.getElementById('modalOver'),
+      scoreDisp: document.getElementById('scoreDisp'),
+      corrStat: document.getElementById('corrStat'),
+      incStat: document.getElementById('incStat'),
+      unaStat: document.getElementById('unaStat'),
+      timeStat: document.getElementById('timeStat'),
+      printBtn: document.getElementById('printBtn')
+    };
+
+    this.bindStaticEvents();
+  }
+
+  bindStaticEvents(){
+    document.getElementById('startTestBtn').addEventListener('click', () => this.startTest());
+    document.getElementById('prevBtn').addEventListener('click', () => this.go(-1));
+    document.getElementById('nextBtn').addEventListener('click', () => this.go(1));
+    document.getElementById('reviewBtn').addEventListener('click', () => this.toggleReview());
+    document.getElementById('subBtn').addEventListener('click', () => this.confirmSubmit());
+    document.getElementById('menuBtn').addEventListener('click', () => this.openPanel());
+    document.getElementById('panelClose').addEventListener('click', () => this.closePanel());
+    document.getElementById('themeToggle').addEventListener('click', () => this.toggleDark());
+    document.getElementById('closeModal').addEventListener('click', () => this.closeModal());
+    document.getElementById('revBtn').addEventListener('click', () => { this.closeModal(); this.loadQ(0); });
+    document.getElementById('printBtn').addEventListener('click', () => this.printReview());
+
+    window.addEventListener('beforeunload', (e) => {
+      if(!this.sub){
+        e.preventDefault();
+        e.returnValue = 'Are you sure you want to leave? Your test progress will be lost.';
+        return e.returnValue;
+      }
+    });
+  }
+
+  startTest(){
+    document.getElementById('welcomeScreen').classList.add('hidden');
+    document.getElementById('mainTestInterface').style.display = '';
+    this.startT = Date.now();
+    this.buildGrid();
+    this.loadQ(0);
+    this.startTimer();
+  }
+
+  startTimer(){
+    this.timer = setInterval(() => {
+      this.timeLeft--;
+      this.renderTimer();
+      if(this.timeLeft <= 0){
+        clearInterval(this.timer);
+        this.submitTest();
+      }
+    }, 1000);
+  }
+
+  renderTimer(){
+    const m = Math.floor(this.timeLeft / 60);
+    const s = this.timeLeft % 60;
+    this.els.timer.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    this.els.timer.classList.toggle('low', this.timeLeft <= 60);
+  }
+
+  buildGrid(){
+    this.els.gridNav.innerHTML = '';
+    this.qs.forEach((q, i) => {
+      const b = document.createElement('button');
+      b.className = 'g-btn';
+      b.id = 'g-' + i;
+      b.textContent = i + 1;
+      b.addEventListener('click', () => { this.closePanel(); this.loadQ(i); });
+      this.els.gridNav.appendChild(b);
+    });
+  }
+
+  updateGrid(){
+    this.qs.forEach((q, i) => {
+      const b = document.getElementById('g-' + i);
+      b.className = 'g-btn';
+      if(this.ans[i] !== null) b.classList.add('answered');
+      if(this.reviewed[i]) b.classList.add('review');
+      if(i === this.cur) b.classList.add('current');
+    });
+  }
+
+  openPanel(){ this.els.panel.classList.add('open'); }
+  closePanel(){ this.els.panel.classList.remove('open'); }
+
+  toggleDark(){
+    this.dark = !this.dark;
+    document.body.classList.toggle('dark-mode', this.dark);
+    document.getElementById('themeToggle').innerHTML = this.dark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  }
+
+  loadQ(idx){
+    this.cur = idx;
+    const q = this.qs[idx];
+
+    this.els.qInfo.textContent = `Q ${idx+1} / ${this.qs.length}`;
+    this.els.progTxt.textContent = `${idx+1} of ${this.qs.length}`;
+    this.els.subjectTag.textContent = q.section;
+    this.els.qNumTxt.textContent = idx + 1;
+
+    if(q.passage){
+      this.els.passageBox.style.display = '';
+      this.els.passageBox.innerHTML = q.passage;
+    } else {
+      this.els.passageBox.style.display = 'none';
+      this.els.passageBox.innerHTML = '';
+    }
+
+    this.els.qTxt.innerHTML = q.text;
+
+    this.els.opts.innerHTML = '';
+    Object.entries(q.options).forEach(([key, val]) => {
+      const label = document.createElement('label');
+      label.className = 'opt';
+      label.id = `opt-${idx}-${key}`;
+      label.dataset.key = key;
+      if(this.ans[idx] === key) label.classList.add('selected');
+      label.innerHTML = `<span class="opt-letter">(${key})</span> <span>${val}</span>`;
+      label.addEventListener('click', () => this.selectOpt(idx, key));
+      this.els.opts.appendChild(label);
+    });
+
+    this.els.qcard.classList.toggle('locked', this.sub);
+
+    const tag = this.els.statusTag;
+    if(this.sub){
+      const chosen = this.ans[idx];
+      if(chosen === null){
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Unattempted';
+        tag.className = 'status-tag skipped';
+      } else if(chosen === q.answer){
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Correct';
+        tag.className = 'status-tag correct';
+      } else {
+        tag.style.display = 'inline-block';
+        tag.textContent = 'Incorrect';
+        tag.className = 'status-tag wrong';
+      }
+      if(chosen && chosen !== q.answer){
+        const wrongEl = document.getElementById(`opt-${idx}-${chosen}`);
+        if(wrongEl) wrongEl.classList.add('wrong-answer');
+      }
+      const correctEl = document.getElementById(`opt-${idx}-${q.answer}`);
+      if(correctEl) correctEl.classList.add('correct-answer');
+
+      this.els.explanation.innerHTML = `<b>Correct answer: (${q.answer}) ${q.options[q.answer]}.</b><br>${q.exp}`;
+    } else {
+      tag.style.display = 'none';
+      this.els.explanation.innerHTML = '';
+    }
+
+    document.getElementById('prevBtn').disabled = idx === 0;
+    document.getElementById('nextBtn').disabled = idx === this.qs.length - 1;
+
+    const revBtn = document.getElementById('reviewBtn');
+    revBtn.classList.toggle('active', this.reviewed[idx]);
+
+    this.updateGrid();
+    this.updateAnsCount();
+  }
+
+  selectOpt(idx, key){
+    if(this.sub) return;
+    this.ans[idx] = key;
+    document.querySelectorAll(`#opts .opt`).forEach(o => o.classList.remove('selected'));
+    document.getElementById(`opt-${idx}-${key}`).classList.add('selected');
+    this.updateGrid();
+    this.updateAnsCount();
+  }
+
+  toggleReview(){
+    this.reviewed[this.cur] = !this.reviewed[this.cur];
+    document.getElementById('reviewBtn').classList.toggle('active', this.reviewed[this.cur]);
+    this.updateGrid();
+  }
+
+  updateAnsCount(){
+    const answered = this.ans.filter(a => a !== null).length;
+    this.els.ansCnt.textContent = answered;
+  }
+
+  go(dir){
+    const next = this.cur + dir;
+    if(next >= 0 && next < this.qs.length) this.loadQ(next);
+  }
+
+  confirmSubmit(){
+    if(this.sub) return;
+    const btn = document.getElementById('subBtn');
+    if(!this.confirmPending){
+      const unanswered = this.ans.filter(a => a === null).length;
+      this.confirmPending = true;
+      this._origSubText = btn.textContent;
+      btn.textContent = unanswered > 0 ? `${unanswered} left! Tap again` : 'Tap again to confirm';
+      this._confirmTimeout = setTimeout(() => {
+        this.confirmPending = false;
+        btn.textContent = this._origSubText;
+      }, 3000);
+      return;
+    }
+    clearTimeout(this._confirmTimeout);
+    this.confirmPending = false;
+    this.submitTest();
+  }
+
+  submitTest(){
+    if(this.sub) return;
+    this.sub = true;
+    clearInterval(this.timer);
+    document.getElementById('subBtn').disabled = true;
+    document.getElementById('subBtn').textContent = 'Submitted';
+
+    const results = this.calcResults();
+    this.showModal(results);
+    this.loadQ(this.cur);
+  }
+
+  calcResults(){
+    let correct = 0, incorrect = 0, unattempted = 0, score = 0;
+    this.qs.forEach((q, i) => {
+      const chosen = this.ans[i];
+      if(chosen === null){
+        unattempted++;
+      } else if(chosen === q.answer){
+        correct++; score += 2;
+      } else {
+        incorrect++; score -= 0.5;
+      }
+    });
+    const timeTaken = Math.max(1, Math.round((Date.now() - this.startT) / 60000));
+    return { score: Math.max(0, score), correct, incorrect, unattempted, timeTaken };
+  }
+
+  showModal(r){
+    this.els.scoreDisp.innerHTML = `${r.score.toFixed(1)}<span> / 50</span>`;
+    this.els.corrStat.textContent = r.correct;
+    this.els.incStat.textContent = r.incorrect;
+    this.els.unaStat.textContent = r.unattempted;
+    this.els.timeStat.textContent = r.timeTaken;
+    this.els.printBtn.classList.add('show');
+    this.els.modalOver.classList.add('show');
+  }
+
+  closeModal(){ this.els.modalOver.classList.remove('show'); }
+
+  printReview(){
+    const w = window.open('', '_blank');
+    const rows = this.qs.map((q, i) => {
+      const chosen = this.ans[i];
+      const isCorrect = chosen === q.answer;
+      return `
+        <div style="page-break-inside:avoid;margin-bottom:26px;border-bottom:1px solid #eee;padding-bottom:16px">
+          <h3 style="color:#163a5f;margin-bottom:4px">Question ${i+1} <span style="font-size:12px;color:#7a6f57">(${q.section})</span></h3>
+          ${q.passage ? `<div style="font-style:italic;background:#f1ece0;padding:8px 12px;margin-bottom:8px">${q.passage}</div>` : ''}
+          <div style="margin-bottom:10px">${q.text}</div>
+          ${Object.entries(q.options).map(([key,val]) => `
+            <div style="margin:4px 0;padding:6px 10px;border-left:3px solid ${
+              key === q.answer ? '#1f7a4d' : (key === chosen ? '#a8321f' : '#c9bfa4')
+            }">(${key}) ${val}</div>
+          `).join('')}
+          <div style="margin-top:10px;font-size:13px;color:#555">
+            <b>Your answer:</b> ${chosen ? `(${chosen}) ${q.options[chosen]}` : 'Not attempted'}
+            ${chosen ? ` — <span style="color:${isCorrect ? '#1f7a4d' : '#a8321f'}">${isCorrect ? 'Correct' : 'Incorrect'}</span>` : ''}
+          </div>
+          <div style="margin-top:10px;background:#f0fdf4;padding:10px;border-radius:6px">
+            <b style="color:#1f7a4d">Explanation</b><br>${q.exp}
+          </div>
+        </div>`;
+    }).join('');
+
+    w.document.write(`
+      <!DOCTYPE html><html><head><title>Sampuran English — Full Review</title>
+      <style>body{font-family:Georgia,serif;padding:20px;color:#1c2b3a}
+      h2{border-bottom:2px solid #a8321f;padding-bottom:10px}</style></head>
+      <body>
+        <h2>Sampuran English — Mock Test No. 69 Review (14-9-2026)</h2>
+        <p><b>Score:</b> ${this.els.scoreDisp.textContent.replace(/<[^>]+>/g,' ')} &nbsp;|&nbsp;
+        <b>Correct:</b> ${this.els.corrStat.textContent} &nbsp;|&nbsp;
+        <b>Incorrect:</b> ${this.els.incStat.textContent} &nbsp;|&nbsp;
+        <b>Unattempted:</b> ${this.els.unaStat.textContent} &nbsp;|&nbsp;
+        <b>Time:</b> ${this.els.timeStat.textContent} min</p>
+        ${rows}
+        <script>setTimeout(()=>window.print(),400);<\/script>
+      </body></html>
+    `);
+    w.document.close();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => new TestApp());
+</script>
+
+</body>
+</html>
