@@ -1,9 +1,6 @@
 name: Sampuran English Bot
 
 on:
-  schedule:
-    - cron: '*/10 * * * *'   # every 10 min -> check Telegram for new files
-    - cron: '30 7 * * *'     # 07:30 UTC = 13:00 IST -> post Rule/Word/Idiom
   workflow_dispatch:
     inputs:
       job:
