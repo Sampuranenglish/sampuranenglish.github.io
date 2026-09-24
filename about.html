@@ -1,11 +1,269 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Loading...</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - Sampuran English</title>
+<style>
+:root{
+--page-bg:#f2f2f2;
+--card-bg:#ffffff;
+--card-text:#222222;
+--card-border:rgba(13,78,166,0.15);
+--accent:#0d4ea6;
+--accent-hover:#083b7d;
+--footer-bg:#222222;
+--footer-text:#ffffff;
+--secondary-btn-bg:#222222;
+--secondary-btn-hover:#000000;
+}
+html[data-theme="dark"]{
+--page-bg:#0b0c0e;
+--card-bg:#1b1c1f;
+--card-text:#f2f2f2;
+--card-border:rgba(255,255,255,0.12);
+--accent:#3b82f6;
+--accent-hover:#2563eb;
+--footer-bg:#000000;
+--footer-text:#f2f2f2;
+--secondary-btn-bg:#3a3a3a;
+--secondary-btn-hover:#555555;
+}
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:var(--page-bg);
+transition:background .25s ease;
+}
+.page-header{
+background:var(--accent);
+color:white;
+padding:20px;
+text-align:center;
+}
+.page-header h1{
+margin:0;
+font-size:38px;
+}
+.wrap{
+width:90%;
+max-width:1000px;
+margin:40px auto;
+}
+
+/* ---------- Hero banner ---------- */
+.hero{
+background:linear-gradient(135deg,var(--accent) 0%,var(--accent-hover) 100%);
+color:#ffffff;
+text-align:center;
+padding:40px 25px;
+border-radius:14px;
+box-shadow:0 6px 18px rgba(0,0,0,.18);
+}
+.hero .eyebrow{
+display:inline-block;
+font-size:13px;
+font-weight:bold;
+letter-spacing:2px;
+background:rgba(255,255,255,.18);
+padding:6px 14px;
+border-radius:20px;
+}
+.hero h2{
+margin:16px 0 12px;
+font-size:32px;
+line-height:1.25;
+}
+.hero p{
+margin:0 auto;
+max-width:640px;
+font-size:18px;
+line-height:1.55;
+}
+.chips{
+margin-top:22px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+}
+.chip{
+background:#ffffff;
+color:#0d4ea6;
+font-weight:bold;
+font-size:15px;
+padding:8px 18px;
+border-radius:30px;
+}
+
+/* ---------- Section titles ---------- */
+.section-title{
+text-align:center;
+margin:50px 0 6px;
+color:var(--accent);
+font-size:28px;
+}
+.section-sub{
+text-align:center;
+margin:0 0 24px;
+color:var(--card-text);
+opacity:.75;
+font-size:16px;
+}
+
+/* ---------- Cards ---------- */
+.grid{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+.grid .card{
+box-sizing:border-box;
+width:calc((100% - 40px) / 3);
+}
+.card{
+background:var(--card-bg);
+color:var(--card-text);
+padding:25px;
+text-align:center;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.1);
+border:1px solid var(--card-border);
+transition:.3s;
+}
+.card:hover{
+transform:translateY(-3px);
+}
+.card .icon{
+font-size:38px;
+line-height:1;
+margin-bottom:10px;
+}
+.card h3{
+color:var(--accent);
+font-size:21px;
+margin:0 0 8px;
+}
+.card p{
+margin:0;
+font-size:16px;
+line-height:1.5;
+}
+
+.back{
+margin-top:50px;
+text-align:center;
+}
+.back a{
+text-decoration:none;
+background:var(--secondary-btn-bg);
+color:white;
+padding:12px 25px;
+border-radius:6px;
+font-size:18px;
+}
+.back a:hover{
+background:var(--secondary-btn-hover);
+}
+footer{
+margin-top:50px;
+background:var(--footer-bg);
+color:var(--footer-text);
+text-align:center;
+padding:20px;
+}
+
+@media (max-width:860px){
+.grid .card{ width:calc((100% - 20px) / 2); }
+}
+@media (max-width:600px){
+.grid .card{ width:100%; }
+.page-header h1{ font-size:30px; }
+.hero{ padding:30px 18px; }
+.hero h2{ font-size:25px; }
+.hero p{ font-size:16px; }
+.section-title{ font-size:24px; }
+}
+</style>
 </head>
 <body>
+<div id="site-header"></div>
 
-Loading...
+<div class="page-header">
+<h1>About</h1>
+</div>
 
+<div class="wrap">
+
+<!-- ===== Hero banner ===== -->
+<div class="hero">
+<span class="eyebrow">FOR SSC ASPIRANTS</span>
+<h2>Crack SSC English with Sampuran English</h2>
+<p>Quality English content for every major SSC exam, made to keep your preparation consistent, one day at a time.</p>
+<div class="chips">
+<span class="chip">CGL</span>
+<span class="chip">CPO</span>
+<span class="chip">CHSL</span>
+<span class="chip">MTS</span>
+<span class="chip">Steno</span>
+<span class="chip">GD</span>
+</div>
+</div>
+
+<!-- ===== What we provide ===== -->
+<h2 class="section-title">What We Provide</h2>
+<p class="section-sub">Everything you need for daily English practice</p>
+
+<div class="grid">
+<div class="card">
+<div class="icon">📝</div>
+<h3>Daily Mock Test</h3>
+<p>A fresh English mock test every day, in exam style.</p>
+</div>
+<div class="card">
+<div class="icon">📰</div>
+<h3>Perfect Editorial Practice</h3>
+<p>Editorial-based practice with tests, vocab and analysis.</p>
+</div>
+<div class="card">
+<div class="icon">📖</div>
+<h3>Daily Vocab</h3>
+<p>Learn useful new words every day and build a strong vocabulary.</p>
+</div>
+<div class="card">
+<div class="icon">🧠</div>
+<h3>Daily Practice Quiz</h3>
+<p>A daily practice quiz on Telegram to keep your revision going.</p>
+</div>
+<div class="card">
+<div class="icon">🎥</div>
+<h3>YouTube Videos</h3>
+<p>Important videos for English practice.</p>
+</div>
+</div>
+
+<div class="back">
+<a href="index.html">← Back to Home</a>
+</div>
+
+</div>
+
+<footer>
+© Sampuran English
+</footer>
+
+<script>
+fetch('header.html')
+.then(function(response){ return response.text(); })
+.then(function(html){
+document.getElementById('site-header').innerHTML = html;
+window.scrollTo(0, 0);
+document.getElementById('menuToggle').addEventListener('click', function(){
+document.getElementById('menuList').classList.toggle('open');
+});
+});
+</script>
+<script src="theme.js"></script>
 </body>
 </html>
