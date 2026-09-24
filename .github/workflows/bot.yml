@@ -1,0 +1,53 @@
+name: Sampuran English Bot
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'   # every 10 min -> check Telegram for new files
+    - cron: '30 7 * * *'     # 07:30 UTC = 13:00 IST -> post Rule/Word/Idiom
+  workflow_dispatch:
+    inputs:
+      job:
+        description: 'Which job to run manually'
+        required: true
+        type: choice
+        options: [upload, daily-post]
+        default: upload
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check for new Telegram uploads
+        if: github.event.schedule == '*/10 * * * *' || github.event.inputs.job == 'upload'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node scripts/upload-bot.js
+
+      - name: Post today's Rule / Word / Idiom
+        if: github.event.schedule == '30 7 * * *' || github.event.inputs.job == 'daily-post'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node scripts/daily-post.js
+
+      - name: Commit and push any new/updated site files
+        run: |
+          git config user.name "sampuran-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+          else
+            git commit -m "Auto-upload from Telegram"
+            git push
+          fi
