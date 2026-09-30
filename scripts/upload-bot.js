@@ -89,29 +89,47 @@ function canonicalFilename(info) {
 // year pages (month-to-month links), so new months and even the very
 // first entry of a brand-new month page all just work.
 
-function insertEntry(content, matchRegex, buildGenericEntry, cloneReplacements) {
+function insertEntry(content, matchRegex, buildGenericEntry, cloneReplacements, position = 'bottom') {
   const matches = [...content.matchAll(matchRegex)];
-  let insertBeforeIdx;
+
+  // Where the existing entries END (right before the "back" box, or the
+  // marker if this page has one). Used to pull a clean template off the
+  // last entry -- never match text *inside* the back box, or new entries
+  // get nested inside that link and corrupt the page (this was the bug).
+  let entriesEndIdx;
   if (content.includes('<!-- ENTRIES -->')) {
-    insertBeforeIdx = content.indexOf('<!-- ENTRIES -->');
+    entriesEndIdx = content.indexOf('<!-- ENTRIES -->');
   } else {
-    // No marker comment in this page (true for every month page right now).
-    // Insert right before the "back" box itself, as a new sibling -- never
-    // match text *inside* it, or new entries get nested inside that link
-    // and corrupt the page (this was the bug).
     const backDivIdx = content.indexOf('<div class="back">');
-    insertBeforeIdx = backDivIdx !== -1 ? backDivIdx : content.length;
+    entriesEndIdx = backDivIdx !== -1 ? backDivIdx : content.length;
   }
 
   let newEntry;
   if (matches.length > 0) {
     const last = matches[matches.length - 1];
-    const template = content.slice(last.index, insertBeforeIdx);
+    const template = content.slice(last.index, entriesEndIdx);
     newEntry = cloneReplacements(template);
   } else {
     newEntry = buildGenericEntry();
   }
-  return content.slice(0, insertBeforeIdx) + newEntry + '\n\n' + content.slice(insertBeforeIdx);
+
+  let insertIdx;
+  if (position === 'top') {
+    // Newest entry goes right above whatever is currently the first entry
+    // (or, if this page has none yet, right where entries begin).
+    if (matches.length > 0) {
+      insertIdx = matches[0].index;
+    } else if (content.includes('<!-- ENTRIES -->')) {
+      insertIdx = content.indexOf('<!-- ENTRIES -->') + '<!-- ENTRIES -->'.length;
+    } else {
+      const containerTag = '<div class="container">';
+      const containerIdx = content.indexOf(containerTag);
+      insertIdx = containerIdx !== -1 ? containerIdx + containerTag.length : 0;
+    }
+  } else {
+    insertIdx = entriesEndIdx;
+  }
+  return content.slice(0, insertIdx) + newEntry + '\n\n' + content.slice(insertIdx);
 }
 
 // ---------------- Monthly page: Editorial ----------------
@@ -251,7 +269,7 @@ function updateEditorialMonthPage(info, filename) {
     return out;
   };
 
-  const updated = insertEntry(content, entryRegex, genericEntry, cloneEntry);
+  const updated = insertEntry(content, entryRegex, genericEntry, cloneEntry, 'top');
   fs.writeFileSync(p, updated);
 }
 
@@ -403,7 +421,7 @@ function updateMockTestMonthPage(info, filename) {
     return out;
   };
 
-  const updated = insertEntry(content, entryRegex, genericEntry, cloneEntry);
+  const updated = insertEntry(content, entryRegex, genericEntry, cloneEntry, 'top');
   fs.writeFileSync(p, updated);
 }
 
