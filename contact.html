@@ -48,7 +48,7 @@ font-size:38px;
 .wrap{
 width:90%;
 max-width:1000px;
-margin:40px auto;
+margin:20px auto 40px;
 }
 
 /* ---------- Hero banner (from About) ---------- */
@@ -101,10 +101,13 @@ border-radius:30px;
 display:flex;
 flex-wrap:wrap;
 gap:20px;
-align-items:center;
+align-items:stretch;
 }
 .parallel > div{
 flex:1 1 300px;
+display:flex;
+flex-direction:column;
+justify-content:center;
 }
 
 /* ---------- Section titles ---------- */
@@ -164,11 +167,10 @@ line-height:1.5;
 
 /* ---------- Contact box ---------- */
 .contact-box{
-background:var(--card-bg);
-color:var(--card-text);
-border:1px solid var(--card-border);
-border-radius:12px;
-box-shadow:0 0 10px rgba(0,0,0,.1);
+background:linear-gradient(135deg,var(--accent) 0%,var(--accent-hover) 100%);
+color:#ffffff;
+border-radius:14px;
+box-shadow:0 6px 18px rgba(0,0,0,.18);
 padding:22px 22px;
 text-align:center;
 }
@@ -179,7 +181,7 @@ line-height:1;
 .contact-box h3{
 margin:6px 0 4px;
 font-size:22px;
-color:var(--accent);
+color:#ffffff;
 }
 .contact-box p{
 margin:0;
@@ -191,18 +193,18 @@ display:inline-block;
 margin-top:14px;
 font-size:22px;
 font-weight:bold;
-color:var(--accent);
+color:#ffffff;
 text-decoration:none;
 overflow-wrap:anywhere;
-border-bottom:2px solid var(--accent);
+border-bottom:2px solid #ffffff;
 }
 .email-link:hover{
-color:var(--accent-hover);
-border-bottom-color:var(--accent-hover);
+color:rgba(255,255,255,.8);
+border-bottom-color:rgba(255,255,255,.8);
 }
 .divider{
 height:1px;
-background:var(--card-border);
+background:rgba(255,255,255,.3);
 margin:16px auto;
 max-width:520px;
 }
@@ -294,7 +296,6 @@ padding:20px;
 </div>
 </div>
 <div class="contact-box">
-<div class="icon">📧</div>
 <h3>Get in Touch with Us</h3>
 <p>For any question, suggestion or feedback, write to us at</p>
 <a class="email-link" href="mailto:sampuranenglish@gmail.com" onclick="if(!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){window.open('https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=sampuranenglish@gmail.com','_blank');return false;}">sampuranenglish@gmail.com</a>
